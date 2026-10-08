@@ -25,3 +25,16 @@ Estos pasos se completan de forma progresiva a lo largo de la Unidad U1.2, no to
 - Ningún secreto (contraseña, llave de API, token) va escrito directamente en el código ni en ningún archivo que se suba al repositorio.
 - Cada proyecto nuevo tiene su propio entorno virtual: no se comparten dependencias entre proyectos distintos.
 - Todo el trabajo que se entrega en este programa vive en un repositorio de GitHub, sin excepción.
+
+## Organización académica por módulos
+
+Los contenidos de la especialización se organizan en:
+
+- [Módulo 1](modulos/modulo_01/README.md)
+- [Módulo 2](modulos/modulo_02/README.md)
+- [Módulo 3](modulos/modulo_03/README.md)
+
+La estructura original src/, docs/ y tests/ se conserva
+para el desarrollo de la aplicación, su documentación
+y las pruebas automatizadas.
+
