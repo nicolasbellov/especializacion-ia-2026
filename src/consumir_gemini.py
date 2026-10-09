@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def obtener_dato_de_prueba(pregunta):
+def armar_peticion(pregunta):
     api_key = os.getenv("GEMINI_API_KEY")
     modelo = "gemini-3.5-flash"
 
@@ -25,6 +25,10 @@ def obtener_dato_de_prueba(pregunta):
         ]
     }
 
+    return url, headers, body
+
+
+def enviar_peticion(url, headers, body):
     respuesta = requests.post(
         url,
         headers=headers,
@@ -32,9 +36,22 @@ def obtener_dato_de_prueba(pregunta):
         timeout=30
     )
 
-    datos = respuesta.json()
+    return respuesta.json()
 
+
+def extraer_texto(datos):
     return datos["candidates"][0]["content"]["parts"][0]["text"]
+
+
+
+def obtener_dato_de_prueba(pregunta):
+    url, headers, body = armar_peticion(pregunta)
+
+    datos = enviar_peticion(url, headers, body)
+
+    return extraer_texto(datos)
+
+
 
 
 print(
