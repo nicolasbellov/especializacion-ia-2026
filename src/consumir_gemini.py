@@ -11,7 +11,7 @@ def armar_peticion(pregunta):
         raise ValueError("La pregunta debe ser un texto no vacío")
 
     api_key = os.getenv("GEMINI_API_KEY")
-    modelo = "gemini-3.5-flash"
+    modelo = "gemini-3.8-flash"
 
     url = (
         "https://generativelanguage.googleapis.com/"
