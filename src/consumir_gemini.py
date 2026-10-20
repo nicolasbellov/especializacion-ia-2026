@@ -95,7 +95,16 @@ def extraer_texto(datos):
             "La respuesta de Gemini contiene una lista vacía donde se esperaba texto generado."
         ) from error
 
+def calcular_costo(datos, precio_entrada, precio_salida):
+    uso = datos["usageMetadata"]
 
+    tokens_entrada = uso["promptTokenCount"]
+    tokens_salida = uso["candidatesTokenCount"]
+
+    costo_entrada = tokens_entrada * precio_entrada
+    costo_salida = tokens_salida * precio_salida
+
+    return costo_entrada + costo_salida
 
 def obtener_dato_de_prueba(pregunta):
     url, headers, body = armar_peticion(pregunta)
