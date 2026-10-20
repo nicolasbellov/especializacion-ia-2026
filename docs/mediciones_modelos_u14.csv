@@ -1,0 +1,99 @@
+﻿fecha_medicion,modelo,caso,repeticion,latencia_s,tokens_entrada,tokens_salida_visible,tokens_razonamiento,tokens_cache,costo_estimado_usd,respuesta
+2026-10-20T19:07:25-03:00,gemini-3.5-flash-lite,reserva_completa,1,3.1151,143,69,0,0,0.0002154,"```json
+{
+  ""intencion"": ""crear_reserva"",
+  ""fecha"": ""2026-10-24"",
+  ""hora"": ""19:30"",
+  ""personas"": 2,
+  ""requiere_aclaracion"": false
+}
+```"
+2026-10-20T19:07:29-03:00,gemini-3.5-flash-lite,reserva_completa,2,2.0222,143,69,0,0,0.0002154,"```json
+{
+  ""intencion"": ""crear_reserva"",
+  ""fecha"": ""2026-10-24"",
+  ""hora"": ""19:30"",
+  ""personas"": 2,
+  ""requiere_aclaracion"": false
+}
+```"
+2026-10-20T19:07:33-03:00,gemini-3.5-flash-lite,reserva_completa,3,2.113,143,69,0,0,0.0002154,"```json
+{
+  ""intencion"": ""crear_reserva"",
+  ""fecha"": ""2026-10-24"",
+  ""hora"": ""19:30"",
+  ""personas"": 2,
+  ""requiere_aclaracion"": false
+}
+```"
+2026-10-20T19:07:37-03:00,gemini-3.5-flash-lite,reserva_completa,4,2.6217,143,69,0,0,0.0002154,"```json
+{
+  ""intencion"": ""crear_reserva"",
+  ""fecha"": ""2026-10-24"",
+  ""hora"": ""19:30"",
+  ""personas"": 2,
+  ""requiere_aclaracion"": false
+}
+```"
+2026-10-20T19:07:42-03:00,gemini-3.5-flash-lite,hora_imprecisa,1,2.6294,139,64,0,0,0.0002017,"```json
+{
+  ""intencion"": ""crear_reserva"",
+  ""fecha"": ""2026-10-25"",
+  ""hora"": null,
+  ""personas"": 3,
+  ""requiere_aclaracion"": true
+}
+```"
+2026-10-20T19:07:46-03:00,gemini-3.5-flash-lite,cancelacion_sin_id,1,2.3246,121,53,0,0,0.0001688,"```json
+{
+  ""intencion"": ""cancelar_reserva"",
+  ""fecha"": null,
+  ""hora"": null,
+  ""personas"": null,
+  ""requiere_aclaracion"": true
+}
+```"
+2026-10-20T19:08:03-03:00,gemini-3.8-flash,reserva_completa,1,14.3638,143,64,520,0,0.00229725,"{
+  ""intencion"": ""crear_reserva"",
+  ""fecha"": ""2026-10-24"",
+  ""hora"": ""19:30"",
+  ""personas"": 2,
+  ""requiere_aclaracion"": false
+}"
+2026-10-20T19:13:24-03:00,gemini-3.8-flash,reserva_completa,2,5.849,143,69,466,0,0.0021135,"```json
+{
+  ""intencion"": ""crear_reserva"",
+  ""fecha"": ""2026-10-24"",
+  ""hora"": ""19:30"",
+  ""personas"": 2,
+  ""requiere_aclaracion"": false
+}
+```"
+2026-10-20T19:13:32-03:00,gemini-3.8-flash,reserva_completa,3,5.6338,143,64,427,0,0.0019485,"{
+  ""intencion"": ""crear_reserva"",
+  ""fecha"": ""2026-10-24"",
+  ""hora"": ""19:30"",
+  ""personas"": 2,
+  ""requiere_aclaracion"": false
+}"
+2026-10-20T19:13:39-03:00,gemini-3.8-flash,reserva_completa,4,5.502,143,64,535,0,0.0023535,"{
+  ""intencion"": ""crear_reserva"",
+  ""fecha"": ""2026-10-24"",
+  ""hora"": ""19:30"",
+  ""personas"": 2,
+  ""requiere_aclaracion"": false
+}"
+2026-10-20T19:13:48-03:00,gemini-3.8-flash,hora_imprecisa,1,6.5608,139,59,447,0,0.00200175,"{
+  ""intencion"": ""crear_reserva"",
+  ""fecha"": ""2026-10-25"",
+  ""hora"": null,
+  ""personas"": 3,
+  ""requiere_aclaracion"": true
+}"
+2026-10-20T19:16:11-03:00,gemini-3.8-flash,cancelacion_sin_id,1,9.8576,121,48,451,0,0.001962,"{
+  ""intencion"": ""cancelar_reserva"",
+  ""fecha"": null,
+  ""hora"": null,
+  ""personas"": null,
+  ""requiere_aclaracion"": true
+}"
