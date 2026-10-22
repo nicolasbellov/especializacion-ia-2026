@@ -213,7 +213,7 @@ La documentación se conserva para evolucionar la aplicación durante los módul
 - Pruebas automatizadas: 19/19 aprobadas.
 - Conexión real con Gemini verificada.
 - Respuesta JSON estructurada verificada.
-- Ensayo de instalación limpia: pendiente de completar.
+- Ensayo de instalación limpia: completado satisfactoriamente desde GitHub, con 19/19 pruebas aprobadas. Evidencia en docs/registro_ensayo_gate1.md.
 - Gate 1: pendiente de evaluación formal.
 
 ## Evolución del programa

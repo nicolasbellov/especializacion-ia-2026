@@ -3,7 +3,7 @@
 **Programa:** Especialización en Desarrollo con IA Generativa 2026 · Skillnest / Accenture / CChIA  
 **Unidad y actividad:** U1.4 · Bloque 9 · «Documenta tu decisión de arquitectura en el repositorio» (Core)  
 **Fecha de decisión y mediciones:** 20 de octubre de 2026 (Chile, UTC−03:00)  
-**Estado:** Decisión de referencia para el prototipo; implementación del cambio y validación de salida estructurada pendientes.  
+**Estado:** Decisión implementada y validada para Gate 1; conserva el contexto histórico de las mediciones del 20/10/2026.
 **Alcance:** módulo actual de consumo de Gemini (`src/consumir_gemini.py`) y caso de evolución «Booking Core AI», intérprete de solicitudes de reservas mediante IA. No representa un motor de reservas operativo.
 
 ## 1. Modelo elegido
@@ -13,6 +13,28 @@
 Se elige como **modelo de referencia para el prototipo Booking Core AI** por su relación observada entre corrección de las respuestas, costo y latencia. El cambio de modelo en el módulo productivo **todavía no está implementado**: al registrar este ADR, la función `armar_peticion()` de `src/consumir_gemini.py` continúa configurando `gemini-3.8-flash`. La comparación se ejecutó modificando el endpoint de cada petición únicamente desde los scripts de medición.
 
 **Condición de integración:** antes de usar la salida en lógica de negocio, exigir JSON estructurado y validación de esquema/valores (incluida la necesidad de aclaración). El modelo solo interpreta solicitudes; no consulta disponibilidad ni confirma reservas.
+
+### Actualización de implementación — 21/10/2026
+
+La decisión registrada el 20/10/2026 fue implementada y
+verificada posteriormente durante la preparación del Gate 1.
+
+- Modelo predeterminado actualizado a `gemini-3.5-flash-lite`.
+- Variable `GEMINI_MODEL` configurable mediante `.env`.
+- Instrucciones de sistema y esquema JSON incorporados a `armar_peticion()`.
+- Validación de respuestas estructuradas implementada en `parsear_respuesta_json()`.
+- Banco U1.5: 9/9 ejecuciones con estructura y contenido esperados.
+- Pruebas automatizadas: 19/19 aprobadas.
+- Consumo real de Gemini comprobado.
+- Comparadores de U1.4 versionados desde el commit `4243baf`.
+- Instalación limpia desde GitHub completada y documentada.
+
+Las referencias anteriores a funcionalidades pendientes reflejan
+el estado histórico del proyecto al momento de la comparación
+del 20/10/2026, no el estado final de la entrega.
+
+La evidencia de reproducción está disponible en
+`docs/registro_ensayo_gate1.md`.
 
 ## 2. Diagrama de arquitectura
 
