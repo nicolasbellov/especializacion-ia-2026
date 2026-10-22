@@ -1,0 +1,25 @@
+{
+  "fecha_ejecucion": "2026-10-21T21:32:00-03:00",
+  "modelo": "gemini-3.5-flash-lite",
+  "repeticiones_por_prompt": 3,
+  "prompts": {
+    "interpretar_intencion_agenda": {
+      "exitos_estructura": 3,
+      "exitos_contenido": 3,
+      "intentos": 3,
+      "fallos": []
+    },
+    "extraer_datos_cita": {
+      "exitos_estructura": 3,
+      "exitos_contenido": 3,
+      "intentos": 3,
+      "fallos": []
+    },
+    "detectar_datos_faltantes": {
+      "exitos_estructura": 3,
+      "exitos_contenido": 3,
+      "intentos": 3,
+      "fallos": []
+    }
+  }
+}
