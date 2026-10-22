@@ -1,3 +1,4 @@
+
 """Cliente REST de Gemini utilizado durante el Módulo 1.
 
 U1.5: incorpora instrucciones de sistema, esquema de respuesta y validación JSON
@@ -27,7 +28,7 @@ def armar_peticion(pregunta, system_instruction=None, response_schema=None):
         raise ValueError("response_schema debe ser un diccionario")
 
     api_key = os.getenv("GEMINI_API_KEY")
-    modelo = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+    modelo = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 
     url = (
         "https://generativelanguage.googleapis.com/"
@@ -120,6 +121,7 @@ def _validar_tipo(valor, especificacion, campo):
         "ARRAY": lambda x: isinstance(x, list),
         "OBJECT": lambda x: isinstance(x, dict),
     }
+
     if tipo not in valido or not valido[tipo](valor):
         raise ValueError(f"Tipo incorrecto en '{campo}': se esperaba {tipo}.")
     if "enum" in especificacion and valor not in especificacion["enum"]:
@@ -141,6 +143,7 @@ def parsear_respuesta_json(texto, response_schema=None):
     """
     if not isinstance(texto, str):
         raise ValueError("La respuesta del modelo debe ser texto.")
+
     texto_limpio = texto.strip()
     texto_limpio = re.sub(r"^```(?:json)?\s*", "", texto_limpio, flags=re.I)
     texto_limpio = re.sub(r"\s*```$", "", texto_limpio)
@@ -156,8 +159,12 @@ def parsear_respuesta_json(texto, response_schema=None):
     if response_schema is not None:
         obligatorias = response_schema.get("required", [])
         faltantes = [clave for clave in obligatorias if clave not in datos]
+
         if faltantes:
-            raise ValueError(f"Faltan claves obligatorias: {', '.join(faltantes)}.")
+            raise ValueError(
+                f"Faltan claves obligatorias: {', '.join(faltantes)}."
+            )
+
         for clave, especificacion in response_schema.get("properties", {}).items():
             if clave in datos:
                 _validar_tipo(datos[clave], especificacion, clave)
@@ -169,8 +176,10 @@ def calcular_costo(datos, precio_entrada, precio_salida):
     uso = datos["usageMetadata"]
     tokens_entrada = uso["promptTokenCount"]
     tokens_salida = uso["candidatesTokenCount"]
+
     costo_entrada = tokens_entrada * precio_entrada
     costo_salida = tokens_salida * precio_salida
+
     return costo_entrada + costo_salida
 
 
@@ -181,13 +190,24 @@ def obtener_dato_de_prueba(pregunta):
 
 
 if __name__ == "__main__":
-    preguntas = [
-        "",
-        "Confirma en una frase corta que esta conexión funciona",
-    ]
-    for pregunta in preguntas:
-        try:
-            resultado = obtener_dato_de_prueba(pregunta)
-            print("Resultado:", resultado)
-        except (ValueError, RuntimeError) as error:
-            print("No se pudo completar la operación:", error)
+    import sys
+
+    try:
+        api_key = os.getenv("GEMINI_API_KEY", "").strip()
+
+        if not api_key or api_key == "tu_llave_aqui":
+            raise RuntimeError(
+                "Configura GEMINI_API_KEY en el archivo .env."
+            )
+
+        pregunta = (
+            "Confirma en una frase corta que "
+            "esta conexión funciona."
+        )
+
+        resultado = obtener_dato_de_prueba(pregunta)
+        print("Resultado:", resultado)
+
+    except (ValueError, RuntimeError) as error:
+        print(f"ERROR: {error}", file=sys.stderr)
+        sys.exit(1)
