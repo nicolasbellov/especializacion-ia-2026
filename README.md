@@ -223,3 +223,17 @@ La documentación se conserva para evolucionar la aplicación durante los módul
 - Módulo 3: integración, despliegue y validación end-to-end.
 
 El repositorio constituye una base incremental para los siguientes módulos de la especialización.
+
+## Evidencia del Gate 1
+
+Se realizó un ensayo de instalación limpia
+clonando el repositorio directamente desde GitHub.
+
+Resultados:
+- 19/19 pruebas automatizadas aprobadas.
+- Instalación de dependencias sin conflictos.
+- Consumo exitoso de la API Gemini.
+- Código de salida 0.
+- Exclusión de credenciales locales verificada.
+
+Consultar el [registro completo del ensayo](docs/registro_ensayo_gate1.md).
