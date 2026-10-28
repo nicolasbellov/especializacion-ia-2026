@@ -39,7 +39,7 @@
 | 12 | Autenticación y rate limits | Técnica validada | Respuesta real de Gemini; credencial inválida detectada como `ValueError` |
 | 12 | Reintento ante error del proveedor | Técnica validada | Simulación: dos fallos, respuesta en tercer intento |
 | 12 | Actividad: cliente modular con reintentos | **Implementada y publicada** | 4/4 pruebas simuladas, consulta real y commit [`f69c0f8`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/f69c0f86bdef23bdac20a4be2f0d9975e6b94607) |
-| 13 | Backoff y control de costo | **Siguiente lección** | No iniciada en este registro |
+| 13 | Backoff y control de costo | **En validación** | 5/5 pruebas B13 + 4/4 regresión B12 en Windows; consulta real nueva aún pendiente |
 | 13 | Rate limit provocado | Pendiente | — |
 | 13 | Límites y costos incorporados | Pendiente | — |
 | 14 | Pruebas unitarias | Pendiente | — |
@@ -58,7 +58,17 @@
 
 ### Próximo paso exacto
 
-**U2.1, Bloque 13, lección «Backoff y control de costo, operación por operación».** Leer el material oficial antes de cambiar la lógica actual. Mantener pruebas del Bloque 12 como regresión; luego añadir backoff y registro de costo según los criterios del curso.
+**U2.1, Bloque 13, lección «Backoff y control de costo, operación por operación».** Se estudió el material, se construyó una versión en rama y se comprobaron **9/9 pruebas simuladas**. **Pendiente:** una consulta real a Gemini en el entorno local, registrar su resultado y completar el cierre académico antes de fusionar con `main`.
+
+### Progreso parcial del Bloque 13 · 27/10/2026
+
+- **Rama de desarrollo:** `feature/u21-b13-backoff-costos` (sin modificar `main`).
+- **Código publicado:** [commit `8b88a34`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/8b88a342f6765587282f8e80624be6546bfd08db).
+- **Validación Windows informada:** 5/5 pruebas B13 y 4/4 pruebas de regresión B12; ambos comandos terminaron con éxito.
+- **Aspectos cubiertos:** espera exponencial 2→4 s, jitter y límite, `ValueError` no reintentable, total de tokens y costo referencial por operación, acumulación de sesión, ausencia de metadatos.
+- **Importante:** costos = **simulación educativa de USD 0,002 por 1.000 tokens**, no costo real auditado ni facturación del proveedor.
+- **No se ha probado todavía en esta rama** una nueva llamada real a Gemini.
+- **Lecciones contabilizadas como cerradas:** se mantienen **3/9** hasta terminar esta validación. 
 
 ## Cómo actualizar este archivo
 
