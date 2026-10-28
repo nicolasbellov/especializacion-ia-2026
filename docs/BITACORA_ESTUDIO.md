@@ -81,6 +81,19 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Nota de regresión:** en las pruebas del Bloque 12 el aviso «costo no estimable» es esperado, pues los mocks no traen `usageMetadata`.
 - **Evidencia de integración:** PR #1 del repositorio; histórico de la rama `feature/u21-b13-backoff-costos`.
 
+## Sesión M2-003 · 27/10/2026 — Bloque 13, segunda lección
+
+- **Tema oficial:** «Provocamos un rate limit a propósito, para aprender a manejarlo».
+- **Horas de inicio/término y tiempo efectivo:** no registrados; no inferir desde la consola.
+- **Rama:** `feature/u21-b13-ensayo-rate-limit`. Ensayo independiente de `cliente.py`, con máximo 10 operaciones y observación de códigos HTTP mediante instrumentación temporal.
+- **Pruebas simuladas:** **4/4 aprobadas**, con un `429` simulado seguido de `200` y recuperación; escenario sin `429`; error `401` sin reintento; verificación del máximo permitido.
+- **Ensayo real:** 10 operaciones, 10 llamadas HTTP, **10 respuestas 200**, ninguna 429, ninguna espera de backoff, 10 respuestas `OK`.
+- **Consumo informado:** 11 tokens por operación, **110 tokens** en total. Costo acumulado **USD 0,000220**, conforme a la tarifa **referencial académica** (no se ha comprobado facturación real).
+- **Hallazgo:** el texto «HTTP 429 REAL OBSERVADO» aparecía en una prueba con `requests.post` simulado. No era evidencia de rate limit del proveedor. Se corrigió el ensayo para identificar explícitamente su modo **simulado** o **real**.
+- **Conclusión:** validación positiva del procesamiento simulado de `429` y de diez respuestas reales exitosas, pero **no** se ha demostrado un `429` auténtico de Gemini; la lección queda **parcialmente validada**.
+- **Seguridad:** no repetir en ráfagas ni incrementar automáticamente llamadas solo para alcanzar cuotas; conservar `.env` sin versionar.
+- **Próximo punto exacto:** decidir una forma autorizada/acotada de verificar un `429` auténtico si se exige como evidencia; entretanto, los resultados reales y simulados permanecen claramente separados. Avance U2.1: **4/9**.
+
 ## Plantilla para próximas sesiones
 
 ```markdown

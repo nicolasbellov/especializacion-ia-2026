@@ -40,7 +40,7 @@
 | 12 | Reintento ante error del proveedor | Técnica validada | Simulación: dos fallos, respuesta en tercer intento |
 | 12 | Actividad: cliente modular con reintentos | **Implementada y publicada** | 4/4 pruebas simuladas, consulta real y commit [`f69c0f8`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/f69c0f86bdef23bdac20a4be2f0d9975e6b94607) |
 | 13 | Backoff y control de costo | **Completada técnicamente** | 5/5 pruebas B13 + 4/4 regresión B12 y consulta real a Gemini: 25 tokens, USD 0,000050 referenciales |
-| 13 | Rate limit provocado | **Ensayo preparado; ejecución real pendiente** | Script limitado a 10 operaciones y cuatro pruebas offline; un 429 real solo puede acreditarse tras observarlo en la respuesta HTTP del proveedor |
+| 13 | Rate limit provocado | **Ensayo ejecutado; 429 real no observado** | 4/4 pruebas offline; 10/10 operaciones reales HTTP 200, 110 tokens, sin esperas de backoff; evidencia pendiente de 429 real |
 | 13 | Límites y costos incorporados | Pendiente | — |
 | 14 | Pruebas unitarias | Pendiente | — |
 | 14 | Checklist del cliente modular | Pendiente | — |
@@ -58,7 +58,7 @@
 
 ### Próximo paso exacto
 
-**U2.1, Bloque 13, siguiente lección «Provocamos un rate limit a propósito».** Revisar el material oficial y planificar una prueba acotada sin generar consumo excesivo ni afectar la cuenta. Conservar los 9/9 ensayos B12/B13 como referencia de regresión.
+**U2.1, Bloque 13, lección «Provocamos un rate limit a propósito».** El ensayo real de diez solicitudes no encontró un HTTP 429; el manejo de 429 sí fue verificado por simulación. No incrementar automáticamente la carga. Revisar si hay una alternativa autorizada y limitada para observar un 429 real, o conservar la evidencia parcial sin atribuir una validación inexistente.
 
 ### Primera lección del Bloque 13 completada · 27/10/2026
 
@@ -69,6 +69,16 @@
 - **Importante:** costos = **simulación educativa de USD 0,002 por 1.000 tokens**, no costo real auditado ni facturación del proveedor.
 - **Consulta real realizada en Windows con el cliente actualizado:** `consultar_modelo('Cual es la capital de Chile?')` devolvió Santiago; la consola informó **25 tokens**, **USD 0,000050 referenciales** y **USD 0,000050 acumulados**.
 - **Lecciones contabilizadas como cerradas:** **4/9 (44,4 %)**. Cierre técnico verificado por ejecución del estudiante; no equivale a calificación institucional.
+
+### Ensayo de rate limit · 27/10/2026
+
+- **Pruebas offline:** 4/4 aprobadas. Incluyen `429 → 200`, tres `200`, error `401` y validación del tope de 10 operaciones.
+- **Ensayo real con Gemini:** 10 operaciones exitosas, **10 respuestas HTTP 200**, **ningún HTTP 429**, sin reintentos ni backoff observados.
+- **Tokens:** 11 por operación; 110 tokens informados en total.
+- **Costo acumulado:** **USD 0,000220**, solo estimación didáctica a la tarifa del curso; no factura.
+- **Interpretación:** los tests con mocks prueban el flujo de un 429, pero **no** demuestran que el proveedor devolvió un 429. El ensayo real tampoco lo provocó.
+- **Evidencia:** [registro técnico](registro_ensayo_rate_limit_b13.md), [PR #2](https://github.com/nicolasbellov/especializacion-ia-2026/pull/2).
+- **Avance académico:** permanece **4/9 lecciones**; la segunda lección del Bloque 13 conserva pendiente el criterio de observar un 429 auténtico.
 
 ## Cómo actualizar este archivo
 

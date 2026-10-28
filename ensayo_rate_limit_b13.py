@@ -21,7 +21,9 @@ import cliente_reintento
 MAX_OPERACIONES = 10
 
 
-def ejecutar_ensayo(max_operaciones: int = MAX_OPERACIONES) -> dict:
+def ejecutar_ensayo(
+    max_operaciones: int = MAX_OPERACIONES, *, simulacion: bool = False
+) -> dict:
     if type(max_operaciones) is not int or not 1 <= max_operaciones <= MAX_OPERACIONES:
         raise ValueError("max_operaciones debe estar entre 1 y 10")
 
@@ -58,8 +60,8 @@ def ejecutar_ensayo(max_operaciones: int = MAX_OPERACIONES) -> dict:
             primera_llamada_429 = llamadas_http
             primera_operacion_429 = operacion_actual
             print(
-                f"HTTP 429 REAL OBSERVADO en operacion {operacion_actual}, "
-                f"llamada HTTP #{llamadas_http}."
+                f"HTTP 429 {'SIMULADO' if simulacion else 'REAL'} OBSERVADO "
+                f"en operacion {operacion_actual}, llamada HTTP #{llamadas_http}."
             )
         return respuesta
 
@@ -71,6 +73,7 @@ def ejecutar_ensayo(max_operaciones: int = MAX_OPERACIONES) -> dict:
         f"Inicio del ensayo: maximo {max_operaciones} operaciones, "
         "hasta 3 intentos HTTP cada una."
     )
+    print(f"Tipo de ensayo: {'SIMULADO' if simulacion else 'REAL CON GEMINI'}")
     print("No se aumentara automaticamente el limite si no aparece HTTP 429.")
 
     # Solo el ensayo usa estos parches: la logica de produccion no cambia.
@@ -119,19 +122,27 @@ def ejecutar_ensayo(max_operaciones: int = MAX_OPERACIONES) -> dict:
         "primer_429_llamada_http": primera_llamada_429,
         "esperas_segundos": esperas,
         "costo_referencial_usd": round(cliente.costo_total_sesion, 8),
-        "http_429_real_observado": hubo_429,
+        "tipo_ensayo": "simulado" if simulacion else "real_gemini",
+        "http_429_observado": hubo_429,
     }
 
     print("\n===== RESUMEN DEL ENSAYO B13 =====")
     for clave, valor in resumen.items():
         print(f"{clave}: {valor}")
     if not hubo_429:
-        print(
-            "RESULTADO: no se observo HTTP 429 real. "
-            "Esto NO demuestra que exista o no exista un rate limit."
-        )
+        if simulacion:
+            print("RESULTADO: ningun HTTP 429 en las respuestas simuladas.")
+        else:
+            print(
+                "RESULTADO: ningun HTTP 429 real en el ensayo. "
+                "No se demostro el limite del proveedor."
+            )
     else:
-        print("RESULTADO: HTTP 429 real confirmado.")
+        print(
+            "RESULTADO: HTTP 429 simulado verificado."
+            if simulacion
+            else "RESULTADO: HTTP 429 real confirmado."
+        )
     print("Costo USD: solo calculo didactico del curso, no factura del proveedor.")
     return resumen
 

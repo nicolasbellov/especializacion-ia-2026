@@ -31,9 +31,9 @@ def probar_429_recuperado():
         patch("cliente_api.requests.post", side_effect=con_respuestas) as post,
         patch("cliente_reintento.time.sleep") as dormir,
     ):
-        resumen = ejecutar_ensayo(10)
+        resumen = ejecutar_ensayo(10, simulacion=True)
 
-    assert resumen["http_429_real_observado"] is True
+    assert resumen["http_429_observado"] is True
     assert resumen["primer_429_operacion"] == 0
     assert resumen["primer_429_llamada_http"] == 1
     assert resumen["llamadas_http"] == 2
@@ -43,14 +43,15 @@ def probar_429_recuperado():
     assert len(resumen["esperas_segundos"]) == 1
     assert post.call_count == 2
     assert dormir.call_count == 1
-    print("OK: codigo 429 real del HTTP simulado, reintento y parada")
+    assert resumen["tipo_ensayo"] == "simulado"
+    print("OK: HTTP 429 simulado, reintento y parada")
 
 
 def probar_sin_429():
     con_respuestas = [respuesta_http(200) for _ in range(3)]
     with patch("cliente_api.requests.post", side_effect=con_respuestas) as post:
-        resumen = ejecutar_ensayo(3)
-    assert resumen["http_429_real_observado"] is False
+        resumen = ejecutar_ensayo(3, simulacion=True)
+    assert resumen["http_429_observado"] is False
     assert resumen["llamadas_http"] == 3
     assert resumen["operaciones_exitosas"] == 3
     assert post.call_count == 3
@@ -62,10 +63,10 @@ def probar_auth_no_reintentable():
         patch("cliente_api.requests.post", return_value=respuesta_http(401)) as post,
         patch("cliente_reintento.time.sleep") as dormir,
     ):
-        resumen = ejecutar_ensayo(10)
+        resumen = ejecutar_ensayo(10, simulacion=True)
     assert resumen["operaciones_fallidas"] == 1
     assert resumen["llamadas_http"] == 1
-    assert resumen["http_429_real_observado"] is False
+    assert resumen["http_429_observado"] is False
     assert post.call_count == 1
     dormir.assert_not_called()
     print("OK: HTTP 401 detiene ensayo, sin reintento")
@@ -73,7 +74,7 @@ def probar_auth_no_reintentable():
 
 def probar_limite_estricto():
     try:
-        ejecutar_ensayo(11)
+        ejecutar_ensayo(11, simulacion=True)
     except ValueError:
         pass
     else:
