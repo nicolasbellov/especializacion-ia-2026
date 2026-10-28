@@ -8,7 +8,7 @@
 | Etapa | Alcance | Estado comprobable |
 | --- | --- | --- |
 | Módulo 1 — Fundamentos técnicos | 46 h curriculares; Gate 1 | Miniaplicación desarrollada; ensayo de instalación limpia y 19/19 pruebas documentados. **Aprobación formal del Gate 1: no confirmada aquí**. |
-| **Módulo 2 — Construcción de componentes IA** | **88 h curriculares**; U2.1 a U2.8 | **En curso. U2.1: 5/9 lecciones completadas; Bloque 14 lección 1 validada con pytest. El criterio de 429 real de B13 sigue pendiente**. |
+| **Módulo 2 — Construcción de componentes IA** | **88 h curriculares**; U2.1 a U2.8 | **En curso. U2.1: 6/9 lecciones revisadas/completadas según evidencia; Bloque 14 lección 2 (checklist) auditada. El criterio de 429 real de B13 sigue pendiente**. |
 | Módulo 3 — Desarrollo y despliegue end-to-end | 56 h curriculares; Gate 3 y proyecto integrador | Sin avance confirmado en este registro. |
 
 **Total curricular del programa:** 190 h. Las horas curriculares no son horas efectivamente estudiadas; estas últimas se registran separadamente en [BITACORA_ESTUDIO.md](BITACORA_ESTUDIO.md).
@@ -23,7 +23,7 @@
 
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
-| **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 lección 1 completada con pytest y CI; 5/9 lecciones, con criterio B13 pendiente de HTTP 429 real**. |
+| **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 lección 2 estudiada y checklist documentado; 6/9 lecciones, con criterio B13 pendiente de HTTP 429 real**. |
 | U2.2 | Pipeline de texto, NLP básico y evaluación inicial | Pendiente |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
@@ -43,10 +43,10 @@
 | 13 | Rate limit provocado | **Ensayo ejecutado; 429 real no observado** | 4/4 pruebas offline; 10/10 operaciones reales HTTP 200, 110 tokens, sin esperas de backoff; evidencia pendiente de 429 real |
 | 13 | Límites y costos incorporados | **Revisión y pruebas integradas aprobadas; checklist global parcial** | Cuatro responsabilidades auditadas y cuatro pruebas integradas aprobadas en GitHub Actions; cierre Bloque 13 pendiente de HTTP 429 auténtico |
 | 14 | Pruebas unitarias | **Completada técnicamente** | 3/3 pruebas pytest: HTTP 401, HTTP 429 simulado y HTTP 200; GitHub Actions aprobó además la regresión previa |
-| 14 | Checklist del cliente modular | Pendiente | — |
+| 14 | Checklist del cliente modular | **Lección estudiada; matriz documentada** | [Cobertura de 12 comportamientos](checklist_cobertura_b14.md): tres pruebas pytest existentes, evidencias previas y brechas para la actividad final |
 | 14 | Actividad core: escribir y verificar pruebas | Pendiente | — |
 
-**Avance U2.1:** 5 de 9 lecciones, **55,6 % por cantidad de lecciones**, no por horas ni por ponderación oficial. La actividad práctica del Bloque 12 está publicada; no se cuenta como evaluación institucional aprobada.
+**Avance U2.1:** 6 de 9 lecciones, **66,7 % por cantidad de lecciones**, no por horas ni por ponderación oficial. La actividad práctica del Bloque 12 está publicada; no se cuenta como evaluación institucional aprobada.
 
 ### Entregable verificado de Bloque 12
 
@@ -58,7 +58,7 @@
 
 ### Próximo paso exacto
 
-**Siguiente material: U2.1, Bloque 14, lección «Checklist de cliente modular: qué se revisa».** La primera lección de Bloque 14 se implementó con tres pruebas pytest, aprobadas en GitHub Actions. El criterio pendiente del Bloque 13 sigue siendo observar un HTTP 429 auténtico; no se confunde con las respuestas simuladas del test.
+**Siguiente actividad: U2.1, Bloque 14, «Escribe tus pruebas unitarias y verifica que pasen».** El checklist de cobertura está [documentado](checklist_cobertura_b14.md), sin implementar anticipadamente la suite final. El criterio pendiente de Bloque 13 sigue siendo observar un HTTP 429 auténtico; no se confunde con las respuestas simuladas del test.
 
 ### Primera lección del Bloque 13 completada · 27/10/2026
 
@@ -100,6 +100,15 @@
 - **Prueba CI confirmada:** [GitHub Actions #40622821093](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40622821093) `success`; pasó pytest y las baterías anteriores.
 - **Límite:** los HTTP 401/429/200 de estas pruebas son **simulados**. No acreditan haber provocado un 429 auténtico.
 - **Conteo:** 5/9 completadas en U2.1; el cierre global de B13 continúa con el criterio de 429 real pendiente.
+
+### Bloque 14 · Lección 2 — Checklist del cliente modular · 27/10/2026
+
+- **Material Skillnest revisado:** «Checklist de cliente modular: qué se revisa».
+- **Resultado:** [matriz de doce comportamientos](checklist_cobertura_b14.md) en `enviar_peticion`, `con_reintento`, `registrar_costo` y `consultar_modelo`.
+- **Cobertura actual:** tres pruebas `pytest` en `test_cliente.py` y pruebas adicionales en scripts B12/B13. Las pruebas fuera de `test_cliente.py` se mantienen como evidencia de regresión y **no** se presentan como suite final de la actividad.
+- **Brechas:** 403, 500+ en prueba unitaria dedicada, propagación original de `TimeoutError` y consolidación de reintentos/costos/conversión de errores en `pytest`.
+- **Punto siguiente:** actividad final del Bloque 14, escribir y comprobar la suite completa con GitHub Actions.
+- **Avance:** 6/9 lecciones (66,7 %) por seguimiento interno; Bloque 13 mantiene pendiente el HTTP 429 auténtico.
 
 ## Cómo actualizar este archivo
 

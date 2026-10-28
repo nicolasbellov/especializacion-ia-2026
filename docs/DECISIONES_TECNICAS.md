@@ -78,6 +78,15 @@ Cada decisión incluye contexto, elección, razón, evidencia, límites y condic
 - **Evidencia:** [GitHub Actions #40622821093](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40622821093) con resultados correctos para pytest y todas las regresiones anteriores.
 - **Límites:** el test simula un 429 y no sustituye la observación real requerida por B13. Próxima lección: ampliar el checklist de pruebas de cliente modular.
 
+### DT-009 · Matriz de cobertura antes de completar el archivo pytest (B14)
+
+- **Fecha:** 27/10/2026. **Estado:** matriz revisada y documentada; la implementación de la suite completa queda para la actividad final del bloque.
+- **Decisión:** trazar cada comportamiento del checklist de Skillnest hasta una prueba específica, distinguiendo los tres unit tests `pytest` del historial de tests B12/B13.
+- **Justificación:** el número de pruebas no equivale a su cobertura. También evita duplicar pruebas sin necesidad o sustituir el código de producción por ejemplos monolíticos.
+- **Fuente y evidencia:** [checklist_cobertura_b14.md](checklist_cobertura_b14.md) y pruebas existentes `test_cliente.py`, `pruebas_cliente_b12.py`, `pruebas_cliente_b13.py`, `pruebas_cierre_b13.py`.
+- **Punto relevante:** patch `cliente_api.requests.post` para HTTP y `cliente_reintento.time.sleep` para esperas; controlar/restablecer estado global en costos. No introducir llamadas reales a la API dentro de pytest.
+- **Limitación:** esta lección prepara el checklist; no declara terminada la suite de la actividad siguiente ni resuelve el 429 real pendiente del Bloque 13.
+
 ## Pendientes para futuras decisiones
 
 - **Bloque 13:** primera lección validada con Gemini real; los temas `Retry-After`, tarifas reales por tipo de tokens y prueba acotada de rate limit provocado siguen pendientes en próximas lecciones.
