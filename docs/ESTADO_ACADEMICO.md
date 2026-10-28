@@ -8,7 +8,7 @@
 | Etapa | Alcance | Estado comprobable |
 | --- | --- | --- |
 | Módulo 1 — Fundamentos técnicos | 46 h curriculares; Gate 1 | Miniaplicación desarrollada; ensayo de instalación limpia y 19/19 pruebas documentados. **Aprobación formal del Gate 1: no confirmada aquí**. |
-| **Módulo 2 — Construcción de componentes IA** | **88 h curriculares**; U2.1 a U2.8 | **En curso. U2.1: 3/9 lecciones realizadas y actividad del Bloque 12 publicada**. |
+| **Módulo 2 — Construcción de componentes IA** | **88 h curriculares**; U2.1 a U2.8 | **En curso. U2.1: 4/9 lecciones completadas; Bloque 12 cerrado y primera lección del Bloque 13 validada**. |
 | Módulo 3 — Desarrollo y despliegue end-to-end | 56 h curriculares; Gate 3 y proyecto integrador | Sin avance confirmado en este registro. |
 
 **Total curricular del programa:** 190 h. Las horas curriculares no son horas efectivamente estudiadas; estas últimas se registran separadamente en [BITACORA_ESTUDIO.md](BITACORA_ESTUDIO.md).
@@ -23,7 +23,7 @@
 
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
-| **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 12 completado técnicamente y publicado; 3/9 lecciones**. |
+| **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 12 completado y primera lección del Bloque 13 validada; 4/9 lecciones**. |
 | U2.2 | Pipeline de texto, NLP básico y evaluación inicial | Pendiente |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
@@ -39,14 +39,14 @@
 | 12 | Autenticación y rate limits | Técnica validada | Respuesta real de Gemini; credencial inválida detectada como `ValueError` |
 | 12 | Reintento ante error del proveedor | Técnica validada | Simulación: dos fallos, respuesta en tercer intento |
 | 12 | Actividad: cliente modular con reintentos | **Implementada y publicada** | 4/4 pruebas simuladas, consulta real y commit [`f69c0f8`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/f69c0f86bdef23bdac20a4be2f0d9975e6b94607) |
-| 13 | Backoff y control de costo | **Siguiente lección** | No iniciada en este registro |
+| 13 | Backoff y control de costo | **Completada técnicamente** | 5/5 pruebas B13 + 4/4 regresión B12 y consulta real a Gemini: 25 tokens, USD 0,000050 referenciales |
 | 13 | Rate limit provocado | Pendiente | — |
 | 13 | Límites y costos incorporados | Pendiente | — |
 | 14 | Pruebas unitarias | Pendiente | — |
 | 14 | Checklist del cliente modular | Pendiente | — |
 | 14 | Actividad core: escribir y verificar pruebas | Pendiente | — |
 
-**Avance U2.1:** 3 de 9 lecciones, **33,3 % por cantidad de lecciones**, no por horas ni por ponderación oficial. La actividad práctica del Bloque 12 está publicada; no se cuenta como evaluación institucional aprobada.
+**Avance U2.1:** 4 de 9 lecciones, **44,4 % por cantidad de lecciones**, no por horas ni por ponderación oficial. La actividad práctica del Bloque 12 está publicada; no se cuenta como evaluación institucional aprobada.
 
 ### Entregable verificado de Bloque 12
 
@@ -58,7 +58,17 @@
 
 ### Próximo paso exacto
 
-**U2.1, Bloque 13, lección «Backoff y control de costo, operación por operación».** Leer el material oficial antes de cambiar la lógica actual. Mantener pruebas del Bloque 12 como regresión; luego añadir backoff y registro de costo según los criterios del curso.
+**U2.1, Bloque 13, siguiente lección «Provocamos un rate limit a propósito».** Revisar el material oficial y planificar una prueba acotada sin generar consumo excesivo ni afectar la cuenta. Conservar los 9/9 ensayos B12/B13 como referencia de regresión.
+
+### Primera lección del Bloque 13 completada · 27/10/2026
+
+- **Origen de implementación:** rama `feature/u21-b13-backoff-costos`, preparada para integrar mediante PR #1 una vez documentada la validación.
+- **Código publicado:** [commit `8b88a34`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/8b88a342f6765587282f8e80624be6546bfd08db).
+- **Validación Windows informada:** 5/5 pruebas B13 y 4/4 pruebas de regresión B12; ambos comandos terminaron con éxito.
+- **Aspectos cubiertos:** espera exponencial 2→4 s, jitter y límite, `ValueError` no reintentable, total de tokens y costo referencial por operación, acumulación de sesión, ausencia de metadatos.
+- **Importante:** costos = **simulación educativa de USD 0,002 por 1.000 tokens**, no costo real auditado ni facturación del proveedor.
+- **Consulta real realizada en Windows con el cliente actualizado:** `consultar_modelo('Cual es la capital de Chile?')` devolvió Santiago; la consola informó **25 tokens**, **USD 0,000050 referenciales** y **USD 0,000050 acumulados**.
+- **Lecciones contabilizadas como cerradas:** **4/9 (44,4 %)**. Cierre técnico verificado por ejecución del estudiante; no equivale a calificación institucional.
 
 ## Cómo actualizar este archivo
 

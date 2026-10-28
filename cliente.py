@@ -1,4 +1,4 @@
-﻿from cliente_api import enviar_peticion
+from cliente_api import enviar_peticion
 from cliente_reintento import con_reintento
 
 
@@ -46,6 +46,31 @@ def extraer_texto(respuesta: dict) -> str:
         ) from error
 
 
+# Tarifa didactica de Skillnest; NO representa facturacion real de Gemini.
+COSTO_POR_1000_TOKENS = 0.002
+costo_total_sesion = 0.0
+
+
+def registrar_costo(respuesta: dict) -> float | None:
+    global costo_total_sesion
+
+    uso = respuesta.get("usageMetadata", {})
+    tokens = uso.get("totalTokenCount") if isinstance(uso, dict) else None
+
+    if type(tokens) is not int or tokens < 0:
+        print("Operacion sin uso de tokens: costo no estimable.")
+        return None
+
+    costo = tokens / 1000 * COSTO_POR_1000_TOKENS
+    costo_total_sesion += costo
+    print(
+        f"Operacion: {tokens} tokens | "
+        f"USD referencial: {costo:.6f} | "
+        f"Acumulado: {costo_total_sesion:.6f}"
+    )
+    return costo
+
+
 def consultar_modelo(
     pregunta: str,
     system_instruction: str = ""
@@ -67,4 +92,5 @@ def consultar_modelo(
             "Intenta mas tarde."
         ) from error
 
+    registrar_costo(respuesta)
     return extraer_texto(respuesta)

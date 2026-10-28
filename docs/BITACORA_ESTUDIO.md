@@ -60,6 +60,27 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Próximo:** leer **Bloque 13 / «Backoff y control de costo, operación por operación»**, preservar las cuatro pruebas ya aprobadas y extender gradualmente el cliente.
 - **Pendiente administrativo:** confirmar estado/calificación oficial del Gate 1 cuando se disponga de ese dato.
 
+## Sesión M2-002 · 27/10/2026 — Bloque 13, primera lección
+
+- **Actividad:** «Backoff y control de costo, operación por operación»; uso de material oficial compartido.
+- **Inicio/término/tiempo efectivo:** no cronometrados; no inferir duraciones.
+- **Implementación:** en rama `feature/u21-b13-backoff-costos`, [commit `8b88a34`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/8b88a342f6765587282f8e80624be6546bfd08db): `cliente_reintento.py` (backoff exponencial, jitter, techo), `cliente.py` (costeo referencial y acumulado) y `pruebas_cliente_b13.py`.
+- **Evidencia local informada:** **5/5 pruebas B13 aprobadas** y **4/4 de regresión B12 aprobadas**, desde PowerShell en Windows. Las pruebas simulan respuestas; no consumen cuota de Gemini.
+- **Valores de prueba:** backoff sin jitter 2 s y 4 s; con jitter y techo de 3 s, 2,2 s y 3,0 s; costos referenciales de 42 y 57 tokens por USD 0,000084 y 0,000114, acumulado USD 0,000198.
+- **Error 1:** un generador de código por sustitución de texto utilizó offsets calculados antes de insertar una importación, dando `SyntaxError: unmatched ')'`. Falló la validación *antes* de modificar los archivos.
+- **Error 2:** un segundo script dependía de la variable `$script` no disponible en la sesión de PowerShell. Produjo mensajes de éxito falsos; `git status` seguía limpio y B12 seguía aprobando.
+- **Error 3:** archivo adjunto `actualizar_b13.py` no disponible mediante descarga. Solución: se preparó el cambio directamente en una rama de GitHub accesible por `git fetch`/`git switch`, sin descargas manuales.
+- **Advertencia de entorno:** la ejecución de `Activate.ps1` está restringida por PowerShell; usar directamente `.\\venv\\Scripts\\python.exe`, sin cambiar políticas de ejecución.
+- **Consulta real confirmada:** después de `git pull --ff-only`, `consultar_modelo('Cual es la capital de Chile?')` devolvió Santiago; el cliente imprimió `Operacion: 25 tokens | USD referencial: 0.000050 | Acumulado: 0.000050`. Es una estimación didáctica y **no prueba un cargo real de USD 0,000050**. No se provocó ningún HTTP 429 en esta sesión.
+- **Próximo punto exacto:** revisar la lección oficial B13 «Provocamos un rate limit a propósito», planificar la prueba de forma controlada y conservar evidencia de 9/9 pruebas y de la consulta real. Integrar la rama vía PR #1 luego del cierre documental.
+
+### Cierre técnico de la sesión M2-002
+
+- **Estado:** primera lección del Bloque 13 validada, con **9/9 pruebas automatizadas** aprobadas y petición real funcionando.
+- **Progreso académico:** **U2.1 4/9 lecciones (44,4 %)**. Pendiente la evaluación institucional correspondiente, si la hubiera.
+- **Nota de regresión:** en las pruebas del Bloque 12 el aviso «costo no estimable» es esperado, pues los mocks no traen `usageMetadata`.
+- **Evidencia de integración:** PR #1 del repositorio; histórico de la rama `feature/u21-b13-backoff-costos`.
+
 ## Plantilla para próximas sesiones
 
 ```markdown

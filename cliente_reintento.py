@@ -1,4 +1,5 @@
-﻿import time
+import time
+import random
 from typing import Callable, Any
 
 # Mock: simula un proveedor que falla dos veces
@@ -24,24 +25,34 @@ def enviar_peticion(cuerpo: dict) -> dict:
 def con_reintento(
     funcion: Callable[[], Any],
     intentos: int = 3,
-    espera_segundos: int = 2,
+    espera_base: float = 2,
+    espera_maxima: float = 30,
 ) -> Any:
+    if intentos < 1:
+        raise ValueError("intentos debe ser mayor que cero")
+    if espera_base < 0 or espera_maxima < 0:
+        raise ValueError("Las esperas no pueden ser negativas")
 
     for intento in range(1, intentos + 1):
         try:
             return funcion()
-
         except TimeoutError:
             if intento == intentos:
                 raise
 
-            print(
-                f"Intento {intento} de {intentos} "
-                "fallo por limite de uso. "
-                "Reintentando..."
+            espera = min(
+                espera_base * (2 ** (intento - 1)),
+                espera_maxima,
             )
-
-            time.sleep(espera_segundos)
+            espera_jitter = min(
+                espera + random.uniform(0, espera * 0.1),
+                espera_maxima,
+            )
+            print(
+                f"Intento {intento} de {intentos} fallo. "
+                f"Reintentando en {espera_jitter:.1f}s..."
+            )
+            time.sleep(espera_jitter)
 
 
 if __name__ == "__main__":
