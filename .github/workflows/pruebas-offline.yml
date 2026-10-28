@@ -40,3 +40,5 @@ jobs:
         run: python pruebas_cliente_b13.py
       - name: Pruebas de rate limit simulado
         run: python pruebas_ensayo_rate_limit_b13.py
+      - name: Integracion de cierre B13 simulada
+        run: python pruebas_cierre_b13.py
