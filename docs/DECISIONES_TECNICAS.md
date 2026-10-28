@@ -51,6 +51,15 @@ Cada decisión incluye contexto, elección, razón, evidencia, límites y condic
 - **Limitaciones:** no usa aún `Retry-After`; la tarifa única **no representa costos reales del modelo** (entrada/salida/razonamiento tienen posibles tarifas distintas); no hay persistencia, concurrencia ni métricas de facturación.
 - **Observación:** el ejemplo docente aplica jitter después del tope, pero esta implementación recorta también el valor final para garantizar que no se exceda el máximo de espera.
 
+### DT-006 · Evidencia separada de 429 simulado y real (M2 / Bloque 13)
+
+- **Fecha:** 27/10/2026. **Estado:** ensayo de diez llamadas reales ejecutado; objetivo de 429 real **no observado**.
+- **Elección:** limitar el ensayo a 10 operaciones, sin ampliar automáticamente el número de peticiones. Registrar los códigos HTTP observados y cortar tras el primer 429 si llega a ocurrir.
+- **Evidencia:** 4/4 pruebas con respuestas simuladas; un caso `429 → 200` funcionó con backoff. En las llamadas reales a Gemini: **10/10 HTTP 200**, **cero 429**, 110 tokens y costo referencial USD 0,000220.
+- **Corrección de trazabilidad:** distinguir el modo de ensayo (`simulado` o `real_gemini`), de forma que los logs de los mocks nunca acrediten falsamente un 429 de Gemini.
+- **Límite técnico:** ni un mock ni diez respuestas 200 demuestran cuál es la cuota máxima de la cuenta; tampoco corresponde a una medición de cargos realmente facturados.
+- **Próxima revisión:** cuando exista evidencia de un HTTP 429 auténtico, documentar tipo de cuota, esperas y recuperación de forma controlada.
+
 ## Pendientes para futuras decisiones
 
 - **Bloque 13:** primera lección validada con Gemini real; los temas `Retry-After`, tarifas reales por tipo de tokens y prueba acotada de rate limit provocado siguen pendientes en próximas lecciones.

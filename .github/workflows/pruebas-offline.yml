@@ -1,0 +1,42 @@
+name: Pruebas academicas offline
+
+on:
+  push:
+    branches:
+      - main
+      - "feature/**"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pruebas:
+    name: Python 3.12 - ejercicios sin llamadas reales
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      # Credencial ficticia: el workflow SOLO ejecuta pruebas con mocks.
+      GEMINI_API_KEY: ci-clave-ficticia-no-valida
+      GEMINI_MODEL: gemini-3.5-flash-lite
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+      - name: Pruebas Gate 1 (sin red)
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+      - name: Pruebas cliente Bloque 12
+        run: python pruebas_cliente_b12.py
+      - name: Pruebas cliente Bloque 13
+        run: python pruebas_cliente_b13.py
+      - name: Pruebas de rate limit simulado
+        run: python pruebas_ensayo_rate_limit_b13.py
