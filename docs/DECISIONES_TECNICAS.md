@@ -43,17 +43,17 @@ Cada decisión incluye contexto, elección, razón, evidencia, límites y condic
 
 ### DT-005 · Backoff con jitter acotado y costos referenciales (M2 / Bloque 13)
 
-- **Fecha:** 27/10/2026. **Estado:** desarrollado en rama, probado con simulaciones; pendiente prueba real con Gemini.
+- **Fecha:** 27/10/2026. **Estado:** implementado y probado en Windows con simulaciones y con una consulta real a Gemini.
 - **Código:** `cliente_reintento.py` y `cliente.py`, commit [`8b88a34`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/8b88a342f6765587282f8e80624be6546bfd08db).
 - **Elección:** 3 intentos totales; backoff de base 2 segundos, duplicando por fallo y con máximo de 30 s; jitter aleatorio positivo hasta 10 %, con recorte final al techo. Se conserva la captura selectiva de `TimeoutError` y la propagación de `ValueError`.
 - **Costos:** leer `usageMetadata.totalTokenCount` de respuestas exitosas y sumar un **costo referencial** con la constante educativa del curso (USD 0,002/1.000 tokens). Si faltan metadatos, informar «no estimable», en vez de inventar costo cero. El acumulado solo vive durante el proceso Python.
-- **Evidencia:** cinco pruebas B13 y cuatro B12 ejecutadas y aprobadas en Windows, con mocks para no gastar cuota. La integración real actualizada todavía está pendiente.
+- **Evidencia:** cinco pruebas B13 y cuatro B12 ejecutadas y aprobadas en Windows, con mocks para evitar gasto en esas pruebas; después, una **consulta real** reportó 25 tokens y un costo **didáctico** estimado de USD 0,000050, devolviendo «Santiago». No hubo validación de rate limit HTTP 429 real.
 - **Limitaciones:** no usa aún `Retry-After`; la tarifa única **no representa costos reales del modelo** (entrada/salida/razonamiento tienen posibles tarifas distintas); no hay persistencia, concurrencia ni métricas de facturación.
 - **Observación:** el ejemplo docente aplica jitter después del tope, pero esta implementación recorta también el valor final para garantizar que no se exceda el máximo de espera.
 
 ## Pendientes para futuras decisiones
 
-- **Bloque 13:** validar con Gemini real la primera versión ya implementada; `Retry-After`, tarifas reales por tipo de tokens y rate limit provocado siguen pendientes.
+- **Bloque 13:** primera lección validada con Gemini real; los temas `Retry-After`, tarifas reales por tipo de tokens y prueba acotada de rate limit provocado siguen pendientes en próximas lecciones.
 - **Bloque 14:** diseño de pruebas unitarias y criterios de aceptación de excepciones.
 - **U2.3–U2.5:** selección de componentes LangChain, agentes y RAG fundamentada en tareas, complejidad y capacidad de evaluación.
 - **Seguridad:** nunca guardar claves en código, logs o documentos; utilizar datos sintéticos para demostraciones de IA aplicada a salud.
