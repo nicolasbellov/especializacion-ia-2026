@@ -69,6 +69,15 @@ Cada decisión incluye contexto, elección, razón, evidencia, límites y condic
 - **Limitaciones:** todas las respuestas 429 y 500 del test son simuladas; un HTTP 429 real sigue pendiente. La tarifa académica no es una factura, y un costo ausente tras error en el contador local no garantiza ausencia de consumo facturable del proveedor.
 - **Checklist:** [docs/checklist_cierre_b13.md](checklist_cierre_b13.md).
 
+### DT-008 · Unit tests con pytest sin alterar el cliente académico
+
+- **Fecha:** 27/10/2026. **Estado:** pruebas automatizadas publicadas en rama y verificadas por GitHub Actions.
+- **Decisión:** seguir el patrón del Bloque 14 de Skillnest con `test_cliente.py`, `pytest.raises`, `Mock` y `patch`, apuntando a `cliente_api.requests.post` porque allí se resuelve el símbolo `requests` de `enviar_peticion`.
+- **Razón:** las pruebas son deterministas, veloces, reproducibles y no consumen cuota API; cubren tanto errores 401/429 como respuesta 200.
+- **Dependencia:** agregar `pytest>=8,<10` al `requirements.txt` existente, sin regenerar innecesariamente todas las dependencias del entorno de estudio.
+- **Evidencia:** [GitHub Actions #40622821093](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40622821093) con resultados correctos para pytest y todas las regresiones anteriores.
+- **Límites:** el test simula un 429 y no sustituye la observación real requerida por B13. Próxima lección: ampliar el checklist de pruebas de cliente modular.
+
 ## Pendientes para futuras decisiones
 
 - **Bloque 13:** primera lección validada con Gemini real; los temas `Retry-After`, tarifas reales por tipo de tokens y prueba acotada de rate limit provocado siguen pendientes en próximas lecciones.

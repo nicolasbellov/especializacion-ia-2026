@@ -121,6 +121,20 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Progreso:** continúa U2.1 **4/9 (44,4 %)** por evidencia íntegra; la tercera lección está **revisada/auditada**, con checklist global parcial.
 - **Punto exacto de continuidad:** obtener el contenido de la primera lección del Bloque 14, «Pruebas unitarias». Mantener pendiente la evidencia del HTTP 429 real o la aceptación de la simulación por Skillnest.
 
+## Sesión M2-005 · 27/10/2026 — Bloque 14, primera lección
+
+- **Material oficial:** «Pruebas unitarias: la prueba de que tu cliente funciona» (Skillnest).
+- **Inicio, término, tiempo efectivo:** no registrados; no inferidos.
+- **Conceptos:** prueba unitaria, aserciones (`assert`), excepción esperada (`pytest.raises`), mock HTTP (`unittest.mock.Mock` y `patch`), convención `test_` y ejecución aislada de una prueba.
+- **Adaptación técnica:** usar `from cliente_api import enviar_peticion` y `patch("cliente_api.requests.post")`, ya que esa función no está definida directamente en `cliente.py`.
+- **Código:** `test_cliente.py`, con tres escenarios: 401 -> `ValueError`, 429 -> `TimeoutError`, 200 -> diccionario JSON esperado.
+- **Dependencias:** `pytest>=8,<10` añadido directamente al `requirements.txt` existente, sin reemplazar las versiones de las demás librerías.
+- **Pruebas:** [GitHub Actions #40622821093](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40622821093) completado con `success`: nueva etapa `python -m pytest test_cliente.py -v` aprobada y sin regresiones en Gate 1, B12, B13 ni ensayo offline.
+- **Seguridad y costo:** clave ficticia en CI, `requests.post` simulado en cada caso; sin solicitudes reales ni consumo de tokens.
+- **Precisión:** el 429 es un valor de prueba simulado. El requisito de un 429 auténtico del Bloque 13 sigue sin acreditarse.
+- **Avance U2.1:** de 4/9 a **5/9 (55,6 %)** tras evidencia CI de las tres pruebas. No representa aprobación institucional.
+- **Próximo punto exacto:** Bloque 14, lección 2 «Checklist de cliente modular: qué se revisa».
+
 ## Plantilla para próximas sesiones
 
 ```markdown
