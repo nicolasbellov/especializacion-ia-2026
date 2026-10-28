@@ -135,6 +135,17 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Avance U2.1:** de 4/9 a **5/9 (55,6 %)** tras evidencia CI de las tres pruebas. No representa aprobación institucional.
 - **Próximo punto exacto:** Bloque 14, lección 2 «Checklist de cliente modular: qué se revisa».
 
+## Sesión M2-006 · 27/10/2026 — Bloque 14, segunda lección
+
+- **Lección:** «Checklist de cliente modular: qué se revisa» (Skillnest).
+- **Inicio, término y tiempo efectivo:** no registrados; no inferir desde la conversación ni commits.
+- **Trabajo realizado:** auditoría de cobertura de las cuatro funciones del cliente; distinción entre comportamiento implementado, prueba en `test_cliente.py` y evidencia de scripts anteriores.
+- **Entregable:** [docs/checklist_cobertura_b14.md](checklist_cobertura_b14.md), con doce criterios, mapeo de las pruebas existentes y brechas concretas.
+- **Hallazgos:** en nuestro repositorio el patch correcto para esperas es `cliente_reintento.time.sleep`, no `cliente.time.sleep`; el HTTP se simula en `cliente_api.requests.post`. Las pruebas de costo requieren restablecer el estado global entre casos.
+- **Decisión:** no adelantarse a la actividad final escribiendo toda la suite en una lección cuyo objetivo es diseñar su checklist. Conservar B12/B13 y las tres pruebas pytest existentes.
+- **Progreso:** U2.1, de 5/9 a **6/9 lecciones (66,7 %)** en el registro interno. No se acredita un 429 real ni evaluación institucional.
+- **Próximo punto exacto:** compartir la actividad final de Bloque 14 «Escribe tus pruebas unitarias y verifica que pasen» y desarrollar en `test_cliente.py` la cobertura faltante antes de pasar a otra unidad.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
