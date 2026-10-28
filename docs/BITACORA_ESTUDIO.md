@@ -146,6 +146,19 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Progreso:** U2.1, de 5/9 a **6/9 lecciones (66,7 %)** en el registro interno. No se acredita un 429 real ni evaluación institucional.
 - **Próximo punto exacto:** compartir la actividad final de Bloque 14 «Escribe tus pruebas unitarias y verifica que pasen» y desarrollar en `test_cliente.py` la cobertura faltante antes de pasar a otra unidad.
 
+## Sesión M2-007 · 27/10/2026 — Bloque 14, actividad core
+
+- **Lección:** Skillnest, «Escribe tus pruebas unitarias y verifica que pasen».
+- **Hora de inicio, término y tiempo efectivo:** no registrados; no inferir duraciones.
+- **Implementación:** se completó [test_cliente.py](../test_cliente.py) con **13 pruebas pytest** sobre las cuatro funciones del cliente. Doce corresponden a los criterios del checklist y una a metadata ausente.
+- **Fixture:** reiniciar_costo_total con autouse=True restablece el acumulado antes/después de cada caso; red y time.sleep están mockeados.
+- **Verificación de calidad:** se comprueba también la identidad de errores originales donde corresponde y que el costo no se acumule al fallar consultar_modelo.
+- **Validación remota:** [GitHub Actions #40623902722](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40623902722) completado con success; 13/13 pruebas B14 y etapas de regresión Gate 1, B12 y B13 sin errores.
+- **Dependencias:** pytest ya consta en requirements.txt, por lo que no se volvió a instalar ni fijar en Git.
+- **Resultado:** actividad core completada técnicamente; avance U2.1 de 6/9 a **7/9 (77,8 %)**.
+- **Pendiente B13:** los 429 en pytest fueron simulados; faltan la observación auténtica del proveedor y el cierre global de B13, sin generar tráfico indiscriminado.
+- **Continuidad:** sincronizar main tras merge del PR #6; leer el primer contenido de Bloque 15 / U2.2.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
