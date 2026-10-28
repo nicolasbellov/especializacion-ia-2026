@@ -60,6 +60,15 @@ Cada decisión incluye contexto, elección, razón, evidencia, límites y condic
 - **Límite técnico:** ni un mock ni diez respuestas 200 demuestran cuál es la cuota máxima de la cuenta; tampoco corresponde a una medición de cargos realmente facturados.
 - **Próxima revisión:** cuando exista evidencia de un HTTP 429 auténtico, documentar tipo de cuota, esperas y recuperación de forma controlada.
 
+### DT-007 · Conservar cliente modular y automatizar la integración del cierre B13
+
+- **Fecha:** 27/10/2026. **Estado:** implementado y probado con simulaciones.
+- **Elección:** el ejemplo monolítico de la tercera lección B13 es una **recapitulación conceptual**, no una orden de reemplazar el cliente ya separado en módulos.
+- **Mejora:** [pruebas_cierre_b13.py](../pruebas_cierre_b13.py) añade pruebas completas de 429→200, 429 persistente→RuntimeError, 401 sin reintento y 500→200, con verificaciones de costo único y system_instruction.
+- **Evidencia:** [GitHub Actions #40621224133](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40621224133) terminó correctamente, sin clave real.
+- **Limitaciones:** todas las respuestas 429 y 500 del test son simuladas; un HTTP 429 real sigue pendiente. La tarifa académica no es una factura, y un costo ausente tras error en el contador local no garantiza ausencia de consumo facturable del proveedor.
+- **Checklist:** [docs/checklist_cierre_b13.md](checklist_cierre_b13.md).
+
 ## Pendientes para futuras decisiones
 
 - **Bloque 13:** primera lección validada con Gemini real; los temas `Retry-After`, tarifas reales por tipo de tokens y prueba acotada de rate limit provocado siguen pendientes en próximas lecciones.

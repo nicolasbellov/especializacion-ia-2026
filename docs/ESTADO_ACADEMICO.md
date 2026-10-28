@@ -41,7 +41,7 @@
 | 12 | Actividad: cliente modular con reintentos | **Implementada y publicada** | 4/4 pruebas simuladas, consulta real y commit [`f69c0f8`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/f69c0f86bdef23bdac20a4be2f0d9975e6b94607) |
 | 13 | Backoff y control de costo | **Completada técnicamente** | 5/5 pruebas B13 + 4/4 regresión B12 y consulta real a Gemini: 25 tokens, USD 0,000050 referenciales |
 | 13 | Rate limit provocado | **Ensayo ejecutado; 429 real no observado** | 4/4 pruebas offline; 10/10 operaciones reales HTTP 200, 110 tokens, sin esperas de backoff; evidencia pendiente de 429 real |
-| 13 | Límites y costos incorporados | Pendiente | — |
+| 13 | Límites y costos incorporados | **Revisión y pruebas integradas aprobadas; checklist global parcial** | Cuatro responsabilidades auditadas y cuatro pruebas integradas aprobadas en GitHub Actions; cierre Bloque 13 pendiente de HTTP 429 auténtico |
 | 14 | Pruebas unitarias | Pendiente | — |
 | 14 | Checklist del cliente modular | Pendiente | — |
 | 14 | Actividad core: escribir y verificar pruebas | Pendiente | — |
@@ -58,7 +58,7 @@
 
 ### Próximo paso exacto
 
-**U2.1, Bloque 13, lección «Provocamos un rate limit a propósito».** El ensayo real de diez solicitudes no encontró un HTTP 429; el manejo de 429 sí fue verificado por simulación. No incrementar automáticamente la carga. Revisar si hay una alternativa autorizada y limitada para observar un 429 real, o conservar la evidencia parcial sin atribuir una validación inexistente.
+**Siguiente material: U2.1, Bloque 14, lección «Pruebas unitarias».** El repaso final del Bloque 13 quedó [auditado criterio por criterio](checklist_cierre_b13.md) y las pruebas integradas son reproducibles en GitHub Actions. Se mantiene un requisito pendiente: observar un HTTP 429 auténtico de Gemini (10 llamadas reales fueron HTTP 200); no incrementar solicitudes de forma indiscriminada para forzarlo.
 
 ### Primera lección del Bloque 13 completada · 27/10/2026
 
@@ -81,6 +81,15 @@
 - **Interpretación:** los tests con mocks prueban el flujo de un 429, pero **no** demuestran que el proveedor devolvió un 429. El ensayo real tampoco lo provocó.
 - **Evidencia:** [registro técnico](registro_ensayo_rate_limit_b13.md), [PR #2](https://github.com/nicolasbellov/especializacion-ia-2026/pull/2).
 - **Avance académico:** permanece **4/9 lecciones**; la segunda lección del Bloque 13 conserva pendiente el criterio de observar un 429 auténtico.
+
+### Lección 3 del Bloque 13 — repaso integral y checklist · 27/10/2026
+
+- **Material revisado:** «Límites de uso y registro de costo, ya incorporados al cliente».
+- **Cliente modular:** comunicación HTTP en cliente_api.py, reintentos en cliente_reintento.py, registro de costo e interfaz pública en cliente.py. Se conservaron los módulos existentes, sin duplicar el ejemplo monolítico.
+- **Checklist:** [checklist_cierre_b13.md](checklist_cierre_b13.md), con criterios del curso, evidencias y límites documentados.
+- **Pruebas integradas:** [pruebas_cierre_b13.py](../pruebas_cierre_b13.py), cuatro escenarios simulados (429 recuperado, 429 persistente, 401 y 500 recuperado), verificados por [GitHub Actions #40621224133](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40621224133) — **success**.
+- **Pendiente académico:** el curso exige observar HTTP 429 real; no se ha conseguido. La tercera lección está revisada, pero **no se declara cerrado íntegramente el Bloque 13**.
+- **Avance contabilizado sin sobredeclarar:** **4/9 lecciones (44,4 %)**, sin aprobación institucional inferida.
 
 ## Cómo actualizar este archivo
 
