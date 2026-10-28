@@ -109,6 +109,18 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Seguimiento:** se mantiene **4/9 lecciones**; está completa la documentación del ensayo, pero observar un rate limit auténtico permanece pendiente si el curso lo exige como criterio obligatorio.
 - **Próximo contenido para estudiar:** Bloque 13, tercera lección «Límites de uso y registro de costo».
 
+## Sesión M2-004 · 27/10/2026 — Bloque 13, tercera lección
+
+- **Material oficial:** «Límites de uso y registro de costo, ya incorporados al cliente».
+- **Inicio/término/tiempo efectivo:** no documentados, sin duraciones inferidas.
+- **Actividad:** repaso del cliente modular completo y verificación de cuatro funciones/responsabilidades: enviar_peticion, con_reintento, registrar_costo y consultar_modelo.
+- **Decisión:** mantener la separación modular existente y no reemplazar los archivos por el ejemplo monolítico del curso. Se conserva .env fuera del repositorio público.
+- **Evidencia nueva:** [checklist técnico](checklist_cierre_b13.md), cuatro pruebas integradas simuladas de error/recuperación y costo único ([archivo de pruebas](../pruebas_cierre_b13.py)).
+- **Validación CI:** [GitHub Actions #40621224133](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40621224133) **success** en Python 3.12, sin clave real ni llamadas de red.
+- **Limitación principal:** se revisó el criterio de un 429 real, pero la única ejecución real anterior tuvo 10 respuestas HTTP 200. No declarar cumplido ese criterio ni atribuir éxito a un mock.
+- **Progreso:** continúa U2.1 **4/9 (44,4 %)** por evidencia íntegra; la tercera lección está **revisada/auditada**, con checklist global parcial.
+- **Punto exacto de continuidad:** obtener el contenido de la primera lección del Bloque 14, «Pruebas unitarias». Mantener pendiente la evidencia del HTTP 429 real o la aceptación de la simulación por Skillnest.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
