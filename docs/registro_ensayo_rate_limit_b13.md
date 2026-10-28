@@ -55,3 +55,10 @@ La cifra en dólares usa el ejemplo académico de USD 0,002 por 1.000 tokens y *
 - **Seguimiento:** conservar el resultado como **lección parcialmente validada** (U2.1: 4/9). No aumentar indiscriminadamente el número de peticiones para forzar una limitación.
 - **Próxima actividad:** valorar una comprobación de cuota autorizada y controlada, si la evidencia de un 429 real es imprescindible; registrar después el dato real sin confundirlo con simulaciones.
 
+
+## 4. Validación continua posterior a la corrección
+
+- **GitHub Actions:** [ejecución #40620650829](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40620650829) — **resultado success**, 27/10/2026 (Chile).
+- **Python:** 3.12 en GitHub Actions, con una credencial **ficticia** y pruebas offline.
+- **Etapas completadas correctamente:** pruebas Gate 1, pruebas cliente Bloque 12, pruebas cliente Bloque 13 y pruebas de rate limit simulado (incluida la corrección terminológica posterior al primer ensayo).
+- **Alcance:** confirma las pruebas automatizadas también fuera del equipo local, **no** demuestra un HTTP 429 auténtico de Gemini ni una facturación real.

@@ -94,6 +94,12 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Seguridad:** no repetir en ráfagas ni incrementar automáticamente llamadas solo para alcanzar cuotas; conservar `.env` sin versionar.
 - **Próximo punto exacto:** decidir una forma autorizada/acotada de verificar un `429` auténtico si se exige como evidencia; entretanto, los resultados reales y simulados permanecen claramente separados. Avance U2.1: **4/9**.
 
+### Validación independiente en GitHub Actions
+
+- [Workflow de pruebas offline](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40620650829): ejecución satisfactoria en Python 3.12 después de corregir los mensajes `real/simulado`.
+- Etapas en verde: pruebas Gate 1, cliente Bloque 12, cliente Bloque 13 y ensayo de rate limit simulado.
+- PR #2 fusionado a `main`, con el ensayo documentado como **sin 429 real observado**. No se incrementa el avance académico de 4/9 por esta integración.
+
 ## Plantilla para próximas sesiones
 
 ```markdown

@@ -72,6 +72,8 @@
 
 ### Ensayo de rate limit · 27/10/2026
 
+**Pruebas automatizadas adicionales:** [GitHub Actions - ejecución satisfactoria](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40620650829) con regresión Gate 1 + B12 + B13 + ensayo offline. **No** representa una observación de 429 real.
+
 - **Pruebas offline:** 4/4 aprobadas. Incluyen `429 → 200`, tres `200`, error `401` y validación del tope de 10 operaciones.
 - **Ensayo real con Gemini:** 10 operaciones exitosas, **10 respuestas HTTP 200**, **ningún HTTP 429**, sin reintentos ni backoff observados.
 - **Tokens:** 11 por operación; 110 tokens informados en total.
