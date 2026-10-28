@@ -87,6 +87,15 @@ Cada decisión incluye contexto, elección, razón, evidencia, límites y condic
 - **Punto relevante:** patch `cliente_api.requests.post` para HTTP y `cliente_reintento.time.sleep` para esperas; controlar/restablecer estado global en costos. No introducir llamadas reales a la API dentro de pytest.
 - **Limitación:** esta lección prepara el checklist; no declara terminada la suite de la actividad siguiente ni resuelve el 429 real pendiente del Bloque 13.
 
+### DT-010 · Suite pytest completa y fixture para aislamiento de costos (Bloque 14)
+
+- **Fecha:** 27/10/2026. **Estado:** implementado y verificado por CI.
+- **Decisión:** concentrar los doce criterios del checklist B14 en el test_cliente.py existente y añadir un caso para ausencia de metadata. Conservar los ejercicios heredados como regresión.
+- **Estrategia:** fixture autouse de pytest que resetea el acumulado de cada prueba, mocks de cliente_api.requests.post y cliente_reintento.time.sleep, pytest.raises y nombres descriptivos por escenario.
+- **Razón:** los tests no dependen de la disponibilidad de Gemini, no consumen tokens, no tienen esperas reales ni comparten estado de costo entre pruebas.
+- **Evidencia:** [GitHub Actions #40623902722](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40623902722) success para pytest B14 y regresiones previas.
+- **Límites:** la tarifa de costo continúa siendo referencial. Un HTTP 429 simulado no acredita un rate limit auténtico, criterio pendiente del Bloque 13. Las pruebas no sustituyen la aprobación formal de Skillnest.
+
 ## Pendientes para futuras decisiones
 
 - **Bloque 13:** primera lección validada con Gemini real; los temas `Retry-After`, tarifas reales por tipo de tokens y prueba acotada de rate limit provocado siguen pendientes en próximas lecciones.
