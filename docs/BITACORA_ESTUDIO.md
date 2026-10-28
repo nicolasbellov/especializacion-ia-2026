@@ -100,6 +100,15 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - Etapas en verde: pruebas Gate 1, cliente Bloque 12, cliente Bloque 13 y ensayo de rate limit simulado.
 - PR #2 fusionado a `main`, con el ensayo documentado como **sin 429 real observado**. No se incrementa el avance académico de 4/9 por esta integración.
 
+### Confirmación local final tras integrar PR #2
+
+- **Pruebas tras corregir la terminología real/simulado:** ejecución de `pruebas_ensayo_rate_limit_b13.py` reportada desde Windows, **4/4 aprobadas**, con marca `Tipo de ensayo: SIMULADO` y `HTTP 429 SIMULADO OBSERVADO` cuando correspondía.
+- **Sin consultas adicionales a Gemini** durante esta validación offline. El ensayo real anterior sigue documentado como **10 HTTP 200, cero HTTP 429**.
+- **Repositorio local:** `git switch main`, `git pull --ff-only` hasta el commit `dcb5884` y `git status -sb` produjo `## main...origin/main` (sin modificaciones pendientes).
+- **CI adicional:** [ejecución GitHub Actions #40620774412](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40620774412) finalizada con resultado `success`.
+- **Seguimiento:** se mantiene **4/9 lecciones**; está completa la documentación del ensayo, pero observar un rate limit auténtico permanece pendiente si el curso lo exige como criterio obligatorio.
+- **Próximo contenido para estudiar:** Bloque 13, tercera lección «Límites de uso y registro de costo».
+
 ## Plantilla para próximas sesiones
 
 ```markdown
