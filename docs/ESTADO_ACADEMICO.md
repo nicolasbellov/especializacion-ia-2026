@@ -40,7 +40,7 @@
 | 12 | Reintento ante error del proveedor | Técnica validada | Simulación: dos fallos, respuesta en tercer intento |
 | 12 | Actividad: cliente modular con reintentos | **Implementada y publicada** | 4/4 pruebas simuladas, consulta real y commit [`f69c0f8`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/f69c0f86bdef23bdac20a4be2f0d9975e6b94607) |
 | 13 | Backoff y control de costo | **Completada técnicamente** | 5/5 pruebas B13 + 4/4 regresión B12 y consulta real a Gemini: 25 tokens, USD 0,000050 referenciales |
-| 13 | Rate limit provocado | Pendiente | — |
+| 13 | Rate limit provocado | **Ensayo preparado; ejecución real pendiente** | Script limitado a 10 operaciones y cuatro pruebas offline; un 429 real solo puede acreditarse tras observarlo en la respuesta HTTP del proveedor |
 | 13 | Límites y costos incorporados | Pendiente | — |
 | 14 | Pruebas unitarias | Pendiente | — |
 | 14 | Checklist del cliente modular | Pendiente | — |
