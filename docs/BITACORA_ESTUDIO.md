@@ -159,6 +159,18 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Pendiente B13:** los 429 en pytest fueron simulados; faltan la observación auténtica del proveedor y el cierre global de B13, sin generar tráfico indiscriminado.
 - **Continuidad:** sincronizar main tras merge del PR #6; leer el primer contenido de Bloque 15 / U2.2.
 
+## Hito institucional · 28/10/2026 — Entrega core B14 registrada
+
+- **Actividad:** «Escribe tus pruebas unitarias y verifica que pasen [Core]» del Bloque 14.
+- **Prueba del envío:** captura proporcionada por el estudiante con el mensaje «Entrega registrada» y fecha visible «Enviado el 28/10/2026». La pantalla indica que la entrega está siendo revisada por el instructor.
+- **Calificación:** **pendiente**. La aceptación de la plataforma no acredita aprobación académica ni nota.
+- **Entregable técnico relacionado:** repo público en GitHub, commit `3dd1826` con `test_cliente.py` (13 pruebas) y [ejecución GitHub Actions satisfactoria](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40624041484).
+- **Enlace de envío:** se utilizó la sección de URL de Skillnest; la captura de confirmación no deja visible cuál fue la URL registrada.
+- **Inicio/término/tiempo efectivo de estudio:** no registrados; no inferir a partir de la fecha de entrega.
+- **Avance:** **U2.1 7/9 (77,8 %)** según evidencia técnica, sin declarar 9/9 ni cierre total de la unidad por el requisito del HTTP 429 real de B13.
+- **Pendientes:** esperar calificación institucional y revisar retroalimentación; mantener documentación del 429 real sin volver a forzar cargas sobre Gemini.
+- **Punto exacto de continuidad:** iniciar estudio de **Unidad 2.2 · Bloque 15 — limpieza, tokenización y métricas**. Consultar evaluación de la entrega B14 cuando aparezca en Skillnest.
+
 ## Plantilla para próximas sesiones
 
 ```markdown

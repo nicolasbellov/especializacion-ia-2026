@@ -1,6 +1,6 @@
 # Estado académico — Especialización en Desarrollo con IA Generativa 2026
 
-> **Actualizado:** 27/10/2026 (Chile). **Fuente:** material curricular compartido, conversación de estudio y evidencia versionada en este repositorio.  
+> **Actualizado:** 28/10/2026 (Chile). **Fuente:** material curricular compartido, conversación de estudio y evidencia versionada en este repositorio.  
 > **Convención:** distinguir *evidencia técnica verificada*, *actividad completada en el entorno local*, *entrega publicada* y *aprobación formal informada por Skillnest*. No son equivalentes.
 
 ## Vista general
@@ -118,6 +118,15 @@
 - **Dependencia:** pytest ya declarado en requirements.txt desde B14/L1; no se ha regenerado el archivo de dependencias.
 - **Evidencia:** [GitHub Actions #40623902722](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40623902722) terminó con **success** en Python 3.12. Se ejecutaron pytest B14 y regresiones anteriores del Gate 1, B12 y B13.
 - **Resultado académico interno:** actividad core aprobada técnicamente, U2.1 **7/9 (77,8 %)**. Esto NO equivale a cierre completo de U2.1: la evidencia de HTTP 429 auténtico en B13 aún falta.
+
+### Entrega institucional B14 · 28/10/2026
+
+- **Actividad:** «Bloque 14 - Escribe tus pruebas unitarias y verifica que pasen [Core]» (Skillnest LifeCycle).
+- **Evidencia proporcionada:** captura de Skillnest con mensaje **«Entrega registrada»**, fecha visible **«Enviado el 28/10/2026»** y texto de que el instructor está revisando la actividad.
+- **Estado institucional:** **entrega recibida; evaluación y calificación pendientes**. No atribuir aprobación institucional ni una nota hasta disponer del resultado del instructor.
+- **Modalidad:** el estudiante trabajó mediante la opción «Enlace (Drive, etc.)» y se preparó una URL fija del repositorio GitHub. **La captura de confirmación no muestra el enlace finalmente registrado**, por lo que no certifica su valor exacto.
+- **Código entregable validado previamente:** [commit `3dd1826`](https://github.com/nicolasbellov/especializacion-ia-2026/tree/3dd1826bac3f3d9fc09fcb8c64ca938ba1e5db5c), [13 pruebas en `test_cliente.py`](../test_cliente.py), [GitHub Actions aprobado](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40624041484).
+- **Progreso académico interno:** se mantiene **U2.1 7/9 (77,8 %)**. El Bloque 13 sigue pendiente de evidencia de un HTTP 429 real o aceptación expresa del curso.
 
 ## Cómo actualizar este archivo
 
