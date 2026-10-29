@@ -171,6 +171,21 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Pendientes:** esperar calificación institucional y revisar retroalimentación; mantener documentación del 429 real sin volver a forzar cargas sobre Gemini.
 - **Punto exacto de continuidad:** iniciar estudio de **Unidad 2.2 · Bloque 15 — limpieza, tokenización y métricas**. Consultar evaluación de la entrega B14 cuando aparezca en Skillnest.
 
+## Sesión M2-008 · 29/10/2026 — U2.2, Bloque 15 (lecciones 1–3)
+
+- **Actividad:** «De texto crudo a vector», «Cuando la métrica engaña» y «Construye tu pipeline de procesamiento de texto [Actividad práctica]».
+- **Inicio/término/tiempo efectivo:** no facilitados; no se estiman a partir del chat ni de Git.
+- **Comprensión:** 2/2 respuestas correctas en evaluaciones formativas internas de las lecciones 1 y 2 (no son calificaciones oficiales).
+- **Implementación:** [pipeline_texto.py](../pipeline_texto.py) y [test_pipeline_texto.py](../test_pipeline_texto.py), integrados a `main` mediante [PR #7](https://github.com/nicolasbellov/especializacion-ia-2026/pull/7), commit `3273251`.
+- **Incidencias de entorno:** `pytest` ausente en `venv` y pipeline inexistente en el `main` local antes de fusionar PR #7. Solución: merge, `git pull --ff-only origin main` e instalación local de pytest 9.2.0.
+- **Pruebas:** `9 passed in 0.14s`, ejecutadas con Python 3.12 desde PowerShell del estudiante.
+- **API real:** tres consultas Gemini respondidas y comparadas: Python 83,3→100,0 %; API 57,1→71,4 %; Git 16,7→50,0 % (crudo→procesado).
+- **Registro del cliente:** 127 tokens y USD 0,000254 acumulados, **costo referencial didáctico**; no confundir con facturación.
+- **Evidencia:** [registro de ejecución y límites](registro_pipeline_b15.md). El script generó `resultados_b15.json` en la carpeta local del estudiante; **publicación del JSON en GitHub no confirmada**.
+- **Resultado:** Bloque 15 técnicamente validado; U2.2 **3/9 lecciones revisadas y actividad implementada (33,3 % por conteo)**, sin afirmar envío ni aprobación institucional.
+- **Pendientes:** revisar y versionar el JSON original local si es seguro; comprobar el estado de entrega en Skillnest. Tiempo efectivo no informado.
+- **Punto exacto para continuar:** Bloque 16 · «Pon número a tus propias salidas generadas».
+
 ## Plantilla para próximas sesiones
 
 ```markdown
