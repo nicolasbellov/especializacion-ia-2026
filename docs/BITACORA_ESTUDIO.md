@@ -195,6 +195,7 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Contraste con el Bloque 15:** los porcentajes de cobertura coinciden con la métrica previa en estos tres casos, pero ya no se asume que esto sucederá cuando existan repeticiones.
 - **Límite:** son métricas de **solapamiento léxico**, no validan hechos, orden ni equivalencia semántica. F1 bajo no implica por sí solo una respuesta incorrecta.
 - **Observación sobre la fuente:** `procesar_texto(None)` en la implementación existente lanza `TypeError`, no produce lista vacía; si la API devuelve `None`, debe validarse antes de llamar al pipeline.
+- **Evaluación formativa en conversación (29/10/2026):** ante 10 tokens generados, 5 de referencia y 4 coincidencias, respuesta elegida: P = 40 %, R = 80 %, F1 = 60 %. **Corrección:** P = 40 % y R = 80 % acertados, F1 correcto = **53,3 %** (media armónica). Resultado de selección múltiple: **0/1 alternativa completamente correcta**; **2/3 componentes numéricos acertados**. Refuerzo pendiente: distinguir media aritmética de armónica. Esta evaluación no es calificación institucional.
 - **Estado:** lección 1 del Bloque 16 revisada, implementación en GitHub preparada, **pruebas locales del nuevo archivo pendientes de ejecución confirmada**. U2.2: **4/9 lecciones** por material estudiado (44,4 %), no aprobación institucional.
 - **Continuidad:** ejecutar pytest y CLI con los archivos locales tras integrar la rama; luego estudiar Bloque 16 / lección 2 «Por qué la métrica sola no basta».
 
