@@ -196,8 +196,9 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Límite:** son métricas de **solapamiento léxico**, no validan hechos, orden ni equivalencia semántica. F1 bajo no implica por sí solo una respuesta incorrecta.
 - **Observación sobre la fuente:** `procesar_texto(None)` en la implementación existente lanza `TypeError`, no produce lista vacía; si la API devuelve `None`, debe validarse antes de llamar al pipeline.
 - **Evaluación formativa en conversación (29/10/2026):** ante 10 tokens generados, 5 de referencia y 4 coincidencias, respuesta elegida: P = 40 %, R = 80 %, F1 = 60 %. **Corrección:** P = 40 % y R = 80 % acertados, F1 correcto = **53,3 %** (media armónica). Resultado de selección múltiple: **0/1 alternativa completamente correcta**; **2/3 componentes numéricos acertados**. Refuerzo pendiente: distinguir media aritmética de armónica. Esta evaluación no es calificación institucional.
-- **Estado:** lección 1 del Bloque 16 revisada, implementación en GitHub preparada, **pruebas locales del nuevo archivo pendientes de ejecución confirmada**. U2.2: **4/9 lecciones** por material estudiado (44,4 %), no aprobación institucional.
-- **Continuidad:** ejecutar pytest y CLI con los archivos locales tras integrar la rama; luego estudiar Bloque 16 / lección 2 «Por qué la métrica sola no basta».
+- **Validación posterior en Windows (29/10/2026):** tras `git pull --ff-only origin main` hasta `9f4bec5`, se ejecutó `python -m pytest -q .\\test_metricas_texto.py .\\test_pipeline_texto.py` mediante el intérprete `venv`: **17 passed in 0.42s** (8 B16 + 9 B15). El script `metricas_texto.py` leyó el JSON de B15 y presentó P/R/F1 para los tres casos: Python 28,6/100,0/44,4 %; API 21,7/71,4/33,3 %; Git 12,0/50,0/19,4 %. **Sin nuevas llamadas a Gemini** durante el cálculo offline. Esta evidencia es salida de PowerShell enviada por el estudiante, no ejecución CI.
+- **Estado:** lección 1 del Bloque 16 **técnicamente validada localmente**; U2.2: **4/9 lecciones** por material estudiado (44,4 %), sin aprobación institucional ni cierre del Bloque 16.
+- **Continuidad:** estudiar Bloque 16 / lección 2 «Por qué la métrica sola no basta». Posteriormente desarrollar y publicar la actividad oficial del Bloque 16; no repetir llamadas a Gemini sin necesidad.
 
 ## Plantilla para próximas sesiones
 
