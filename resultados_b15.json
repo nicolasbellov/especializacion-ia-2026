@@ -1,0 +1,26 @@
+[
+  {
+    "caso": 1,
+    "consulta": "¿Qué es Python? Responde en una sola oración breve.",
+    "referencia": "Python es un lenguaje de programación.",
+    "respuesta_real": "Python es un lenguaje de programación de alto nivel, interpretado y de propósito general, conocido por su sintaxis clara y legible.",
+    "coincidencia_cruda": 0.8333333333333334,
+    "coincidencia_procesada": 1.0
+  },
+  {
+    "caso": 2,
+    "consulta": "¿Qué es una API? Responde en una sola oración breve.",
+    "referencia": "Una API permite la comunicación entre aplicaciones.",
+    "respuesta_real": "Una API es un conjunto de reglas y protocolos que permite que diferentes aplicaciones de software se comuniquen e intercambien datos entre sí.",
+    "coincidencia_cruda": 0.5714285714285714,
+    "coincidencia_procesada": 0.7142857142857143
+  },
+  {
+    "caso": 3,
+    "consulta": "¿Para qué sirve Git? Responde en una sola oración breve.",
+    "referencia": "Git permite controlar versiones del código.",
+    "respuesta_real": "Git sirve para **controlar y registrar los cambios en el código fuente** de un proyecto, facilitando el trabajo en equipo y el desarrollo de software.",
+    "coincidencia_cruda": 0.16666666666666666,
+    "coincidencia_procesada": 0.5
+  }
+]
