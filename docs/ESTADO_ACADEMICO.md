@@ -146,6 +146,7 @@
 - **Resultados calculados offline:** Python P/R/F1 = 28,6/100/44,4 %; API = 21,7/71,4/33,3 %; Git = 12,0/50,0/19,4 %.
 - **Estado de verificación:** los cálculos fueron comprobados de forma independiente; **no se ha recibido ejecución de pytest del código nuevo en el entorno local del estudiante**. No registrar «8/8 aprobado» aún.
 - **Distinción técnica:** solapamiento de tokens no equivale a corrección factual ni semántica; valores bajos pueden penalizar reformulaciones acertadas.
+- **Evaluación formativa (29/10/2026):** estudiante seleccionó P 40 %, R 80 %, F1 60 % para un caso de 4 coincidencias, 10 tokens generados y 5 de referencia. P y R correctos; F1 correcto **53,3 %** (fórmula armónica). **0/1 respuesta de opción múltiple completamente correcta; 2/3 cálculos parciales correctos**. Reforzar cálculo de F1. No es evaluación ni nota oficial.
 - **Avance U2.2:** 4/9 lecciones **estudiadas** (44,4 %); pendiente validar nuevo código en Windows, estudiar B16 L2 y completar actividad oficial del bloque.
 - **Punto siguiente:** Bloque 16 / «Por qué la métrica sola no basta».
 
