@@ -38,7 +38,7 @@ Comando: `.\\venv\\Scripts\\python.exe .\\pipeline_texto.py`. El cliente report�
 2. API: «Una API es un conjunto de reglas y protocolos que permite que diferentes aplicaciones de software se comuniquen e intercambien datos entre sí.»
 3. Git: «Git sirve para **controlar y registrar los cambios en el código fuente** de un proyecto, facilitando el trabajo en equipo y el desarrollo de software.»
 
-El programa informó: `resultados_b15.json` guardado en el directorio local del proyecto. **No se ha verificado su publicación en GitHub**.
+El archivo original [resultados_b15.json](../resultados_b15.json), generado en el entorno local del estudiante, fue **publicado y verificado en GitHub**, commit [`bc4fdbe`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/bc4fdbe3eefba477b3c1e5724a09d02696f92569). Las tres respuestas y los seis valores de coincidencia coinciden con la consola aportada.
 
 **Uso registrado:** 40 + 41 + 46 = **127 tokens**; `USD 0.000254` de costo **referencial didáctico**, no facturación real de Gemini.
 
@@ -54,7 +54,7 @@ El programa informó: `resultados_b15.json` guardado en el directorio local del 
 ## 6. Cierre y próximos pasos
 
 **Cumplimiento técnico:** funciones solicitadas, 3/3 consultas reales, comparaciones antes/después y 9/9 pruebas locales **verificadas por salida del estudiante**.  
-**Pendiente de trazabilidad:** revisar el JSON original local, verificar ausencia de datos sensibles, agregar y publicar `resultados_b15.json` si procede; no se debe fabricar contenido ni presentar un JSON reconstruido como salida directa.  
+**Trazabilidad completada:** archivo JSON original versionado y disponible públicamente; se inspeccionó el contenido de los tres casos y no se observan credenciales ni datos personales sensibles. Esta revisión del contenido no reemplaza una auditoría de privacidad.  
 **Pendiente institucional:** no hay constancia de envío, revisión ni calificación de Skillnest para esta actividad.
 
 **Punto de continuación:** U2.2 · Bloque 16 · «Pon número a tus propias salidas generadas».
