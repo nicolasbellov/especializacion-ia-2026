@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 3/9 lecciones revisadas (33,3 %); Bloque 15 validado técnicamente con 9/9 pytest y 3/3 consultas Gemini reales; JSON real publicado en GitHub (`bc4fdbe`); entrega y evaluación institucional pendientes.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 4/9 lecciones revisadas (44,4 %); Bloque 15 validado (9/9 pytest, 3/3 Gemini y JSON publicado); Bloque 16 L1 estudiada con cálculo offline P/R/F1 y código/pruebas preparados, pendientes de validación local; entrega y evaluación institucional B15 pendientes.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -138,6 +138,16 @@
 - **Interpretación:** la cobertura por palabras únicas no mide equivalencia semántica; no afirmar que 100 % significa una respuesta correcta.
 - **Estado:** **Bloque 15 técnicamente validado**, no hay constancia de evaluación institucional ni de entrega de la actividad. **Avance U2.2: 3/9 (33,3 %)** por conteo de lecciones.
 - **Continuidad:** Bloque 16, lección 1. Publicación del JSON ya comprobada; resta confirmar el envío/calificación institucional. No sumar horas no informadas.
+
+### U2.2 — Bloque 16, lección 1 (29/10/2026)
+
+- **Lección:** «Pon número a tus propias salidas generadas»: `Counter`, precisión, cobertura y F1 de tokens con repeticiones.
+- **Código preparado:** [metricas_texto.py](../metricas_texto.py) y [test_metricas_texto.py](../test_metricas_texto.py). Se alimenta del [JSON original del Bloque 15](../resultados_b15.json) sin llamadas a Gemini.
+- **Resultados calculados offline:** Python P/R/F1 = 28,6/100/44,4 %; API = 21,7/71,4/33,3 %; Git = 12,0/50,0/19,4 %.
+- **Estado de verificación:** los cálculos fueron comprobados de forma independiente; **no se ha recibido ejecución de pytest del código nuevo en el entorno local del estudiante**. No registrar «8/8 aprobado» aún.
+- **Distinción técnica:** solapamiento de tokens no equivale a corrección factual ni semántica; valores bajos pueden penalizar reformulaciones acertadas.
+- **Avance U2.2:** 4/9 lecciones **estudiadas** (44,4 %); pendiente validar nuevo código en Windows, estudiar B16 L2 y completar actividad oficial del bloque.
+- **Punto siguiente:** Bloque 16 / «Por qué la métrica sola no basta».
 
 ## Cómo actualizar este archivo
 
