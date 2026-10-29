@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 4/9 lecciones revisadas (44,4 %); Bloque 15 validado (9/9 pytest, 3/3 Gemini y JSON publicado); Bloque 16 L1 estudiada con cálculo offline P/R/F1 y código/pruebas preparados, pendientes de validación local; entrega y evaluación institucional B15 pendientes.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 4/9 lecciones revisadas (44,4 %); Bloque 15 validado (9/9 pytest, 3/3 Gemini y JSON publicado); Bloque 16 L1 técnicamente validada en Windows (17/17 pruebas B15+B16 y cálculo offline de tres respuestas); entrega y evaluación institucional B15 pendientes.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -144,10 +144,10 @@
 - **Lección:** «Pon número a tus propias salidas generadas»: `Counter`, precisión, cobertura y F1 de tokens con repeticiones.
 - **Código preparado:** [metricas_texto.py](../metricas_texto.py) y [test_metricas_texto.py](../test_metricas_texto.py). Se alimenta del [JSON original del Bloque 15](../resultados_b15.json) sin llamadas a Gemini.
 - **Resultados calculados offline:** Python P/R/F1 = 28,6/100/44,4 %; API = 21,7/71,4/33,3 %; Git = 12,0/50,0/19,4 %.
-- **Estado de verificación:** los cálculos fueron comprobados de forma independiente; **no se ha recibido ejecución de pytest del código nuevo en el entorno local del estudiante**. No registrar «8/8 aprobado» aún.
+- **Estado de verificación:** tras descargar el commit `9f4bec5`, el estudiante informó desde PowerShell **17 passed in 0.42s** para `test_metricas_texto.py` (8 pruebas) + `test_pipeline_texto.py` (9 pruebas). `metricas_texto.py` calculó los tres casos offline, con valores coincidentes; **sin nuevas llamadas a Gemini**. No se ha verificado aún una ejecución CI de esta suite.
 - **Distinción técnica:** solapamiento de tokens no equivale a corrección factual ni semántica; valores bajos pueden penalizar reformulaciones acertadas.
 - **Evaluación formativa (29/10/2026):** estudiante seleccionó P 40 %, R 80 %, F1 60 % para un caso de 4 coincidencias, 10 tokens generados y 5 de referencia. P y R correctos; F1 correcto **53,3 %** (fórmula armónica). **0/1 respuesta de opción múltiple completamente correcta; 2/3 cálculos parciales correctos**. Reforzar cálculo de F1. No es evaluación ni nota oficial.
-- **Avance U2.2:** 4/9 lecciones **estudiadas** (44,4 %); pendiente validar nuevo código en Windows, estudiar B16 L2 y completar actividad oficial del bloque.
+- **Avance U2.2:** 4/9 lecciones **estudiadas** (44,4 %); código B16/L1 validado en Windows. Pendiente estudiar B16 L2 y completar la actividad oficial del bloque.
 - **Punto siguiente:** Bloque 16 / «Por qué la métrica sola no basta».
 
 ## Cómo actualizar este archivo
