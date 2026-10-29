@@ -186,6 +186,18 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Pendientes:** comprobar el estado de entrega y evaluación de esta actividad en Skillnest. JSON original ya publicado y verificado; tiempo efectivo no informado.
 - **Punto exacto para continuar:** Bloque 16 · «Pon número a tus propias salidas generadas».
 
+## Sesión M2-009 · 29/10/2026 — U2.2, Bloque 16, lección 1
+
+- **Material oficial:** «Pon número a tus propias salidas generadas» (Bloque 16): `Counter`, intersección multiconjunto, precisión, cobertura/recall y F1 armónico.
+- **Tiempo efectivo, inicio y término:** no informados; no inferir.
+- **Implementación preparada:** [metricas_texto.py](../metricas_texto.py) reutiliza `procesar_texto` y el [JSON real del Bloque 15](../resultados_b15.json), sin consumir la API; [test_metricas_texto.py](../test_metricas_texto.py) incluye ocho pruebas offline.
+- **Cálculo independiente de referencia:** Python, 6 coincidencias / 6 tokens de referencia / 21 generados: P 28,6 %, R 100 %, F1 44,4 %. API, 5 / 7 / 23: P 21,7 %, R 71,4 %, F1 33,3 %. Git, 3 / 6 / 25: P 12 %, R 50 %, F1 19,4 %.
+- **Contraste con el Bloque 15:** los porcentajes de cobertura coinciden con la métrica previa en estos tres casos, pero ya no se asume que esto sucederá cuando existan repeticiones.
+- **Límite:** son métricas de **solapamiento léxico**, no validan hechos, orden ni equivalencia semántica. F1 bajo no implica por sí solo una respuesta incorrecta.
+- **Observación sobre la fuente:** `procesar_texto(None)` en la implementación existente lanza `TypeError`, no produce lista vacía; si la API devuelve `None`, debe validarse antes de llamar al pipeline.
+- **Estado:** lección 1 del Bloque 16 revisada, implementación en GitHub preparada, **pruebas locales del nuevo archivo pendientes de ejecución confirmada**. U2.2: **4/9 lecciones** por material estudiado (44,4 %), no aprobación institucional.
+- **Continuidad:** ejecutar pytest y CLI con los archivos locales tras integrar la rama; luego estudiar Bloque 16 / lección 2 «Por qué la métrica sola no basta».
+
 ## Plantilla para próximas sesiones
 
 ```markdown
