@@ -200,6 +200,17 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Estado:** lección 1 del Bloque 16 **técnicamente validada localmente**; U2.2: **4/9 lecciones** por material estudiado (44,4 %), sin aprobación institucional ni cierre del Bloque 16.
 - **Continuidad:** estudiar Bloque 16 / lección 2 «Por qué la métrica sola no basta». Posteriormente desarrollar y publicar la actividad oficial del Bloque 16; no repetir llamadas a Gemini sin necesidad.
 
+## Sesión M2-010 · 29/10/2026 — U2.2, Bloque 16, lección 2
+
+- **Material oficial:** «Sus límites: por qué la métrica sola no basta». Tres fallos de la coincidencia léxica: castiga sinónimos válidos, no detecta hechos numéricos cambiados y puede premiar afirmaciones con negación omitida.
+- **Inicio/término/tiempo efectivo:** no informados; no inventar minutos estudiados.
+- **Implementación complementaria:** [ejemplos_limites_b16.py](../ejemplos_limites_b16.py) reutiliza `procesar_texto` y `calcular_precision_cobertura_f1` sin modificar las funciones centrales ni hacer llamadas API. [test_limitaciones_metricas_b16.py](../test_limitaciones_metricas_b16.py) incluye cuatro casos parametrizados; tres reproducen el curso y el cuarto reproduce la pregunta de comprensión del material.
+- **Cálculos:** sinónimos P/R/F1 = 50/50/50 %; fecha diferente 80/80/80 %; negación omitida 100/83,3/90,9 %; negación añadida en ejemplo legislativo 90,9/100/95,2 %.
+- **Verificación técnica:** 4/4 pruebas ejecutadas en un entorno Python independiente por el tutor, no equivale a ejecución confirmada por el estudiante en Windows. Pendiente verificar en el proyecto local la suite de 21 pruebas (17 anteriores + 4 nuevas).
+- **Criterio técnico:** F1 mide solapamiento de tokens. No establece equivalencia semántica, exactitud factual, seguridad ni validez de números/fechas o negaciones; en textos clínicos sintéticos, revisar negación explícitamente antes de adoptar resultados.
+- **Avance:** U2.2 **5/9 lecciones revisadas (55,6 %)** por conteo. Bloque 16 L2 estudiada; actividad final B16 y calificación institucional aún pendientes.
+- **Punto exacto de continuidad:** validar ejemplos con `pytest` y `python ejemplos_limites_b16.py` tras sincronizar main; pasar a «Métricas ya calculadas sobre las salidas de tu propio cliente» (Bloque 16, lección 3).
+
 ## Plantilla para próximas sesiones
 
 ```markdown
