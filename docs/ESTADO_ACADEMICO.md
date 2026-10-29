@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 3/9 lecciones revisadas (33,3 %); Bloque 15 validado técnicamente con 9/9 pytest y 3/3 consultas Gemini reales; JSON generado localmente, publicación e instancia institucional pendientes.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 3/9 lecciones revisadas (33,3 %); Bloque 15 validado técnicamente con 9/9 pytest y 3/3 consultas Gemini reales; JSON real publicado en GitHub (`bc4fdbe`); entrega y evaluación institucional pendientes.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -134,10 +134,10 @@
 - **Evaluación formativa interna:** dos preguntas respondidas correctamente (2/2), no equivalente a calificación Skillnest.
 - **Repositorio:** [pipeline_texto.py](../pipeline_texto.py), [test_pipeline_texto.py](../test_pipeline_texto.py); [PR #7](https://github.com/nicolasbellov/especializacion-ia-2026/pull/7) fusionada a main (`3273251`).
 - **Ejecución local:** `pytest` 9/9 y tres consultas reales con `cliente.consultar_modelo`; las coincidencias crudas/procesadas fueron Python 83,3/100,0 %, API 57,1/71,4 %, Git 16,7/50,0 %.
-- **Evidencia detallada:** [registro_pipeline_b15.md](registro_pipeline_b15.md). `resultados_b15.json` generado localmente por el estudiante, **todavía no acreditado como publicado**.
+- **Evidencia detallada:** [registro_pipeline_b15.md](registro_pipeline_b15.md). [resultados_b15.json](../resultados_b15.json) **publicado y verificado** mediante [commit `bc4fdbe`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/bc4fdbe3eefba477b3c1e5724a09d02696f92569).
 - **Interpretación:** la cobertura por palabras únicas no mide equivalencia semántica; no afirmar que 100 % significa una respuesta correcta.
 - **Estado:** **Bloque 15 técnicamente validado**, no hay constancia de evaluación institucional ni de entrega de la actividad. **Avance U2.2: 3/9 (33,3 %)** por conteo de lecciones.
-- **Continuidad:** Bloque 16, lección 1. Confirmar publicación del JSON solo luego de revisar su contenido y privacidad. No sumar horas no informadas.
+- **Continuidad:** Bloque 16, lección 1. Publicación del JSON ya comprobada; resta confirmar el envío/calificación institucional. No sumar horas no informadas.
 
 ## Cómo actualizar este archivo
 
