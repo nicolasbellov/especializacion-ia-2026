@@ -1,6 +1,6 @@
 # Estado académico — Especialización en Desarrollo con IA Generativa 2026
 
-> **Actualizado:** 28/10/2026 (Chile). **Fuente:** material curricular compartido, conversación de estudio y evidencia versionada en este repositorio.  
+> **Actualizado:** 29/10/2026 (Chile). **Fuente:** material curricular compartido, conversación de estudio y evidencia versionada en este repositorio.  
 > **Convención:** distinguir *evidencia técnica verificada*, *actividad completada en el entorno local*, *entrega publicada* y *aprobación formal informada por Skillnest*. No son equivalentes.
 
 ## Vista general
@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| U2.2 | Pipeline de texto, NLP básico y evaluación inicial | Pendiente |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 3/9 lecciones revisadas (33,3 %); Bloque 15 validado técnicamente con 9/9 pytest y 3/3 consultas Gemini reales; JSON generado localmente, publicación e instancia institucional pendientes.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -58,7 +58,7 @@
 
 ### Próximo paso exacto
 
-**Siguiente contenido: Bloque 15 / U2.2 — Limpieza, tokenización y más.** La actividad core del Bloque 14 está validada con pytest. En el seguimiento de U2.1 quedan sin cerrar dos lecciones del Bloque 13 que exigen observar un 429 auténtico o una aceptación explícita de Skillnest de la alternativa simulada.
+**Siguiente contenido: Bloque 16 / U2.2 — «Pon número a tus propias salidas generadas».** La actividad core del Bloque 14 está validada con pytest. En el seguimiento de U2.1 quedan sin cerrar dos lecciones del Bloque 13 que exigen observar un 429 auténtico o una aceptación explícita de Skillnest de la alternativa simulada.
 
 ### Primera lección del Bloque 13 completada · 27/10/2026
 
@@ -127,6 +127,17 @@
 - **Modalidad:** el estudiante trabajó mediante la opción «Enlace (Drive, etc.)» y se preparó una URL fija del repositorio GitHub. **La captura de confirmación no muestra el enlace finalmente registrado**, por lo que no certifica su valor exacto.
 - **Código entregable validado previamente:** [commit `3dd1826`](https://github.com/nicolasbellov/especializacion-ia-2026/tree/3dd1826bac3f3d9fc09fcb8c64ca938ba1e5db5c), [13 pruebas en `test_cliente.py`](../test_cliente.py), [GitHub Actions aprobado](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40624041484).
 - **Progreso académico interno:** se mantiene **U2.1 7/9 (77,8 %)**. El Bloque 13 sigue pendiente de evidencia de un HTTP 429 real o aceptación expresa del curso.
+
+### U2.2 — Bloque 15 (29/10/2026)
+
+- **Lecciones:** 1. «De texto crudo a vector»; 2. «Cuando la métrica engaña»; 3. actividad práctica «Construye tu pipeline de procesamiento de texto».
+- **Evaluación formativa interna:** dos preguntas respondidas correctamente (2/2), no equivalente a calificación Skillnest.
+- **Repositorio:** [pipeline_texto.py](../pipeline_texto.py), [test_pipeline_texto.py](../test_pipeline_texto.py); [PR #7](https://github.com/nicolasbellov/especializacion-ia-2026/pull/7) fusionada a main (`3273251`).
+- **Ejecución local:** `pytest` 9/9 y tres consultas reales con `cliente.consultar_modelo`; las coincidencias crudas/procesadas fueron Python 83,3/100,0 %, API 57,1/71,4 %, Git 16,7/50,0 %.
+- **Evidencia detallada:** [registro_pipeline_b15.md](registro_pipeline_b15.md). `resultados_b15.json` generado localmente por el estudiante, **todavía no acreditado como publicado**.
+- **Interpretación:** la cobertura por palabras únicas no mide equivalencia semántica; no afirmar que 100 % significa una respuesta correcta.
+- **Estado:** **Bloque 15 técnicamente validado**, no hay constancia de evaluación institucional ni de entrega de la actividad. **Avance U2.2: 3/9 (33,3 %)** por conteo de lecciones.
+- **Continuidad:** Bloque 16, lección 1. Confirmar publicación del JSON solo luego de revisar su contenido y privacidad. No sumar horas no informadas.
 
 ## Cómo actualizar este archivo
 
