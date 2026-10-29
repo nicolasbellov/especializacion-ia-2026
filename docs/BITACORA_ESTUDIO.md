@@ -181,9 +181,9 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Pruebas:** `9 passed in 0.14s`, ejecutadas con Python 3.12 desde PowerShell del estudiante.
 - **API real:** tres consultas Gemini respondidas y comparadas: Python 83,3→100,0 %; API 57,1→71,4 %; Git 16,7→50,0 % (crudo→procesado).
 - **Registro del cliente:** 127 tokens y USD 0,000254 acumulados, **costo referencial didáctico**; no confundir con facturación.
-- **Evidencia:** [registro de ejecución y límites](registro_pipeline_b15.md). El script generó `resultados_b15.json` en la carpeta local del estudiante; **publicación del JSON en GitHub no confirmada**.
+- **Evidencia:** [registro de ejecución y límites](registro_pipeline_b15.md). El script generó `resultados_b15.json` localmente; **publicación posterior confirmada** en [commit `bc4fdbe`](https://github.com/nicolasbellov/especializacion-ia-2026/commit/bc4fdbe3eefba477b3c1e5724a09d02696f92569), con contenido contrastado con los resultados de PowerShell.
 - **Resultado:** Bloque 15 técnicamente validado; U2.2 **3/9 lecciones revisadas y actividad implementada (33,3 % por conteo)**, sin afirmar envío ni aprobación institucional.
-- **Pendientes:** revisar y versionar el JSON original local si es seguro; comprobar el estado de entrega en Skillnest. Tiempo efectivo no informado.
+- **Pendientes:** comprobar el estado de entrega y evaluación de esta actividad en Skillnest. JSON original ya publicado y verificado; tiempo efectivo no informado.
 - **Punto exacto para continuar:** Bloque 16 · «Pon número a tus propias salidas generadas».
 
 ## Plantilla para próximas sesiones
