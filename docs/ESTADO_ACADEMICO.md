@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 6/9 lecciones revisadas (66,7 %); Bloque 15 validado (9/9 pytest, 3/3 Gemini y JSON publicado); Bloque 16 L1 y L2 validadas en Windows (21/21 pruebas anteriores); L3 técnicamente validada en Windows: 29/29 pruebas B15+B16 aprobadas y ejecución offline de métricas; diferencia de serialización JSON corregida en GitHub. Entrega/evaluación institucional B15 no confirmadas.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 7/9 lecciones revisadas (77,8 %); B15+B16 técnicamente validados en Windows (29/29 pruebas y evidencia JSON reproducible). B17 L1 estudiada: rúbrica cualitativa y plantilla de tres respuestas reales preparadas sin juicios automáticos; pendientes 11 nuevas pruebas locales y evaluación humana. Aprobación institucional B15 no confirmada.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -169,6 +169,16 @@
 - **Avance:** U2.2 **6/9 lecciones revisadas (66,7 %)** por conteo; las tres lecciones del Bloque 16 validadas técnicamente en Windows (29/29 pruebas) y el JSON reproducible. Sin acreditar nota oficial de Skillnest.
 - **Reproducibilidad:** al regenerar el JSON, Python serializa la cobertura perfecta como `1.0`; el archivo publicado inicialmente tenía `1`, diferencia textual sin efecto en los valores. La versión de GitHub se corrigió a `1.0` para evitar cambios espurios. **Cierre local confirmado:** el estudiante restauró `resultados_metricas.json`, descargó la corrección en `85dc97c`, regeneró el archivo y `git status -sb` devolvió `## main...origin/main`, sin modificaciones locales.
 - **Continuidad:** estudiar Bloque 17 L1 «Cuando el número no basta: criterio cualitativo»; ninguna prueba ni llamada API adicional necesaria para cerrar B16.
+
+### U2.2 — Bloque 17, lección 1 (29/10/2026)
+
+- **Lección:** «Cuando el número no basta: criterio cualitativo». Rúbrica de corrección factual (sí/no/parcial), completitud (sí/no/parcial), contradicción (sí/no), y nota justificativa. Muestrear F1 bajos y altos, no solo peores casos.
+- **Ejemplo oficial:** se omite el marcador «3 goles a 1»; aunque P=100 %, R=64,3 %, F1=78,3 %, la revisión cualitativa concluye factual «sí», completitud «no», contradicción «no».
+- **Adaptación a nuestros datos:** como hay tres casos reales (Git, API y Python), se seleccionan los tres sin duplicados. [revision_cualitativa_b17.py](../revision_cualitativa_b17.py) y [test_revision_cualitativa_b17.py](../test_revision_cualitativa_b17.py) implementan selección, plantilla y controles básicos; [revision_cualitativa_b17.json](../revision_cualitativa_b17.json) deja los juicios en `null` hasta la evaluación humana.
+- **Registro de conocimiento:** [registro_revision_cualitativa_b17.md](registro_revision_cualitativa_b17.md), separado del cálculo numérico de B16.
+- **Validación:** nuevo código pendiente de ejecución en Windows. Once pruebas agregadas; total esperado B15+B16+B17 = **40 pruebas**. No atribuir «11/11 aprobado» sin salida local.
+- **Estado:** U2.2 **7/9 lecciones revisadas (77,8 %)**; sin calificación oficial Skillnest y sin evaluaciones cualitativas del estudiante aún.
+- **Continuidad:** ejecutar pruebas; evaluar el caso Git con rúbrica, luego API y Python; estudiar B17 L2 «Qué documentar como límite de tu pipeline».
 
 ## Cómo actualizar este archivo
 

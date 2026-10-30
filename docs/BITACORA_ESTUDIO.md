@@ -224,6 +224,17 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Incidente de reproducibilidad JSON:** `git status -sb` mostró únicamente `M resultados_metricas.json` luego de ejecutar el script. La versión generada por Python escribe `"cobertura": 1.0` para el caso Python (división `6/6`), mientras la primera versión del archivo subida a GitHub contenía `"cobertura": 1`; son numéricamente equivalentes, pero producen diferencias textuales en Git. Se corrigió en el repositorio la representación a `1.0` para respetar el serializador Python y evitar cambios espurios al regenerar evidencia. **Cierre confirmado por salida PowerShell:** `git diff` identificó exactamente esa línea; el estudiante ejecutó `git restore -- resultados_metricas.json`, `git pull --ff-only origin main` hasta `85dc97c`, regeneró el JSON con `evaluar_salidas_b16.py` y `git status -sb` devolvió `## main...origin/main`, sin cambios pendientes.
 - **Punto exacto de continuación:** Bloque 17 L1 «Cuando el número no basta: criterio cualitativo». Bloque 16 validado localmente y evidencia JSON reproducible, sin aprobación institucional atribuida.
 
+## Sesión M2-012 · 29/10/2026 — U2.2, Bloque 17, lección 1
+
+- **Material oficial estudiado:** «Cuando el número no basta: criterio cualitativo»: señales de revisión manual, rúbrica uniforme de corrección factual (sí/no/parcial), completitud (sí/no/parcial) y contradicción (sí/no), con justificaciones; selección de F1 bajos y altos.
+- **Inicio/término/tiempo efectivo:** no informados; no atribuir minutos al usuario.
+- **Ejemplo del curso (partido):** al omitir «3 goles a 1», precisión 100 %, cobertura 64,3 % y F1 78,3 %, pero la valoración cualitativa oficial es factual «sí», completitud «no», contradicción «no».
+- **Implementación complementaria:** [revision_cualitativa_b17.py](../revision_cualitativa_b17.py) selecciona extremos sin duplicados; [test_revision_cualitativa_b17.py](../test_revision_cualitativa_b17.py) contiene 11 pruebas offline; [revision_cualitativa_b17.json](../revision_cualitativa_b17.json) conserva tres pares reales, orden Git→API→Python, con valores cualitativos nulos **pendientes de evaluación humana**. No consulta Gemini ni escribe juicios por cuenta del estudiante.
+- **Documentación:** [registro_revision_cualitativa_b17.md](registro_revision_cualitativa_b17.md) separa contenido del curso, adaptación técnica a muestra pequeña y límites.
+- **Validación:** no se ha recibido ejecución de este script ni sus pruebas en Windows; suite previa B15+B16: **29/29** confirmada. Se espera suite conjunta de **40 pruebas** tras agregar 11 nuevas.
+- **Avance:** U2.2 **7/9 lecciones revisadas (77,8 %)**. B17 L1 estudiada, pero faltan revisión cualitativa humana y pruebas locales; no equivale a aprobación institucional.
+- **Punto exacto de continuación:** sincronizar y validar el código; aplicar la rúbrica al primer caso real (Git) antes de documentar resultados; luego B17 L2 «Qué documentar como límite de tu pipeline».
+
 ## Plantilla para próximas sesiones
 
 ```markdown
