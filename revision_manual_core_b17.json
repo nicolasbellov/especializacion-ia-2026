@@ -1,0 +1,122 @@
+[
+  {
+    "caso": 3,
+    "consulta": "¿Para qué sirve Git? Responde en una sola oración breve.",
+    "referencia": "Git permite controlar versiones del código.",
+    "respuesta": "Git sirve para **controlar y registrar los cambios en el código fuente** de un proyecto, facilitando el trabajo en equipo y el desarrollo de software.",
+    "f1": 0.1935483870967742,
+    "correccion_factual": "si",
+    "completitud": "si",
+    "contradiccion": "no",
+    "justificacion": "La respuesta describe correctamente el propósito de Git: controlar versiones y registrar cambios del código fuente. Incluye la información esencial de la referencia y añade su utilidad para el trabajo colaborativo. No contiene contradicciones. El F1 bajo refleja una diferencia léxica, no un error de significado.",
+    "fecha_revision": "2026-10-29"
+  },
+  {
+    "caso": 14,
+    "consulta": "¿Qué es una API REST? Responde en una sola oración breve.",
+    "referencia": "Una API REST expone recursos que se consultan y modifican mediante peticiones HTTP.",
+    "respuesta": "Una API REST es una interfaz que permite la comunicación entre diferentes sistemas a través de internet usando los métodos estándar del protocolo HTTP.",
+    "f1": 0.2702702702702703,
+    "correccion_factual": "si",
+    "completitud": "no",
+    "contradiccion": "no",
+    "justificacion": "La respuesta describe correctamente la comunicación entre sistemas mediante HTTP, pero no explica que una API REST expone recursos que pueden consultarse y modificarse. Además, presenta el uso de internet como algo general, aunque REST también puede operar en redes privadas. No contradice directamente la referencia, pero resulta incompleta.",
+    "fecha_revision": "2026-10-29"
+  },
+  {
+    "caso": 20,
+    "consulta": "¿Qué es un token en procesamiento de texto? Responde en una sola oración breve.",
+    "referencia": "Un token es una unidad de texto obtenida al segmentar una entrada.",
+    "respuesta": "Un token es la unidad básica de texto —que puede ser una palabra, parte de ella o un signo de puntuación— en la que se divide un documento para que un modelo de lenguaje pueda procesarlo.",
+    "f1": 0.2916666666666667,
+    "correccion_factual": "si",
+    "completitud": "si",
+    "contradiccion": "no",
+    "justificacion": "La respuesta define correctamente un token como una unidad de texto resultante de la segmentación y aporta ejemplos como palabras, fragmentos de palabras y signos de puntuación. Cubre el concepto esencial de la referencia y lo amplía con su aplicación en modelos de lenguaje. No presenta contradicciones. El F1 bajo se debe principalmente a diferencias léxicas y a la mayor extensión de la respuesta, no a un error conceptual.",
+    "fecha_revision": "2026-10-29"
+  },
+  {
+    "caso": 2,
+    "consulta": "¿Qué es una API? Responde en una sola oración breve.",
+    "referencia": "Una API permite la comunicación entre aplicaciones.",
+    "respuesta": "Una API es un conjunto de reglas y protocolos que permite que diferentes aplicaciones de software se comuniquen e intercambien datos entre sí.",
+    "f1": 0.3333333333333333,
+    "correccion_factual": "si",
+    "completitud": "si",
+    "contradiccion": "no",
+    "justificacion": "La respuesta define correctamente una API como un conjunto de reglas y protocolos que facilita la comunicación e intercambio de datos entre aplicaciones. Cubre completamente el concepto expresado en la referencia y aporta información complementaria pertinente. No presenta contradicciones. El F1 de 33,3% refleja principalmente la diferencia de extensión y vocabulario respecto de la referencia, no una deficiencia conceptual.",
+    "fecha_revision": "2026-10-29"
+  },
+  {
+    "caso": 11,
+    "consulta": "¿Para qué sirve HTTP? Responde en una sola oración breve.",
+    "referencia": "HTTP es un protocolo para intercambiar solicitudes y respuestas entre clientes y servidores.",
+    "respuesta": "HTTP sirve para transferir información y recursos (como páginas web e imágenes) entre un navegador y un servidor en internet.",
+    "f1": 0.3636363636363637,
+    "correccion_factual": "si",
+    "completitud": "parcialmente",
+    "contradiccion": "no",
+    "justificacion": "La respuesta describe correctamente que HTTP permite transferir información y recursos entre clientes y servidores, utilizando como ejemplo un navegador y un servidor web. Sin embargo, omite explicar que HTTP funciona mediante el intercambio de solicitudes y respuestas, elemento central de la referencia. Además, HTTP no se limita a navegadores ni a internet público, pues también puede utilizarse en otros clientes y redes privadas. No presenta contradicciones directas, pero su explicación es parcialmente completa.",
+    "fecha_revision": "2026-10-29"
+  },
+  {
+    "caso": 12,
+    "consulta": "¿Qué significa el código HTTP 404? Responde en una sola oración breve.",
+    "referencia": "HTTP 404 indica que el servidor no encontró el recurso solicitado.",
+    "respuesta": "El código HTTP 404 significa que el servidor no pudo encontrar la página o el recurso solicitado en la dirección web proporcionada.",
+    "f1": 0.5454545454545455,
+    "correccion_factual": "si",
+    "completitud": "si",
+    "contradiccion": "no",
+    "justificacion": "La respuesta explica correctamente que HTTP 404 indica que el servidor no encontró el recurso solicitado. Cubre la información esencial de la referencia y añade contexto sobre páginas web y direcciones URL. No existen contradicciones ni errores factuales relevantes.",
+    "fecha_revision": "2026-10-29"
+  },
+  {
+    "caso": 8,
+    "consulta": "¿Qué es una función en Python? Responde en una sola oración breve.",
+    "referencia": "Una función es un bloque de código reutilizable que puede recibir argumentos y devolver resultados.",
+    "respuesta": "En Python, una función es un bloque de código reutilizable que realiza una tarea específica y se ejecuta cuando es llamado.",
+    "f1": 0.5555555555555556,
+    "correccion_factual": "si",
+    "completitud": "parcialmente",
+    "contradiccion": "no",
+    "justificacion": "La respuesta define correctamente una función en Python como un bloque de código reutilizable que ejecuta una tarea específica cuando es llamado. Sin embargo, omite mencionar que las funciones pueden recibir argumentos y devolver resultados, dos características relevantes de la referencia. No presenta errores factuales ni contradicciones, pero su explicación es parcialmente completa.",
+    "fecha_revision": "2026-10-29"
+  },
+  {
+    "caso": 9,
+    "consulta": "¿Qué significa un error de sintaxis en Python? Responde en una sola oración breve.",
+    "referencia": "Un error de sintaxis aparece cuando el código no sigue las reglas del lenguaje.",
+    "respuesta": "Un error de sintaxis en Python ocurre cuando el código viola las reglas gramaticales del lenguaje, impidiendo que el intérprete pueda leerlo y ejecutarlo.",
+    "f1": 0.5789473684210527,
+    "correccion_factual": "si",
+    "completitud": "si",
+    "contradiccion": "no",
+    "justificacion": "La respuesta explica correctamente que un error de sintaxis en Python se produce cuando el código incumple las reglas gramaticales del lenguaje. Cubre completamente el concepto de la referencia y añade una consecuencia relevante: el intérprete no puede procesar y ejecutar correctamente el código afectado. No contiene contradicciones ni errores conceptuales relevantes. El F1 de 57,9% refleja diferencias de vocabulario y extensión, no una pérdida de significado.",
+    "fecha_revision": "2026-10-29"
+  },
+  {
+    "caso": 5,
+    "consulta": "¿Qué es una lista en Python? Responde en una sola oración breve.",
+    "referencia": "Una lista de Python es una colección ordenada y modificable de elementos.",
+    "respuesta": "Una lista en Python es una colección ordenada y mutable de elementos que pueden ser de diferentes tipos de datos, delimitada por corchetes `[]`.",
+    "f1": 0.6285714285714286,
+    "correccion_factual": "si",
+    "completitud": "si",
+    "contradiccion": "no",
+    "justificacion": "La respuesta define correctamente una lista de Python como una colección ordenada y modificable de elementos. Cubre todos los conceptos esenciales de la referencia y añade información válida: las listas pueden contener elementos de distintos tipos de datos y se representan mediante corchetes. No presenta contradicciones ni errores factuales relevantes. El F1 de 62,9% refleja coincidencias léxicas, pero no captura por completo la equivalencia entre «mutable» y «modificable».",
+    "fecha_revision": "2026-10-29"
+  },
+  {
+    "caso": 16,
+    "consulta": "¿Para qué sirve git clone? Responde en una sola oración breve.",
+    "referencia": "git clone crea una copia local de un repositorio.",
+    "respuesta": "`git clone` sirve para descargar una copia exacta de un repositorio remoto en tu computadora local.",
+    "f1": 0.64,
+    "correccion_factual": "si",
+    "completitud": "si",
+    "contradiccion": "no",
+    "justificacion": "La respuesta describe correctamente que git clone permite obtener una copia local de un repositorio remoto. Cubre completamente el propósito señalado en la referencia y no contiene contradicciones. La expresión «copia exacta» es una simplificación, ya que la clonación reproduce el repositorio Git, pero no necesariamente toda la información adicional de la plataforma que lo aloja. El F1 de 64,0% refleja coincidencia léxica, mientras que la revisión cualitativa confirma que la explicación es adecuada.",
+    "fecha_revision": "2026-10-29"
+  }
+]

@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 8/9 lecciones revisadas (88,9 %). B17 Core validado localmente por salida PowerShell: 55/55 pruebas, 20/20 respuestas reales y 10/10 revisiones con justificación; contradicción errónea del caso 16 corregida y reporte regenerado. Documento de límites actualizado con hallazgos reales sustentados por la consola. Faltan recibir, auditar y publicar los 3 artefactos originales, confirmar entrega y aprobación institucional.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **Core B17 técnicamente completado: 9/9 lecciones (100 %). Evidencias auditadas y versionadas: 20 respuestas de Gemini según logs locales, 10 valoraciones justificadas, 60/60 métricas recalculadas, informe íntegro y límites documentados. Suite ejecutada por estudiante: 55/55 pruebas. PENDIENTE envío en Skillnest y aprobación institucional.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -210,6 +210,15 @@
 - **Actualización confirmada por una segunda transcripción de PowerShell:** caso 16 corregido a `contradiccion=no`, `--validar` de nuevo satisfactorio (20/20 y 10/10) y `--informe` regenerado. Distribución de la muestra: factual **10 sí**, completitud **7 sí, 2 parcialmente, 1 no**, contradicción **10 no**.
 - **Hallazgos documentados:** [limites_metrica.md](limites_metrica.md) contiene ya patrones observados en los propios resultados y [analisis_revision_b17_core.md](analisis_revision_b17_core.md) preserva sus referencias y justificaciones según la consola. No atribuir publicación ni inspección de los tres archivos locales originales.
 - **Siguiente:** recibir y auditar los JSON `resultados_core_b17.json` y `revision_manual_core_b17.json`, más `docs/revision_manual_core_b17.md`; publicarlos por PR/merge y documentar entrega formal en Skillnest. **8/9 hasta confirmar cierre efectivo del Core**.
+
+### Cierre técnico U2.2 B17 Core — 29/10/2026
+
+- **Artefactos originales recibidos, comprobados y versionados:** [20 resultados](../resultados_core_b17.json), [10 juicios manuales](../revision_manual_core_b17.json) e [informe íntegro](revision_manual_core_b17.md).
+- **Auditoría independiente:** 20 casos únicos con respuesta; 60/60 valores de precisión, cobertura y F1 recalculados sin diferencias; selección exactamente de cinco F1 más bajos y cinco más altos; diez notas justificadas idénticas entre JSON y Markdown; corrección del caso 16 a `contradiccion=no` confirmada en el propio JSON.
+- **Síntesis humana:** factual 10/10 «sí»; completitud 7 «sí», 2 «parcialmente», 1 «no»; contradicción 10 «no». [Límites documentados](limites_metrica.md) sobre casos observados y ejemplos oficiales mantenidos separados.
+- **Evidencia de ejecución:** la consola compartida acredita 17 nuevas llamadas con guardado incremental, dos reintentos en el caso 20 y 55/55 pruebas correctas. No atribuir a estas evidencias una validación independiente con el proveedor ni costos reales facturados.
+- **Avance técnico curricular:** **9/9 lecciones (100 %)** de U2.2. **No se ha presentado ni aprobado aún la entrega en Skillnest**; registrar comprobante de envío y calificación por separado.
+- **Siguiente punto:** sincronizar GitHub en local preservando los tres archivos generados allí, copiar el enlace a la evidencia pública en Skillnest y continuar con U2.3 tras el envío.
 
 ## Cómo actualizar este archivo
 

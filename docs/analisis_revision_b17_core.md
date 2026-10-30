@@ -1,7 +1,7 @@
-# Análisis preliminar de la revisión humana — U2.2 / Bloque 17 Core
+# Análisis de la revisión humana — U2.2 / Bloque 17 Core
 
 **Fecha de la sesión informada:** 29/10/2026, Chile. **Fuente primaria:** transcripción de PowerShell aportada por el estudiante después de ejecutar `core_b17_generar.py` y `core_b17_revisar.py`.  
-**Alcance probatorio:** la consola acredita la generación de **20/20 respuestas reales**, **10/10 evaluaciones introducidas manualmente** y el resultado satisfactorio de `--validar` y `--informe`. **Los archivos completos locales todavía no fueron adjuntados ni publicados en GitHub**: este análisis no los sustituye.
+**Alcance probatorio:** la consola acredita la generación de **20/20 respuestas reales**, **10/10 evaluaciones introducidas manualmente** y el resultado satisfactorio de `--validar` y `--informe`. **Actualización posterior:** archivos fuente incorporados en el repositorio; las notas originales se conservan.
 
 ## Selección y resultados de la rúbrica
 
@@ -41,4 +41,4 @@ La muestra contiene los **cinco F1 más bajos y cinco más altos de las 20 respu
 
 **Avance local corroborado por consola:** `55 passed in 1.50s` en la suite, 20/20 respuestas, 10/10 revisiones, informe regenerado. Las 17 nuevas consultas incluyeron dos reintentos exitosos en el caso 20; el código HTTP del error **no está identificado**. Costo mostrado `USD 0.001588` es una **estimación didáctica**, no facturación verificada.
 
-**Pendiente de publicación:** inspeccionar y versionar `resultados_core_b17.json`, `revision_manual_core_b17.json` y `docs/revision_manual_core_b17.md`; revisar `docs/limites_metrica.md` (actualizado en paralelo con estos hallazgos), y proporcionar el enlace público en Skillnest. **No hay constancia de entrega formal ni aprobación institucional**.
+**Archivos originales recibidos y publicados:** [corpus](../resultados_core_b17.json), [rúbrica](../revision_manual_core_b17.json) e [informe](revision_manual_core_b17.md). Las 60 métricas fueron recalculadas con resultado consistente y las diez valoraciones coinciden con el informe. **Pendiente:** enviar el enlace en Skillnest y registrar la aprobación institucional.
