@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 8/9 lecciones revisadas (88,9 %). B15+B16 técnicamente validados en Windows; B17 L1 validada con suite acumulada 40/40. B17 L2 documentada en `docs/limites_metrica.md`, con límites oficiales y muestra propia de 3 casos seleccionados, 0/3 revisados cualitativamente. Pendientes rúbrica humana, actividad Core B17 y evaluación institucional.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 8/9 lecciones revisadas (88,9 %). B15+B16 y B17 L1 técnicamente validados (40/40 pruebas). B17 L2 documentada. Actividad Core B17 en preparación: 3/20 respuestas reales, 0/10 evaluaciones humanas; scripts y 15 pruebas offline preparados para ampliar el corpus y revisar 5 F1 bajos + 5 altos. Suite nueva de 55 pruebas y entregables finales aún sin validación. No consta entrega ni aprobación institucional.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -188,6 +188,17 @@
 - **Estado de validación:** la suite de **40/40** pruebas previamente ejecutada en Windows sigue siendo la evidencia técnica disponible. Este cambio es solo Markdown y no constituye una nueva ejecución de pruebas.
 - **Avance U2.2:** **8/9 lecciones revisadas (88,9 %)**. Falta la actividad Core final del Bloque 17, la evaluación humana de los tres casos y cualquier confirmación institucional.
 - **Punto exacto de continuación:** aplicar rúbrica a Git, API y Python con sus justificaciones, registrar hallazgos confirmados y luego desarrollar B17 Core «Interpreta tus resultados y documenta sus límites».
+
+### U2.2 — Bloque 17, actividad Core (preparación, 29/10/2026)
+
+- **Fuente oficial revisada:** «Interpreta tus resultados y documenta sus límites [Actividad core]», con tres entregables obligatorios: **20 respuestas reales** de `consultar_modelo` con métricas, **10 casos revisados manualmente** (5 F1 bajos + 5 altos) con rúbrica y justificación, y **`docs/limites_metrica.md` actualizado con hallazgos propios**. Entrega mediante archivo o enlace (la captura compartida muestra una pestaña para enlace).
+- **Evidencia al inicio:** tres respuestas auténticas en `resultados_b15.json`, 3/20 de la meta; 0/10 revisiones Core. `revision_cualitativa_b17.json` contiene solo tres plantillas sin calificar y no sirve como muestra Core de diez. Los ejemplos sintéticos de Skillnest no cuentan como resultados propios.
+- **Código preparado sin ejecutar llamadas:** [core_b17_generar.py](../core_b17_generar.py) define 17 nuevas consultas distintas, reutiliza las 3 originales, calcula con `calcular_metricas` y permite guardar/reanudar cada resultado real de Gemini. El modo `--plan` no llama a la API; `--generar` sí requiere credenciales locales y puede consumir cuota.
+- **Revisión humana preparada:** [core_b17_revisar.py](../core_b17_revisar.py) exige corpus completo, selecciona sin repeticiones cinco F1 inferiores y cinco superiores, pide juicios y justificación y persiste cada registro para reanudación; no inventa ni califica respuestas por sí mismo.
+- **Pruebas:** [test_core_b17.py](../test_core_b17.py) agrega **15 pruebas offline**. Las respuestas simuladas en tests **no** cuentan como evidencia Core. Suite esperada tras actualizar Windows: **55 pruebas**, pendiente validación local (suite anterior 40/40).
+- **Guía de entrega:** [guia_entrega_b17_core.md](guia_entrega_b17_core.md). Falta generar corpus, aplicar 10 juicios humanos, actualizar límites desde hallazgos concretos, versionar evidencia final y enviar enlace en Skillnest.
+- **Estado:** 8/9 lecciones revisadas (88,9 %). El Core no está completado, entregado ni aprobado. No marcar Unidad 2.2 finalizada por leer el enunciado.
+- **Continuidad:** ejecutar 55 pruebas, revisar modo plan y generar de forma controlada 17 respuestas reales; registrar luego 10 juicios humanos y evidencias; no exponer claves ni datos clínicos en GitHub público.
 
 ## Cómo actualizar este archivo
 
