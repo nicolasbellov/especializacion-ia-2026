@@ -1,4 +1,4 @@
-# Análisis preliminar de la revisión humana — U2.2 / Bloque 17 Core
+# Análisis de la revisión humana — U2.2 / Bloque 17 Core
 
 **Fecha de la sesión informada:** 29/10/2026, Chile. **Fuente primaria:** transcripción de PowerShell aportada por el estudiante después de ejecutar `core_b17_generar.py` y `core_b17_revisar.py`.  
 **Alcance probatorio:** la consola acredita la generación de **20/20 respuestas reales**, **10/10 evaluaciones introducidas manualmente** y el resultado satisfactorio de `--validar` y `--informe`. **Los archivos completos locales todavía no fueron adjuntados ni publicados en GitHub**: este análisis no los sustituye.
