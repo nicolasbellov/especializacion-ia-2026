@@ -41,4 +41,4 @@ La muestra contiene los **cinco F1 más bajos y cinco más altos de las 20 respu
 
 **Avance local corroborado por consola:** `55 passed in 1.50s` en la suite, 20/20 respuestas, 10/10 revisiones, informe regenerado. Las 17 nuevas consultas incluyeron dos reintentos exitosos en el caso 20; el código HTTP del error **no está identificado**. Costo mostrado `USD 0.001588` es una **estimación didáctica**, no facturación verificada.
 
-**Pendiente de publicación:** inspeccionar y versionar `resultados_core_b17.json`, `revision_manual_core_b17.json` y `docs/revision_manual_core_b17.md`; revisar `docs/limites_metrica.md` (actualizado en paralelo con estos hallazgos), y proporcionar el enlace público en Skillnest. **No hay constancia de entrega formal ni aprobación institucional**.
+**Archivos originales recibidos y publicados:** [corpus](../resultados_core_b17.json), [rúbrica](../revision_manual_core_b17.json) e [informe](revision_manual_core_b17.md). Las 60 métricas fueron recalculadas con resultado consistente y las diez valoraciones coinciden con el informe. **Pendiente:** enviar el enlace en Skillnest y registrar la aprobación institucional.
