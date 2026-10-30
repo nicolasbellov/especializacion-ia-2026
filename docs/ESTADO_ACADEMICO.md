@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 6/9 lecciones revisadas (66,7 %); Bloque 15 validado (9/9 pytest, 3/3 Gemini y JSON publicado); Bloque 16 L1 y L2 validadas en Windows (21/21 pruebas anteriores); L3 integra resultados reales, genera JSON y fue verificada con 8/8 pruebas en entorno independiente, pendiente ejecutar la suite de 29 pruebas en Windows. Entrega/evaluación institucional B15 no confirmadas.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 6/9 lecciones revisadas (66,7 %); Bloque 15 validado (9/9 pytest, 3/3 Gemini y JSON publicado); Bloque 16 L1 y L2 validadas en Windows (21/21 pruebas anteriores); L3 técnicamente validada en Windows: 29/29 pruebas B15+B16 aprobadas y ejecución offline de métricas; diferencia de serialización JSON corregida en GitHub. Entrega/evaluación institucional B15 no confirmadas.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -165,9 +165,10 @@
 - **Implementación en el repositorio:** [evaluar_salidas_b16.py](../evaluar_salidas_b16.py), [test_evaluar_salidas_b16.py](../test_evaluar_salidas_b16.py) y [resultados_metricas.json](../resultados_metricas.json). Se aprovecharon las tres salidas **reales** ya guardadas en B15; no se invocó de nuevo a Gemini.
 - **Métricas efectivas:** Python F1 44,4 %; API 33,3 %; Git 19,4 %. **F1 promedio simple 32,4 %**, distinto del `0,61` ilustrativo del curso. P media 20,8 %; cobertura media 73,8 %. Priorizar por F1 no es dictaminar calidad o verdad.
 - **Trazabilidad y límites:** [registro_metricas_b16.md](registro_metricas_b16.md); JSON preserva referencia, respuesta original y métricas, con UTF-8 y valores numéricos sin redondear.
-- **Pruebas:** 8/8 pruebas del nuevo módulo aprobadas en entorno independiente; aún no existe validación de este módulo en el Windows del estudiante. **29 pruebas combinadas previstas** al incorporar las 21 ya confirmadas de B15+B16.
+- **Pruebas ejecutadas en Windows:** **29 passed in 0.97s** (21 anteriores + 8 nuevas), sin regresiones. `evaluar_salidas_b16.py` reprodujo las métricas P/R/F1, los promedios y el orden de inspección de los tres casos reales, sin nuevas llamadas a Gemini. Verificación basada en salida local facilitada por el estudiante, no en CI.
 - **Avance:** U2.2 **6/9 lecciones revisadas (66,7 %)** por conteo; las tres lecciones de B16 estudiadas, validación local de L3 pendiente. Sin acreditar nota oficial de Skillnest.
-- **Continuidad:** verificar en Windows el script y las 29 pruebas; continuar con Bloque 17 L1 «Cuando el número no basta: criterio cualitativo».
+- **Reproducibilidad:** al regenerar el JSON, Python serializa la cobertura perfecta como `1.0`; el archivo publicado inicialmente tenía `1`, diferencia textual sin efecto en los valores. La versión de GitHub se corrigió a `1.0` para evitar cambios espurios. Pendiente restaurar, actualizar y reconfirmar limpieza local.
+- **Continuidad:** confirmar el árbol limpio tras sincronizar el JSON corregido; estudiar Bloque 17 L1 «Cuando el número no basta: criterio cualitativo».
 
 ## Cómo actualizar este archivo
 
