@@ -219,9 +219,10 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Evidencia reproducible:** [resultados_metricas.json](../resultados_metricas.json), que conserva consulta, referencia, respuesta real, precisión, cobertura y F1. [Registro interpretativo](registro_metricas_b16.md) con fórmulas, límites y decisiones.
 - **Resultados:** Python P/R/F1 28,6/100,0/44,4 %; API 21,7/71,4/33,3 %; Git 12,0/50,0/19,4 %. Promedios simples: P **20,8 %**, R **73,8 %**, F1 **32,4 %**. Prioridad de lectura por F1: Git → API → Python; esto no ordena calidad factual.
 - **Contraste con el material:** el F1 medio cercano a 0,61 del ejemplo oficial corresponde a valores ilustrativos distintos, no a nuestras salidas reales.
-- **Verificación:** 8/8 pruebas nuevas aprobadas y script ejecutado en entorno Python independiente; **ejecución Windows del estudiante pendiente** (29 pruebas esperadas: 21 anteriores + 8 nuevas).
+- **Validación Windows (29/10/2026):** estudiante ejecutó el conjunto B15+B16 de **29/29 pruebas aprobadas en 0,97 s** y `evaluar_salidas_b16.py` sin llamadas a Gemini. Se reprodujeron P/R/F1 de las tres consultas, los promedios P 20,8 %, R 73,8 %, F1 32,4 % y el orden Git → API → Python. Evidencia: salida PowerShell aportada por el estudiante; no equivale a ejecución CI.
 - **Estado:** B16 lecciones 1–3 revisadas y nuevas funciones publicadas en repositorio; U2.2 **6/9 lecciones revisadas (66,7 %)**, sin atribuir calificación institucional.
-- **Punto exacto de continuación:** sincronizar y verificar `evaluar_salidas_b16.py` en Windows; luego Bloque 17 L1 «Cuando el número no basta: criterio cualitativo».
+- **Incidente de reproducibilidad JSON:** `git status -sb` mostró únicamente `M resultados_metricas.json` luego de ejecutar el script. La versión generada por Python escribe `"cobertura": 1.0` para el caso Python (división `6/6`), mientras la primera versión del archivo subida a GitHub contenía `"cobertura": 1`; son numéricamente equivalentes, pero producen diferencias textuales en Git. Se corrigió en el repositorio la representación a `1.0` para respetar el serializador Python y evitar cambios espurios al regenerar evidencia. El estudiante deberá restaurar la copia local generada, sincronizar `main` y comprobar que una nueva ejecución no deje diferencias.
+- **Punto exacto de continuación:** comprobar repositorio limpio después de la sincronización de la corrección del JSON y avanzar a Bloque 17 L1 «Cuando el número no basta: criterio cualitativo».
 
 ## Plantilla para próximas sesiones
 
