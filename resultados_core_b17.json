@@ -1,0 +1,202 @@
+[
+  {
+    "caso": 1,
+    "consulta": "¿Qué es Python? Responde en una sola oración breve.",
+    "referencia": "Python es un lenguaje de programación.",
+    "respuesta": "Python es un lenguaje de programación de alto nivel, interpretado y de propósito general, conocido por su sintaxis clara y legible.",
+    "origen": "Bloque 15: Gemini real",
+    "precision": 0.2857142857142857,
+    "cobertura": 1.0,
+    "f1": 0.4444444444444445
+  },
+  {
+    "caso": 2,
+    "consulta": "¿Qué es una API? Responde en una sola oración breve.",
+    "referencia": "Una API permite la comunicación entre aplicaciones.",
+    "respuesta": "Una API es un conjunto de reglas y protocolos que permite que diferentes aplicaciones de software se comuniquen e intercambien datos entre sí.",
+    "origen": "Bloque 15: Gemini real",
+    "precision": 0.21739130434782608,
+    "cobertura": 0.7142857142857143,
+    "f1": 0.3333333333333333
+  },
+  {
+    "caso": 3,
+    "consulta": "¿Para qué sirve Git? Responde en una sola oración breve.",
+    "referencia": "Git permite controlar versiones del código.",
+    "respuesta": "Git sirve para **controlar y registrar los cambios en el código fuente** de un proyecto, facilitando el trabajo en equipo y el desarrollo de software.",
+    "origen": "Bloque 15: Gemini real",
+    "precision": 0.12,
+    "cobertura": 0.5,
+    "f1": 0.1935483870967742
+  },
+  {
+    "caso": 4,
+    "consulta": "¿Qué es una variable en Python? Responde en una sola oración breve.",
+    "referencia": "Una variable permite asociar un nombre a un valor en Python.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "Una variable en Python es un espacio en la memoria RAM que almacena un valor y al que se le asigna un nombre para poder referenciarlo y reutilizarlo en el código.",
+    "precision": 0.25806451612903225,
+    "cobertura": 0.7272727272727273,
+    "f1": 0.38095238095238093
+  },
+  {
+    "caso": 5,
+    "consulta": "¿Qué es una lista en Python? Responde en una sola oración breve.",
+    "referencia": "Una lista de Python es una colección ordenada y modificable de elementos.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "Una lista en Python es una colección ordenada y mutable de elementos que pueden ser de diferentes tipos de datos, delimitada por corchetes `[]`.",
+    "precision": 0.4782608695652174,
+    "cobertura": 0.9166666666666666,
+    "f1": 0.6285714285714286
+  },
+  {
+    "caso": 6,
+    "consulta": "¿Qué es un diccionario en Python? Responde en una sola oración breve.",
+    "referencia": "Un diccionario de Python almacena pares de clave y valor.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "Un diccionario en Python es una colección desordenada y modificable de elementos almacenados en parejas de clave-valor.",
+    "precision": 0.35294117647058826,
+    "cobertura": 0.6,
+    "f1": 0.4444444444444445
+  },
+  {
+    "caso": 7,
+    "consulta": "¿Qué hace len() en Python? Responde en una sola oración breve.",
+    "referencia": "len devuelve la cantidad de elementos de una colección.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "La función `len()` en Python devuelve el número de elementos que contiene un objeto, como una cadena, una lista o un diccionario.",
+    "precision": 0.2727272727272727,
+    "cobertura": 0.6666666666666666,
+    "f1": 0.3870967741935484
+  },
+  {
+    "caso": 8,
+    "consulta": "¿Qué es una función en Python? Responde en una sola oración breve.",
+    "referencia": "Una función es un bloque de código reutilizable que puede recibir argumentos y devolver resultados.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "En Python, una función es un bloque de código reutilizable que realiza una tarea específica y se ejecuta cuando es llamado.",
+    "precision": 0.47619047619047616,
+    "cobertura": 0.6666666666666666,
+    "f1": 0.5555555555555556
+  },
+  {
+    "caso": 9,
+    "consulta": "¿Qué significa un error de sintaxis en Python? Responde en una sola oración breve.",
+    "referencia": "Un error de sintaxis aparece cuando el código no sigue las reglas del lenguaje.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "Un error de sintaxis en Python ocurre cuando el código viola las reglas gramaticales del lenguaje, impidiendo que el intérprete pueda leerlo y ejecutarlo.",
+    "precision": 0.4583333333333333,
+    "cobertura": 0.7857142857142857,
+    "f1": 0.5789473684210527
+  },
+  {
+    "caso": 10,
+    "consulta": "¿Qué es JSON? Responde en una sola oración breve.",
+    "referencia": "JSON es un formato de texto para representar datos estructurados.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "JSON (JavaScript Object Notation) es un formato de texto ligero basado en pares clave-valor que se utiliza comúnmente para almacenar y transmitir datos estructurados en la web.",
+    "precision": 0.3333333333333333,
+    "cobertura": 0.9,
+    "f1": 0.48648648648648646
+  },
+  {
+    "caso": 11,
+    "consulta": "¿Para qué sirve HTTP? Responde en una sola oración breve.",
+    "referencia": "HTTP es un protocolo para intercambiar solicitudes y respuestas entre clientes y servidores.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "HTTP sirve para transferir información y recursos (como páginas web e imágenes) entre un navegador y un servidor en internet.",
+    "precision": 0.3,
+    "cobertura": 0.46153846153846156,
+    "f1": 0.3636363636363637
+  },
+  {
+    "caso": 12,
+    "consulta": "¿Qué significa el código HTTP 404? Responde en una sola oración breve.",
+    "referencia": "HTTP 404 indica que el servidor no encontró el recurso solicitado.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "El código HTTP 404 significa que el servidor no pudo encontrar la página o el recurso solicitado en la dirección web proporcionada.",
+    "precision": 0.4090909090909091,
+    "cobertura": 0.8181818181818182,
+    "f1": 0.5454545454545455
+  },
+  {
+    "caso": 13,
+    "consulta": "¿Qué significa el código HTTP 429? Responde en una sola oración breve.",
+    "referencia": "HTTP 429 indica que el cliente envió demasiadas solicitudes en un periodo de tiempo.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "El código HTTP 429 significa \"Demasiadas solicitudes\" e indica que el usuario ha enviado demasiadas peticiones en un tiempo determinado y el servidor ha limitado temporalmente su acceso.",
+    "precision": 0.35714285714285715,
+    "cobertura": 0.7142857142857143,
+    "f1": 0.4761904761904762
+  },
+  {
+    "caso": 14,
+    "consulta": "¿Qué es una API REST? Responde en una sola oración breve.",
+    "referencia": "Una API REST expone recursos que se consultan y modifican mediante peticiones HTTP.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "Una API REST es una interfaz que permite la comunicación entre diferentes sistemas a través de internet usando los métodos estándar del protocolo HTTP.",
+    "precision": 0.20833333333333334,
+    "cobertura": 0.38461538461538464,
+    "f1": 0.2702702702702703
+  },
+  {
+    "caso": 15,
+    "consulta": "¿Qué es un commit de Git? Responde en una sola oración breve.",
+    "referencia": "Un commit registra una instantánea de cambios en un repositorio Git.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "Un commit de Git es un registro guardado que captura una foto del estado actual de tus archivos en el historial del proyecto.",
+    "precision": 0.30434782608695654,
+    "cobertura": 0.6363636363636364,
+    "f1": 0.411764705882353
+  },
+  {
+    "caso": 16,
+    "consulta": "¿Para qué sirve git clone? Responde en una sola oración breve.",
+    "referencia": "git clone crea una copia local de un repositorio.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "`git clone` sirve para descargar una copia exacta de un repositorio remoto en tu computadora local.",
+    "precision": 0.5,
+    "cobertura": 0.8888888888888888,
+    "f1": 0.64
+  },
+  {
+    "caso": 17,
+    "consulta": "¿Qué es una prueba unitaria? Responde en una sola oración breve.",
+    "referencia": "Una prueba unitaria verifica el comportamiento de una parte pequeña del programa.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "Una prueba unitaria es un código automatizado que verifica el funcionamiento correcto de la parte más pequeña de un programa (como una función o método) de forma aislada.",
+    "precision": 0.35714285714285715,
+    "cobertura": 0.8333333333333334,
+    "f1": 0.5
+  },
+  {
+    "caso": 18,
+    "consulta": "¿Qué es un entorno virtual de Python? Responde en una sola oración breve.",
+    "referencia": "Un entorno virtual aísla las dependencias de un proyecto Python.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "Un entorno virtual de Python es un espacio de trabajo aislado que permite instalar paquetes y dependencias específicos para un proyecto sin afectar al sistema global.",
+    "precision": 0.3076923076923077,
+    "cobertura": 0.8,
+    "f1": 0.4444444444444444
+  },
+  {
+    "caso": 19,
+    "consulta": "¿Qué significa UTF-8? Responde en una sola oración breve.",
+    "referencia": "UTF-8 es una codificación de caracteres compatible con Unicode.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "UTF-8 es un formato de codificación de caracteres que puede representar cualquier símbolo del estándar Unicode utilizando de uno a cuatro bytes.",
+    "precision": 0.2727272727272727,
+    "cobertura": 0.6666666666666666,
+    "f1": 0.3870967741935484
+  },
+  {
+    "caso": 20,
+    "consulta": "¿Qué es un token en procesamiento de texto? Responde en una sola oración breve.",
+    "referencia": "Un token es una unidad de texto obtenida al segmentar una entrada.",
+    "origen": "Bloque 17 Core: Gemini real",
+    "respuesta": "Un token es la unidad básica de texto —que puede ser una palabra, parte de ella o un signo de puntuación— en la que se divide un documento para que un modelo de lenguaje pueda procesarlo.",
+    "precision": 0.19444444444444445,
+    "cobertura": 0.5833333333333334,
+    "f1": 0.2916666666666667
+  }
+]
