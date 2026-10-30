@@ -273,6 +273,14 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Límites y QA:** [limites_metrica.md](limites_metrica.md) actualizado con ejemplos **propios** (Git, API REST, HTTP, funciones Python, listas y tokenización) y [análisis de la transcripción](analisis_revision_b17_core.md) publicado. La evidencia original completa sigue **local y no recibida**; esta documentación basada en la consola **no reemplaza** el corpus y la revisión JSON del Core.
 - **Punto exacto actualizado:** recibir `resultados_core_b17.json`, `revision_manual_core_b17.json` y `docs/revision_manual_core_b17.md`, auditarlos y publicarlos mediante PR/merge; confirmar después el enlace de entrega a Skillnest. La Unidad 2.2 permanece 8/9 hasta ese cierre.
 
+## Cierre M2-015 · 29/10/2026 — Bloque 17 Core
+
+- Se recibieron y auditaron los tres artefactos originales: [corpus](../resultados_core_b17.json), [rúbrica](../revision_manual_core_b17.json) e [informe](revision_manual_core_b17.md).
+- Auditoría: 20 casos únicos; 60/60 métricas reproducidas; muestra de cinco F1 inferiores y cinco superiores; diez valoraciones y justificaciones fieles al informe; caso 16 corregido a contradicción `no`.
+- Se documentaron los hallazgos concretos en [limites_metrica.md](limites_metrica.md). Las pruebas 55/55 y llamadas Gemini constan en el registro local compartido por el estudiante.
+- **U2.2: 9/9 lecciones (100 %) técnicamente completadas.** No consta entrega ni aprobación institucional en Skillnest.
+- Horas efectivas no informadas. Punto exacto para continuar: sincronizar las evidencias en local sin perder las copias originales, enviar el enlace GitHub en Skillnest y registrar comprobante.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
