@@ -206,10 +206,10 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Inicio/término/tiempo efectivo:** no informados; no inventar minutos estudiados.
 - **Implementación complementaria:** [ejemplos_limites_b16.py](../ejemplos_limites_b16.py) reutiliza `procesar_texto` y `calcular_precision_cobertura_f1` sin modificar las funciones centrales ni hacer llamadas API. [test_limitaciones_metricas_b16.py](../test_limitaciones_metricas_b16.py) incluye cuatro casos parametrizados; tres reproducen el curso y el cuarto reproduce la pregunta de comprensión del material.
 - **Cálculos:** sinónimos P/R/F1 = 50/50/50 %; fecha diferente 80/80/80 %; negación omitida 100/83,3/90,9 %; negación añadida en ejemplo legislativo 90,9/100/95,2 %.
-- **Verificación técnica:** 4/4 pruebas ejecutadas en un entorno Python independiente por el tutor, no equivale a ejecución confirmada por el estudiante en Windows. Pendiente verificar en el proyecto local la suite de 21 pruebas (17 anteriores + 4 nuevas).
+- **Verificación técnica posterior en Windows (29/10/2026):** el estudiante sincronizó `main` hasta `38001b1` mediante `git pull --ff-only origin main`. Ejecutó `python -m pytest -q .\test_pipeline_texto.py .\test_metricas_texto.py .\test_limitaciones_metricas_b16.py` con el intérprete `venv`: **21 passed in 0.46s** (9 B15 + 8 B16 L1 + 4 B16 L2). También ejecutó `ejemplos_limites_b16.py`: sinónimos F1 50,0 %, año diferente 80,0 %, negación omitida 90,9 %, negación agregada 95,2 %. El script es offline, sin llamadas a Gemini. Evidencia: salida textual de PowerShell facilitada por el estudiante; no se afirma verificación CI.
 - **Criterio técnico:** F1 mide solapamiento de tokens. No establece equivalencia semántica, exactitud factual, seguridad ni validez de números/fechas o negaciones; en textos clínicos sintéticos, revisar negación explícitamente antes de adoptar resultados.
 - **Avance:** U2.2 **5/9 lecciones revisadas (55,6 %)** por conteo. Bloque 16 L2 estudiada; actividad final B16 y calificación institucional aún pendientes.
-- **Punto exacto de continuidad:** validar ejemplos con `pytest` y `python ejemplos_limites_b16.py` tras sincronizar main; pasar a «Métricas ya calculadas sobre las salidas de tu propio cliente» (Bloque 16, lección 3).
+- **Punto exacto de continuidad:** estudiar «Métricas ya calculadas sobre las salidas de tu propio cliente» (Bloque 16, lección 3). No repetir las pruebas B16 L2 ni generar nuevas llamadas a Gemini sin necesidad.
 
 ## Plantilla para próximas sesiones
 
