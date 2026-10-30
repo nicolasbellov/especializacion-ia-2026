@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 8/9 lecciones revisadas (88,9 %). Actividad Core B17 ejecutada localmente según PowerShell: 55/55 pruebas, 20/20 respuestas reales y 10/10 revisiones manuales registradas. Existe discrepancia cualitativa pendiente de corregir en caso 16; faltan inspeccionar y publicar artefactos, completar límites propios y enviar a Skillnest. No consta aprobación institucional.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 8/9 lecciones revisadas (88,9 %). B17 Core validado localmente por salida PowerShell: 55/55 pruebas, 20/20 respuestas reales y 10/10 revisiones con justificación; contradicción errónea del caso 16 corregida y reporte regenerado. Documento de límites actualizado con hallazgos reales sustentados por la consola. Faltan recibir, auditar y publicar los 3 artefactos originales, confirmar entrega y aprobación institucional.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -207,7 +207,9 @@
 - **Error de consistencia pendiente:** caso **16 (`git clone`)** guarda contradicción **`si`** pero su justificación dice explícitamente que no hay contradicciones. La validación automática no comprueba coherencia entre campo y explicación. Se comunicó una corrección local controlada; falta confirmarla.
 - **Alcance de la verificación:** estos logros están confirmados por **salida local**, no por inspección del corpus completo ni archivo de notas. La publicación GitHub de `resultados_core_b17.json`, `revision_manual_core_b17.json` y `docs/revision_manual_core_b17.md` está pendiente; `docs/limites_metrica.md` necesita ejemplos verdaderamente surgidos de la muestra revisada.
 - **Avance:** se mantiene **8/9 (88,9 %)** hasta contar con artefactos consistentes, documento de límites basado en hallazgos propios y publicación. No se ha registrado envío ni aprobación Skillnest.
-- **Siguiente:** validar corrección del caso 16, recibir/inspeccionar archivos y completar trazabilidad de hallazgos, PR/merge y envío institucional.
+- **Actualización confirmada por una segunda transcripción de PowerShell:** caso 16 corregido a `contradiccion=no`, `--validar` de nuevo satisfactorio (20/20 y 10/10) y `--informe` regenerado. Distribución de la muestra: factual **10 sí**, completitud **7 sí, 2 parcialmente, 1 no**, contradicción **10 no**.
+- **Hallazgos documentados:** [limites_metrica.md](limites_metrica.md) contiene ya patrones observados en los propios resultados y [analisis_revision_b17_core.md](analisis_revision_b17_core.md) preserva sus referencias y justificaciones según la consola. No atribuir publicación ni inspección de los tres archivos locales originales.
+- **Siguiente:** recibir y auditar los JSON `resultados_core_b17.json` y `revision_manual_core_b17.json`, más `docs/revision_manual_core_b17.md`; publicarlos por PR/merge y documentar entrega formal en Skillnest. **8/9 hasta confirmar cierre efectivo del Core**.
 
 ## Cómo actualizar este archivo
 
