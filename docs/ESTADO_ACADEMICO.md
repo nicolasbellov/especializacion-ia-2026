@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 8/9 lecciones revisadas (88,9 %). B17 Core validado localmente por salida PowerShell: 55/55 pruebas, 20/20 respuestas reales y 10/10 revisiones con justificación; contradicción errónea del caso 16 corregida y reporte regenerado. Documento de límites actualizado con hallazgos reales sustentados por la consola. Faltan recibir, auditar y publicar los 3 artefactos originales, confirmar entrega y aprobación institucional.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **Core B17 técnicamente completado: 9/9 lecciones (100 %). Evidencias auditadas y versionadas: 20 respuestas de Gemini según logs locales, 10 valoraciones justificadas, 60/60 métricas recalculadas, informe íntegro y límites documentados. Suite ejecutada por estudiante: 55/55 pruebas. PENDIENTE envío en Skillnest y aprobación institucional.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
