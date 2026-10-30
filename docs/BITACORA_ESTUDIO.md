@@ -211,6 +211,18 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Avance:** U2.2 **5/9 lecciones revisadas (55,6 %)** por conteo. Bloque 16 L2 estudiada; actividad final B16 y calificación institucional aún pendientes.
 - **Punto exacto de continuidad:** estudiar «Métricas ya calculadas sobre las salidas de tu propio cliente» (Bloque 16, lección 3). No repetir las pruebas B16 L2 ni generar nuevas llamadas a Gemini sin necesidad.
 
+## Sesión M2-011 · 29/10/2026 — U2.2, Bloque 16, lección 3
+
+- **Material oficial:** «Métricas ya calculadas sobre las salidas de tu propio cliente». Función `calcular_metricas` de extremo a extremo, aplicación a varias salidas reales, JSON UTF-8 con respuesta y referencia, promedios y orden de revisión por F1.
+- **Inicio/término/tiempo efectivo:** no informados; no inferidos desde Git ni desde el chat.
+- **Implementación:** [evaluar_salidas_b16.py](../evaluar_salidas_b16.py) integra el procesamiento B15 con precisión/cobertura/F1 B16. Reutiliza las **tres respuestas originales** de [resultados_b15.json](../resultados_b15.json); no genera nuevas solicitudes ni consume cuota. [test_evaluar_salidas_b16.py](../test_evaluar_salidas_b16.py) incorpora **8 pruebas offline**.
+- **Evidencia reproducible:** [resultados_metricas.json](../resultados_metricas.json), que conserva consulta, referencia, respuesta real, precisión, cobertura y F1. [Registro interpretativo](registro_metricas_b16.md) con fórmulas, límites y decisiones.
+- **Resultados:** Python P/R/F1 28,6/100,0/44,4 %; API 21,7/71,4/33,3 %; Git 12,0/50,0/19,4 %. Promedios simples: P **20,8 %**, R **73,8 %**, F1 **32,4 %**. Prioridad de lectura por F1: Git → API → Python; esto no ordena calidad factual.
+- **Contraste con el material:** el F1 medio cercano a 0,61 del ejemplo oficial corresponde a valores ilustrativos distintos, no a nuestras salidas reales.
+- **Verificación:** 8/8 pruebas nuevas aprobadas y script ejecutado en entorno Python independiente; **ejecución Windows del estudiante pendiente** (29 pruebas esperadas: 21 anteriores + 8 nuevas).
+- **Estado:** B16 lecciones 1–3 revisadas y nuevas funciones publicadas en repositorio; U2.2 **6/9 lecciones revisadas (66,7 %)**, sin atribuir calificación institucional.
+- **Punto exacto de continuación:** sincronizar y verificar `evaluar_salidas_b16.py` en Windows; luego Bloque 17 L1 «Cuando el número no basta: criterio cualitativo».
+
 ## Plantilla para próximas sesiones
 
 ```markdown
