@@ -81,3 +81,12 @@ Para publicar a través del flujo ya usado en este proyecto, **compartir estos a
 No marcar como cerrada la unidad ni pulsar **«Enviar entrega»** hasta validar los cuatro archivos y confirmar que representan 20 respuestas reales y 10 juicios humanos. En la pantalla observada se permite **«Enlace (Drive, etc.)»**: usar el enlace GitHub verificado de la entrega **una vez publicada**. Guardar comprobante de envío y resultado institucional por separado.
 
 **Siguiente unidad tras cerrar Core:** U2.3, Bloque 18 (LangChain: templates parametrizables).
+
+## Verificación final de evidencia (29/10/2026)
+
+- [20 respuestas originales y sus métricas](../resultados_core_b17.json): 20 casos únicos, 60 métricas recalculadas sin diferencias.
+- [Diez valoraciones humanas originales](../revision_manual_core_b17.json): cinco F1 inferiores y cinco superiores, sin duplicados; caso 16 corregido a contradicción `no`.
+- [Informe de revisión generado](revision_manual_core_b17.md): reproduce íntegramente la rúbrica y las notas.
+- [Límites documentados con ejemplos propios](limites_metrica.md): separa hallazgos observados de los ejemplos didácticos oficiales.
+
+**Core técnicamente completado (U2.2 9/9, 100 %).** La validación de las llamadas reales y las 55 pruebas se sustenta en el registro local del estudiante; la integridad de los tres archivos se auditó por separado. **Pendiente:** registrar envío por enlace y aprobación en Skillnest. Esta sección no acredita una entrega institucional todavía.
