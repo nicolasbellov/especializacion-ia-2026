@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 7/9 lecciones revisadas (77,8 %); B15+B16 técnicamente validados en Windows (29/29 pruebas y evidencia JSON reproducible). B17 L1 estudiada: rúbrica cualitativa y plantilla de tres respuestas reales preparadas sin juicios automáticos; pendientes 11 nuevas pruebas locales y evaluación humana. Aprobación institucional B15 no confirmada.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 7/9 lecciones revisadas (77,8 %); B15+B16 técnicamente validados en Windows (29/29 pruebas y evidencia JSON reproducible). B17 L1 estudiada: rúbrica cualitativa y plantilla de tres respuestas reales preparadas sin juicios automáticos; 11 nuevas pruebas locales confirmadas (40/40 en conjunto); pendientes los juicios cualitativos humanos. Aprobación institucional B15 no confirmada.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -176,9 +176,9 @@
 - **Ejemplo oficial:** se omite el marcador «3 goles a 1»; aunque P=100 %, R=64,3 %, F1=78,3 %, la revisión cualitativa concluye factual «sí», completitud «no», contradicción «no».
 - **Adaptación a nuestros datos:** como hay tres casos reales (Git, API y Python), se seleccionan los tres sin duplicados. [revision_cualitativa_b17.py](../revision_cualitativa_b17.py) y [test_revision_cualitativa_b17.py](../test_revision_cualitativa_b17.py) implementan selección, plantilla y controles básicos; [revision_cualitativa_b17.json](../revision_cualitativa_b17.json) deja los juicios en `null` hasta la evaluación humana.
 - **Registro de conocimiento:** [registro_revision_cualitativa_b17.md](registro_revision_cualitativa_b17.md), separado del cálculo numérico de B16.
-- **Validación:** nuevo código pendiente de ejecución en Windows. Once pruebas agregadas; total esperado B15+B16+B17 = **40 pruebas**. No atribuir «11/11 aprobado» sin salida local.
+- **Validación en Windows:** estudiante ejecutó las cinco suites y obtuvo **40 passed in 0.72s** (29 de B15+B16 y 11 de B17). Ejecutó `revision_cualitativa_b17.py`, que seleccionó Git, API y Python en orden F1 y preservó sin cambios la plantilla JSON existente. `git status -sb` devolvió `## main...origin/main`; no hubo llamadas a Gemini. Evidencia: salida PowerShell del estudiante, sin verificación CI.
 - **Estado:** U2.2 **7/9 lecciones revisadas (77,8 %)**; sin calificación oficial Skillnest y sin evaluaciones cualitativas del estudiante aún.
-- **Continuidad:** ejecutar pruebas; evaluar el caso Git con rúbrica, luego API y Python; estudiar B17 L2 «Qué documentar como límite de tu pipeline».
+- **Continuidad:** aplicar la rúbrica al caso Git, luego API y Python, sin inventar los juicios humanos; continuar B17 L2 «Qué documentar como límite de tu pipeline».
 
 ## Cómo actualizar este archivo
 
