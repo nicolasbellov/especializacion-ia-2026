@@ -258,6 +258,18 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Avance curricular:** U2.2 se mantiene en **8/9 (88,9 %)** lecciones revisadas: actividad Core examinada y herramientas preparadas, **todavía no completada, enviada ni aprobada por Skillnest**.
 - **Punto exacto para continuar:** sincronizar `main`, validar las 55 pruebas esperadas, ejecutar `core_b17_generar.py --plan`; tras confirmación, ejecutar `--generar --max-nuevas 17` con clave local para obtener 20/20. Luego documentar 10 juicios humanos y actualizar límites a partir de evidencia propia.
 
+## Sesión M2-015 · 29/10/2026 — U2.2, Bloque 17 Core: ejecución y rúbrica
+
+- **Evidencia aportada:** transcripción completa de PowerShell del estudiante, con comandos y resultados locales. No se han recibido aún los archivos completos `resultados_core_b17.json` y `revision_manual_core_b17.json` para inspección ni están publicados en GitHub.
+- **Pruebas técnicas:** actualización a `8e2432e`, conjunto B15+B16+B17+Core **55 passed in 1.50s**. `core_b17_generar.py --plan` confirmó 3/20 reales, 17 pendientes y cero llamadas de ese modo.
+- **Generación real:** ejecución `--generar --max-nuevas 17` con cliente conectado; los 17 casos nuevos se guardaron progresivamente hasta **20/20 reales**. Caso 20 requirió dos reintentos y acabó guardado; el log **no identifica el HTTP concreto**, por lo que no afirmar 429 real. Costo estimado exclusivamente **didáctico** para el lote nuevo: **USD 0,001588 referenciales**, no facturación verificada.
+- **Selección y revisión:** `--preparar` seleccionó exactamente **10 casos** de los extremos F1: 3, 14, 20, 2, 11, 12, 8, 9, 5 y 16. `--revisar` registró diez valoraciones manuales con notas. Interrupciones en casos 12 y 9 fueron recuperadas sin perder los casos previos. `--validar` informó **20/20 y 10/10**, y `--informe` creó localmente `docs/revision_manual_core_b17.md`.
+- **Control de calidad crítico:** el **caso 16 (`git clone`) quedó grabado con `contradiccion: "si"`**, mientras su justificación afirma «no contiene contradicciones». Es una discrepancia semántica no detectable por el validador estructural. El estudiante **aún no ha confirmado la corrección**. Casos 12 y 9 se retomaron y fueron guardados correctamente con contradicción «no», según el log.
+- **Entrega:** no atribuida como completa. Falta corregir caso 16, volver a validar y regenerar informe, inspeccionar los dos JSON locales, **actualizar `docs/limites_metrica.md` con hallazgos realmente documentados** y publicar los artefactos finales vía PR/merge. Tampoco existe evidencia de envío ni calificación Skillnest.
+- **Avance curricular:** U2.2 **8/9 lecciones revisadas (88,9 %)**; Core en ejecución avanzada con 20/20 y 10/10 **según salida local**, sujeto a QA semántico y publicación final.
+- **Inicio/término/tiempo efectivo:** no informados; no inventar horas.
+- **Punto exacto de continuación:** corregir únicamente `contradiccion` del caso 16 a `no` si el estudiante confirma esa valoración; ejecutar `core_b17_revisar.py --validar` y `--informe`, recibir y auditar JSON e informe, redactar hallazgos propios, publicar la entrega y recién después evaluar envío a Skillnest.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
