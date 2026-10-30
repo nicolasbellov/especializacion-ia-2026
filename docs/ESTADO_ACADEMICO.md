@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 7/9 lecciones revisadas (77,8 %); B15+B16 técnicamente validados en Windows (29/29 pruebas y evidencia JSON reproducible). B17 L1 estudiada: rúbrica cualitativa y plantilla de tres respuestas reales preparadas sin juicios automáticos; 11 nuevas pruebas locales confirmadas (40/40 en conjunto); pendientes los juicios cualitativos humanos. Aprobación institucional B15 no confirmada.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 8/9 lecciones revisadas (88,9 %). B15+B16 técnicamente validados en Windows; B17 L1 validada con suite acumulada 40/40. B17 L2 documentada en `docs/limites_metrica.md`, con límites oficiales y muestra propia de 3 casos seleccionados, 0/3 revisados cualitativamente. Pendientes rúbrica humana, actividad Core B17 y evaluación institucional.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -179,6 +179,15 @@
 - **Validación en Windows:** estudiante ejecutó las cinco suites y obtuvo **40 passed in 0.72s** (29 de B15+B16 y 11 de B17). Ejecutó `revision_cualitativa_b17.py`, que seleccionó Git, API y Python en orden F1 y preservó sin cambios la plantilla JSON existente. `git status -sb` devolvió `## main...origin/main`; no hubo llamadas a Gemini. Evidencia: salida PowerShell del estudiante, sin verificación CI.
 - **Estado:** U2.2 **7/9 lecciones revisadas (77,8 %)**; sin calificación oficial Skillnest y sin evaluaciones cualitativas del estudiante aún.
 - **Continuidad:** aplicar la rúbrica al caso Git, luego API y Python, sin inventar los juicios humanos; continuar B17 L2 «Qué documentar como límite de tu pipeline».
+
+### U2.2 — Bloque 17, lección 2 (29/10/2026)
+
+- **Lección:** «Qué documentar como límite de tu pipeline». El curso exige explicar **qué mide**, **modos de falla con ejemplos**, **tamaño y criterio de muestra revisada**, y **recomendación de uso**, además de mantener el archivo versionado en Git y fechado tras nuevos hallazgos.
+- **Artefacto:** [limites_metrica.md](limites_metrica.md), nueva referencia operativa sobre el cálculo F1 del proyecto. Contiene ejemplos del Bloque 16 y del Bloque 17, los resultados reales de Gemini y una recomendación de revisión humana en casos de riesgo. No se modificó el código ni se llamó a Gemini.
+- **Proveniencia:** ejemplos de sinónimos, fechas, negaciones y omisiones provienen del **material oficial**, no de juicios humanos propios. La muestra de **3 respuestas seleccionadas** (Git, API, Python) tiene **0/3 valoraciones humanas completas**. Se declara explícitamente este límite en lugar de inventar «3 casos revisados».
+- **Estado de validación:** la suite de **40/40** pruebas previamente ejecutada en Windows sigue siendo la evidencia técnica disponible. Este cambio es solo Markdown y no constituye una nueva ejecución de pruebas.
+- **Avance U2.2:** **8/9 lecciones revisadas (88,9 %)**. Falta la actividad Core final del Bloque 17, la evaluación humana de los tres casos y cualquier confirmación institucional.
+- **Punto exacto de continuación:** aplicar rúbrica a Git, API y Python con sus justificaciones, registrar hallazgos confirmados y luego desarrollar B17 Core «Interpreta tus resultados y documenta sus límites».
 
 ## Cómo actualizar este archivo
 

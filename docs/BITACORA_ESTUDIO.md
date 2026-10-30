@@ -235,6 +235,17 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Avance:** U2.2 **7/9 lecciones revisadas (77,8 %)**. B17 L1 estudiada y técnicamente validada en Windows; **siguen pendientes los juicios humanos para Git, API y Python**, sin calificación institucional atribuida.
 - **Punto exacto de continuación:** revisar humanamente el caso real Git con la rúbrica (corrección factual, completitud, contradicción y justificación), luego API y Python. A continuación B17 L2 «Qué documentar como límite de tu pipeline». No repetir pruebas ni API sin necesidad.
 
+## Sesión M2-013 · 29/10/2026 — U2.2, Bloque 17, lección 2
+
+- **Material oficial:** «Qué documentar como límite de tu pipeline». Cuatro partes del documento: definición de la métrica, fallos con ejemplos, tamaño y criterio de muestra realmente revisada, y recomendación de uso. Versionar el archivo en Git y añadir fechas/hallazgos sin borrar antecedentes.
+- **Inicio/término/tiempo efectivo:** no informados; no inferirlos de los cambios en el repositorio.
+- **Documento creado:** [limites_metrica.md](limites_metrica.md), junto al código y la rúbrica. Distingue ejemplos oficiales de los resultados de Gemini y de evaluaciones humanas aún no realizadas.
+- **Modos de falla conocidos:** sinónimos (F1 50 %), fecha diferente (80 %), negación omitida (90,9 %), negación añadida (95,2 %) e información relevante omitida (78,3 %), todos como **ejemplos del material Skillnest**, no hallazgos de revisión propia.
+- **Muestra propia:** 3 respuestas reales de B15 (Git, API, Python), seleccionadas sin duplicados por extremos de F1; **0/3 revisiones cualitativas humanas terminadas** al registrar esta lección. No se inventaron calificaciones, fechas de revisión individual ni hallazgos de errores propios.
+- **Verificación técnica:** cambio solo documental; código y suite previa de **40/40 pruebas** no modificados. No se ha recibido una nueva ejecución, y no se requiere API.
+- **Avance:** U2.2 **8/9 lecciones revisadas (88,9 %)**. B17 L2 documentada; falta completar la revisión humana y la actividad **B17 Core «Interpreta tus resultados y documenta sus límites»**, además de cualquier envío/evaluación institucional.
+- **Punto exacto de continuación:** aplicar rúbrica con justificación a las respuestas Git, API y Python, incorporando hallazgos a [limites_metrica.md](limites_metrica.md) solo si la evidencia lo sostiene; después abordar la actividad Core del B17.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
