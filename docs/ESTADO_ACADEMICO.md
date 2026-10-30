@@ -166,9 +166,9 @@
 - **Métricas efectivas:** Python F1 44,4 %; API 33,3 %; Git 19,4 %. **F1 promedio simple 32,4 %**, distinto del `0,61` ilustrativo del curso. P media 20,8 %; cobertura media 73,8 %. Priorizar por F1 no es dictaminar calidad o verdad.
 - **Trazabilidad y límites:** [registro_metricas_b16.md](registro_metricas_b16.md); JSON preserva referencia, respuesta original y métricas, con UTF-8 y valores numéricos sin redondear.
 - **Pruebas ejecutadas en Windows:** **29 passed in 0.97s** (21 anteriores + 8 nuevas), sin regresiones. `evaluar_salidas_b16.py` reprodujo las métricas P/R/F1, los promedios y el orden de inspección de los tres casos reales, sin nuevas llamadas a Gemini. Verificación basada en salida local facilitada por el estudiante, no en CI.
-- **Avance:** U2.2 **6/9 lecciones revisadas (66,7 %)** por conteo; las tres lecciones de B16 estudiadas, validación local de L3 pendiente. Sin acreditar nota oficial de Skillnest.
-- **Reproducibilidad:** al regenerar el JSON, Python serializa la cobertura perfecta como `1.0`; el archivo publicado inicialmente tenía `1`, diferencia textual sin efecto en los valores. La versión de GitHub se corrigió a `1.0` para evitar cambios espurios. Pendiente restaurar, actualizar y reconfirmar limpieza local.
-- **Continuidad:** confirmar el árbol limpio tras sincronizar el JSON corregido; estudiar Bloque 17 L1 «Cuando el número no basta: criterio cualitativo».
+- **Avance:** U2.2 **6/9 lecciones revisadas (66,7 %)** por conteo; las tres lecciones del Bloque 16 validadas técnicamente en Windows (29/29 pruebas) y el JSON reproducible. Sin acreditar nota oficial de Skillnest.
+- **Reproducibilidad:** al regenerar el JSON, Python serializa la cobertura perfecta como `1.0`; el archivo publicado inicialmente tenía `1`, diferencia textual sin efecto en los valores. La versión de GitHub se corrigió a `1.0` para evitar cambios espurios. **Cierre local confirmado:** el estudiante restauró `resultados_metricas.json`, descargó la corrección en `85dc97c`, regeneró el archivo y `git status -sb` devolvió `## main...origin/main`, sin modificaciones locales.
+- **Continuidad:** estudiar Bloque 17 L1 «Cuando el número no basta: criterio cualitativo»; ninguna prueba ni llamada API adicional necesaria para cerrar B16.
 
 ## Cómo actualizar este archivo
 
