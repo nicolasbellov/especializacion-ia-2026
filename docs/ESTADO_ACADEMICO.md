@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 5/9 lecciones revisadas (55,6 %); Bloque 15 validado (9/9 pytest, 3/3 Gemini y JSON publicado); Bloque 16 L1 validada en Windows (17/17 pruebas B15+B16); Bloque 16 L2 estudiada con ejemplos de límites léxicos reproducidos offline, pendiente ejecutar 4 pruebas adicionales en Windows. Entrega y evaluación institucional B15 pendientes.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 5/9 lecciones revisadas (55,6 %); Bloque 15 validado (9/9 pytest, 3/3 Gemini y JSON publicado); Bloque 16 L1 validada en Windows (17/17 pruebas B15+B16); Bloque 16 L2 validada en Windows: suite de 21/21 pruebas y cuatro ejemplos offline reproducidos. Entrega y evaluación institucional B15 pendientes.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -155,9 +155,9 @@
 - **Lección oficial:** «Sus límites: por qué la métrica sola no basta». Ejemplos sobre sinónimos, año diferente y negación omitida.
 - **Material y cálculo:** F1 50 % en auto/vehículo, 80 % en 1991/1989, 90,9 % al quitar `no`, y 95,2 % al añadir `no` en el ejemplo legislativo. La coincidencia de tokens **no** determina corrección del significado.
 - **Código complementario:** [ejemplos_limites_b16.py](../ejemplos_limites_b16.py) y [test_limitaciones_metricas_b16.py](../test_limitaciones_metricas_b16.py), basados en funciones existentes; no hay llamadas a la API ni modificaciones a `metricas_texto.py`.
-- **Verificación:** 4 pruebas realizadas correctamente en entorno independiente del tutor; faltan pruebas en Windows del estudiante y confirmación de suite conjunta (21 tests esperados). No confundir ambas evidencias.
+- **Verificación en Windows aportada por el estudiante:** actualización a `38001b1`; suite conjunta de B15+B16 **21 passed in 0.46s** (9 + 8 + 4 pruebas). `ejemplos_limites_b16.py` reprodujo sinónimos 50,0 %, año distinto 80,0 %, negación omitida 90,9 % y negación añadida 95,2 % de F1. No se realizaron consultas a Gemini con este script; evidencia basada en consola local, no en ejecución CI.
 - **Estado académico interno:** U2.2 **5/9 lecciones revisadas (55,6 %)**, sin cierre de todo el Bloque 16 ni calificación Skillnest.
-- **Siguiente:** validar el nuevo script/pruebas en Windows y estudiar Bloque 16 L3 «Métricas ya calculadas sobre las salidas de tu propio cliente».
+- **Siguiente:** estudiar Bloque 16 L3 «Métricas ya calculadas sobre las salidas de tu propio cliente»; la validación local de B16 L2 ya fue confirmada.
 
 ## Cómo actualizar este archivo
 
