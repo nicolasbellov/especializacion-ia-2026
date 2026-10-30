@@ -1,0 +1,35 @@
+[
+  {
+    "caso": 3,
+    "consulta": "¿Para qué sirve Git? Responde en una sola oración breve.",
+    "referencia": "Git permite controlar versiones del código.",
+    "respuesta": "Git sirve para **controlar y registrar los cambios en el código fuente** de un proyecto, facilitando el trabajo en equipo y el desarrollo de software.",
+    "f1": 0.1935483870967742,
+    "correccion_factual": null,
+    "completitud": null,
+    "contradiccion": null,
+    "justificacion": ""
+  },
+  {
+    "caso": 2,
+    "consulta": "¿Qué es una API? Responde en una sola oración breve.",
+    "referencia": "Una API permite la comunicación entre aplicaciones.",
+    "respuesta": "Una API es un conjunto de reglas y protocolos que permite que diferentes aplicaciones de software se comuniquen e intercambien datos entre sí.",
+    "f1": 0.3333333333333333,
+    "correccion_factual": null,
+    "completitud": null,
+    "contradiccion": null,
+    "justificacion": ""
+  },
+  {
+    "caso": 1,
+    "consulta": "¿Qué es Python? Responde en una sola oración breve.",
+    "referencia": "Python es un lenguaje de programación.",
+    "respuesta": "Python es un lenguaje de programación de alto nivel, interpretado y de propósito general, conocido por su sintaxis clara y legible.",
+    "f1": 0.4444444444444445,
+    "correccion_factual": null,
+    "completitud": null,
+    "contradiccion": null,
+    "justificacion": ""
+  }
+]
