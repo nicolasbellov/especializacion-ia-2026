@@ -1,6 +1,6 @@
 # Límites de la métrica de evaluación del pipeline de texto
 
-**Última actualización:** 29/10/2026 (Chile) · **Alcance:** U2.2, Bloques 15–17 · **Estado:** hallazgos propios incorporados desde revisión humana completada según consola; publicación de los JSON e informe originales aún pendiente.
+**Última actualización:** 29/10/2026 (Chile) · **Alcance:** U2.2, Bloques 15–17 · **Estado:** hallazgos propios respaldados por corpus e informe originales auditados y publicados en GitHub. Entrega a Skillnest pendiente.
 
 ## Qué mide
 
@@ -34,7 +34,7 @@ Los siguientes resultados **sí proceden de las diez anotaciones humanas del est
 - **Muestra:** **10/20 casos revisados manualmente**, escogidos como **cinco menores F1** (casos 3, 14, 20, 2, 11) y **cinco mayores F1** (12, 8, 9, 5, 16), sin duplicados. La revisión y su corrección se informaron en la sesión de **29/10/2026**.
 - **Rangos:** de **19,4 %** (Git) a **64,0 %** (`git clone`). Los cinco «mayores» lo son solo en el conjunto de 20, no necesariamente representan F1 altos absolutos.
 - **Rúbrica:** corrección factual: **10 sí**; completitud: **7 sí, 2 parcialmente, 1 no**; contradicción: **10 no** después de corregir una anotación del caso 16.
-- **Trazabilidad:** el estudiante ejecutó `--validar` (20/20 y 10/10) y regeneró el informe `docs/revision_manual_core_b17.md` después de corregir el caso 16. **Los archivos originales `resultados_core_b17.json`, `revision_manual_core_b17.json` y el informe Markdown todavía no han sido inspeccionados ni publicados en GitHub**. Este documento recoge hallazgos **sustentados por la transcripción**, sujetos a una auditoría final al recibir esos artefactos.
+- **Trazabilidad:** el estudiante ejecutó `--validar` (20/20 y 10/10) y regeneró el informe `docs/revision_manual_core_b17.md` después de corregir el caso 16. **Los archivos originales** [resultados_core_b17.json](../resultados_core_b17.json), [revision_manual_core_b17.json](../revision_manual_core_b17.json) y [revision_manual_core_b17.md](revision_manual_core_b17.md) **fueron recibidos, auditados y versionados en GitHub**. Se verificaron por separado los 20 casos, sus 60 métricas, la selección de 5 F1 menores y 5 mayores y la transcripción literal de la rúbrica en Markdown. La bitácora de API sigue siendo evidencia de ejecución aportada por el estudiante, no una certificación del proveedor.
 - **Historial:** en B17 L1 la muestra inicial contenía solo 3 casos seleccionados y **0/3 evaluados**; esta ronda Core la amplió a 20 y revisó 10. Mantener el historial al incorporar nuevas rondas.
 
 ## Recomendación de uso
@@ -45,6 +45,6 @@ Los siguientes resultados **sí proceden de las diez anotaciones humanas del est
 
 - Cálculo: [pipeline_texto.py](../pipeline_texto.py), [metricas_texto.py](../metricas_texto.py) y [evaluar_salidas_b16.py](../evaluar_salidas_b16.py).
 - Rúbrica y selección: [revision_cualitativa_b17.py](../revision_cualitativa_b17.py) y [registro_revision_cualitativa_b17.md](registro_revision_cualitativa_b17.md).
-- Core: [análisis de juicios humanos registrados por consola](analisis_revision_b17_core.md), [guía de actividad](guia_entrega_b17_core.md).
+- Core: [corpus original de 20 respuestas](../resultados_core_b17.json), [diez valoraciones originales](../revision_manual_core_b17.json), [informe transcrito fielmente](revision_manual_core_b17.md), [análisis cualitativo](analisis_revision_b17_core.md) y [guía de actividad](guia_entrega_b17_core.md).
 - Revisar este documento si cambian el preprocesamiento, el conteo o las referencias, y tras cada ronda nueva de revisión humana. Mantenerlo bajo control de versiones.
 - En un repositorio público no incluir credenciales ni datos clínicos reales. Las métricas textuales por sí solas no deben autorizar decisiones clínicas ni de otra índole crítica.
