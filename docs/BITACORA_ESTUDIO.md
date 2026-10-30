@@ -246,6 +246,18 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Avance:** U2.2 **8/9 lecciones revisadas (88,9 %)**. B17 L2 documentada; falta completar la revisión humana y la actividad **B17 Core «Interpreta tus resultados y documenta sus límites»**, además de cualquier envío/evaluación institucional.
 - **Punto exacto de continuación:** aplicar rúbrica con justificación a las respuestas Git, API y Python, incorporando hallazgos a [limites_metrica.md](limites_metrica.md) solo si la evidencia lo sostiene; después abordar la actividad Core del B17.
 
+## Sesión M2-014 · 29/10/2026 — U2.2, Bloque 17, actividad Core (preparación)
+
+- **Fuente oficial:** «Interpreta tus resultados y documenta sus límites [Actividad core]», más captura de entrega por enlace Skillnest. **Requisitos verificables:** 20 respuestas reales obtenidas con `consultar_modelo` y sus métricas; 10 revisiones manuales (5 F1 bajos + 5 altos) con rúbrica/nota; documento de límites basado en hallazgos propios; evidencia publicada en Git y enlace presentado en Skillnest.
+- **Estado previo:** **3/20 respuestas** reales versionadas (B15), **0/10 revisiones humanas Core**, `docs/limites_metrica.md` inicial con ejemplos del curso, sin hallazgos de revisión humana propia. La suite acumulada B15+B16+B17 L1 **40/40** aprobada en Windows en sesión anterior.
+- **Preparación de software, no ejecución real:** [core_b17_generar.py](../core_b17_generar.py) agrega 17 consultas técnicas con referencias explícitas y llamadas posteriores a `cliente.consultar_modelo` en el entorno local. Guárdalas incrementalmente y reanuda tras errores sin consultas duplicadas. `--plan` no hace peticiones ni escribe archivos; `--generar` sí puede consumir cuota o generar cargos.
+- **Revisión humana, aún no realizada:** [core_b17_revisar.py](../core_b17_revisar.py) selecciona 5 + 5 extremos sin duplicados a partir de 20 respuestas, presenta las parejas y exige que el estudiante registre factual, completitud, contradicción y justificación. Guarda tras cada revisión y permite exportar [informe Core pendiente](revision_manual_core_b17.md) solo cuando se hayan completado las diez.
+- **Pruebas preparadas:** [test_core_b17.py](../test_core_b17.py) agrega **15 pruebas offline con simulaciones exclusivamente de prueba**, que no se cuentan como respuestas reales. Total esperado de suite conjunta: **55**; ejecución local de estas pruebas **pendiente**.
+- **Guía y trazabilidad:** [guia_entrega_b17_core.md](guia_entrega_b17_core.md) registra comandos PowerShell, entregables exactos y criterios de no enviar antes de cumplir 20/10 y ajustar límites propios.
+- **Inicio/término/tiempo efectivo:** no informados; no inferir tiempos.
+- **Avance curricular:** U2.2 se mantiene en **8/9 (88,9 %)** lecciones revisadas: actividad Core examinada y herramientas preparadas, **todavía no completada, enviada ni aprobada por Skillnest**.
+- **Punto exacto para continuar:** sincronizar `main`, validar las 55 pruebas esperadas, ejecutar `core_b17_generar.py --plan`; tras confirmación, ejecutar `--generar --max-nuevas 17` con clave local para obtener 20/20. Luego documentar 10 juicios humanos y actualizar límites a partir de evidencia propia.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
