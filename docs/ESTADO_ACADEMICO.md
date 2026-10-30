@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **Core B17 técnicamente completado: 9/9 lecciones (100 %). Evidencias auditadas y versionadas: 20 respuestas de Gemini según logs locales, 10 valoraciones justificadas, 60/60 métricas recalculadas, informe íntegro y límites documentados. Suite ejecutada por estudiante: 55/55 pruebas. PENDIENTE envío en Skillnest y aprobación institucional.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **9/9 lecciones (100 %) completadas técnicamente; entrega Core B17 enviada en Skillnest según confirmación expresa del estudiante del 29/10/2026. Evidencia GitHub auditada y publicada: 20 respuestas, 10 revisiones, 60/60 métricas y límites. 55/55 pruebas locales según su consola. Pendiente de evaluación/nota institucional; no se cuenta aún con comprobante de la plataforma.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -219,6 +219,13 @@
 - **Evidencia de ejecución:** la consola compartida acredita 17 nuevas llamadas con guardado incremental, dos reintentos en el caso 20 y 55/55 pruebas correctas. No atribuir a estas evidencias una validación independiente con el proveedor ni costos reales facturados.
 - **Avance técnico curricular:** **9/9 lecciones (100 %)** de U2.2. **No se ha presentado ni aprobado aún la entrega en Skillnest**; registrar comprobante de envío y calificación por separado.
 - **Siguiente punto:** sincronizar GitHub en local preservando los tres archivos generados allí, copiar el enlace a la evidencia pública en Skillnest y continuar con U2.3 tras el envío.
+
+### Constancia de envío institucional — U2.2 B17 Core (29/10/2026)
+
+- **Estado del envío:** estudiante confirmó expresamente en el chat «Entregado», después de mostrar en la plataforma Skillnest la tarea Core y el campo de enlace a la guía publicada de GitHub.
+- **Evidencia técnica presentada:** [índice de entrega](guia_entrega_b17_core.md), [corpus de 20 respuestas](../resultados_core_b17.json), [rúbrica de 10 revisiones](../revision_manual_core_b17.json), [informe](revision_manual_core_b17.md) y [documento de límites](limites_metrica.md).
+- **Alcance de la confirmación:** envío **declarado por el estudiante**; no se ha recibido pantalla posterior de acuse, identificador de entrega, retroalimentación o calificación institucional. No equiparar «enviado» con «aprobado».
+- **Avance:** U2.2 9/9 (100 %) por cumplimiento técnico; **evaluación oficial pendiente**. Siguiente unidad: U2.3, Bloque 18 (LangChain: plantillas parametrizables).
 
 ## Cómo actualizar este archivo
 

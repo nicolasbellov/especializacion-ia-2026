@@ -281,6 +281,14 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **U2.2: 9/9 lecciones (100 %) técnicamente completadas.** No consta entrega ni aprobación institucional en Skillnest.
 - Horas efectivas no informadas. Punto exacto para continuar: sincronizar las evidencias en local sin perder las copias originales, enviar el enlace GitHub en Skillnest y registrar comprobante.
 
+## Hito M2-016 · 29/10/2026 — Envío de actividad Core B17 a Skillnest
+
+- **Acción declarada:** el estudiante confirmó explícitamente en el chat: **«Entregado»** después de incorporar el enlace de GitHub en la pantalla de envío de Skillnest.
+- **Referencia de entrega:** [guía e índice de evidencias](guia_entrega_b17_core.md), con 20 respuestas reales, 10 evaluaciones cualitativas, informe y límites basados en casos revisados.
+- **Estado:** **envío institucional confirmado por declaración del estudiante**, sin acuse de recibo ni nota visibles en esta conversación. No afirmar aprobación o calificación.
+- **Avance técnico:** U2.2 **9/9 lecciones (100 %)**. **Pendiente:** eventual retroalimentación/aprobación de Skillnest. **Punto exacto desde donde continuar:** U2.3, Bloque 18: LangChain y plantillas parametrizables; usar como base los aprendizajes de evaluación de texto de U2.2.
+- **Tiempo efectivo:** hora de inicio/término y duración no informados.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
