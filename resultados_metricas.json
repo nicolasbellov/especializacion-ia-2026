@@ -5,7 +5,7 @@
     "referencia": "Python es un lenguaje de programación.",
     "respuesta": "Python es un lenguaje de programación de alto nivel, interpretado y de propósito general, conocido por su sintaxis clara y legible.",
     "precision": 0.2857142857142857,
-    "cobertura": 1,
+    "cobertura": 1.0,
     "f1": 0.4444444444444445
   },
   {
