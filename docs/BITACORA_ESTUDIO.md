@@ -269,6 +269,9 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Avance curricular:** U2.2 **8/9 lecciones revisadas (88,9 %)**; Core en ejecución avanzada con 20/20 y 10/10 **según salida local**, sujeto a QA semántico y publicación final.
 - **Inicio/término/tiempo efectivo:** no informados; no inventar horas.
 - **Punto exacto de continuación:** corregir únicamente `contradiccion` del caso 16 a `no` si el estudiante confirma esa valoración; ejecutar `core_b17_revisar.py --validar` y `--informe`, recibir y auditar JSON e informe, redactar hallazgos propios, publicar la entrega y recién después evaluar envío a Skillnest.
+- **Actualización y cierre del incidente con evidencia posterior:** el estudiante ejecutó `Copy-Item` para respaldar el JSON, corrigió solo `contradiccion` del caso 16 de `si` a `no` (con `assert` de identificación única y valor anterior) y obtuvo `Caso 16 corregido: contradiccion = no`. Volvió a ejecutar `--validar`: **20/20 y 10/10, VÁLIDO**; regeneró `docs/revision_manual_core_b17.md`. Los diez registros de la consola quedan con corrección factual **10 sí**, completitud **7 sí, 2 parcialmente y 1 no**, contradicción **10 no**.
+- **Límites y QA:** [limites_metrica.md](limites_metrica.md) actualizado con ejemplos **propios** (Git, API REST, HTTP, funciones Python, listas y tokenización) y [análisis de la transcripción](analisis_revision_b17_core.md) publicado. La evidencia original completa sigue **local y no recibida**; esta documentación basada en la consola **no reemplaza** el corpus y la revisión JSON del Core.
+- **Punto exacto actualizado:** recibir `resultados_core_b17.json`, `revision_manual_core_b17.json` y `docs/revision_manual_core_b17.md`, auditarlos y publicarlos mediante PR/merge; confirmar después el enlace de entrega a Skillnest. La Unidad 2.2 permanece 8/9 hasta ese cierre.
 
 ## Plantilla para próximas sesiones
 
