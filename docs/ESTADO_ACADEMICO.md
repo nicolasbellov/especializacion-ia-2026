@@ -24,7 +24,7 @@
 | Unidad | Tema | Seguimiento |
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
-| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 8/9 lecciones revisadas (88,9 %). B15+B16 y B17 L1 técnicamente validados (40/40 pruebas). B17 L2 documentada. Actividad Core B17 en preparación: 3/20 respuestas reales, 0/10 evaluaciones humanas; scripts y 15 pruebas offline preparados para ampliar el corpus y revisar 5 F1 bajos + 5 altos. Suite nueva de 55 pruebas y entregables finales aún sin validación. No consta entrega ni aprobación institucional.** |
+| **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **En curso: 8/9 lecciones revisadas (88,9 %). Actividad Core B17 ejecutada localmente según PowerShell: 55/55 pruebas, 20/20 respuestas reales y 10/10 revisiones manuales registradas. Existe discrepancia cualitativa pendiente de corregir en caso 16; faltan inspeccionar y publicar artefactos, completar límites propios y enviar a Skillnest. No consta aprobación institucional.** |
 | U2.3 | LangChain y orquestación de flujos | Pendiente |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
@@ -199,6 +199,15 @@
 - **Guía de entrega:** [guia_entrega_b17_core.md](guia_entrega_b17_core.md). Falta generar corpus, aplicar 10 juicios humanos, actualizar límites desde hallazgos concretos, versionar evidencia final y enviar enlace en Skillnest.
 - **Estado:** 8/9 lecciones revisadas (88,9 %). El Core no está completado, entregado ni aprobado. No marcar Unidad 2.2 finalizada por leer el enunciado.
 - **Continuidad:** ejecutar 55 pruebas, revisar modo plan y generar de forma controlada 17 respuestas reales; registrar luego 10 juicios humanos y evidencias; no exponer claves ni datos clínicos en GitHub público.
+
+### U2.2 — Bloque 17 Core: generación y revisión humana local (29/10/2026)
+
+- **Evidencia disponible:** el estudiante compartió registro PowerShell completo: **55 passed in 1.50s**, generación con `consultar_modelo` y guardado incremental hasta **20/20 respuestas reales** (3 B15 + 17 nuevas), selección de 10 extremos de F1 sin duplicados y **10/10 juicios introducidos manualmente con justificaciones**. `--validar` informó cumplimiento estructural y `--informe` creó localmente `docs/revision_manual_core_b17.md`.
+- **Costos e incidencias:** lote de 17 consultas estimó USD 0,001588 con tarifa **didáctica**, no costo facturado; caso 20 requirió dos reintentos, sin confirmar código HTTP 429.
+- **Error de consistencia pendiente:** caso **16 (`git clone`)** guarda contradicción **`si`** pero su justificación dice explícitamente que no hay contradicciones. La validación automática no comprueba coherencia entre campo y explicación. Se comunicó una corrección local controlada; falta confirmarla.
+- **Alcance de la verificación:** estos logros están confirmados por **salida local**, no por inspección del corpus completo ni archivo de notas. La publicación GitHub de `resultados_core_b17.json`, `revision_manual_core_b17.json` y `docs/revision_manual_core_b17.md` está pendiente; `docs/limites_metrica.md` necesita ejemplos verdaderamente surgidos de la muestra revisada.
+- **Avance:** se mantiene **8/9 (88,9 %)** hasta contar con artefactos consistentes, documento de límites basado en hallazgos propios y publicación. No se ha registrado envío ni aprobación Skillnest.
+- **Siguiente:** validar corrección del caso 16, recibir/inspeccionar archivos y completar trazabilidad de hallazgos, PR/merge y envío institucional.
 
 ## Cómo actualizar este archivo
 
