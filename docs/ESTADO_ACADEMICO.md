@@ -1,6 +1,6 @@
 # Estado académico — Especialización en Desarrollo con IA Generativa 2026
 
-> **Actualizado:** 29/10/2026 (Chile). **Fuente:** material curricular compartido, conversación de estudio y evidencia versionada en este repositorio.  
+> **Actualizado:** 06/11/2026 (Chile). **Fuente:** material curricular compartido, conversación de estudio y evidencia versionada en este repositorio.  
 > **Convención:** distinguir *evidencia técnica verificada*, *actividad completada en el entorno local*, *entrega publicada* y *aprobación formal informada por Skillnest*. No son equivalentes.
 
 ## Vista general
@@ -25,7 +25,7 @@
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
 | **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **9/9 lecciones (100 %) completadas técnicamente; entrega Core B17 enviada en Skillnest según confirmación expresa del estudiante del 29/10/2026. Evidencia GitHub auditada y publicada: 20 respuestas, 10 revisiones, 60/60 métricas y límites. 55/55 pruebas locales según su consola. Pendiente de evaluación/nota institucional; no se cuenta aún con comprobante de la plataforma.** |
-| U2.3 | LangChain y orquestación de flujos | Pendiente |
+| **U2.3** | LangChain y orquestación de flujos | **En curso: Bloques 18 y 19 validados técnicamente; Bloque 20 con 40/40 pruebas previas; Core publicada para validación local y entrega** |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
 | U2.6 | Personalización: RAG, fine-tuning y soft-prompting | Pendiente |
@@ -226,6 +226,15 @@
 - **Evidencia técnica presentada:** [índice de entrega](guia_entrega_b17_core.md), [corpus de 20 respuestas](../resultados_core_b17.json), [rúbrica de 10 revisiones](../revision_manual_core_b17.json), [informe](revision_manual_core_b17.md) y [documento de límites](limites_metrica.md).
 - **Alcance de la confirmación:** envío **declarado por el estudiante**; no se ha recibido pantalla posterior de acuse, identificador de entrega, retroalimentación o calificación institucional. No equiparar «enviado» con «aprobado».
 - **Avance:** U2.2 9/9 (100 %) por cumplimiento técnico; **evaluación oficial pendiente**. Siguiente unidad: U2.3, Bloque 18 (LangChain: plantillas parametrizables).
+
+## U2.3 — LangChain y orquestación (actualización 06/11/2026)
+
+- **Bloque 18:** chain de tres pasos (actividad 20344) validada con mocks y ejecución real de Gemini. [Evidencia](u2_3_bloque18_actividad20344_validacion.md).
+- **Bloque 19:** clasificación y enrutamiento de `pregunta`, `queja` y `sugerencia`; pruebas de normalización y ruta por defecto. El estudiante acreditó 3 categorías correctas con Gemini real (la queja se ejecutó dos veces).
+- **Bloque 20:** recuperaciones con `with_fallbacks`, `try/except` y `logging` verificadas mediante fallos simulados. **40/40 pruebas acumuladas aprobadas antes de Core**, en Windows/Python 3.12.8.
+- **Core de cierre U2.3:** [guía de entrega y matriz de cobertura](u2_3_b20_core_verificacion.md), código y `tests/test_orquestacion.py` publicados en la rama `feature/u2-3-b20-core-verificacion`. **Pendiente de ejecución de la nueva suite, registro final y envío del enlace en Skillnest**.
+- **Límites:** pruebas offline no prueban fallos reales de proveedor; la ejecución real de las rutas demuestra comportamiento en esos ejemplos, no una tasa de acierto general. No existe calificación institucional comunicada.
+- **Siguiente paso exacto:** hacer `git fetch`/`git switch` a la rama Core, ejecutar `python -m pytest tests/test_orquestacion.py -v` y `python -m pytest -q tests`; registrar la salida y presentar el enlace de la guía en Skillnest. Después continuar con U2.4/Bloque 21.
 
 ## Cómo actualizar este archivo
 
