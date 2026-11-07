@@ -26,10 +26,8 @@ def main() -> None:
 
     # Reutilizamos la selección de modelo del cliente del Módulo 1.
     nombre_modelo = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
-    modelo = ChatGoogleGenerativeAI(
-        model=nombre_modelo,
-        temperature=0,
-    )
+    # Gemini 3.5 Flash-Lite ignora temperature; usamos sus valores por defecto.
+    modelo = ChatGoogleGenerativeAI(model=nombre_modelo)
 
     plantilla = PromptTemplate.from_template(
         "Explica el concepto de {tema} en un párrafo, "
