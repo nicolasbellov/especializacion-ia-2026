@@ -4,7 +4,7 @@
 **Actividad oficial:** «Verifica la ejecución de tu chain de extremo a extremo [Core]»  
 **Repositorio:** [nicolasbellov/especializacion-ia-2026](https://github.com/nicolasbellov/especializacion-ia-2026)  
 **Rama de entrega:** `feature/u2-3-b20-core-verificacion`  
-**Estado:** **actividad Core validada técnicamente en Windows (14/14 pruebas nuevas y 54/54 en regresión)**; enlace de entrega publicado; **envío y aprobación institucional de Skillnest pendientes**.
+**Estado:** **actividad Core validada técnicamente en Windows (14/14 pruebas nuevas y 54/54 en regresión)** y **entrega registrada en Skillnest el 06/11/2026; actualmente en revisión por el instructor**. Evaluación/calificación formal pendiente.
 
 ## 1. Objetivo y alcance
 
@@ -108,9 +108,14 @@ Skillnest ofrece entrega mediante **enlace a GitHub**. El enlace listo para pega
 
 `https://github.com/nicolasbellov/especializacion-ia-2026/blob/feature/u2-3-b20-core-verificacion/docs/u2_3_b20_core_verificacion.md`
 
-**Pendiente:** que el estudiante pegue este enlace en la actividad Core de
-Skillnest, pulse «Enviar entrega» y confirme su recepción. No existe aún
-acuse de envío ni aprobación institucional confirmados.
+### Constancia de recepción en Skillnest — 06/11/2026
 
-**Punto de continuidad:** enviar el enlace en Skillnest, registrar comprobante
-o confirmación del envío y comenzar U2.4, Bloque 21 («Chain vs. agente»).
+- **Actividad:** «Bloque 20 - Verifica la ejecución de tu chain de extremo a extremo [Core]».
+- **Estado mostrado en pantalla:** «Entrega registrada».
+- **Confirmación oficial de la interfaz:** la tarea «ha sido registrada exitosamente y está siendo revisada por el instructor».
+- **Fecha de envío visible:** 06/11/2026.
+- **Evidencia:** captura de la pantalla de confirmación compartida por el estudiante en la conversación; no se incorpora la imagen al repositorio público porque muestra datos personales de la sesión.
+- **Documento de evidencia:** esta guía de GitHub, validada con 14/14 pruebas Core y 54/54 en regresión.
+- **Estado institucional:** **entrega registrada y en revisión; aún sin calificación ni aprobación formal confirmada**.
+
+**Punto de continuidad:** comenzar U2.4, Bloque 21 («Chain vs. agente») y revisar la retroalimentación institucional cuando esté disponible.
