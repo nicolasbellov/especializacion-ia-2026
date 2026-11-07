@@ -289,7 +289,7 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Avance técnico:** U2.2 **9/9 lecciones (100 %)**. **Pendiente:** eventual retroalimentación/aprobación de Skillnest. **Punto exacto desde donde continuar:** U2.3, Bloque 18: LangChain y plantillas parametrizables; usar como base los aprendizajes de evaluación de texto de U2.2.
 - **Tiempo efectivo:** hora de inicio/término y duración no informados.
 
-## Sesión M2-016 · 06/11/2026 — U2.3, cierre Bloque 20 Core (preparación)
+## Sesión M2-017 · U2.3, cierre Bloque 20 Core (preparación y validación)
 
 - **Actividad:** verificación de la chain de extremo a extremo según checklist oficial de Skillnest.
 - **Inicio / término / tiempo efectivo:** no informados; no se infieren a partir de la conversación ni de Git.
@@ -298,9 +298,9 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Implementación publicada:** `src/bloque20_01_fallbacks.py` incorpora la interfaz `construir_cadena_queja_segura` y la validación de salida no vacía; `tests/test_orquestacion.py` cubre clasificación, rutas, prompts, recuperación, excepción global y respuestas inválidas.
 - **Documentación:** [guía Core](u2_3_b20_core_verificacion.md) y actualización de [estado académico](ESTADO_ACADEMICO.md).
 - **Decisión técnica:** preservar el código previo, extender con pruebas offline, no usar datos reales ni inventar errores del proveedor; el log registra tipos de excepciones sin copiar mensajes.
-- **Resultados de pruebas nuevas:** **pendientes de ejecución por el estudiante**; la publicación de código no significa que hayan pasado.
-- **Pendientes:** ejecutar la nueva suite Core y regresión total; completar evidencia de consola; registrar entrega de enlace y su acuse si Skillnest lo proporciona. Aprobación institucional no confirmada.
-- **Punto exacto de continuidad:** `git fetch origin` y `git switch --track origin/feature/u2-3-b20-core-verificacion`; `python -m pytest tests/test_orquestacion.py -v`, `python -m pytest -q tests`; luego presentar la guía en Skillnest y empezar U2.4 (Bloque 21).
+- **Resultados de las pruebas Core comunicados por el estudiante:** `python -m pytest tests/test_orquestacion.py -v` — **14/14 aprobadas, 2,49 s**. `python -m pytest -q tests` — **54/54 aprobadas, 1,89 s**, sin fallas. Windows, Python 3.12.8, pytest 9.2.0; sin llamadas reales a Gemini. La fecha/hora exacta de la ejecución no fue informada.
+- **Pendientes:** pegar el enlace de la guía de evidencia Core en Skillnest, confirmar envío o guardar acuse de plataforma si existe; registrar evaluación formal cuando llegue. El cierre técnico no demuestra aprobación institucional.
+- **Punto exacto de continuidad:** enviar en la pantalla de Skillnest la [guía Core verificada](u2_3_b20_core_verificacion.md), confirmar recepción y comenzar U2.4 (Bloque 21, «Chain vs. agente»).
 
 ## Plantilla para próximas sesiones
 
