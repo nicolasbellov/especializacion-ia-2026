@@ -64,8 +64,8 @@ def _mostrar_categoria(datos: dict) -> dict:
     return datos
 
 
-def construir_cadena(modelo, *, diagnostico: bool = False):
-    """Compone clasificador + bifurcacion sin ejecutar llamadas al modelo."""
+def construir_paso_clasificacion(modelo):
+    """Compone el clasificador inyectable; no ejecuta llamadas al modelo."""
     plantilla_clasificacion = PromptTemplate.from_template(
         "Clasifica la INTENCION principal del siguiente mensaje de soporte "
         "de Analytics. Selecciona EXACTAMENTE una categoria:\n"
@@ -80,12 +80,51 @@ def construir_cadena(modelo, *, diagnostico: bool = False):
         "sugerencia.\n\nMensaje:\n{mensaje}"
     )
 
-    paso_clasificacion = (
+    return (
         plantilla_clasificacion
         | modelo
         | StrOutputParser()
         | normalizar_categoria
     )
+
+
+def construir_cadena_con_enrutamiento(
+    paso_clasificacion,
+    cadena_queja=None,
+    cadena_sugerencia=None,
+    cadena_pregunta=None,
+    *,
+    diagnostico: bool = False,
+):
+    """Construye rutas inyectables para pruebas offline y su uso real."""
+    # Los defaults se usan solo si esa ruta resulta seleccionada.
+    if cadena_queja is None:
+        cadena_queja = RunnablePassthrough()
+    if cadena_sugerencia is None:
+        cadena_sugerencia = RunnablePassthrough()
+    if cadena_pregunta is None:
+        cadena_pregunta = RunnablePassthrough()
+
+    bifurcacion = RunnableBranch(
+        (lambda datos: datos["categoria"] == "queja", cadena_queja),
+        (lambda datos: datos["categoria"] == "sugerencia", cadena_sugerencia),
+        cadena_pregunta,  # Ruta por defecto.
+    )
+
+    entrada_clasificada = RunnablePassthrough.assign(
+        categoria=paso_clasificacion
+    )
+    if diagnostico:
+        entrada_clasificada = entrada_clasificada | RunnableLambda(
+            _mostrar_categoria
+        )
+
+    return entrada_clasificada | bifurcacion
+
+
+def construir_cadena(modelo, *, diagnostico: bool = False):
+    """Conserva la interfaz del Bloque 19 con tres rutas y un solo modelo."""
+    paso_clasificacion = construir_paso_clasificacion(modelo)
 
     cadena_pregunta = (
         PromptTemplate.from_template(
@@ -119,21 +158,13 @@ def construir_cadena(modelo, *, diagnostico: bool = False):
         | StrOutputParser()
     )
 
-    bifurcacion = RunnableBranch(
-        (lambda datos: datos["categoria"] == "queja", cadena_queja),
-        (lambda datos: datos["categoria"] == "sugerencia", cadena_sugerencia),
-        cadena_pregunta,  # Ruta por defecto; consultar el Bloque 19.
+    return construir_cadena_con_enrutamiento(
+        paso_clasificacion=paso_clasificacion,
+        cadena_queja=cadena_queja,
+        cadena_sugerencia=cadena_sugerencia,
+        cadena_pregunta=cadena_pregunta,
+        diagnostico=diagnostico,
     )
-
-    entrada_clasificada = RunnablePassthrough.assign(
-        categoria=paso_clasificacion
-    )
-    if diagnostico:
-        entrada_clasificada = entrada_clasificada | RunnableLambda(
-            _mostrar_categoria
-        )
-
-    return entrada_clasificada | bifurcacion
 
 
 def main() -> None:
