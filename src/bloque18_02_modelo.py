@@ -46,7 +46,7 @@ def main() -> None:
     )
 
     print("\nRespuesta de Gemini:")
-    print(respuesta.content)
+    print(respuesta.text)
     print(f"Tipo de respuesta: {type(respuesta).__name__}")
 
 
