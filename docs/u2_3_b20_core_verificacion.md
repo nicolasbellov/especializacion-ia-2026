@@ -4,7 +4,7 @@
 **Actividad oficial:** «Verifica la ejecución de tu chain de extremo a extremo [Core]»  
 **Repositorio:** [nicolasbellov/especializacion-ia-2026](https://github.com/nicolasbellov/especializacion-ia-2026)  
 **Rama de entrega:** `feature/u2-3-b20-core-verificacion`  
-**Estado:** código y suite Core publicados; **validación local Core y envío Skillnest pendientes**.
+**Estado:** **actividad Core validada técnicamente en Windows (14/14 pruebas nuevas y 54/54 en regresión)**; enlace de entrega publicado; **envío y aprobación institucional de Skillnest pendientes**.
 
 ## 1. Objetivo y alcance
 
@@ -35,12 +35,12 @@ registran por su **tipo**, sin copiar mensajes ni credenciales.
 
 | Pregunta del checklist | Evidencia técnica | Estado |
 | --- | --- | --- |
-| ¿La clasificación se normaliza? | `test_core_clasificacion_normaliza_antes_de_comparar` y tests del Bloque 19 | Implementado; pendiente prueba Core local |
-| ¿Cada ruta tiene una prueba, incluida la predeterminada? | `test_core_enrutamiento_y_ruta_default` (queja, sugerencia, pregunta, desconocida y entrada vacía) | Implementado; pendiente prueba Core local |
-| ¿Los prompts son distintos? | `test_core_cada_ruta_usa_un_prompt_distinto` | Implementado; pendiente prueba Core local |
-| ¿Hay al menos un `with_fallbacks` probado? | `test_core_cadena_queja_usa_fallback_ante_fallo` y `test_core_flujo_completo_recupera_queja_sin_ejecutar_otras_rutas` | Implementado; pendiente prueba Core local |
-| ¿Un fallo de clasificación no propaga excepción? | `test_core_try_except_cubre_error_del_clasificador_y_registra_evento` | Implementado; pendiente prueba Core local |
-| ¿Se rechazan respuestas vacías o de otro tipo? | `test_core_resultado_vacio_o_invalido_activa_red_de_seguridad` | Extensión propia; pendiente prueba Core local |
+| ¿La clasificación se normaliza? | `test_core_clasificacion_normaliza_antes_de_comparar` y tests del Bloque 19 | Validado en Windows: pytest Core aprobado |
+| ¿Cada ruta tiene una prueba, incluida la predeterminada? | `test_core_enrutamiento_y_ruta_default` (queja, sugerencia, pregunta, desconocida y entrada vacía) | Validado en Windows: pytest Core aprobado |
+| ¿Los prompts son distintos? | `test_core_cada_ruta_usa_un_prompt_distinto` | Validado en Windows: pytest Core aprobado |
+| ¿Hay al menos un `with_fallbacks` probado? | `test_core_cadena_queja_usa_fallback_ante_fallo` y `test_core_flujo_completo_recupera_queja_sin_ejecutar_otras_rutas` | Validado en Windows: pytest Core aprobado |
+| ¿Un fallo de clasificación no propaga excepción? | `test_core_try_except_cubre_error_del_clasificador_y_registra_evento` | Validado en Windows: pytest Core aprobado |
+| ¿Se rechazan respuestas vacías o de otro tipo? | `test_core_resultado_vacio_o_invalido_activa_red_de_seguridad` | Extensión propia validada en Windows |
 
 **Límites:** los tests del Bloque 19 y las ejecuciones manuales previas
 demostraron funcionamiento en ejemplos concretos, no precisión perfecta de Gemini.
@@ -57,10 +57,9 @@ Un `try/except` general no reemplaza depuración de causas raíz.
 - **Suite `tests/` antes de Core:** **40/40 aprobadas** en PowerShell,
   Python 3.12.8 y pytest 9.2.0.
 
-Estos resultados pertenecen a las versiones previas a la actividad Core.
-**No se declara ejecutada la nueva suite por la mera publicación del código.**
+Estos resultados corresponden a la etapa previa a Core. La validación posterior de la nueva suite se registra en la sección siguiente.
 
-## 5. Procedimiento de validación Core — pendiente
+## 5. Validación Core — ejecución confirmada por el participante
 
 Desde la raíz del proyecto en Windows, con `.venv` activo:
 
@@ -83,20 +82,35 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\.venv\Scripts\Activate.ps1
 ```
 
-**Resultado previsto:** 14 casos nuevos de pytest en `test_orquestacion.py`,
-y 54 casos totales en `tests/`, sin llamadas reales a Gemini. Confirmar
-la cifra exclusivamente después de ver la salida de consola.
+**Resultado confirmado por consola compartida:**
 
-**Registro de ejecución Core:** pendiente de añadir tras recibir evidencia
-del estudiante.
+```text
+python -m pytest tests/test_orquestacion.py -v
+collected 14 items
+14 passed in 2.49s
+
+python -m pytest -q tests
+54 passed in 1.89s
+```
+
+- **Entorno informado:** Windows (`win32`), Python 3.12.8, `pytest` 9.2.0, intérprete `.venv\\Scripts\\python.exe`.
+- **Rama local verificada:** `feature/u2-3-b20-core-verificacion`, creada por seguimiento de `origin/feature/u2-3-b20-core-verificacion` tras `git fetch`.
+- **Casos Core aprobados:** normalización; cinco variantes de categoría/entrada (queja, sugerencia, pregunta, desconocida y vacía); diferenciación de prompts; recuperación de queja; fallo de clasificación con registro; cuatro salidas inválidas (vacío, espacios, `None`, `123`).
+- **Regresión completa:** 54 pruebas aprobadas, **cero fallos observados**.
+- **Alcance:** las pruebas se ejecutaron sin Gemini real; demuestra el comportamiento de la orquestación ante simulaciones. No se infiere precisión de clasificación general ni disponibilidad del proveedor.
+- **Fecha/hora y tiempo efectivo del ensayo:** no informados explícitamente.
+
+**Resultado técnico de la actividad Core: verificado.** El envío a Skillnest y la evaluación oficial son pasos separados.
 
 ## 6. Entrega institucional
 
-Skillnest ofrece entrega mediante **enlace a GitHub**. Compartir el enlace de
-esta guía publicada en la rama, una vez validados los comandos del apartado 5.
-No se ha enviado todavía el formulario ni existe aprobación institucional
-confirmada.
+Skillnest ofrece entrega mediante **enlace a GitHub**. El enlace listo para pegar es:
 
-**Punto de continuidad:** ejecutar la suite Core; completar este registro
-con resultados reales; enviar el enlace en Skillnest; pasar a U2.4,
-Bloque 21 («Chain vs. agente»).
+`https://github.com/nicolasbellov/especializacion-ia-2026/blob/feature/u2-3-b20-core-verificacion/docs/u2_3_b20_core_verificacion.md`
+
+**Pendiente:** que el estudiante pegue este enlace en la actividad Core de
+Skillnest, pulse «Enviar entrega» y confirme su recepción. No existe aún
+acuse de envío ni aprobación institucional confirmados.
+
+**Punto de continuidad:** enviar el enlace en Skillnest, registrar comprobante
+o confirmación del envío y comenzar U2.4, Bloque 21 («Chain vs. agente»).
