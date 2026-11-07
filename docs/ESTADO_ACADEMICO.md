@@ -25,7 +25,7 @@
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
 | **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **9/9 lecciones (100 %) completadas técnicamente; entrega Core B17 enviada en Skillnest según confirmación expresa del estudiante del 29/10/2026. Evidencia GitHub auditada y publicada: 20 respuestas, 10 revisiones, 60/60 métricas y límites. 55/55 pruebas locales según su consola. Pendiente de evaluación/nota institucional; no se cuenta aún con comprobante de la plataforma.** |
-| **U2.3** | LangChain y orquestación de flujos | **En curso: Bloques 18 y 19 validados técnicamente; Bloque 20 con 40/40 pruebas previas; Core publicada para validación local y entrega** |
+| **U2.3** | LangChain y orquestación de flujos | **Completada técnicamente: Core B20 14/14 y regresión 54/54 aprobadas en Windows. Envío y evaluación formal Skillnest pendientes** |
 | U2.4 | Agentes, herramientas externas y memoria | Pendiente |
 | U2.5 | RAG y bases de datos vectoriales | Pendiente |
 | U2.6 | Personalización: RAG, fine-tuning y soft-prompting | Pendiente |
@@ -232,9 +232,9 @@
 - **Bloque 18:** chain de tres pasos (actividad 20344) validada con mocks y ejecución real de Gemini. [Evidencia](u2_3_bloque18_actividad20344_validacion.md).
 - **Bloque 19:** clasificación y enrutamiento de `pregunta`, `queja` y `sugerencia`; pruebas de normalización y ruta por defecto. El estudiante acreditó 3 categorías correctas con Gemini real (la queja se ejecutó dos veces).
 - **Bloque 20:** recuperaciones con `with_fallbacks`, `try/except` y `logging` verificadas mediante fallos simulados. **40/40 pruebas acumuladas aprobadas antes de Core**, en Windows/Python 3.12.8.
-- **Core de cierre U2.3:** [guía de entrega y matriz de cobertura](u2_3_b20_core_verificacion.md), código y `tests/test_orquestacion.py` publicados en la rama `feature/u2-3-b20-core-verificacion`. **Pendiente de ejecución de la nueva suite, registro final y envío del enlace en Skillnest**.
+- **Core de cierre U2.3:** [guía de entrega y matriz de cobertura](u2_3_b20_core_verificacion.md), código y `tests/test_orquestacion.py` publicados en la rama `feature/u2-3-b20-core-verificacion`. **Validación local confirmada por consola: 14/14 pruebas Core aprobadas en 2,49 s y regresión global 54/54 aprobada en 1,89 s**. No se observaron fallas; la entrega en Skillnest sigue pendiente.
 - **Límites:** pruebas offline no prueban fallos reales de proveedor; la ejecución real de las rutas demuestra comportamiento en esos ejemplos, no una tasa de acierto general. No existe calificación institucional comunicada.
-- **Siguiente paso exacto:** hacer `git fetch`/`git switch` a la rama Core, ejecutar `python -m pytest tests/test_orquestacion.py -v` y `python -m pytest -q tests`; registrar la salida y presentar el enlace de la guía en Skillnest. Después continuar con U2.4/Bloque 21.
+- **Siguiente paso exacto:** pegar el enlace de la guía Core en el formulario de Skillnest, pulsar «Enviar entrega» y registrar confirmación o acuse. Después continuar con U2.4/Bloque 21. No se ha acreditado aún aprobación institucional.
 
 ## Cómo actualizar este archivo
 
