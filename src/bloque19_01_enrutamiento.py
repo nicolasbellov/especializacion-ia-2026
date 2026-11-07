@@ -33,10 +33,10 @@ EJEMPLOS_FICTICIOS = {
         "de urgencias del tablero con una extracción de origen?"
     ),
     "queja": (
-        "En nuestro ejercicio ficticio, el tablero de urgencias muestra "
-        "36 atenciones, pero la extracción simulada muestra 42. "
-        "Esta diferencia dificulta revisar el indicador y no sabemos "
-        "por qué ocurre."
+        "Estoy molesto porque en nuestro ejercicio ficticio el tablero "
+        "de urgencias muestra 36 atenciones, pero la extracción simulada "
+        "muestra 42. Esta discrepancia está impidiendo validar el "
+        "indicador y necesito que se reconozca e investigue el problema."
     ),
     "sugerencia": (
         "Sería útil agregar al tablero ficticio una alerta que señale "
@@ -67,9 +67,17 @@ def _mostrar_categoria(datos: dict) -> dict:
 def construir_cadena(modelo, *, diagnostico: bool = False):
     """Compone clasificador + bifurcacion sin ejecutar llamadas al modelo."""
     plantilla_clasificacion = PromptTemplate.from_template(
-        "Clasifica el siguiente mensaje de soporte de Analytics en una sola "
-        "palabra: pregunta, queja o sugerencia. "
-        "Responde unicamente con esa palabra.\n\n{mensaje}"
+        "Clasifica la INTENCION principal del siguiente mensaje de soporte "
+        "de Analytics. Selecciona EXACTAMENTE una categoria:\n"
+        "- queja: reporta un fallo, discrepancia, incumplimiento o "
+        "insatisfaccion actual, aunque tambien pida ayuda.\n"
+        "- sugerencia: propone una mejora futura sin reportar un fallo.\n"
+        "- pregunta: solicita informacion o explicaciones sin reportar "
+        "un problema actual.\n"
+        "Prioridad: si describe un problema presente, clasifica como queja; "
+        "si propone una mejora, como sugerencia; en los demas casos, pregunta. "
+        "Responde solo una palabra en minusculas: pregunta, queja o "
+        "sugerencia.\n\nMensaje:\n{mensaje}"
     )
 
     paso_clasificacion = (
