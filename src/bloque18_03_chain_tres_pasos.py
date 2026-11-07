@@ -64,7 +64,8 @@ def main() -> None:
         raise SystemExit("Configura GEMINI_API_KEY en .env antes de ejecutar.")
 
     nombre_modelo = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
-    modelo = ChatGoogleGenerativeAI(model=nombre_modelo, temperature=0)
+    # Gemini 3.5 Flash-Lite utiliza parámetros de muestreo propios.
+    modelo = ChatGoogleGenerativeAI(model=nombre_modelo)
     extraccion, simplificacion, formato = crear_pasos(modelo)
 
     print(f"Modelo: {nombre_modelo}")
@@ -93,7 +94,9 @@ def main() -> None:
 
     assert isinstance(resultado, str)
     print("PASO 3 — Resultado final en Markdown:\n", resultado, sep="")
-    print(f"\nTipo de salida: {type(resultado).__name__}")
+    # TextAccessor hereda de str en langchain-core: es texto válido.
+    print(f"\nTipo concreto de salida: {type(resultado).__name__}")
+    print(f"¿Es compatible con str?: {isinstance(resultado, str)}")
 
 
 if __name__ == "__main__":
