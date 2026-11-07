@@ -299,8 +299,9 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Documentación:** [guía Core](u2_3_b20_core_verificacion.md) y actualización de [estado académico](ESTADO_ACADEMICO.md).
 - **Decisión técnica:** preservar el código previo, extender con pruebas offline, no usar datos reales ni inventar errores del proveedor; el log registra tipos de excepciones sin copiar mensajes.
 - **Resultados de las pruebas Core comunicados por el estudiante:** `python -m pytest tests/test_orquestacion.py -v` — **14/14 aprobadas, 2,49 s**. `python -m pytest -q tests` — **54/54 aprobadas, 1,89 s**, sin fallas. Windows, Python 3.12.8, pytest 9.2.0; sin llamadas reales a Gemini. La fecha/hora exacta de la ejecución no fue informada.
-- **Pendientes:** pegar el enlace de la guía de evidencia Core en Skillnest, confirmar envío o guardar acuse de plataforma si existe; registrar evaluación formal cuando llegue. El cierre técnico no demuestra aprobación institucional.
-- **Punto exacto de continuidad:** enviar en la pantalla de Skillnest la [guía Core verificada](u2_3_b20_core_verificacion.md), confirmar recepción y comenzar U2.4 (Bloque 21, «Chain vs. agente»).
+- **Envío institucional:** captura posterior confirma «Entrega registrada» en Skillnest, fecha **06/11/2026**, con el trabajo en revisión por el instructor. La captura contiene datos de sesión y no se añade al repositorio público.
+- **Pendientes:** recibir retroalimentación/calificación institucional; no equiparar envío registrado con aprobación académica.
+- **Punto exacto de continuidad:** entrega registrada el 06/11/2026; comenzar U2.4 (Bloque 21, «Chain vs. agente») y revisar calificación cuando Skillnest la comunique.
 
 ## Plantilla para próximas sesiones
 
