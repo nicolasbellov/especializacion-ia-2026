@@ -289,6 +289,19 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Avance técnico:** U2.2 **9/9 lecciones (100 %)**. **Pendiente:** eventual retroalimentación/aprobación de Skillnest. **Punto exacto desde donde continuar:** U2.3, Bloque 18: LangChain y plantillas parametrizables; usar como base los aprendizajes de evaluación de texto de U2.2.
 - **Tiempo efectivo:** hora de inicio/término y duración no informados.
 
+## Sesión M2-016 · 06/11/2026 — U2.3, cierre Bloque 20 Core (preparación)
+
+- **Actividad:** verificación de la chain de extremo a extremo según checklist oficial de Skillnest.
+- **Inicio / término / tiempo efectivo:** no informados; no se infieren a partir de la conversación ni de Git.
+- **Fuente:** actividad Core «Verifica la ejecución de tu chain de extremo a extremo» y checklist del Bloque 20, ambos compartidos por el estudiante.
+- **Avance previo verificado:** Bloques 18–19 con prueba real Gemini; Bloque 20 con fallback y try/except simulados; **40/40** pruebas de `tests/` aprobadas en PowerShell antes de Core.
+- **Implementación publicada:** `src/bloque20_01_fallbacks.py` incorpora la interfaz `construir_cadena_queja_segura` y la validación de salida no vacía; `tests/test_orquestacion.py` cubre clasificación, rutas, prompts, recuperación, excepción global y respuestas inválidas.
+- **Documentación:** [guía Core](u2_3_b20_core_verificacion.md) y actualización de [estado académico](ESTADO_ACADEMICO.md).
+- **Decisión técnica:** preservar el código previo, extender con pruebas offline, no usar datos reales ni inventar errores del proveedor; el log registra tipos de excepciones sin copiar mensajes.
+- **Resultados de pruebas nuevas:** **pendientes de ejecución por el estudiante**; la publicación de código no significa que hayan pasado.
+- **Pendientes:** ejecutar la nueva suite Core y regresión total; completar evidencia de consola; registrar entrega de enlace y su acuse si Skillnest lo proporciona. Aprobación institucional no confirmada.
+- **Punto exacto de continuidad:** `git fetch origin` y `git switch --track origin/feature/u2-3-b20-core-verificacion`; `python -m pytest tests/test_orquestacion.py -v`, `python -m pytest -q tests`; luego presentar la guía en Skillnest y empezar U2.4 (Bloque 21).
+
 ## Plantilla para próximas sesiones
 
 ```markdown
