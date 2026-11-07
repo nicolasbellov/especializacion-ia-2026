@@ -23,7 +23,7 @@ from src.bloque20_01_fallbacks import (
 
 
 def test_core_clasificacion_normaliza_antes_de_comparar():
-    modelo_falso = MagicMock(return_value=AIMessage(content=" QUEJA! \\n"))
+    modelo_falso = MagicMock(return_value=AIMessage(content=" QUEJA! \n"))
     resultado = construir_paso_clasificacion(modelo_falso).invoke(
         {"mensaje": "El tablero ficticio presenta una discrepancia"}
     )
