@@ -56,6 +56,14 @@ def proteger_cadena_queja(
     return cadena_queja.with_fallbacks(alternativas)
 
 
+def construir_cadena_queja_segura(cadena_queja):
+    """Interfaz de la actividad Core: inyecta y protege la ruta de quejas.
+
+    Reutiliza la estrategia probada en la primera leccion del Bloque 20.
+    """
+    return proteger_cadena_queja(cadena_queja)
+
+
 def construir_flujo_con_respaldo(
     *,
     paso_clasificacion,
@@ -86,7 +94,10 @@ def procesar_mensaje_seguro(cadena, mensaje: str) -> str:
     Durante depuracion local es preferible inspeccionar el fallo original.
     """
     try:
-        return cadena.invoke({"mensaje": mensaje})
+        resultado = cadena.invoke({"mensaje": mensaje})
+        if not isinstance(resultado, str) or not resultado.strip():
+            raise ValueError("La cadena no devolvio una respuesta textual util")
+        return resultado
     except Exception as error:
         logger.error("Fallo no recuperado en la cadena: %s", type(error).__name__)
         return RESPUESTA_ERROR_GLOBAL
