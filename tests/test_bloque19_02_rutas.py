@@ -86,7 +86,7 @@ def test_enrutamiento_usa_default_ante_categoria_desconocida():
 
 
 def test_paso_clasificacion_normaliza_respuesta_del_modelo():
-    modelo_falso = MagicMock(return_value=AIMessage(content=" Queja \\n"))
+    modelo_falso = MagicMock(return_value=AIMessage(content=" Queja \n"))
 
     resultado = construir_paso_clasificacion(modelo_falso).invoke(
         {"mensaje": "Algo salió mal en el tablero simulado."}
