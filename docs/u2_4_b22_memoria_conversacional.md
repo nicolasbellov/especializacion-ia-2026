@@ -2,7 +2,7 @@
 
 **Programa:** Skillnest · Accenture · CChIA — Especialización IA 2026  
 **Fecha:** 09/11/2026 (Chile)  
-**Estado:** implementación publicada; pruebas en Windows y con Gemini **pendientes**.
+**Estado:** **validación técnica completada en Windows**: memoria sin API y dos turnos reales con Gemini verificados; aprobación institucional no informada.
 
 ## 1. Material del curso
 
@@ -36,7 +36,7 @@ Principales componentes:
 1. «¿Qué horarios SIMULADOS hay para un corte de cabello el 11 de noviembre de 2026?»
 2. «¿Y después de las 18:00? Incluye cuánto dura.»
 
-El **criterio de validación** del segundo turno no es únicamente el texto final: inspectamos intermediate_steps para encontrar una llamada a consultar_disponibilidad_con_filtros con:
+El **criterio de validación** del segundo turno no es únicamente el texto final: inspeccionamos intermediate_steps para encontrar una llamada a consultar_disponibilidad_con_filtros con:
 
 - fecha = 2026-11-11, recuperada del turno anterior;
 - servicio = corte, recuperado del turno anterior;
@@ -77,7 +77,7 @@ No ejecutar merge con cambios sin revisar o conflictos previos. No ejecutar rese
 python -m src.memoria_b22_booking_core
 ```
 
-Validaciones previstas: primer turno 2 mensajes, segundo turno 4 mensajes, segunda sesión vacía, normalización de respuesta y cierre de sesión. Salida esperada:
+Validaciones previstas: primer turno 2 mensajes, segundo turno 4 mensajes, segunda sesión vacía, normalización de respuesta y cierre de sesión. Salida observada en la consola del estudiante:
 
 ```text
 B22/L2: PRUEBAS DE MEMORIA SIN API CORRECTAS.
@@ -103,9 +103,67 @@ Las selecciones y redacción del modelo pueden variar; si el criterio falla, el 
 - [x] Historial por session_id y limpieza de sesiones implementados.
 - [x] Pruebas offline preparadas para historial 2/4 y aislamiento de sesiones.
 - [x] Ejemplo de dos turnos reales preparado, con traza y verificación de argumentos.
-- [ ] Ejecución offline confirmada por el estudiante.
-- [ ] Dos turnos reales de Gemini confirmados por el estudiante.
-- [ ] Cierre técnico de la lección.
+- [x] Ejecución offline confirmada por el estudiante: 2/4 mensajes, sesiones independientes, limpieza y normalización.
+- [x] Dos turnos reales de Gemini confirmados por el estudiante; argumentos recuperados verificados en `intermediate_steps`.
+- [x] Cierre técnico de la lección: **B22/L2 validada**.
 - [ ] Entrega o calificación institucional (no afirmada).
 
 **Siguiente lección de Skillnest:** Bloque 22 — «Tu herramienta personalizada, ya construida e integrada».
+
+## 5. Evidencia observada en PowerShell · 09/11/2026
+
+El estudiante sincronizó su rama local con `origin/main` mediante un merge sin conflictos y ejecutó ambos modos de `src.memoria_b22_booking_core` desde su entorno `(.venv)`.
+
+### 5.1. Pruebas sin API
+
+```text
+SESIÓN A / TURNO 1: 2 mensajes guardados (usuario + asistente)
+SESIÓN A / TURNO 2: 4 mensajes guardados
+SESIÓN B: historial independiente, 0 mensajes
+NORMALIZACIÓN: texto sin metadatos del proveedor
+LIMPIEZA: sesiones eliminadas
+
+B22/L2: PRUEBAS DE MEMORIA SIN API CORRECTAS.
+```
+
+**Interpretación:** el historial guardó y recuperó dos pares usuario/asistente, se comprobó que otra sesión comienza vacía, se probaron la transformación de salida y la limpieza. Esta ejecución no utilizó Gemini.
+
+### 5.2. Invocaciones reales del agente con Gemini
+
+**Turno 1.** Pregunta: «¿Qué horarios SIMULADOS hay para un corte de cabello el 11 de noviembre de 2026?».
+
+```text
+Invoking: consultar_disponibilidad_con_filtros
+{'fecha': '2026-11-11', 'incluir_duracion': False, 'servicio': 'corte'}
+Observación: 10:00, 16:00, 18:30 (agenda simulada)
+MENSAJES GUARDADOS: 2
+```
+
+**Turno 2.** Pregunta: «¿Y después de las 18:00? Incluye cuánto dura.». La pregunta **no especifica** ni la fecha ni el servicio.
+
+```text
+Invoking: consultar_disponibilidad_con_filtros
+{'servicio': 'corte', 'incluir_duracion': True,
+ 'hora_desde': '18:00', 'fecha': '2026-11-11'}
+Observación: horario simulado 18:30; duración estimada 40 minutos
+MENSAJES GUARDADOS: 4
+
+B22/L2: CONTEXTO ENTRE DOS INTERACCIONES VERIFICADO.
+```
+
+**Interpretación técnica:** `intermediate_steps` acredita que el agente recuperó los parámetros `servicio='corte'` y `fecha='2026-11-11'` del contexto conversacional previo. `hora_desde='18:00'` e `incluir_duracion=True` corresponden a la consulta actual. No se observó creación de reservas ni acceso a datos reales.
+
+### 5.3. Advertencias de obsolescencia
+
+El terminal mostró `LangChainDeprecationWarning` por dos símbolos:
+
+- `RunnableWithMessageHistory`, con recomendación de usar persistencia integrada de LangGraph.
+- `InMemoryChatMessageHistory`, indicado como obsoleto desde LangChain 1.6.4 y con retiro previsto para 2.0.0 según el mensaje observado.
+
+**No bloquearon la ejecución** ni invalidan la actividad académica. Para un servicio productivo se debe evaluar una alternativa vigente y persistente, además de controles de identidad, retención y costos. No se recomienda ocultar los warnings sin considerar la migración.
+
+**Nota de trazabilidad:** los extractos anteriores sintetizan la salida que el estudiante compartió en la conversación, omitiendo los bloques `extras.signature` que Gemini emitió en modo `verbose=True`; no son un archivo de transcripción bruta.
+
+### 5.4. Estado de cierre
+
+**Lección 2 del Bloque 22: validada técnicamente.** Avance confirmado de U2.4: **5/9 lecciones**. La entrega o aprobación de Skillnest **no consta**.
