@@ -450,6 +450,17 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Inicio, término, pausas y tiempo efectivo:** no informados; no inferir.
 - **Punto exacto para continuar:** copiar el enlace público del Markdown a la sección **«Enlace (Drive, etc.)»** de la tarea Core en Skillnest y pulsar «Enviar entrega» personalmente; registrar después el resultado o captura de confirmación. Al confirmar la entrega, pasar a **U2.5 / Bloque 24: «RAG por dentro»**.
 
+## Confirmación de entrega U2.4/B23 Core · 09/11/2026 — Registrada en Skillnest
+
+- **Evidencia institucional compartida:** captura de Skillnest LifeCycle desde la actividad «Bloque 23 - Documenta los límites de autonomía de tu agente [Core]». En pantalla consta el texto **«Entrega registrada»**, indica que la tarea fue **registrada exitosamente y está siendo revisada por el instructor**, y muestra **«Enviado el 09/11/2026»**.
+- **Estado administrativo confirmado:** **entrega Core registrada en Skillnest el 09/11/2026; evaluación/calificación del instructor pendiente**. No confundir confirmación de recepción con aprobación o nota.
+- **Artefacto enviado/preparado:** [documento Core «Límites de autonomía de Booking Core AI»](u2_4_b23_core_limites_autonomia_booking_core_ai.md), publicado en `main` de GitHub. El contenido exacto del enlace que quedó registrado dentro del formulario no es visible en esta captura; no afirmar comprobación independiente de ese campo.
+- **Avance académico:** **Unidad 2.4: 9 de 9 lecciones abordadas y documentadas; ocho lecciones comprobadas mediante ejecución y última actividad Core confeccionada y entrega confirmada.** Bloques 21 (3/3), 22 (3/3) y 23 (3/3) completados a nivel de trabajo académico. **Calificación institucional aún no informada.**
+- **Aprendizajes integrados:** herramientas de LangChain con `args_schema`/Pydantic, Gemini con `intermediate_steps`, memoria por `session_id`, control humano previo a cancelaciones ficticias, denegación por defecto, auditoría y trazas JSONL.
+- **Tiempo de estudio / inicio / término:** no informados por el estudiante; sin estimaciones.
+- **Pendientes:** consultar evaluación del instructor cuando aparezca y conservar retroalimentación/correcciones si son requeridas; no se han programado avisos automáticos.
+- **Punto exacto para continuar:** Unidad 2.5, **Bloque 24 «RAG por dentro»**. Mantener el caso Booking Core AI como hilo conductor, sin acceso a datos de clientes reales ni servicios de producción sin autorización expresa.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
