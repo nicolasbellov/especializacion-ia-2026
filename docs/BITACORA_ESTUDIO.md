@@ -372,6 +372,20 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Registro horario:** inicio, término y tiempo efectivo no informados.
 - **Punto exacto siguiente:** en la rama local comprobar `git status --short`, integrar `origin/main` con precaución, ejecutar `python -m src.integracion_b22_booking_core`; si pasa, ejecutar `python -m src.integracion_b22_booking_core --agente`, registrar salidas y cerrar técnicamente Bloque 22. Después continuar con Bloque 23, límites de autonomía y supervisión.
 
+## Cierre M2-U2.4-B22/L3 · 09/11/2026 — Agente integrado con sesiones independientes
+
+- **Evidencia recibida:** el estudiante ejecutó desde PowerShell, con `(.venv)` activo y merge exitoso de `origin/main`: `python -m src.integracion_b22_booking_core` y `python -m src.integracion_b22_booking_core --agente`.
+- **Prueba offline de integración:** validación de la herramienta `args_schema`; sesión A con 2 turnos y 4 mensajes; sesión B independiente con 1 turno y 2 mensajes; ausencia cruzada de contenido textual y limpieza de sesiones. Terminal: `B22/L3: INTEGRACIÓN SIN API VERIFICADA.`
+- **Gemini / cliente A, primer turno:** consultó horarios simulados de corte para 11/11/2026; herramienta `consultar_disponibilidad_con_filtros` invocada con `servicio=corte`, `fecha=2026-11-11`, `incluir_duracion=False`; respuesta 10:00, 16:00 y 18:30, ficticios.
+- **Gemini / cliente A, segundo turno:** dijo únicamente «¿Y después de las 18:00? Incluye cuánto dura.». Traza `intermediate_steps`: `consultar_disponibilidad_con_filtros` con `hora_desde=18:00`, `fecha=2026-11-11`, `servicio=corte`, `incluir_duracion=True`. Resultado ficticio **18:30**, duración **40 min**.
+- **Gemini / cliente B, primera interacción:** ante la pregunta por servicio y fecha previos en **su** conversación, respondió que no se habían mencionado; **sin invocaciones de herramienta** y sin recuperar información del cliente A. Terminal final: `B22/L3: AGENTE INTEGRADO Y SESIONES AISLADAS VERIFICADOS.`
+- **Advertencias:** `LangChainDeprecationWarning` de `RunnableWithMessageHistory` y `InMemoryChatMessageHistory`; no hubo errores de ejecución. Persistencia moderna y autenticación multiusuario siguen fuera del alcance de estos ejercicios.
+- **Resultado académico:** **Bloque 22 cerrado técnicamente 3/3 lecciones**; avance U2.4 confirmado **6/9 lecciones** (Bloque 21 3/3, Bloque 22 3/3). No atribuir entrega, nota ni aprobación institucional de Skillnest.
+- **Documentación:** [evidencia de integración final B22](u2_4_b22_integracion_final.md). Código funcional: [integracion_b22_booking_core.py](../src/integracion_b22_booking_core.py).
+- **Git:** la rama local de estudio incorporó `origin/main` mediante merge sin conflicto antes de las pruebas. Esta nueva anotación se publicó en `main`; no hacer push/rebase sobre la rama local divergente sin revisar su estado y sus respaldos.
+- **Horas de inicio, término, tiempo efectivo y pausas:** no informadas; no inferirlas.
+- **Punto exacto de continuación:** Bloque 23, lección 1, «Límites de autonomía y supervisión humana del agente». Introducir decisiones de seguridad y aprobación para acciones con efectos reales (reservar, cancelar, modificar) sin exponer aún Booking Core productivo.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
