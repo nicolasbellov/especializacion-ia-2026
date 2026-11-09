@@ -3,7 +3,7 @@
 **Curso:** Skillnest / Accenture / CChIA — Especialización IA 2026  
 **Fecha de preparación:** 2026-11-09  
 **Fuente principal:** «Implementa tu agente con al menos dos herramientas [Actividad práctica]» (Bloque 21).  
-**Estado:** código publicado; **pendiente de ejecución y validación manual con Gemini en Windows**.
+**Estado:** **validado técnicamente con Gemini real en Windows (2/2 casos)**; entrega y aprobación institucional no confirmadas.
 
 ## Objetivo y alcance
 
@@ -44,8 +44,8 @@ Si hay archivos modificados o conflictos, resolver el estado local **antes** de 
 
 | Caso | Pregunta | Herramienta esperada | Estado |
 |---|---|---|---|
-| 1. Catálogo | «En esta barbería de prueba, ¿cuánto cuesta un corte de cabello?» | `consultar_servicios` | Pendiente de ejecución real |
-| 2. Agenda | «¿Qué horarios simulados hay para un corte el 11 de noviembre de 2026?» | `consultar_disponibilidad` | Pendiente de ejecución real |
+| 1. Catálogo | «En esta barbería de prueba, ¿cuánto cuesta un corte de cabello?» | `consultar_servicios` | **Validado (1/1)**: argumento `servicio='corte'`; $15.000 CLP y 40 min simulados |
+| 2. Agenda | «¿Qué horarios simulados hay para un corte el 11 de noviembre de 2026?» | `consultar_disponibilidad` | **Validado (1/1)**: `fecha='2026-11-11'`, `servicio='corte'`; 10:00, 16:00 y 18:30 ficticios |
 
 **No basta la respuesta final:** en cada caso, la selección de herramienta se verifica programáticamente mediante los pares de acción/observación en `resultado["intermediate_steps"]`. El programa imprime `VALIDACIÓN MANUAL: OK` para cada uno cuando cumple, y un mensaje final de cierre solo cuando ambas pasan. Si Gemini selecciona otra herramienta, el programa mostrará la traza y lanzará `AssertionError`.
 
@@ -57,9 +57,37 @@ Los resultados exactos de las herramientas están definidos por los datos simula
 - [x] Agente con `AgentExecutor`, prompt y `agent_scratchpad`.
 - [x] Verificación programática de la elección de herramienta.
 - [x] Código publicado en el repositorio.
-- [ ] Caso 1 ejecutado y validado mediante Gemini real.
-- [ ] Caso 2 ejecutado y validado mediante Gemini real.
-- [ ] Salida de terminal adjunta al registro académico.
+- [x] Caso 1 ejecutado y validado mediante Gemini real.
+- [x] Caso 2 ejecutado y validado mediante Gemini real.
+- [x] Evidencia de salida compartida en conversación y transcripción **depurada de metadatos** incluida más abajo.
 - [ ] Confirmación de entrega / aprobación en Skillnest.
 
-**Criterio de cierre técnico:** deben pasar ambos casos reales y no observarse errores de ejecución. La publicación del código **no** equivale a haber ejecutado las pruebas ni a una aprobación institucional.
+**Cierre técnico:** ambas invocaciones reales y sus verificaciones de herramientas finalizaron correctamente, sin excepciones observadas. **Esto no constituye entrega ni aprobación institucional en Skillnest.**
+
+## Evidencia de ejecución real · 09/11/2026 (Chile)
+
+El estudiante ejecutó `python -m src.agente_b21_booking_core` desde PowerShell con `(.venv)` activo y compartió la salida de consola. Se conserva a continuación un extracto **sin firmas ni metadatos del proveedor** (el log íntegro existe en la conversación de estudio, pero no se publica como archivo original de terminal).
+
+```text
+PREGUNTA: En esta barbería de prueba, ¿cuánto cuesta un corte de cabello?
+Invoking: consultar_servicios {'servicio': 'corte'}
+CATÁLOGO SIMULADO: Corte de cabello: $15,000 CLP; 40 minutos.
+TRAZA ESTRUCTURADA:
+- consultar_servicios {'servicio': 'corte'} -> catálogo simulado
+VALIDACIÓN MANUAL: OK (herramienta: consultar_servicios)
+
+PREGUNTA: ¿Qué horarios simulados hay para un corte el 11 de noviembre de 2026?
+Invoking: consultar_disponibilidad {'servicio': 'corte', 'fecha': '2026-11-11'}
+AGENDA SIMULADA: Corte de cabello, fecha 2026-11-11, horarios: 10:00, 16:00, 18:30.
+TRAZA ESTRUCTURADA:
+- consultar_disponibilidad {'servicio': 'corte', 'fecha': '2026-11-11'} -> agenda simulada
+VALIDACIÓN MANUAL: OK (herramienta: consultar_disponibilidad)
+
+ACTIVIDAD B21: DOS VALIDACIONES MANUALES CORRECTAS.
+```
+
+**Interpretación:** ambas herramientas tuvieron una invocación de modelo real, el agente escogió la herramienta esperada, recibió datos simulados y la verificación con `intermediate_steps` pasó en los dos casos. La estructura final se normalizó a texto visible; `verbose=True` imprimió adicionalmente bloques con firmas del modelo, que no son necesarios para la evidencia.
+
+**Limitaciones:** no es prueba de disponibilidad real, integración Supabase, creación de reservas ni comportamiento determinista ante todas las consultas. Las dos pruebas manuales corresponden a los criterios concretos de la actividad, no a una suite automatizada completa.
+
+**Pendiente académico:** copiar el enlace a este repositorio/actividad en Skillnest si la plataforma lo solicita; confirmar envío y eventual evaluación. No consta todavía el envío.
