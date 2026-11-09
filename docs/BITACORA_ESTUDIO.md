@@ -437,6 +437,19 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Inicio, término, pausas y tiempo efectivo:** no informados; no inferir.
 - **Punto exacto para continuar:** Bloque 23, última lección Core, **«Documenta los límites de autonomía de tu agente»**. Preparar la entrega únicamente al recibir y revisar la consigna específica de Skillnest.
 
+## Preparación de entrega M2-U2.4-B23/Core · 09/11/2026 — Documento de límites de autonomía
+
+- **Actividad oficial Skillnest:** «Documenta los límites de autonomía de tu agente [Core]» — última lección de U2.4. Consigna fuente revisada, junto con captura del formulario que permite adjuntar un enlace (GitHub/Drive).
+- **Documento entregable creado en GitHub (rama `main`):** [Límites de autonomía de Booking Core AI](u2_4_b23_core_limites_autonomia_booking_core_ai.md). Repositorio verificado **público**; enlace directo: https://github.com/nicolasbellov/especializacion-ia-2026/blob/main/docs/u2_4_b23_core_limites_autonomia_booking_core_ai.md
+- **Contenido conforme a las cuatro secciones solicitadas:** clasificación de todas las herramientas propias del laboratorio por nivel de riesgo (bajo, medio, alto); exigencia de aprobación humana y justificación; revisión de trazas con frecuencia y señales de alerta; plan operativo concreto y secuencial ante conducta inesperada.
+- **Contraste contra código actual:** B21 consulta de servicios y disponibilidad; B22 consulta estructurada y memoria temporal por sesión; B23 consulta de reservas ficticias, cancelación supervisada (`DecisionSupervisor`, `esperar_aprobacion_con_timeout`, fail closed, registro en RAM) y `registrar_traza` / `revisar_trazas` en JSONL.
+- **Evidencia verificada previamente y referenciada:** rechazo humano, timeout y aprobación humana `s` en consola durante las pruebas B23/L1; en B23/L2, **11 registros JSONL** acumulados, 2 repeticiones, 5 invocaciones de riesgo alto, 2 alertas de auditoría ausente fabricadas sintéticamente, 0 inconsistencias y 0 líneas inválidas. Gemini real intentó la cancelación, bloqueada por `sin_supervisor`.
+- **Limitación reconocida:** los agentes de memoria, supervisión y trazabilidad son **componentes de laboratorio separados**, no un servicio productivo unificado; no hay conexión con Booking Core ni Supabase real. No afirmar que el registro JSONL contiene las decisiones `s` y `n` observadas en consola de otra prueba.
+- **Verificación del documento:** archivo y sus cuatro secciones localizados mediante la conexión GitHub, con código y referencias verificables. No fue necesario crear herramientas nuevas ni modificar los scripts ya probados.
+- **Avance:** U2.4 tiene **9/9 contenidos abordados y documento Core listo para enviar**. **8/9 lecciones anteriores validadas mediante ejecución**; la novena es un documento ya confeccionado y contrastado con la evidencia. **Envío del formulario y aprobación/calificación institucional aún NO confirmados.**
+- **Inicio, término, pausas y tiempo efectivo:** no informados; no inferir.
+- **Punto exacto para continuar:** copiar el enlace público del Markdown a la sección **«Enlace (Drive, etc.)»** de la tarea Core en Skillnest y pulsar «Enviar entrega» personalmente; registrar después el resultado o captura de confirmación. Al confirmar la entrega, pasar a **U2.5 / Bloque 24: «RAG por dentro»**.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
