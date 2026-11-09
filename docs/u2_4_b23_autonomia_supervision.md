@@ -2,7 +2,7 @@
 
 **Programa:** Especialización IA 2026 · Skillnest / Accenture / CChIA  
 **Fecha de preparación:** 09/11/2026 (Chile)  
-**Estado:** código publicado; pendiente de ejecución local.
+**Estado:** validación principal ejecutada en Windows: pruebas automáticas, rechazo humano y supervisión de Gemini ante timeout y rechazo correctos. **Pendiente observar aprobación manual con `s`**.
 
 ## Fuente principal: qué enseña Skillnest
 
@@ -57,7 +57,7 @@ python -m src.supervision_b23_booking_core
 
 Comprueba rechazo, ausencia de canal, timeout inmediato, aprobación de prueba, validación Pydantic, prevención de solicitudes repetidas y registro de auditoría.
 
-**Salida final esperada, no observada todavía:**
+**Salida final observada en Windows:**
 
 ~~~text
 B23/L1: CONTROLES DE APROBACION SIMULADA VERIFICADOS.
@@ -101,10 +101,63 @@ B23/L1: SUPERVISION DEL AGENTE VERIFICADA.
 - [x] Pruebas sin API preparadas.
 - [x] Confirmación por consola y rechazo por defecto implementados.
 - [x] Modo opcional de Gemini con trazas implementado.
-- [ ] Pruebas sin API verificadas en Windows.
-- [ ] Rechazo y aprobación manual reales verificados.
-- [ ] Modo Gemini probado, si se ejecuta.
-- [ ] Cierre técnico de la lección.
+- [x] Pruebas sin API verificadas en Windows (rechazo, timeout, ausencia de supervisor, aceptación ficticia, validación y auditoría).
+- [x] Rechazo manual `n` verificado; reserva DEMO-001 permanece confirmada.
+- [ ] Aprobación manual `s` verificada (sigue pendiente).
+- [x] Modo Gemini probado: caso timeout y caso rechazo manual; ambos bloquearon la cancelación.
+- [ ] Cierre de cobertura completa de la lección: falta probar la ruta humana `s`; el camino de aprobación con doble programado sí fue validado.
 - [ ] Entrega o evaluación institucional (no confirmadas).
 
 **Siguiente lección Skillnest:** Bloque 23 — «Qué revela la traza de decisión de un agente».
+
+## Evidencia observada: 09/11/2026
+
+El estudiante sincronizó la rama local con `origin/main` mediante merge exitoso, verificó estado Git limpio y ejecutó las pruebas siguientes en PowerShell:
+
+### Prueba sin Gemini — pasada
+
+```powershell
+python -m src.supervision_b23_booking_core
+```
+
+```text
+RECHAZO OK: no se cancela ni se repite la solicitud.
+SIN CANAL/TIMEOUT OK: rechazo por defecto.
+APROBACION FICTICIA OK: solo cambia el diccionario demo.
+PYDANTIC OK: rechaza un identificador fuera de DEMO-###.
+B23/L1: CONTROLES DE APROBACION SIMULADA VERIFICADOS.
+```
+
+El registro de la aprobación **programada de prueba** informó `aprobado=True`, `decision='aprobado'`, `origen='doble_prueba'`, `ejecutada=True`. **No fue una aprobación humana.**
+
+### Rechazo interactivo — pasado
+
+Con `--interactivo --timeout 60` el supervisor respondió **n**:
+
+```text
+Cancelacion SIMULADA de DEMO-001 NO ejecutada. Decision: rechazado.
+ESTADO FINAL: confirmada
+AUDITORIA: aprobado=False, decision='rechazado',
+          origen='consola_demo', ejecutada=False
+```
+
+### Dos ejecuciones reales con Gemini — pasadas
+
+En ambas ejecuciones el agente invocó `cancelar_reserva_simulada` con `reserva_id='DEMO-001'` y `motivo='cambio de planes'`. La traza `intermediate_steps` confirmó la herramienta utilizada y sus argumentos.
+
+1. **Sin decisión dentro de 60 segundos:** `decision='timeout'`, `aprobado=False`, `ejecutada=False`, reserva **confirmada**; terminal: `B23/L1: SUPERVISION DEL AGENTE VERIFICADA.`
+2. **Supervisor responde n:** `decision='rechazado'`, `aprobado=False`, `ejecutada=False`, reserva **confirmada**; misma salida de validación.
+
+Se comprobó que la propuesta de Gemini no altera el estado sin aprobación externa. Los valores se guardaron en memoria y se registraron con instante UTC. Estos ensayos **no** cancelaron ninguna reserva real.
+
+### Única comprobación pendiente
+
+Falta ejecutar la ruta de **aprobación humana positiva**, idealmente sin consumir llamadas a Gemini:
+
+```powershell
+python -m src.supervision_b23_booking_core --interactivo --timeout 60
+```
+
+Responder **s** y Enter dentro del plazo. El estado **esperado**, todavía no observado, es `ESTADO FINAL: cancelada` y `aprobado=True`, `ejecutada=True`, `origen='consola_demo'`. Esta cancelación solo afecta el diccionario ficticio del proceso Python.
+
+**Estado de la lección:** controles de rechazo y de seguridad validados, con el camino aprobado cubierto únicamente por un doble de prueba. Pendiente la comprobación humana de aprobación para declarar cobertura práctica completa. **Ninguna calificación o entrega institucional ha sido confirmada.**
