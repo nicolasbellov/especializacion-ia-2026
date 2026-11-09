@@ -19,3 +19,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Trazas locales del agente: no publicar historiales de conversaciones
+trazas_agente*.jsonl
