@@ -360,6 +360,18 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Git:** nuevo registro publicado en `main`. Rama local `feature/u2-3-b20-core-verificacion` tenía historial divergente de su remoto antes de esta sesión; evitar `push` o `stash pop` sin revisar.
 - **Punto exacto de reanudación:** Bloque 22, lección 3, «Tu herramienta personalizada, ya construida e integrada»; reutilizar herramienta con `args_schema`, memoria por sesión y `intermediate_steps` como evidencia.
 
+## Inicio M2-U2.4-B22/L3 · 09/11/2026 — Integración final y separación de clientes
+
+- **Lección oficial:** «Tu herramienta personalizada, ya construida e integrada» — cierre del Bloque 22.
+- **Fuente Skillnest:** integración de tres capas (herramienta Pydantic con `args_schema`; `AgentExecutor` con `chat_history` y `agent_scratchpad`; `RunnableWithMessageHistory` por `session_id`). Checklist: argumentos documentados, orden del prompt, dos turnos vinculados y dos sesiones independientes.
+- **Aplicación complementaria:** [`src/integracion_b22_booking_core.py`](../src/integracion_b22_booking_core.py), que **reutiliza** el código ya probado de [herramienta B22/L1](../src/herramienta_b22_booking_core.py) y [agente/memoria B22/L2](../src/memoria_b22_booking_core.py), sin duplicar modelos y herramientas. Datos ficticios; ninguna reserva real.
+- **Pruebas preparadas sin API:** esquema y validación, dos turnos en A (4 mensajes), uno en B (2 mensajes), ausencia cruzada de contenido textual y limpieza de ambos historiales.
+- **Pruebas preparadas con Gemini:** dos turnos relacionados en A + primer turno independiente en B, con comprobación de `intermediate_steps` y aislamiento de las sesiones.
+- **Documentación y checklist:** [integración final de B22](u2_4_b22_integracion_final.md).
+- **Estado académico:** Bloque 22 con **2/3 lecciones validadas técnicamente**; lección 3 preparada y pendiente de pruebas en Windows. U2.4 sigue **5/9 lecciones confirmadas**, no 6/9. Sin entrega ni aprobación institucional informadas.
+- **Registro horario:** inicio, término y tiempo efectivo no informados.
+- **Punto exacto siguiente:** en la rama local comprobar `git status --short`, integrar `origin/main` con precaución, ejecutar `python -m src.integracion_b22_booking_core`; si pasa, ejecutar `python -m src.integracion_b22_booking_core --agente`, registrar salidas y cerrar técnicamente Bloque 22. Después continuar con Bloque 23, límites de autonomía y supervisión.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
