@@ -55,45 +55,45 @@ RunnableWithMessageHistory aparece como API obsoleta en versiones recientes; el 
 
 **Activación de .venv (procedimiento validado previamente por el estudiante):**
 
-\`\`\`powershell
+```powershell
 cd C:\Users\nbello\dev\especializacion-ia-2026
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\.venv\Scripts\Activate.ps1
-\`\`\`
+```
 
 Antes de sincronizar, verificar la situación de la rama local:
 
-\`\`\`powershell
+```powershell
 git status --short
 git fetch origin
 git merge --no-ff origin/main -m "merge: incorporar memoria B22"
-\`\`\`
+```
 
 No ejecutar merge con cambios sin revisar o conflictos previos. No ejecutar reset --hard ni stash pop automáticamente.
 
 **Primera prueba, SIN usar Gemini:**
 
-\`\`\`powershell
+```powershell
 python -m src.memoria_b22_booking_core
-\`\`\`
+```
 
 Validaciones previstas: primer turno 2 mensajes, segundo turno 4 mensajes, segunda sesión vacía, normalización de respuesta y cierre de sesión. Salida esperada:
 
-\`\`\`text
+```text
 B22/L2: PRUEBAS DE MEMORIA SIN API CORRECTAS.
-\`\`\`
+```
 
 **Segunda prueba, CON Gemini real:**
 
-\`\`\`powershell
+```powershell
 python -m src.memoria_b22_booking_core --agente
-\`\`\`
+```
 
 Este modo consume cuota de la API y ejecuta dos turnos del mismo cliente. Debe mostrar el paso intermedio donde la herramienta utiliza la fecha y el servicio del primer turno, y terminar con:
 
-\`\`\`text
+```text
 B22/L2: CONTEXTO ENTRE DOS INTERACCIONES VERIFICADO.
-\`\`\`
+```
 
 Las selecciones y redacción del modelo pueden variar; si el criterio falla, el resultado de terminal servirá para diagnosticar el caso.
 
