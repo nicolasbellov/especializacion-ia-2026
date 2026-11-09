@@ -2,7 +2,7 @@
 
 **Programa:** Especialización IA 2026 — Skillnest, Accenture y CChIA  
 **Fecha:** 09/11/2026 (Chile)  
-**Estado:** implementación y pruebas preparadas en `main`; pendiente ejecutar en el PC del estudiante.
+**Estado:** **validado técnicamente en Windows** mediante pruebas sin API y tres turnos reales de Gemini, con aislamiento de sesiones confirmado. Entrega/aprobación institucional no informada.
 
 ## Fuente principal: qué exige la lección
 
@@ -76,7 +76,7 @@ El repositorio local tiene antecedentes de divergencia entre la rama de funciona
 python -m src.integracion_b22_booking_core
 ```
 
-Salida final esperada (aún no ejecutada por el estudiante):
+Salida final observada en PowerShell:
 
 ```text
 BLOQUE 1 OK: herramienta con args_schema, nombre y validación.
@@ -93,7 +93,7 @@ B22/L3: INTEGRACIÓN SIN API VERIFICADA.
 python -m src.integracion_b22_booking_core --agente
 ```
 
-Salida final esperada:
+Salida final observada con Gemini:
 
 ```text
 B22/L3: AGENTE INTEGRADO Y SESIONES AISLADAS VERIFICADOS.
@@ -115,7 +115,55 @@ La traza de las herramientas y el historial observado son evidencias más fiable
 - [x] Prompt de agente con chat_history y agent_scratchpad en orden correcto implementado y probado en B22/L2.
 - [x] Memoria entre turnos validada con Gemini real en B22/L2.
 - [x] Pruebas nuevas de aislamiento entre dos sesiones preparadas.
-- [ ] Pruebas nuevas sin API ejecutadas en el PC del estudiante.
-- [ ] Integración real de 2 sesiones con Gemini ejecutada y verificada.
-- [ ] Cierre técnico del Bloque 22.
+- [x] Pruebas nuevas sin API ejecutadas y verificadas en el PC del estudiante.
+- [x] Integración real de 2 sesiones con Gemini ejecutada y verificada (tres turnos conversacionales).
+- [x] Cierre técnico del Bloque 22: **3/3 lecciones validadas**.
 - [ ] Entrega y aprobación institucional, si corresponde (no confirmadas).
+
+## Evidencia de ejecución real · 09/11/2026
+
+Fuente: salida de PowerShell compartida por el estudiante después de integrar `origin/main` en su rama local sin conflictos. Se ejecutaron ambos comandos:
+
+```powershell
+python -m src.integracion_b22_booking_core
+python -m src.integracion_b22_booking_core --agente
+```
+
+### Prueba A — Integración sin Gemini
+
+```text
+BLOQUE 1 OK: herramienta con args_schema, nombre y validación.
+BLOQUE 2 OK: conversación A de 2 turnos (4 mensajes).
+BLOQUE 3 OK: conversación B independiente (2 mensajes).
+LIMPIEZA OK: sesiones eliminadas.
+
+B22/L3: INTEGRACIÓN SIN API VERIFICADA.
+```
+
+Se confirmaron el nombre y esquema Pydantic, validación del booleano, historial de cuatro mensajes para A, historial de dos mensajes para B, ausencia cruzada de texto y limpieza de las sesiones.
+
+### Prueba B — Agente integrado con Gemini real
+
+**Cliente A / turno 1:** consultó corte de cabello el 11/11/2026. El agente invocó `consultar_disponibilidad_con_filtros` con `{'servicio':'corte', 'incluir_duracion':False, 'fecha':'2026-11-11'}` y obtuvo horarios ficticios 10:00, 16:00 y 18:30.
+
+**Cliente A / turno 2:** preguntó «¿Y después de las 18:00? Incluye cuánto dura.», sin repetir servicio ni fecha. La traza de `intermediate_steps` confirmó:
+
+```text
+consultar_disponibilidad_con_filtros
+{'hora_desde': '18:00', 'fecha': '2026-11-11',
+ 'servicio': 'corte', 'incluir_duracion': True}
+→ AGENDA SIMULADA: Corte de cabello, fecha 2026-11-11,
+  horarios: 18:30. Duración estimada: 40 minutos.
+```
+
+**Cliente B / primer turno:** preguntó qué servicio y fecha había mencionado anteriormente **en su propia conversación**. El agente respondió correctamente que no había proporcionado esos datos y **no invocó ninguna herramienta**. La separación de los historiales A y B se verificó en el código de prueba.
+
+```text
+B22/L3: AGENTE INTEGRADO Y SESIONES AISLADAS VERIFICADOS.
+```
+
+Se observaron avisos `LangChainDeprecationWarning` para `RunnableWithMessageHistory` e `InMemoryChatMessageHistory`, **no bloqueantes**. El uso de estas API corresponde a la lección del curso, pero no es una recomendación de producción.
+
+**Resultado académico:** Bloque 22 cerrado **técnicamente** (3/3 lecciones); U2.4 alcanza **6/9 lecciones técnicamente validadas**. No consta entrega formal, nota ni aprobación institucional de Skillnest.
+
+**Limitaciones:** el ensayo verifica memoria temporal e independencia de objetos por `session_id`, no autorización de usuarios ni aislamiento multi-tenant en un sistema real. Todos los horarios y servicios son ficticios. Los extractos omiten las firmas `extras.signature` del proveedor presentes en la salida de consola.
