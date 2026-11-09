@@ -424,6 +424,19 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Inicio/término/tiempo efectivo:** no proporcionados; no inferir.
 - **Próxima acción exacta:** comprobar `git status --short` y sincronizar cambios desde `origin/main` con cautela; ejecutar `python -m src.trazas_b23_booking_core`, inspeccionar el archivo JSONL y, si interesa, ejecutar `python -m src.trazas_b23_booking_core --agente`. Revisar evidencias y luego abordar la lección Core: «Documenta los límites de autonomía de tu agente».
 
+## Cierre M2-U2.4-B23/L2 · 09/11/2026 — Persistencia y auditoría de trazas
+
+- **Fuente verificada:** consola PowerShell del estudiante, tras merge exitoso de `origin/main`. Se ejecutaron `python -m src.trazas_b23_booking_core`, `Get-Content -Encoding utf8 .\trazas_agente_b23.jsonl | Select-Object -Last 3` y `python -m src.trazas_b23_booking_core --agente`.
+- **Primera prueba, sin Gemini:** se escribieron **5** registros JSONL; resumen `registros=5`, `repeticiones=1`, `alto_riesgo=2`, `sin_registro_aprobacion=1`, `inconsistencias=0`, `lineas_invalidas=0`. Terminal: `B23/L2: REGISTRO Y ANALISIS DE TRAZAS SIN API VERIFICADOS.`
+- **Inspección de JSONL:** el estudiante mostró un registro de consulta repetida con diferentes reservas ficticias, otro sin `intermediate_steps` (`acciones=[]`) y uno sintético que señalaba auditoría ausente sin ejecutar cancelación.
+- **Prueba con Gemini real:** el comando `--agente` agregó otros **5** casos de prueba y **1** traza de Gemini. El modelo invocó `cancelar_reserva_simulada` para `DEMO-001`; sin supervisor, `decision=sin_supervisor` y la cancelación fue **bloqueada**. Terminal: `B23/L2: TRAZA REAL DE GEMINI PERSISTIDA.`
+- **Resumen final de las 11 líneas acumuladas:** `registros=11`, `repeticiones=2`, `alto_riesgo=5`, `sin_registro_aprobacion=2`, `inconsistencias=0`, `lineas_invalidas=0`. Las dos alertas de auditoría ausente son los casos **sintéticos intencionales**, no violaciones detectadas de autorización.
+- **Hallazgos y límites:** JSONL en UTF-8 persiste trazas observables de herramientas, argumentos y observaciones, con aprobaciones externas cuando existen. El registro no revela razonamiento privado del LLM ni representa auditoría durable, protegida o vinculada a identidad real. Todo el experimento utiliza datos ficticios sin tocar Booking Core ni Supabase.
+- **Estado:** **B23/L2 validada técnicamente**. Avance acumulado U2.4 **8/9 lecciones** (B21 3/3, B22 3/3, B23 2/3), sin evidencia de evaluación/entrega o calificación institucional.
+- **Documentación:** [u2_4_b23_trazas_decision.md](u2_4_b23_trazas_decision.md); código [trazas_b23_booking_core.py](../src/trazas_b23_booking_core.py); archivo local `trazas_agente_b23.jsonl` excluido de Git.
+- **Inicio, término, pausas y tiempo efectivo:** no informados; no inferir.
+- **Punto exacto para continuar:** Bloque 23, última lección Core, **«Documenta los límites de autonomía de tu agente»**. Preparar la entrega únicamente al recibir y revisar la consigna específica de Skillnest.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
