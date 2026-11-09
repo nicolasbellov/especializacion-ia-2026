@@ -2,7 +2,7 @@
 
 **Programa:** Especialización IA 2026 · Skillnest / Accenture / CChIA  
 **Fecha:** 09/11/2026 (Chile)  
-**Estado:** código publicado y pendiente de ejecución local. Sin llamadas reales a Gemini verificadas en esta lección.
+**Estado:** **validación técnica completada** en Windows: comprobaciones directas exitosas y traza de invocación real a Gemini verificada. Entrega/evaluación institucional no informada.
 
 ## Alcance del material de Skillnest
 
@@ -62,7 +62,7 @@ La prueba directa revisa:
 3. Consulta con `hora_desde="18:00"` y `incluir_duracion=True`.
 4. Rechazo mediante `ValidationError` de `incluir_duracion="tal vez"`.
 
-**Salida final esperada (pendiente de validación real):** `B22/L1: TRES COMPROBACIONES DIRECTAS CORRECTAS.`
+**Salida final observada en Windows:** `B22/L1: TRES COMPROBACIONES DIRECTAS CORRECTAS.`
 
 Para ejecutar **además** una consulta real a Gemini, de forma optativa:
 
@@ -79,8 +79,34 @@ Este último modo **consume cuota/API** y permite examinar la traza del uso de `
 - [x] `@tool` con nombre personalizado.
 - [x] Pruebas directas preparadas (sin API).
 - [x] Agente opcional preparado con `return_intermediate_steps=True`.
-- [ ] Resultados de pruebas directas recibidos del entorno Windows.
-- [ ] Traza opcional Gemini verificada, si se ejecuta.
+- [x] Resultados de pruebas directas recibidos y revisados del entorno Windows.
+- [x] Traza de Gemini real verificada: nombre y cuatro parámetros correctos.
 - [ ] Evaluación o entrega institucional: no solicitada explícitamente en esta lección.
 
 **Siguiente tema oficial:** Bloque 22, «Que tu agente recuerde: memoria entre interacciones».
+
+## Evidencia de ejecución · 09/11/2026 (Chile)
+
+El participante compartió la salida de PowerShell de las siguientes ejecuciones, con `(.venv)` activo:
+
+```powershell
+python -m src.herramienta_b22_booking_core
+python -m src.herramienta_b22_booking_core --agente
+```
+
+**Validación directa de herramienta (sin API):**
+
+```text
+Nombre expuesto al modelo: consultar_disponibilidad_con_filtros
+CASO BASE:
+AGENDA SIMULADA: Corte de cabello, fecha 2026-11-11, horarios: 10:00, 16:00, 18:30.
+CASO FILTRADO:
+AGENDA SIMULADA: Corte de cabello, fecha 2026-11-11, horarios: 18:30. Duración estimada: 40 minutos.
+VALIDACIÓN PYDANTIC: rechazo correcto del booleano inválido
+Campo: ('incluir_duracion',)
+B22/L1: TRES COMPROBACIONES DIRECTAS CORRECTAS.
+```
+
+**Validación adicional con Gemini real:** el agente invocó la herramienta `consultar_disponibilidad_con_filtros` con los parámetros `{'hora_desde': '18:00', 'servicio': 'corte', 'fecha': '2026-11-11', 'incluir_duracion': True}`. La observación indicó solo **18:30** y **40 minutos**; respondió que se trataba de datos ficticios. `intermediate_steps` registró la acción y observación, y la terminal finalizó con `AGENTE: herramienta personalizada invocada correctamente.`
+
+**Resultado:** implementación y verificación técnica de la lección completadas, sin errores de ejecución observados. Se omiten intencionalmente los campos `signature` del proveedor presentes en el log original aportado por el estudiante. **No se ha verificado conexión con una agenda real, ni se ha declarado aprobación institucional de Skillnest.**
