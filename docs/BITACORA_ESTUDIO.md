@@ -347,6 +347,19 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Inicio, término, tiempo efectivo:** no informados.
 - **Próximo paso:** sincronizar Git en rama local con precaución, ejecutar primero `python -m src.memoria_b22_booking_core`, luego `python -m src.memoria_b22_booking_core --agente`; revisar trazas, registrar resultados y avanzar a «Tu herramienta personalizada, ya construida e integrada».
 
+## Cierre M2-U2.4-B22/L2 · 09/11/2026 — Memoria conversacional validada
+
+- **Fuente de evidencia:** ejecución PowerShell aportada por el estudiante de `python -m src.memoria_b22_booking_core` y `python -m src.memoria_b22_booking_core --agente`, con entorno `(.venv)` activo, después de integrar `origin/main` en su rama local sin conflictos.
+- **Pruebas sin API:** sesión A con 2 mensajes después del primer turno y 4 después del segundo; sesión B independiente con 0; normalización de bloques Gemini a texto y eliminación de las sesiones correctas. Salida final: `B22/L2: PRUEBAS DE MEMORIA SIN API CORRECTAS.`
+- **Gemini, turno 1:** usuario consulta horarios simulados para corte el 11/11/2026; herramienta `consultar_disponibilidad_con_filtros` invocada con fecha `2026-11-11`, servicio `corte`, `incluir_duracion=False`; datos ficticios **10:00, 16:00 y 18:30**; historial con **2** mensajes.
+- **Gemini, turno 2:** usuario dice solo «¿Y después de las 18:00? Incluye cuánto dura.»; `intermediate_steps` registró `consultar_disponibilidad_con_filtros` con **servicio=`corte` y fecha=`2026-11-11` recuperados del historial**, más `hora_desde=`18:00`` e `incluir_duracion=True`. Observación: horario ficticio **18:30**, duración **40 minutos**; historial con **4** mensajes. Salida final: `B22/L2: CONTEXTO ENTRE DOS INTERACCIONES VERIFICADO.`
+- **Advertencias no bloqueantes:** `LangChainDeprecationWarning` por `RunnableWithMessageHistory` y `InMemoryChatMessageHistory`, señalando persistencia de LangGraph y futuro retiro. Son advertencias reales, no errores; planificar migración cuando corresponda.
+- **Conclusión académica:** Bloque 22, lección 2 **completada técnicamente**. Avance U2.4 **5/9 lecciones** (Bloque 21 3/3 y Bloque 22 2/3); sin evidencia de entrega, aprobación ni calificación institucional.
+- **Documento de evidencia:** [memoria conversacional B22/L2](u2_4_b22_memoria_conversacional.md), con extractos depurados de consola.
+- **Tiempo de estudio:** inicio, término y tiempo efectivo no proporcionados; sin inferencias.
+- **Git:** nuevo registro publicado en `main`. Rama local `feature/u2-3-b20-core-verificacion` tenía historial divergente de su remoto antes de esta sesión; evitar `push` o `stash pop` sin revisar.
+- **Punto exacto de reanudación:** Bloque 22, lección 3, «Tu herramienta personalizada, ya construida e integrada»; reutilizar herramienta con `args_schema`, memoria por sesión y `intermediate_steps` como evidencia.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
