@@ -313,6 +313,17 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Código:** en `main` de GitHub, `src/agente_b21_booking_core.py`. **Estado local:** ejecución funcional, pero no se dispone del estado Git posterior; la rama anterior era `feature/u2-3-b20-core-verificacion`, con `stash` aún por conciliar. No hacer `stash pop` o `reset --hard` sin revisar.
 - **Punto exacto de reanudación:** revisar envío de actividad si corresponde, y avanzar a **U2.4 / Bloque 22 — Cómo construir una herramienta personalizada para tu agente**, ampliando Booking Core AI con pruebas, mejor separación de datos y memoria entre interacciones.
 
+## Inicio M2-U2.4-B22 · 09/11/2026 — Herramienta personalizada con args_schema
+
+- **Lección:** «Cómo construir una herramienta personalizada para tu agente» (Bloque 22, lección 4/9 de U2.4).
+- **Conceptos del curso:** `BaseModel`, `Field(description=...)`, `@tool(args_schema=...)`, nombre explícito de herramienta, `invoke` y `ValidationError`.
+- **Aplicación a Booking Core AI (propuesta complementaria):** [`src/herramienta_b22_booking_core.py`](../src/herramienta_b22_booking_core.py), basada en los datos ficticios B21. Herramienta `consultar_disponibilidad_con_filtros` con cuatro parámetros: `fecha`, `servicio`, `hora_desde` e `incluir_duracion`. Se conservó la posibilidad de ejecutar tests directos sin API y un modo opcional `--agente`.
+- **Documento de actividad:** [guía de B22/L1](u2_4_b22_herramienta_personalizada.md).
+- **Evidencia y estado:** implementación publicada en GitHub. **Pendiente** de ejecución de pruebas locales en Windows y de validación real de Gemini. No declarar lección validada técnicamente aún.
+- **Inicio/término y tiempo efectivo:** no informados.
+- **Estado Git local:** rama anterior `feature/u2-3-b20-core-verificacion`; se debe comprobar `git status --short` y conciliar los cambios remotos. Existe stash histórico local que no debe aplicarse a ciegas.
+- **Punto exacto siguiente:** ejecutar `python -m src.herramienta_b22_booking_core`, revisar resultados y, opcionalmente, `--agente`; luego estudiar «Que tu agente recuerde: memoria entre interacciones».
+
 ## Plantilla para próximas sesiones
 
 ```markdown
