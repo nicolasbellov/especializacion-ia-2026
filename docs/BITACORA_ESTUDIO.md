@@ -335,6 +335,18 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Horas de inicio/término y tiempo efectivo:** no informados, no inferir.
 - **Punto exacto de continuación:** Bloque 22, lección 2, «Que tu agente recuerde: memoria entre interacciones». Mantener Booking Core AI como ejercicio progresivo.
 
+## Inicio M2-U2.4-B22/L2 · 09/11/2026 — Memoria conversacional por sesión
+
+- **Lección:** «Que tu agente recuerde: memoria entre interacciones» (quinta lección de U2.4, segunda del Bloque 22).
+- **Fuente Skillnest:** `RunnableWithMessageHistory`, `InMemoryChatMessageHistory`, `session_id`, `MessagesPlaceholder("chat_history")` y separación respecto de `agent_scratchpad`; memoria temporal, aumento de tokens y cierre de sesión.
+- **Aplicación incremental Booking Core AI:** [`src/memoria_b22_booking_core.py`](../src/memoria_b22_booking_core.py). Conserva AgentExecutor y las herramientas simuladas anteriores. Usa dos turnos: consulta de corte el 11/11/2026 seguida de «¿Y después de las 18:00? Incluye cuánto dura». Evalúa que la segunda llamada incorpore servicio y fecha del historial.
+- **Adaptación técnica complementaria:** normalización de salida por bloques de Gemini a texto antes de almacenar la respuesta en `RunnableWithMessageHistory` (motivada por la traza real B21/B22). `output_messages_key="output"` explícito.
+- **Evidencia publicada:** [guía y checklist del ejercicio](u2_4_b22_memoria_conversacional.md).
+- **Pruebas preparadas:** simulación sin consumo API para comprobar 2/4 mensajes, sesiones independientes, eliminación y normalización; modo opcional `--agente` para verificar dos turnos reales con Gemini.
+- **Estado:** código/documentación en GitHub; **no** hay ejecuciones aportadas de esta nueva lección; por tanto, **4/9 lecciones validadas técnicamente** y lección 5 en curso. No declarar cierre ni aprobación institucional.
+- **Inicio, término, tiempo efectivo:** no informados.
+- **Próximo paso:** sincronizar Git en rama local con precaución, ejecutar primero `python -m src.memoria_b22_booking_core`, luego `python -m src.memoria_b22_booking_core --agente`; revisar trazas, registrar resultados y avanzar a «Tu herramienta personalizada, ya construida e integrada».
+
 ## Plantilla para próximas sesiones
 
 ```markdown
