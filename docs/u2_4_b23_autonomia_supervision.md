@@ -2,7 +2,7 @@
 
 **Programa:** Especialización IA 2026 · Skillnest / Accenture / CChIA  
 **Fecha de preparación:** 09/11/2026 (Chile)  
-**Estado:** validación principal ejecutada en Windows: pruebas automáticas, rechazo humano y supervisión de Gemini ante timeout y rechazo correctos. **Pendiente observar aprobación manual con `s`**.
+**Estado:** **lección validada técnicamente en Windows**: pruebas sin API, rechazo y timeout, y aprobación humana positiva `s` durante una invocación real de Gemini. Ninguna operación afectó reservas reales.
 
 ## Fuente principal: qué enseña Skillnest
 
@@ -103,9 +103,9 @@ B23/L1: SUPERVISION DEL AGENTE VERIFICADA.
 - [x] Modo opcional de Gemini con trazas implementado.
 - [x] Pruebas sin API verificadas en Windows (rechazo, timeout, ausencia de supervisor, aceptación ficticia, validación y auditoría).
 - [x] Rechazo manual `n` verificado; reserva DEMO-001 permanece confirmada.
-- [ ] Aprobación manual `s` verificada (sigue pendiente).
-- [x] Modo Gemini probado: caso timeout y caso rechazo manual; ambos bloquearon la cancelación.
-- [ ] Cierre de cobertura completa de la lección: falta probar la ruta humana `s`; el camino de aprobación con doble programado sí fue validado.
+- [x] Aprobación humana `s` verificada en una ejecución real con Gemini (cancelación ficticia).
+- [x] Modo Gemini probado: timeout, rechazo manual y aprobación manual positiva; herramienta y auditoría consistentes.
+- [x] Cobertura práctica de la lección completada técnicamente: rutas de timeout, rechazo humano y aprobación humana `s` observadas con Gemini.
 - [ ] Entrega o evaluación institucional (no confirmadas).
 
 **Siguiente lección Skillnest:** Bloque 23 — «Qué revela la traza de decisión de un agente».
@@ -150,14 +150,34 @@ En ambas ejecuciones el agente invocó `cancelar_reserva_simulada` con `reserva_
 
 Se comprobó que la propuesta de Gemini no altera el estado sin aprobación externa. Los valores se guardaron en memoria y se registraron con instante UTC. Estos ensayos **no** cancelaron ninguna reserva real.
 
-### Única comprobación pendiente
+### Aprobación humana positiva con Gemini — pasada
 
-Falta ejecutar la ruta de **aprobación humana positiva**, idealmente sin consumir llamadas a Gemini:
+El estudiante ejecutó nuevamente `python -m src.supervision_b23_booking_core --agente --timeout 60`, y esta vez respondió **s** al aviso en la consola. La traza aportada muestra:
 
-```powershell
-python -m src.supervision_b23_booking_core --interactivo --timeout 60
+```text
+Invoking: cancelar_reserva_simulada
+{'reserva_id': 'DEMO-001', 'motivo': 'cambio de planes'}
+¿Aprobar? (s/n): s
+Reserva FICTICIA DEMO-001 marcada cancelada en memoria
+tras aprobacion externa de prueba.
+ESTADO FINAL DEMO-001: cancelada
+B23/L1: SUPERVISION DEL AGENTE VERIFICADA.
 ```
 
-Responder **s** y Enter dentro del plazo. El estado **esperado**, todavía no observado, es `ESTADO FINAL: cancelada` y `aprobado=True`, `ejecutada=True`, `origen='consola_demo'`. Esta cancelación solo afecta el diccionario ficticio del proceso Python.
+Registro de auditoría recibido:
 
-**Estado de la lección:** controles de rechazo y de seguridad validados, con el camino aprobado cubierto únicamente por un doble de prueba. Pendiente la comprobación humana de aprobación para declarar cobertura práctica completa. **Ninguna calificación o entrega institucional ha sido confirmada.**
+```python
+{
+    'herramienta': 'cancelar_reserva_simulada',
+    'argumentos': {'reserva_id': 'DEMO-001', 'motivo': 'cambio de planes'},
+    'aprobado': True,
+    'decision': 'aprobado',
+    'origen': 'consola_demo',
+    'ejecutada': True,
+    'momento_utc': '2026-11-09T21:27:15.881541+00:00'
+}
+```
+
+**Conclusión:** la selección de herramienta por Gemini, la aprobación explícita por una persona y la mutación **exclusivamente en memoria ficticia** coincidieron. Comparada con las dos ejecuciones anteriores, queda comprobado que tanto `timeout` como `n` bloquean la acción, mientras que `s` permite únicamente la cancelación simulada. Esta autorización de consola **no implementa identidad, permisos ni aprobación productiva**.
+
+**Estado académico:** **Bloque 23/L1 completada técnicamente**. Avance U2.4: **7 de 9 lecciones** validadas (B21 3/3; B22 3/3; B23 1/3). **No hay evidencia de calificación ni aprobación institucional**.
