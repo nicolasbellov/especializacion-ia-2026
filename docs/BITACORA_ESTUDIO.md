@@ -301,6 +301,18 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Avance verificable:** lecciones 1 y 2 revisadas; lección 2 validada con Gemini. Lección 3 implementada pero no cerrada técnicamente. Sin aprobación institucional informada.
 - **Próximo paso exacto:** en la rama local sincronizar `origin/main` sin descartar el respaldo; ejecutar `python -m src.agente_b21_booking_core`; comprobar los dos `intermediate_steps` y documentar la salida. Luego continuar al Bloque 22.
 
+## Cierre M2-U2.4-B21 · 09/11/2026 — Actividad propia con dos herramientas
+
+- **Evidencia recibida:** salida de PowerShell compartida por el estudiante tras ejecutar `python -m src.agente_b21_booking_core` con `(.venv)` activo.
+- **Caso 1 (servicios):** `consultar_servicios({'servicio': 'corte'})` elegido correctamente; respuesta: corte de cabello ficticio **$15.000 CLP**, **40 minutos**; terminal informó `VALIDACIÓN MANUAL: OK (herramienta: consultar_servicios)`.
+- **Caso 2 (agenda):** `consultar_disponibilidad({'servicio': 'corte', 'fecha': '2026-11-11'})` elegido correctamente; horarios simulados **10:00, 16:00 y 18:30**; terminal informó `VALIDACIÓN MANUAL: OK (herramienta: consultar_disponibilidad)`.
+- **Cierre de ejecución:** `ACTIVIDAD B21: DOS VALIDACIONES MANUALES CORRECTAS.` **2/2 casos correctos**, sin excepciones observadas. Las decisiones se validaron leyendo `intermediate_steps`, no solo la respuesta textual.
+- **Documento de evidencia:** [U2.4 B21 Booking Core AI](u2_4_b21_actividad_booking_core.md), actualizado con traza depurada (sin metadatos/firmas).
+- **Estado académico:** las tres lecciones del Bloque 21 están revisadas; lecciones 2 y 3 verificadas técnicamente con Gemini real. **Bloque 21 cerrado técnicamente (3/3 lecciones).** Entrega en Skillnest y aprobación **no confirmadas**.
+- **Tiempo efectivo y horas de término/inicio:** no informados; evitar suposiciones.
+- **Código:** en `main` de GitHub, `src/agente_b21_booking_core.py`. **Estado local:** ejecución funcional, pero no se dispone del estado Git posterior; la rama anterior era `feature/u2-3-b20-core-verificacion`, con `stash` aún por conciliar. No hacer `stash pop` o `reset --hard` sin revisar.
+- **Punto exacto de reanudación:** revisar envío de actividad si corresponde, y avanzar a **U2.4 / Bloque 22 — Cómo construir una herramienta personalizada para tu agente**, ampliando Booking Core AI con pruebas, mejor separación de datos y memoria entre interacciones.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
