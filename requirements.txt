@@ -31,3 +31,5 @@ python-dotenv==1.2.4
 langchain==1.4.9
 langchain-google-genai==4.4.3
 pytest>=8,<10
+# U2.4 - Agente con herramientas (Bloque 21)
+langchain-classic==1.0.8
