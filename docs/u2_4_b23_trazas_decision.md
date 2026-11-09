@@ -2,7 +2,7 @@
 
 **Especialización IA 2026 · Skillnest / Accenture / CChIA**  
 **Fecha:** 09/11/2026, Chile  
-**Estado:** código y documentación publicados; pendiente ejecución en Windows.
+**Estado:** **lección validada técnicamente** en Windows: generación y análisis JSONL, inspección de registros y traza real de Gemini persistida. No consta evaluación institucional.
 
 ## 1. Fuente del curso
 
@@ -77,7 +77,7 @@ No ejecutar reset --hard, stash pop ni push sin revisar la rama local divergente
 python -m src.trazas_b23_booking_core
 ~~~
 
-Salida final esperada (todavía sin confirmar en Windows):
+Salida final observada en PowerShell:
 
 ~~~text
 B23/L2: REGISTRO Y ANALISIS DE TRAZAS SIN API VERIFICADOS.
@@ -121,9 +121,66 @@ Este modo consume cuota de API. Ningún modo crea, modifica ni cancela reservas 
 - [x] Campo adicional de auditoría del supervisor independiente del LLM.
 - [x] Formato JSONL UTF-8 y tolerancia a pasos ausentes.
 - [x] Logs de demostración excluidos mediante .gitignore.
-- [ ] Pruebas sin API ejecutadas en Windows.
-- [ ] Prueba Gemini real ejecutada (opcional).
-- [ ] Cierre técnico de la lección confirmado.
+- [x] Pruebas sin API ejecutadas en Windows: cinco trazas iniciales, alertas esperadas y cero inconsistencias.
+- [x] Prueba real con Gemini ejecutada y guardada, con cancelación ficticia bloqueada por ausencia de supervisor.
+- [x] Cierre técnico de la lección confirmado: B23/L2 completada; U2.4 alcanza 8/9 lecciones.
 - [ ] Entrega o nota institucional confirmada.
 
 **Siguiente lección:** Bloque 23 — Documenta los límites de autonomía de tu agente [Core].
+
+## 6. Evidencia observada del estudiante — 09/11/2026
+
+### 6.1 Sincronización y validación sin API
+
+El estudiante integró `origin/main` en su rama local mediante merge exitoso. Luego ejecutó:
+
+```powershell
+python -m src.trazas_b23_booking_core
+```
+
+Salida observada:
+
+```text
+REVISAR ALTO RIESGO: linea 2, sesion cliente_demo_denegado
+REVISAR REPETICION: linea 3, sesion cliente_demo_repeticion
+REVISAR ALTO RIESGO: linea 5, sesion cliente_demo_sin_auditoria
+  FALTA AUDITORIA: no hay una decision correlativa.
+RESUMEN DE REVISION:
+{'registros': 5, 'repeticiones': 1, 'alto_riesgo': 2,
+ 'sin_registro_aprobacion': 1, 'inconsistencias': 0, 'lineas_invalidas': 0}
+B23/L2: REGISTRO Y ANALISIS DE TRAZAS SIN API VERIFICADOS.
+```
+
+Archivo creado en el proyecto local: `trazas_agente_b23.jsonl`. El estudiante leyó las últimas tres líneas con `Get-Content -Encoding utf8`, comprobando:
+
+- Una interacción con dos llamadas consecutivas a `consultar_reserva_simulada` para distintas reservas DEMO.
+- Una interacción con `acciones=[]` sin errores.
+- Una **traza sintética** de cancelación sin auditoría, explícitamente etiquetada `NO ejecutado`. La alerta correspondiente es **intencional**, no evidencia de un problema real.
+
+### 6.2 Ejecución con Gemini y archivo acumulado
+
+Posteriormente se ejecutó:
+
+```powershell
+python -m src.trazas_b23_booking_core --agente
+```
+
+El comando añadió otros **cinco registros sintéticos** antes de usar Gemini, por lo que el conteo pasó de **5 a 10**. Gemini invocó realmente `cancelar_reserva_simulada` con `reserva_id="DEMO-001"` y `motivo="Cambio de planes"`; al estar ausente un canal aprobador, el control externo devolvió `sin_supervisor` y la cancelación **no se ejecutó**.
+
+```text
+GEMINI: herramienta registrada y cancelacion bloqueada sin supervisor.
+B23/L2: TRAZA REAL DE GEMINI PERSISTIDA.
+```
+
+El revisor, aplicado a las **11 líneas acumuladas**, produjo:
+
+```text
+{'registros': 11, 'repeticiones': 2, 'alto_riesgo': 5,
+ 'sin_registro_aprobacion': 2, 'inconsistencias': 0, 'lineas_invalidas': 0}
+```
+
+**Lectura:** las dos alertas de auditoría ausente pertenecen a los dos casos sintéticos fabricados deliberadamente en los lotes de prueba. La traza real de Gemini corresponde a una operación denegada y auditable. Las repeticiones marcadas son candidatos de revisión, no errores confirmados.
+
+**Conclusión académica:** segunda lección del Bloque 23 validada técnicamente. Avance U2.4: **8/9 lecciones** (B21 3/3, B22 3/3, B23 2/3). Siguiente lección: **«Documenta los límites de autonomía de tu agente [Core]»**.
+
+**Limitación:** no se ha verificado almacenamiento transaccional, identidad de supervisor, integridad criptográfica de auditoría o capacidad de reserva real. No hay evidencia de entrega o calificación institucional.
