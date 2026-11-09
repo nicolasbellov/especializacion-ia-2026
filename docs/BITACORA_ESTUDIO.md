@@ -324,6 +324,17 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Estado Git local:** rama anterior `feature/u2-3-b20-core-verificacion`; se debe comprobar `git status --short` y conciliar los cambios remotos. Existe stash histórico local que no debe aplicarse a ciegas.
 - **Punto exacto siguiente:** ejecutar `python -m src.herramienta_b22_booking_core`, revisar resultados y, opcionalmente, `--agente`; luego estudiar «Que tu agente recuerde: memoria entre interacciones».
 
+## Cierre M2-U2.4-B22/L1 · 09/11/2026 — Pydantic y Gemini reales
+
+- **Fuente de evidencia:** consola PowerShell compartida por el estudiante, entorno `(.venv)`; dos ejecuciones: `python -m src.herramienta_b22_booking_core` y `python -m src.herramienta_b22_booking_core --agente`.
+- **Pruebas directas:** nombre expuesto `consultar_disponibilidad_con_filtros`; consulta base devolvió horas ficticias **10:00, 16:00, 18:30**; consulta filtrada desde **18:00** devolvió **18:30** y duración **40 min**; `incluir_duracion="tal vez"` produjo el `ValidationError` esperado, identificado en el campo `('incluir_duracion',)`. Terminal: `B22/L1: TRES COMPROBACIONES DIRECTAS CORRECTAS.`
+- **Prueba real Gemini:** invocó `consultar_disponibilidad_con_filtros` con `{'hora_desde': '18:00', 'servicio': 'corte', 'fecha': '2026-11-11', 'incluir_duracion': True}`, recibió una observación simulada de **18:30** y **40 min**; `intermediate_steps` registró acción y observación. Terminal: `AGENTE: herramienta personalizada invocada correctamente.`
+- **Conclusión:** **Bloque 22, lección 1 validada técnicamente**, con datos simulados, sin errores de ejecución observados. Avance U2.4 **4/9 lecciones** revisadas y validadas técnicamente; Bloque 21 3/3 y Bloque 22 1/3. Este avance no representa aprobación institucional.
+- **Evidencia documentada:** [U2.4 B22/L1](u2_4_b22_herramienta_personalizada.md).
+- **Incidente Git resuelto en Windows:** se respaldó `docs/BITACORA_ESTUDIO.md` fuera del repositorio; se resolvió un conflicto `UU` con la versión entrante, commit local `554102c`; después se completó un merge de `origin/main` que incorporó el código B22. La rama local `feature/u2-3-b20-core-verificacion` había divergido previamente de su rama remota; se desconoce el estado posterior de sincronización. Evitar `git stash pop` automático.
+- **Horas de inicio/término y tiempo efectivo:** no informados, no inferir.
+- **Punto exacto de continuación:** Bloque 22, lección 2, «Que tu agente recuerde: memoria entre interacciones». Mantener Booking Core AI como ejercicio progresivo.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
