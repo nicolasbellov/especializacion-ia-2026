@@ -386,6 +386,17 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Horas de inicio, término, tiempo efectivo y pausas:** no informadas; no inferirlas.
 - **Punto exacto de continuación:** Bloque 23, lección 1, «Límites de autonomía y supervisión humana del agente». Introducir decisiones de seguridad y aprobación para acciones con efectos reales (reservar, cancelar, modificar) sin exponer aún Booking Core productivo.
 
+## Inicio M2-U2.4-B23/L1 · 09/11/2026 — Supervisión humana y riesgo
+
+- **Material oficial:** «Límites de autonomía y supervisión humana del agente». Clasificación bajo/medio/alto, aprobación humana previa a operaciones riesgosas, límite de espera, rechazo por defecto y registro de decisiones. El curso aclara que `select.select()` sobre stdin no funciona en Windows.
+- **Adaptación para Booking Core AI:** [`src/supervision_b23_booking_core.py`](../src/supervision_b23_booking_core.py) con consulta de reservas de prueba y cancelación ficticia `DEMO-###`, autorización inyectada por canal **independiente del LLM**, bitácora en memoria, prevención de aprobación repetida y esquema Pydantic sin un argumento `aprobado`.
+- **Estrategia Windows:** teclado con `msvcrt` y reloj `time.monotonic()` para timeout; equivalente del curso con `select` solo para plataformas POSIX. Sin terminal, sin respuesta, ante error o rechazo, no se modifica ninguna reserva.
+- **Tests preparados:** modo directo automatizado para aprobación/rechazo simulados (no humanos), timeout, ausencia de canal, esquema Pydantic y auditoría; modo `--interactivo` para autorización humana de una cancelación ficticia; modo `--agente` que permite a Gemini solicitar la herramienta, nunca aprobarla.
+- **Documentación:** [guía y checklist B23/L1](u2_4_b23_autonomia_supervision.md).
+- **Estado:** publicado en `main`; **no hay pruebas ejecutadas en Windows todavía**. Avance técnico U2.4 sigue **6/9 lecciones validadas** (B21 3/3, B22 3/3); B23/L1 implementada pero pendiente de ejecución. Entrega/calificación de Skillnest no confirmadas.
+- **Horarios y tiempo efectivo:** no proporcionados; no inferir.
+- **Continuación:** verificar Git local limpio, integrar `origin/main`, ejecutar `python -m src.supervision_b23_booking_core`, después probar rechazo y aprobación con `--interactivo`, y si interesa el agente, `--agente`. Revisar salida antes de cerrar la lección y avanzar a «Qué revela la traza de decisión de un agente».
+
 ## Plantilla para próximas sesiones
 
 ```markdown
