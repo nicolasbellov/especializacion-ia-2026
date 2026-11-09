@@ -397,6 +397,21 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Horarios y tiempo efectivo:** no proporcionados; no inferir.
 - **Continuación:** verificar Git local limpio, integrar `origin/main`, ejecutar `python -m src.supervision_b23_booking_core`, después probar rechazo y aprobación con `--interactivo`, y si interesa el agente, `--agente`. Revisar salida antes de cerrar la lección y avanzar a «Qué revela la traza de decisión de un agente».
 
+## Cierre M2-U2.4-B23/L1 · 09/11/2026 — Supervisión humana con Gemini
+
+- **Evidencia real:** PowerShell del estudiante con `python -m src.supervision_b23_booking_core`, `--interactivo --timeout 60` y tres ejecuciones de `--agente --timeout 60`, tras integrar `origin/main` sin conflictos.
+- **Pruebas automáticas sin Gemini:** rechazo y prevención de reintento, denegación ante ausencia de canal o timeout, aceptación programada con doble de prueba, validación Pydantic de ID `DEMO-###` y auditoría. Terminal: `B23/L1: CONTROLES DE APROBACION SIMULADA VERIFICADOS.` El doble de prueba con `aprobado=True` **no es aprobación humana**.
+- **Rechazo humano sin Gemini:** respuesta `n`; `DEMO-001` permaneció `confirmada` y se registró `aprobado=False`, `ejecutada=False`, `origen=consola_demo`.
+- **Gemini + timeout:** invocó `cancelar_reserva_simulada` para `DEMO-001`; no hubo autorización antes de 60 segundos; `aprobado=False`, `decision=timeout`, `ejecutada=False` y estado `confirmada`.
+- **Gemini + rechazo:** operador respondió `n`; `decision=rechazado`, `aprobado=False`, `ejecutada=False` y estado `confirmada`.
+- **Gemini + aprobación:** operador respondió explícitamente `s`; `intermediate_steps` mostró `cancelar_reserva_simulada` con `reserva_id=DEMO-001` y `motivo=cambio de planes`. Auditoría `aprobado=True`, `decision=aprobado`, `origen=consola_demo`, `ejecutada=True`, `momento_utc=2026-11-09T21:27:15.881541+00:00`. Estado final ficticio `cancelada`; terminal: `B23/L1: SUPERVISION DEL AGENTE VERIFICADA.`
+- **Conclusión:** **B23/L1 completada técnicamente** mediante pruebas de denegación por defecto, rechazo y autorización explícita, con auditoría. El aprobador es una consola didáctica, **sin autenticación ni efectos sobre Booking Core/Supabase**. No representa control de producción ni aprobación institucional.
+- **Avance académico:** U2.4 **7/9 lecciones** (B21 3/3, B22 3/3, B23 1/3). No constan entrega, calificación o aprobación de Skillnest.
+- **Documentación:** [B23/L1 supervisión](u2_4_b23_autonomia_supervision.md); código en [supervision_b23_booking_core.py](../src/supervision_b23_booking_core.py).
+- **Inicio, término, pausas y tiempo efectivo:** no informados; no estimarlos a partir de marcas UTC de auditoría.
+- **Próximo paso exacto:** estudiar la segunda lección de Bloque 23, «Qué revela la traza de decisión de un agente». Mantener diseño de herramientas de lectura y escritura separadas y aprobación independiente; no conectar producción.
+- **Git:** documento actualizado en `main`; la rama local de estudio `feature/u2-3-b20-core-verificacion` requiere sincronización futura con precaución por antecedentes de divergencia respecto de su rama remota. Evitar `git stash pop` o `git push` automático.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
