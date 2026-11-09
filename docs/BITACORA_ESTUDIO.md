@@ -412,6 +412,18 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Próximo paso exacto:** estudiar la segunda lección de Bloque 23, «Qué revela la traza de decisión de un agente». Mantener diseño de herramientas de lectura y escritura separadas y aprobación independiente; no conectar producción.
 - **Git:** documento actualizado en `main`; la rama local de estudio `feature/u2-3-b20-core-verificacion` requiere sincronización futura con precaución por antecedentes de divergencia respecto de su rama remota. Evitar `git stash pop` o `git push` automático.
 
+## Inicio M2-U2.4-B23/L2 · 09/11/2026 — Persistencia y revisión de trazas
+
+- **Lección fuente Skillnest:** «Qué revela la traza de decisión de un agente». Persistencia de `intermediate_steps` en JSONL con `timestamp`, `session_id`, `entrada`, acciones con herramienta/argumentos/observación y respuesta final. Registro UTF-8, pasos ausentes tolerados, detección de herramientas repetidas consecutivamente, alertas sobre acciones sensibles sin aprobación y revisión humana selectiva.
+- **Aplicación Booking Core AI:** [`src/trazas_b23_booking_core.py`](../src/trazas_b23_booking_core.py). Crea `trazas_agente_b23.jsonl` y analiza repeticiones, operaciones de riesgo alto, ausencia de un registro de autorización vinculado por ID y decisiones incompatibles con una ejecución.
+- **Ampliación técnica propia:** registro `aprobaciones` originado en el control externo de supervisión del Bloque 23/L1, separado de las acciones de Gemini; normalización de salida del modelo a texto sin firmas de proveedor. Un registro de ejemplo sin aprobación se genera intencionalmente como **sintético**, sin ejecutar cancelación.
+- **Protección básica del ejercicio:** `.gitignore` actualizado con `trazas_agente*.jsonl` para evitar subir accidentalmente históricos locales. No es suficiente como seguridad para datos personales reales.
+- **Pruebas preparadas:** cinco escenarios sin consumir Gemini: consulta, rechazo auditable, repetición consecutiva, omisión de `intermediate_steps`, ausencia sintética de auditoría. Modo opcional `--agente` registra una interacción real con Gemini y denegación automática de cancelación por falta de supervisor.
+- **Material de apoyo:** [B23/L2 trazas de decisión](u2_4_b23_trazas_decision.md).
+- **Estado:** publicada implementación y documentación en GitHub; pruebas del B23/L2 **pendientes de ejecución real**. Avance técnicamente validado sigue **7 de 9 lecciones** de U2.4. Bloque 21 3/3; Bloque 22 3/3; Bloque 23 1/3. No atribuir aprobación institucional.
+- **Inicio/término/tiempo efectivo:** no proporcionados; no inferir.
+- **Próxima acción exacta:** comprobar `git status --short` y sincronizar cambios desde `origin/main` con cautela; ejecutar `python -m src.trazas_b23_booking_core`, inspeccionar el archivo JSONL y, si interesa, ejecutar `python -m src.trazas_b23_booking_core --agente`. Revisar evidencias y luego abordar la lección Core: «Documenta los límites de autonomía de tu agente».
+
 ## Plantilla para próximas sesiones
 
 ```markdown
