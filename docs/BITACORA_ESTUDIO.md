@@ -289,6 +289,18 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Avance técnico:** U2.2 **9/9 lecciones (100 %)**. **Pendiente:** eventual retroalimentación/aprobación de Skillnest. **Punto exacto desde donde continuar:** U2.3, Bloque 18: LangChain y plantillas parametrizables; usar como base los aprendizajes de evaluación de texto de U2.2.
 - **Tiempo efectivo:** hora de inicio/término y duración no informados.
 
+## Sesión M2-U2.4-B21 · 09/11/2026 — Primer agente y actividad Booking Core AI
+
+- **Unidad / bloque:** U2.4 · Bloque 21.
+- **Lección 1:** «Chain vs agente» revisada a partir del material de Skillnest. Conceptos: autonomía de selección de herramientas, ReAct, costo variable y trazabilidad.
+- **Lección 2:** laboratorio de dos herramientas **ejecutado por el estudiante** en Windows con Gemini. Traza observada: `buscar_en_documentacion({'consulta': 'reintentos'})` → **3 reintentos**; `calcular({'expresion': '3 * 2'})` → **6**. Respuesta correcta y `intermediate_steps` disponibles. `src/agente_b21_demo.py` y `langchain-classic==1.0.8` publicados. En una ejecución Gemini devolvió bloques de texto con metadatos; se considera un formato de salida, no fallo funcional.
+- **Incidente Git local resuelto:** la rama local `feature/u2-3-b20-core-verificacion` divergía de `origin/main`. El estudiante respaldó archivos con `git stash push -u` y completó `git merge --no-ff origin/main` sin conflictos. **No** ejecutar `stash pop` automáticamente porque contiene rutas ya publicadas en main.
+- **Lección 3 (actividad práctica):** código propio de dominio **Booking Core AI** publicado en [`src/agente_b21_booking_core.py`](../src/agente_b21_booking_core.py) con dos herramientas de solo lectura (`consultar_servicios` y `consultar_disponibilidad`), datos simulados, `AgentExecutor`, `return_intermediate_steps=True`, límites y extracción de texto. [Protocolo y checklist](u2_4_b21_actividad_booking_core.md).
+- **Validación de lección 3:** **pendiente** de dos invocaciones reales con Gemini en Windows, una por herramienta; la publicación de código no equivale a ejecución aprobada.
+- **Hora de inicio / término y tiempo efectivo:** no informados; no calcular horas ni atribuir calificación.
+- **Avance verificable:** lecciones 1 y 2 revisadas; lección 2 validada con Gemini. Lección 3 implementada pero no cerrada técnicamente. Sin aprobación institucional informada.
+- **Próximo paso exacto:** en la rama local sincronizar `origin/main` sin descartar el respaldo; ejecutar `python -m src.agente_b21_booking_core`; comprobar los dos `intermediate_steps` y documentar la salida. Luego continuar al Bloque 22.
+
 ## Plantilla para próximas sesiones
 
 ```markdown
