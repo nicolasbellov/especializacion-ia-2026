@@ -505,3 +505,15 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Arquitectura y seguridad:** se mantiene corpus ficticio, agente sin conexión a reserva real y Booking Core sin modificaciones. Se requiere API autenticada para agenda viva.
 - **Inicio/término/tiempo efectivo:** no informados; no estimar a partir de timestamps.
 - **Próximo paso exacto:** verificar Git limpio, `git pull --ff-only` en `feature/u2-5-b24-rag-booking-core`, repetir los 11 tests y compartir salida; luego indexar corpus ficticio usando `--modo indexar` y consultar con `--modo buscar`, registrando las fuentes recuperadas.
+
+## Validación Windows posterior al fix B24-WIN-001 · 13/11/2026
+
+- **Fuente de evidencia:** salida PowerShell proporcionada por el estudiante desde `C:\\Users\\nbello\\dev\\especializacion-ia-2026` con `(.venv)` activo.
+- **Sincronización:** `git status --short` sin cambios; `git pull --ff-only` correcto, `7474ec3..96b64d3`; actualizó la prueba y documentación sin conflictos.
+- **Prueba:** `python -m unittest discover -s tests -p "test_rag_b24_booking_core.py" -v` terminó con **Ran 11 tests in 10.604s / OK**.
+- **Incidente resuelto (en la ejecución observada):** `test_chroma_local_real_sin_red_si_instalado` pasó en Windows, con indexación y recuperación entre subprocesos y sin `PermissionError / WinError 32`.
+- **Gemini real:** `python -m src.rag_b24_booking_core --modo embedding` produjo **3072 dimensiones**, con muestra `[-0.001601775, 0.02089852, 0.01956536, -0.065919146, -0.0064969533]`. Esta ejecución confirma conexión efectiva al proveedor para generar embeddings.
+- **Alcance de validación:** las 11 pruebas son offline con embeddings ficticios cuando validan Chroma; la prueba de embedding fue real. **Todavía no se ha observado indexación del corpus de cinco documentos mediante Gemini ni una búsqueda semántica real contra ese índice**.
+- **Próximo paso exacto:** mantener rama `feature/u2-5-b24-rag-booking-core`, sincronizar con `git pull --ff-only` si está limpio, ejecutar `python -m src.rag_b24_booking_core --modo indexar` y después `python -m src.rag_b24_booking_core --modo buscar --pregunta "¿Cómo puedo cambiar una cita?"`; registrar ambos resultados antes de dar por cerrado el laboratorio.
+- **Objetivo integrador permanente:** agente conectado a agenda Booking Core (AES Barber piloto); ningún acceso, escritura o reserva real en este ejercicio.
+- **Inicio/término de estudio y tiempo efectivo:** no informados; 10,604 s mide exclusivamente ejecución automatizada de pruebas.
