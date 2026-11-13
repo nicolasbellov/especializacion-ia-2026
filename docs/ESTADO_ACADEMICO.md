@@ -17,7 +17,7 @@
 
 **Unidad activa:** U2.5 / Bloque 24. **Lección 1 «RAG por dentro: chunking, embeddings y vector stores» completada técnicamente**, no requiere entrega. Pruebas reales (Windows) de embedding, indexación y recuperación en Chroma sobre corpus 100 % ficticio para Booking Core AI. Evidencia: [bitácora](BITACORA_ESTUDIO.md) y [documentación B24](u2_5_b24_rag_booking_core.md).
 
-**Siguiente lección:** «Dos estrategias de chunking, comparadas en vivo» (B24/L2, Skillnest id 20452). El agente todavía **no** está conectado a la agenda real de Booking Core; lectura/actualización de citas requerirán herramientas transaccionales autorizadas y aislamiento de tenant.
+**Lección en estudio:** «Dos estrategias de chunking, comparadas en vivo» (B24/L2, Skillnest id 20452). Script oficial, extensión sobre corpus ficticio y pruebas offline publicados. **Aún falta la ejecución local en Windows** para darla por completada. El agente todavía **no** está conectado a la agenda real de Booking Core; lectura/actualización de citas requerirán herramientas transaccionales autorizadas y aislamiento de tenant.
 
 **Nota de metodología:** estado de U2.1 preserva pendientes históricos; no se reinterpreta como etapa vigente. La aprobación de una lección por pruebas de laboratorio no implica calificación institucional ni que se haya fusionado su PR.
 
@@ -35,7 +35,7 @@
 | **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **9/9 lecciones (100 %) completadas técnicamente; entrega Core B17 enviada en Skillnest según confirmación expresa del estudiante del 29/10/2026. Evidencia GitHub auditada y publicada: 20 respuestas, 10 revisiones, 60/60 métricas y límites. 55/55 pruebas locales según su consola. Pendiente de evaluación/nota institucional; no se cuenta aún con comprobante de la plataforma.** |
 | U2.3 | LangChain y orquestación de flujos | Cuenta con implementaciones y documentos de Bloques 18–20 en el repositorio; estado de cierre global no recalculado en esta actualización. |
 | U2.4 | Agentes, herramientas externas y memoria | **9/9 contenidos abordados**. Core B23 registrado en Skillnest el 09/11/2026, pendiente de evaluación institucional según bitácora. |
-| **U2.5** | RAG y bases de datos vectoriales | **1/15 contenidos completado técnicamente (B24/L1)**: 11/11 pruebas Windows, embedding Gemini 3072, Chroma persistente con 5 chunks, top-3 recuperados con la sección pertinente en primer lugar. Siguiente: B24/L2. |
+| **U2.5** | RAG y bases de datos vectoriales | **1/15 completado técnicamente (B24/L1)**: 11/11 pruebas Windows, Gemini 3072, 5 chunks Chroma, top-3 pertinente. **B24/L2 en estudio**: script oficial y comparador Booking Core AI preparados; ejecución Windows pendiente. |
 | U2.6 | Personalización: RAG, fine-tuning y soft-prompting | Pendiente |
 | U2.7 | Observabilidad, seguridad y gobernanza técnica | Pendiente |
 | U2.8 | Gate 2 — Integración y orquestación | Pendiente |
