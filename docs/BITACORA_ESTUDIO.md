@@ -479,3 +479,17 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - Pendientes:
 - Punto exacto de reanudación:
 ```
+
+
+## Sesión U2.5 / Bloque 24 / Lección 1 · 13/11/2026 — RAG para Booking Core AI
+
+- **Fuente principal:** contenido oficial de Skillnest «RAG por dentro: chunking, embeddings y vector stores» facilitado por el estudiante; lección conceptual **sin entrega obligatoria**.
+- **Objetivo del capstone que no cambia:** agente conectado a la agenda de la barbería mediante Booking Core (AES Barber piloto), no un chatbot documental independiente.
+- **Conceptos estudiados:** diccionario hardcodeado versus similitud semántica, chunking, embeddings con `models/gemini-embedding-001`, Chroma local, indexación separada de consulta, limitaciones de calidad y costo.
+- **Consola recibida:** `python -m pip install langchain langchain-google-genai python-dotenv` terminó con `Successfully installed`. Versiones observadas en esa ejecución: `langchain==1.5.0` y `langchain-google-genai==4.5.0`; `python-dotenv==1.2.4` ya estaba instalado. Las rutas mostradas apuntan a Python 3.12 global, **no acreditan instalación en el `.venv` del repositorio**.
+- **Artefactos creados en rama `feature/u2-5-b24-rag-booking-core`:** `src/rag_b24_booking_core.py`, `data/rag_demo_booking_core.md`, `tests/test_rag_b24_booking_core.py`, `requirements-rag.txt`, `docs/u2_5_b24_rag_booking_core.md`, ajuste de `.gitignore`.
+- **Alcance de seguridad:** el corpus y las consultas del laboratorio son ficticios; no consulta Booking Core, no accede a Supabase real y no crea, modifica o cancela reservas. RAG para FAQs; agenda viva mediante API autorizada a implementar en etapa posterior.
+- **Pruebas automáticas:** preparadas sin red; **pendiente registrar ejecución y resultado verificados**. La llamada real para generar 3072 dimensiones y la persistencia de Chroma tampoco se han ejecutado en el PC desde este chat.
+- **Instante de inicio, término, pausas y tiempo efectivo:** no informados; no inferir.
+- **Avance:** la lectura de Lección 1 y el material oficial están disponibles; **no declarar lección técnicamente completada hasta revisar al menos la demostración y las pruebas**.
+- **Punto exacto para continuar:** en Windows, revisar estado Git antes de cambiar de rama, activar `.venv`, instalar `requirements-rag.txt`, ejecutar tests offline, probar `--modo embedding` con `GEMINI_API_KEY` local y corroborar 3072 dimensiones. Luego Lección 2: comparación de chunking.
