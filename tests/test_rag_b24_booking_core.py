@@ -99,5 +99,41 @@ class TestRagBookingCoreB24(unittest.TestCase):
         self.assertEqual(MODELO_EMBEDDING, "models/gemini-embedding-001")
 
 
+    def test_chroma_local_real_sin_red_si_instalado(self):
+        """Comprueba persistencia y búsqueda reales con vectores ficticios."""
+        try:
+            from langchain_chroma import Chroma
+        except ImportError:
+            self.skipTest("Chroma es dependencia opcional: usar requirements-rag.txt")
+
+        class EmbeddingsFicticios:
+            def embed_documents(self, texts):
+                return [self.embed_query(t) for t in texts]
+
+            def embed_query(self, text):
+                texto = text.lower()
+                return [
+                    float(texto.count("cita") + 1),
+                    float(texto.count("servicio") + 1),
+                    float(texto.count("reserva") + 1),
+                ]
+
+        with tempfile.TemporaryDirectory() as temporal:
+            store = Chroma(
+                collection_name="test_booking_core_b24",
+                embedding_function=EmbeddingsFicticios(),
+                persist_directory=temporal,
+            )
+            docs = crear_documentos_demo()
+            indexar_demo(store, docs)
+            indexar_demo(store, docs)
+            self.assertEqual(len(store.get()["ids"]), len(docs))
+            resultados = buscar_demo(store, "¿Cómo cambio mi cita?", k=2)
+            self.assertEqual(len(resultados), 2)
+            self.assertTrue(
+                all(d.metadata["origen"] == "FICTICIO_ACADEMICO" for d in resultados)
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
