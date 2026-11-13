@@ -493,3 +493,15 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Instante de inicio, término, pausas y tiempo efectivo:** no informados; no inferir.
 - **Avance:** la lectura de Lección 1 y el material oficial están disponibles; **no declarar lección técnicamente completada hasta revisar al menos la demostración y las pruebas**.
 - **Punto exacto para continuar:** en Windows, revisar estado Git antes de cambiar de rama, activar `.venv`, instalar `requirements-rag.txt`, ejecutar tests offline, probar `--modo embedding` con `GEMINI_API_KEY` local y corroborar 3072 dimensiones. Luego Lección 2: comparación de chunking.
+
+## Validación Windows U2.5/B24-L1 · 13/11/2026 — Embeddings Gemini y corrección Chroma
+
+- **Evidencia de consola real del estudiante:** `.venv` activado en Windows; `requirements-rag.txt` instalado (incluidos `chromadb==1.5.9` y `langchain-chroma==1.1.0`); `pip check` informó **No broken requirements found**.
+- **Primera llamada real de Gemini Embeddings:** `python -m src.rag_b24_booking_core --modo embedding` → **3072 dimensiones**; primeros cinco valores observados `[-0.001601775, 0.02089852, 0.01956536, -0.065919146, -0.0064969533]`. **Validación real exitosa**, no simulada.
+- **Tests locales:** **10/11**; `test_chroma_local_real_sin_red_si_instalado` falló con `PermissionError: [WinError 32]` durante limpieza de `tempfile.TemporaryDirectory` por handle abierto de Chroma (`data_level0.bin`).
+- **Diagnóstico técnico:** falla de liberación de archivos de índice bajo Windows, no de generación de embeddings ni de búsqueda. CI Linux anterior había mostrado 11/11.
+- **Acción en GitHub:** corrección de la prueba para indexar en un proceso Python independiente, abrir y recuperar en otro y limpiar la carpeta únicamente después de que ambos procesos terminen. Permite medir persistencia entre procesos sin conexión a Gemini o Booking Core.
+- **Resultado Windows posterior a la corrección:** aún **pendiente de recibir**. No elevar 10/11 a 11/11 sin comprobación local.
+- **Arquitectura y seguridad:** se mantiene corpus ficticio, agente sin conexión a reserva real y Booking Core sin modificaciones. Se requiere API autenticada para agenda viva.
+- **Inicio/término/tiempo efectivo:** no informados; no estimar a partir de timestamps.
+- **Próximo paso exacto:** verificar Git limpio, `git pull --ff-only` en `feature/u2-5-b24-rag-booking-core`, repetir los 11 tests y compartir salida; luego indexar corpus ficticio usando `--modo indexar` y consultar con `--modo buscar`, registrando las fuentes recuperadas.
