@@ -3,7 +3,7 @@
 **Programa:** Especialización IA 2026 · Skillnest / Accenture / CChIA  
 **Fecha:** 13/11/2026 (Chile)  
 **Fuente:** material completo de la lección «RAG por dentro: chunking, embeddings y vector stores» aportado por el estudiante.  
-**Estado (13/11/2026):** entorno virtual Windows instalado, `pip check` satisfactorio y **embedding real Gemini verificado (3072 dimensiones)**. Prueba Chroma local: 10/11 iniciales; corrección de limpieza Windows preparada en la rama, pendiente de repetición en el PC. Indexación Gemini de corpus y evaluación Skillnest no verificadas.
+**Estado (13/11/2026):** **Lección 1 completada técnicamente.** Entorno virtual Windows verificado, `pip check` sin conflictos, **11/11 pruebas aprobadas en Windows**, embedding real Gemini de **3072 dimensiones**, **5 chunks indexados** en Chroma persistente y **3 resultados recuperados**, con «Cambios de una cita ficticia» en primera posición. Lección conceptual sin entrega obligatoria; evaluación institucional no aplica a esta lección.
 
 ## Objetivo sostenido del proyecto integrador
 
@@ -113,10 +113,31 @@ Primeros cinco valores: [-0.001601775, 0.02089852, 0.01956536, -0.065919146, -0.
 
 **Validación GitHub Actions de la corrección:** [ejecución #43527127870](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43527127870) aprobada con **11/11 pruebas B24**, persistencia entre procesos y `pip check` satisfactorio, además de regresión. **Validación final Windows:** el estudiante repitió el test tras `git pull --ff-only` y obtuvo **Ran 11 tests in 10.604s / OK**; el error WinError 32 no reapareció. El embedding real de Gemini generó 3072 dimensiones. **Pendiente** indexación y recuperación semántica reales sobre los cinco chunks del corpus ficticio.
 
+## Cierre de flujo real — Gemini Embeddings + Chroma · 13/11/2026
+
+La salida de Windows facilitada por el estudiante confirma, en la rama `feature/u2-5-b24-rag-booking-core`:
+
+```text
+python -m src.rag_b24_booking_core --modo indexar
+Chunks indexados: 5
+Índice local: ...\\.local\\chroma_b24
+
+python -m src.rag_b24_booking_core --modo buscar --pregunta "¿Cómo puedo cambiar una cita?"
+Fragmentos recuperados de corpus FICTICIO: 3
+[1] rag_demo_booking_core.md / Cambios de una cita ficticia
+[2] rag_demo_booking_core.md / Cancelación de una cita ficticia
+[3] rag_demo_booking_core.md / Preguntas frecuentes y horarios
+```
+
+**Interpretación:** la primera sección corresponde a la intención de cambio de cita y precisa que el backend debe verificar disponibilidad antes de proponer alternativas y confirmar el cambio. Las otras dos son contexto relacionado. Los tres fragmentos se obtuvieron con `k=3`; no constituyen tres respuestas correctas ni tres mediciones de precisión. Los puntajes y la evaluación sistemática están pendientes del Bloque 27.
+
+**Límite:** este módulo demuestra **indexación y recuperación**, no una respuesta final generada por LLM con citas. La recuperación consume embeddings reales de Gemini y usa Chroma local; jamás se consultó o escribió una reserva real de Booking Core. Índice persistido localmente, excluido del repositorio.
+
+**Criterios de cierre B24/L1:** 11/11 pruebas offline Windows (ver bitácora), embedding Gemini 3072, 5 chunks indexados y top-3 recuperados con primer resultado pertinente. **Cumplidos técnicamente.**
+
 ## Próximo punto exacto
 
-1. En PowerShell sobre `feature/u2-5-b24-rag-booking-core` ejecutar `git status --short`; si está limpio, `git pull --ff-only`.
-2. Repetir `python -m unittest discover -s tests -p "test_rag_b24_booking_core.py" -v` y verificar **11/11 PASS en Windows**.
-3. Ejecutar `python -m src.rag_b24_booking_core --modo indexar` y luego `--modo buscar --pregunta "¿Cómo cambio una cita?"` (consumen llamadas de Gemini; corpus ficticio).
-4. Documentar recuperación y citar la sección encontrada; avanzar a Bloque 24, Lección 2 (comparación de chunking).
-5. Mantener tiempos efectivos y evaluación institucional pendientes hasta contar con evidencias.
+1. Bloque 24/Lección 2: **«Dos estrategias de chunking, comparadas en vivo»** (Skillnest id 20452). Obtener material oficial antes de afirmar detalles de la comparación.
+2. Diseñar un experimento controlado con el mismo corpus ficticio, comparando fragmentación por secciones y otra estrategia definida por la lección, midiendo pérdida de contexto y documentos recuperados.
+3. Reservar las escrituras y lectura de agenda real para una integración futura con el backend autorizado; no indexar disponibilidad actual.
+4. Mantener PR #26 en borrador hasta revisión de integración; estudio efectivo sin duración informada.
