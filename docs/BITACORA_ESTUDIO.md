@@ -517,3 +517,19 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Próximo paso exacto:** mantener rama `feature/u2-5-b24-rag-booking-core`, sincronizar con `git pull --ff-only` si está limpio, ejecutar `python -m src.rag_b24_booking_core --modo indexar` y después `python -m src.rag_b24_booking_core --modo buscar --pregunta "¿Cómo puedo cambiar una cita?"`; registrar ambos resultados antes de dar por cerrado el laboratorio.
 - **Objetivo integrador permanente:** agente conectado a agenda Booking Core (AES Barber piloto); ningún acceso, escritura o reserva real en este ejercicio.
 - **Inicio/término de estudio y tiempo efectivo:** no informados; 10,604 s mide exclusivamente ejecución automatizada de pruebas.
+
+## Cierre técnico U2.5/Bloque 24/Lección 1 · 13/11/2026 — Indexación y recuperación Gemini/Chroma
+
+- **Evidencia:** salida PowerShell compartida por el estudiante con `(.venv)` activo en `C:\\Users\\nbello\\dev\\especializacion-ia-2026`.
+- **Sincronización Git:** `git status --short` sin cambios; `git pull --ff-only` correcto, fast-forward `96b64d3..f70a9e8` en `feature/u2-5-b24-rag-booking-core`. Los cambios del pull se limitaron a dos documentos.
+- **Indexación real:** `python -m src.rag_b24_booking_core --modo indexar` → **`Chunks indexados: 5`**. Se almacenaron embeddings generados mediante Gemini en Chroma persistente en `.local/chroma_b24` (directorio local ignorado por Git).
+- **Consulta semántica real:** `python -m src.rag_b24_booking_core --modo buscar --pregunta "¿Cómo puedo cambiar una cita?"` → **3 fragmentos recuperados** (`k=3`, valor predeterminado). Orden observado:
+  1. `rag_demo_booking_core.md / Cambios de una cita ficticia` — fragmento directamente pertinente: consultar disponibilidad actualizada en Booking Core antes de proponer alternativas, no afirmar modificación sin confirmación del backend.
+  2. `rag_demo_booking_core.md / Cancelación de una cita ficticia` — información relacionada, pero no respuesta principal para cambiar cita.
+  3. `rag_demo_booking_core.md / Preguntas frecuentes y horarios` — contexto sobre disponibilidad actual y API transaccional.
+- **Interpretación:** se verificó que la primera posición corresponde a la sección más directamente relacionada con la pregunta del laboratorio. No se midieron aún métricas de precisión/exhaustividad (Bloque 27), scores de similitud ni calidad de respuesta final de un LLM; este script imprime documentos recuperados, **no genera todavía una respuesta final con citas**.
+- **Seguridad y alcance:** todos los fragmentos del corpus son `FICTICIO_ACADEMICO`. No se conectó ni modificó Booking Core, Supabase, clientes o reservas reales. RAG se reserva para FAQs/documentos; disponibilidad y cambios de citas deben validarse por API autenticada del backend con controles multi-tenant.
+- **Estado de aprendizaje:** **U2.5/B24/L1 completada técnicamente**: conceptos y flujo de indexación/recuperación validados, 11/11 tests Windows previamente aprobados, embedding real de 3072 dimensiones y persistencia Chroma demostrada. **La lección no exige entrega**; no equivale a nota institucional.
+- **Avance verificable de U2.5:** **1 de 15 actividades/lecciones del temario identificadas**, primera lección del Bloque 24 completada; 2 restantes del Bloque 24 aún sin verificar.
+- **Tiempo efectivo:** no informado. No confundir segundos de ejecución de tests con estudio efectivo.
+- **Punto exacto de continuación:** Bloque 24, **segunda lección «Dos estrategias de chunking, comparadas en vivo»**, enlace del curso https://learning-pro.skillnest.com/mod/page/view.php?id=20452. Comparar estrategias sin alterar ni reindexar todavía el corpus actual hasta revisar material oficial y diseño de experimento.
