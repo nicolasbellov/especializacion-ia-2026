@@ -245,7 +245,9 @@ Consultar el [registro completo del ensayo](docs/registro_ensayo_gate1.md).
 - **Repositorio académico (este):** Gemini, prompts, herramientas, memoria, supervisión, trazas y RAG.
 - **Aplicación de agenda (repositorio separado `nicolasbellov/booking-core`):** fuente transaccional de servicios, profesionales, clientes y citas.
 - **U2.4:** herramientas y reservas **simuladas**, sin conexión a la agenda real.
-- **U2.5/Bloque 24:** [primer laboratorio RAG para documentación ficticia](docs/u2_5_b24_rag_booking_core.md), con embeddings Gemini y Chroma local. No conecta ni modifica Booking Core.
+- **U2.5/Bloque 24/L1:** [primer laboratorio RAG para documentación ficticia](docs/u2_5_b24_rag_booking_core.md), con embeddings Gemini y Chroma local. No conecta ni modifica Booking Core.
+- **U2.5/Bloque 24/L2:** [comparación de chunking fijo y recursivo](docs/u2_5_b24_chunking_comparativo.md), validada en Windows.
+- **U2.5/Bloque 24/L3 (actividad práctica):** [indexación de cinco documentos propios y persistencia Chroma](docs/u2_5_b24_l3_indexacion_booking_core.md), scripts `indexar_corpus.py` y `verificar_vectorstore_b24.py`. El índice generado `vectorstore/` permanece fuera de Git; **primera indexación real de esta nueva actividad pendiente en Windows**.
 - **Regla arquitectónica:** RAG para documentación relativamente estable y fuentes citables; las horas disponibles y las operaciones sobre citas requieren APIs autenticadas, control de tenant y validación del backend. No usar la base vectorial como autoridad de disponibilidad.
 - **Seguridad:** jamás colocar claves, datos clínicos/personales, historiales reales de reservas o índices vectoriales locales en este repositorio público.
 
