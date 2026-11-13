@@ -60,7 +60,22 @@ python -m unittest discover -s tests -p "test_chunking_b24_booking_core.py" -v
 
 Cobertura: reproducción exacta del ejemplo oficial; longitud de fragmentos; conservación de fuente y sección; separación de palabras del fijo; respeto de párrafos cortos por el recursivo; validación del overlap; no mutación del corpus. El workflow `.github/workflows/pruebas-offline.yml` también incluye B24/L2.
 
-**Estado de pruebas:** consultar GitHub Actions para el commit de la rama; no registrar como aprobadas en Windows hasta recibir la consola local.
+**Estado de pruebas:** [GitHub Actions #43529545967](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43529545967) aprobó ambos jobs; **18/18 pruebas B24-L1+L2** en el job RAG, `pip check` exitoso y regresión anterior aprobada. La salida del ejemplo oficial coincide exactamente: fijo **[110, 110, 93]** y recursivo **[102, 108, 99]**. **Validación en Windows de L2 pendiente**; no declarar práctica del estudiante completada sin su ejecución.
+
+### Salida verificada del comparador Booking Core AI (CI Linux)
+
+Ejecutamos ambas estrategias sobre las cinco secciones documentales **sin llamar a Gemini y sin actualizar el índice de Chroma**.
+
+| Indicador | Fijo (110, overlap 0) | Recursivo (110, overlap 20) |
+| --- | ---: | ---: |
+| Secciones fuente | 5 | 5 |
+| Chunks totales | **20** | **25** |
+| Chunks por sección | 4 | 5 |
+| Longitud de chunks | entre **12 y 110** caracteres | entre **31 y 109** caracteres |
+
+**Observaciones:** el fijo parte palabras y produce fragmentos mínimos (por ejemplo, 12 caracteres); el recursivo respeta separadores naturales, pero **generó un chunk con solo el encabezado de 36 caracteres** (`## Servicios de la barbería ficticia`) y otro contenido del mismo tema en piezas aparte. Por tanto, no tenemos evidencia aún de que `chunk_size=110` con recursivo sea óptimo para nuestra documentación. Habrá que considerar aumentar el tamaño o tratar encabezados y contenido conjuntamente, y **medir la recuperación** antes de escoger una configuración.
+
+Los 20 y 25 no son números de reservas, no implican que el recursivo tenga un 25 % de precisión adicional y no son métricas de recall o relevancia.
 
 ## 5. Interpretación y preguntas de repaso
 
