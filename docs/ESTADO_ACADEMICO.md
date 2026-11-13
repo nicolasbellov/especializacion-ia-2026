@@ -1,6 +1,6 @@
 # Estado académico — Especialización en Desarrollo con IA Generativa 2026
 
-> **Actualizado:** 29/10/2026 (Chile). **Fuente:** material curricular compartido, conversación de estudio y evidencia versionada en este repositorio.  
+> **Actualizado:** 13/11/2026 (Chile). **Fuente:** material curricular compartido, conversación de estudio y evidencia versionada en este repositorio.  
 > **Convención:** distinguir *evidencia técnica verificada*, *actividad completada en el entorno local*, *entrega publicada* y *aprobación formal informada por Skillnest*. No son equivalentes.
 
 ## Vista general
@@ -8,10 +8,18 @@
 | Etapa | Alcance | Estado comprobable |
 | --- | --- | --- |
 | Módulo 1 — Fundamentos técnicos | 46 h curriculares; Gate 1 | Miniaplicación desarrollada; ensayo de instalación limpia y 19/19 pruebas documentados. **Aprobación formal del Gate 1: no confirmada aquí**. |
-| **Módulo 2 — Construcción de componentes IA** | **88 h curriculares**; U2.1 a U2.8 | **En curso. U2.1: 7/9 lecciones técnicamente completadas; Bloque 14 actividad core aprobada con 13/13 pruebas pytest. Dos criterios de B13 requieren 429 real o aceptación de Skillnest**. |
+| **Módulo 2 — Construcción de componentes IA** | **88 h curriculares**; U2.1 a U2.8 | **En curso. U2.5 Bloque 24/L1 completada técnicamente; U2.4 9/9 contenidos abordados y Core registrado en Skillnest el 09/11. Persisten pendientes históricos en U2.1.** |
 | Módulo 3 — Desarrollo y despliegue end-to-end | 56 h curriculares; Gate 3 y proyecto integrador | Sin avance confirmado en este registro. |
 
 **Total curricular del programa:** 190 h. Las horas curriculares no son horas efectivamente estudiadas; estas últimas se registran separadamente en [BITACORA_ESTUDIO.md](BITACORA_ESTUDIO.md).
+
+## Actualización del estado actual — 13/11/2026
+
+**Unidad activa:** U2.5 / Bloque 24. **Lección 1 «RAG por dentro: chunking, embeddings y vector stores» completada técnicamente**, no requiere entrega. Pruebas reales (Windows) de embedding, indexación y recuperación en Chroma sobre corpus 100 % ficticio para Booking Core AI. Evidencia: [bitácora](BITACORA_ESTUDIO.md) y [documentación B24](u2_5_b24_rag_booking_core.md).
+
+**Siguiente lección:** «Dos estrategias de chunking, comparadas en vivo» (B24/L2, Skillnest id 20452). El agente todavía **no** está conectado a la agenda real de Booking Core; lectura/actualización de citas requerirán herramientas transaccionales autorizadas y aislamiento de tenant.
+
+**Nota de metodología:** estado de U2.1 preserva pendientes históricos; no se reinterpreta como etapa vigente. La aprobación de una lección por pruebas de laboratorio no implica calificación institucional ni que se haya fusionado su PR.
 
 ## Módulo 1 — evidencia disponible
 
@@ -25,9 +33,9 @@
 | --- | --- | --- |
 | **U2.1** | Consumo avanzado de APIs de IA generativa | **En curso: Bloque 14 completo y actividad core verificada; 7/9 lecciones, dos lecciones de B13 no cerradas por HTTP 429 real**. |
 | **U2.2** | Pipeline de texto, NLP básico y evaluación inicial | **9/9 lecciones (100 %) completadas técnicamente; entrega Core B17 enviada en Skillnest según confirmación expresa del estudiante del 29/10/2026. Evidencia GitHub auditada y publicada: 20 respuestas, 10 revisiones, 60/60 métricas y límites. 55/55 pruebas locales según su consola. Pendiente de evaluación/nota institucional; no se cuenta aún con comprobante de la plataforma.** |
-| U2.3 | LangChain y orquestación de flujos | Pendiente |
-| U2.4 | Agentes, herramientas externas y memoria | Pendiente |
-| U2.5 | RAG y bases de datos vectoriales | Pendiente |
+| U2.3 | LangChain y orquestación de flujos | Cuenta con implementaciones y documentos de Bloques 18–20 en el repositorio; estado de cierre global no recalculado en esta actualización. |
+| U2.4 | Agentes, herramientas externas y memoria | **9/9 contenidos abordados**. Core B23 registrado en Skillnest el 09/11/2026, pendiente de evaluación institucional según bitácora. |
+| **U2.5** | RAG y bases de datos vectoriales | **1/15 contenidos completado técnicamente (B24/L1)**: 11/11 pruebas Windows, embedding Gemini 3072, Chroma persistente con 5 chunks, top-3 recuperados con la sección pertinente en primer lugar. Siguiente: B24/L2. |
 | U2.6 | Personalización: RAG, fine-tuning y soft-prompting | Pendiente |
 | U2.7 | Observabilidad, seguridad y gobernanza técnica | Pendiente |
 | U2.8 | Gate 2 — Integración y orquestación | Pendiente |
