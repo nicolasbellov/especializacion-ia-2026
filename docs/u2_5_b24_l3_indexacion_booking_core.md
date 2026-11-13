@@ -81,7 +81,9 @@ La presencia de `chroma.sqlite3` y del manifiesto confirma la existencia del ín
 
 Las pruebas offline usan embeddings falsos **solo en tests**, para demostrar Chroma y persistencia sin consumir la cuota de Gemini. La ejecución `python indexar_corpus.py` de la actividad académica, por el contrario, **sí usa Gemini real** a través de `crear_embeddings()`. No confundir las dos evidencias.
 
-**Pendiente de la consola del estudiante:** salida de indexación real con número de chunks, salida del verificador en otro proceso, y segunda ejecución sin re-embedding. Completar ese gate antes de cerrar B24/L3.
+**Pruebas CI verificadas:** [GitHub Actions #43530916089](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43530916089) aprobó ambos jobs. En el job RAG se ejecutaron **26/26 pruebas B24** (11 L1 + 7 L2 + 8 L3), incluida una indexación Chroma real con **embeddings simulados**, recarga desde otro proceso y reutilización sin recalcular vectores. Estas pruebas CI NO equivalen a utilizar Gemini real para esta nueva actividad.
+
+**Pendiente de la consola del estudiante:** salida de indexación con **Gemini real** y número de chunks, salida del verificador en otro proceso, y segunda ejecución sin re-embedding. Completar ese gate antes de cerrar B24/L3.
 
 ## 7. Entrega y continuación
 
