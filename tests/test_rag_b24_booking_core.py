@@ -1,6 +1,10 @@
 """Pruebas offline de U2.5/B24: no llaman a Gemini ni a Booking Core."""
 
+import importlib.util
+import subprocess
+import sys
 import tempfile
+import textwrap
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -100,39 +104,78 @@ class TestRagBookingCoreB24(unittest.TestCase):
 
 
     def test_chroma_local_real_sin_red_si_instalado(self):
-        """Comprueba persistencia y búsqueda reales con vectores ficticios."""
-        try:
+        """Persiste y recupera datos entre procesos, liberando handles en Windows.
+
+        El índice se escribe y consulta desde procesos Python independientes.
+        Al finalizar cada proceso, Windows puede cerrar los archivos de Chroma
+        ANTES de que TemporaryDirectory intente eliminar data_level0.bin.
+        No se llama a Gemini, ni se accede a Booking Core o Supabase.
+        """
+        if importlib.util.find_spec("langchain_chroma") is None:
+            self.skipTest("Chroma opcional: instalar requirements-rag.txt")
+
+        trabajador = textwrap.dedent(
+            """
+            import sys
             from langchain_chroma import Chroma
-        except ImportError:
-            self.skipTest("Chroma es dependencia opcional: usar requirements-rag.txt")
+            from src.rag_b24_booking_core import (
+                buscar_demo,
+                crear_documentos_demo,
+                indexar_demo,
+            )
 
-        class EmbeddingsFicticios:
-            def embed_documents(self, texts):
-                return [self.embed_query(t) for t in texts]
+            class EmbeddingsFicticios:
+                def embed_documents(self, texts):
+                    return [self.embed_query(t) for t in texts]
 
-            def embed_query(self, text):
-                texto = text.lower()
-                return [
-                    float(texto.count("cita") + 1),
-                    float(texto.count("servicio") + 1),
-                    float(texto.count("reserva") + 1),
-                ]
+                def embed_query(self, text):
+                    texto = text.lower()
+                    return [
+                        float(texto.count("cita") + 1),
+                        float(texto.count("servicio") + 1),
+                        float(texto.count("reserva") + 1),
+                    ]
 
-        with tempfile.TemporaryDirectory() as temporal:
             store = Chroma(
                 collection_name="test_booking_core_b24",
                 embedding_function=EmbeddingsFicticios(),
-                persist_directory=temporal,
+                persist_directory=sys.argv[1],
             )
-            docs = crear_documentos_demo()
-            indexar_demo(store, docs)
-            indexar_demo(store, docs)
-            self.assertEqual(len(store.get()["ids"]), len(docs))
-            resultados = buscar_demo(store, "¿Cómo cambio mi cita?", k=2)
-            self.assertEqual(len(resultados), 2)
-            self.assertTrue(
-                all(d.metadata["origen"] == "FICTICIO_ACADEMICO" for d in resultados)
-            )
+
+            if sys.argv[2] == "indexar":
+                documentos = crear_documentos_demo()
+                indexar_demo(store, documentos)
+                indexar_demo(store, documentos)
+                assert len(store.get()["ids"]) == len(documentos)
+            elif sys.argv[2] == "recuperar":
+                assert len(store.get()["ids"]) == 5
+                resultados = buscar_demo(store, "¿Cómo cambio mi cita?", k=2)
+                assert len(resultados) == 2
+                assert all(
+                    d.metadata["origen"] == "FICTICIO_ACADEMICO"
+                    for d in resultados
+                )
+            else:
+                raise ValueError("Modo de prueba desconocido")
+            """
+        )
+
+        with tempfile.TemporaryDirectory() as temporal:
+            for modo in ("indexar", "recuperar"):
+                resultado = subprocess.run(
+                    [sys.executable, "-c", trabajador, temporal, modo],
+                    cwd=str(CORPUS_DEMO.parent.parent),
+                    capture_output=True,
+                    text=True,
+                    encoding="utf-8",
+                    timeout=90,
+                    check=False,
+                )
+                self.assertEqual(
+                    resultado.returncode, 0,
+                    msg=f"Falló proceso Chroma ({modo}):\n"
+                    f"{resultado.stderr[-3000:]}",
+                )
 
 
 if __name__ == "__main__":
