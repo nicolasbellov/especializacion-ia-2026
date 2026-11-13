@@ -64,7 +64,7 @@ python -m pip install -r requirements-rag.txt
 python -m pip check
 
 # Pruebas offline (sin consumo de Gemini).
-python -m unittest tests.test_rag_b24_booking_core -v
+python -m unittest discover -s tests -p "test_rag_b24_booking_core.py" -v
 
 # Demostración oficial del concepto (requiere GEMINI_API_KEY local).
 python -m src.rag_b24_booking_core --modo embedding
