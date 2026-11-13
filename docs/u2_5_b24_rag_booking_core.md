@@ -111,7 +111,7 @@ Primeros cinco valores: [-0.001601775, 0.02089852, 0.01956536, -0.065919146, -0.
 
 **Corrección propuesta:** ejecutar la escritura, cierre y relectura persistente de Chroma en **subprocesos Python independientes**, sin red y con embeddings ficticios, ambos finalizados antes de limpiar el directorio temporal desde el proceso principal. Esto comprueba persistencia **entre procesos** y libera los handles de archivo al terminar cada subproceso. No se modificó la lógica del agente, ni se alteró Booking Core/Supabase.
 
-**Validación final Windows:** pendiente de repetir después de actualizar la rama. Nunca afirmar que 11/11 pasaron en el PC antes de recibir esa salida.
+**Validación GitHub Actions de la corrección:** [ejecución #43527127870](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43527127870) aprobada con **11/11 pruebas B24**, persistencia entre procesos y `pip check` satisfactorio, además de regresión. **Validación final Windows:** pendiente de repetir tras actualizar la rama. Nunca afirmar 11/11 en el PC sin recibir esa salida.
 
 ## Próximo punto exacto
 
