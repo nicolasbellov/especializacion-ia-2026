@@ -3,7 +3,7 @@
 **Programa:** Skillnest / Accenture / CChIA · Especialización IA 2026  
 **Fecha:** 13/11/2026 (Chile)  
 **Fuente principal:** texto completo de la lección B24/L2 compartido por el estudiante.  
-**Estado:** material oficial recibido y reproducido en código; **prueba local en Windows pendiente de registrar**. La lección no exige API ni tokens.
+**Estado:** **lección completada técnicamente en Windows el 13/11/2026**: script oficial reproducido, comparador Booking Core AI ejecutado, **7/7 pruebas locales aprobadas**, sin consumir tokens. No se ha observado evaluación institucional.
 
 ## 1. Lo que enseña la lección oficial
 
@@ -60,7 +60,7 @@ python -m unittest discover -s tests -p "test_chunking_b24_booking_core.py" -v
 
 Cobertura: reproducción exacta del ejemplo oficial; longitud de fragmentos; conservación de fuente y sección; separación de palabras del fijo; respeto de párrafos cortos por el recursivo; validación del overlap; no mutación del corpus. El workflow `.github/workflows/pruebas-offline.yml` también incluye B24/L2.
 
-**Estado de pruebas:** [GitHub Actions #43529545967](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43529545967) aprobó ambos jobs; **18/18 pruebas B24-L1+L2** en el job RAG, `pip check` exitoso y regresión anterior aprobada. La salida del ejemplo oficial coincide exactamente: fijo **[110, 110, 93]** y recursivo **[102, 108, 99]**. **Validación en Windows de L2 pendiente**; no declarar práctica del estudiante completada sin su ejecución.
+**Estado de pruebas:** [GitHub Actions #43529545967](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43529545967) aprobó ambos jobs; **18/18 pruebas B24-L1+L2** en el job RAG, `pip check` exitoso y regresión anterior aprobada. La salida del ejemplo oficial coincide exactamente: fijo **[110, 110, 93]** y recursivo **[102, 108, 99]**. **Windows L2 validado posteriormente**: `Ran 7 tests in 3.023s / OK`, comparación oficial y corpus ficticio ejecutados y coincidentes con CI.
 
 ### Salida verificada del comparador Booking Core AI (CI Linux)
 
@@ -84,9 +84,21 @@ Los 20 y 25 no son números de reservas, no implican que el recursivo tenga un 2
 3. ¿Por qué el valor `chunk_overlap=20` no necesariamente produce 20 caracteres repetidos en el ejemplo?
 4. ¿Qué preferirías para FAQs de barbería: corte por longitud fija o por párrafos? Justifica a partir de los casos y sin afirmar que ya medimos precisión del RAG.
 
-## 6. Próximo paso exacto
+## 6. Evidencia Windows de cierre · 13/11/2026
 
-1. En Windows: verificar `git status --short` y, si está limpio, ejecutar `git pull --ff-only` en `feature/u2-5-b24-rag-booking-core`.
-2. Ejecutar `python -c "import langchain_text_splitters; print('OK')"`, `python test_chunking.py`, `python -m src.comparar_chunking_b24_booking_core` y los tests B24/L2; compartir salidas.
-3. Registrar evidencia y cerrar técnicamente L2 **solo si se reprodujo la práctica**.
-4. Continuar a Bloque 24/L3: indexar corpus de ejemplo con embeddings reales y persistencia, manteniendo el índice anterior intacto hasta decidir la estrategia.
+El estudiante sincronizó `f70a9e8..0c700ca` con `git pull --ff-only` sin conflictos y confirmó `python -c "import langchain_text_splitters; print('OK')"` → `OK`.
+
+**Ejemplo oficial ejecutado:** `python test_chunking.py`, fijo `[110, 110, 93]` y recursivo `[102, 108, 99]`. Se confirmó el corte de las palabras `errores` y `costo` en el primero, y la conservación de los párrafos completos en el segundo.
+
+**Comparador de Booking Core AI ejecutado:** `python -m src.comparar_chunking_b24_booking_core`, fijo **20 chunks** y recursivo **25 chunks** distribuidos sobre cinco secciones ficticias. No se modificó el índice Chroma de B24/L1.
+
+**Pruebas Windows:** `python -m unittest discover -s tests -p "test_chunking_b24_booking_core.py" -v`: **7/7 casos correctos**, `Ran 7 tests in 3.023s / OK`. Todos los criterios de demostración de la lección fueron observados. El tiempo de pruebas no equivale a estudio efectivo.
+
+**Interpretación para la actividad siguiente:** usar chunking recursivo como **candidato**, no como decisión definitiva. El tamaño de 110 separó un encabezado de su contenido (36 caracteres de título), por lo que conviene probar un tamaño mayor y continuidad de encabezado antes de indexar con embeddings reales. La calidad final del retrieval aún no ha sido evaluada con métricas.
+
+## 7. Próximo punto exacto
+
+1. Revisar la consigna **oficial** de B24/L3: «Indexa tu corpus y persiste los embeddings en un vector store [Actividad práctica]».
+2. Decidir configuración de chunking con fragmentos coherentes y metadatos de fuente; probarla antes de generar embeddings.
+3. Persistir el nuevo índice en una colección/directorio **distintos** de `.local/chroma_b24` para conservar el experimento validado.
+4. Medir la recuperación posteriormente (Bloque 27), sin consultar ni modificar la agenda de Booking Core.
