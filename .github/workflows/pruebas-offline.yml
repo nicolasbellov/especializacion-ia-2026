@@ -44,3 +44,27 @@ jobs:
         run: python pruebas_ensayo_rate_limit_b13.py
       - name: Integracion de cierre B13 simulada
         run: python pruebas_cierre_b13.py
+
+
+  rag_b24:
+    name: Python 3.12 - Chroma local sin red
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GEMINI_API_KEY: ci-clave-ficticia-no-valida
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependencias RAG
+        run: python -m pip install -r requirements-rag.txt
+      - name: Verificar dependencias
+        run: python -m pip check
+      - name: Verificar importaciones sin API
+        run: python -c "from langchain_chroma import Chroma; from langchain_google_genai import GoogleGenerativeAIEmbeddings; print('IMPORTS OK')"
+      - name: Probar chunking y Chroma persistente (vectores ficticios)
+        run: python -m unittest discover -s tests -p "test_rag_b24_booking_core.py" -v
