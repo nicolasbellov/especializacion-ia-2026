@@ -3,7 +3,7 @@
 **Programa:** Especialización IA 2026 · Skillnest / Accenture / CChIA  
 **Fecha:** 13/11/2026 (Chile)  
 **Fuente:** material completo de la lección «RAG por dentro: chunking, embeddings y vector stores» aportado por el estudiante.  
-**Estado:** implementación de laboratorio en rama; **ejecución real de embeddings, Chroma y evaluación Skillnest aún por verificar**.
+**Estado (13/11/2026):** entorno virtual Windows instalado, `pip check` satisfactorio y **embedding real Gemini verificado (3072 dimensiones)**. Prueba Chroma local: 10/11 iniciales; corrección de limpieza Windows preparada en la rama, pendiente de repetición en el PC. Indexación Gemini de corpus y evaluación Skillnest no verificadas.
 
 ## Objetivo sostenido del proyecto integrador
 
@@ -96,9 +96,27 @@ Antes de hacer `git switch`, comprobar si hay cambios propios sin commitear y ac
 
 En el Gate 2, conectar herramientas de lectura bajo identidad y tenant autorizado; para cambios de reservas, autenticación, autorización, consentimiento cuando corresponda, idempotencia, validaciones y trazabilidad deben existir en el **backend**, no únicamente en el prompt o vector store.
 
+## Evidencia Windows y corrección de limpieza de Chroma — 13/11/2026
+
+**Ejecución aportada por el estudiante:** PowerShell en `.venv`, `python -m pip install -r requirements-rag.txt`, `python -m pip check` (**No broken requirements found**), 11 pruebas y una llamada real a Gemini. Versiones instaladas en el entorno virtual: `chromadb==1.5.9`, `langchain-chroma==1.1.0`, `langchain==1.4.9`, `langchain-google-genai==4.4.3`; así se distingue del Python global.
+
+**Embedding real verificado:**
+
+```text
+Dimensiones: 3072
+Primeros cinco valores: [-0.001601775, 0.02089852, 0.01956536, -0.065919146, -0.0064969533]
+```
+
+**Incidente B24-WIN-001:** la primera ejecución de pruebas local terminó en **10/11 casos**, con un `PermissionError: [WinError 32]` al salir de `TemporaryDirectory()`: Chroma aún mantenía abierto un archivo HNSW `data_level0.bin`. La traza ocurre dentro de `tempfile.cleanup()`, no en el algoritmo de recuperación. El job Linux de GitHub Actions previo había aprobado 11/11 y no detectaba ese problema específico de Windows.
+
+**Corrección propuesta:** ejecutar la escritura, cierre y relectura persistente de Chroma en **subprocesos Python independientes**, sin red y con embeddings ficticios, ambos finalizados antes de limpiar el directorio temporal desde el proceso principal. Esto comprueba persistencia **entre procesos** y libera los handles de archivo al terminar cada subproceso. No se modificó la lógica del agente, ni se alteró Booking Core/Supabase.
+
+**Validación final Windows:** pendiente de repetir después de actualizar la rama. Nunca afirmar que 11/11 pasaron en el PC antes de recibir esa salida.
+
 ## Próximo punto exacto
 
-1. Verificar el `.venv`, ejecutar tests offline y la primera llamada real a embeddings.
-2. Comprobar la indexación y la consulta sobre el corpus ficticio.
-3. Estudiar Bloque 24 / Lección 2: comparar estrategias de chunking.
-4. Mantener tiempos efectivos y calificación pendientes hasta contar con datos reales.
+1. En PowerShell sobre `feature/u2-5-b24-rag-booking-core` ejecutar `git status --short`; si está limpio, `git pull --ff-only`.
+2. Repetir `python -m unittest discover -s tests -p "test_rag_b24_booking_core.py" -v` y verificar **11/11 PASS en Windows**.
+3. Ejecutar `python -m src.rag_b24_booking_core --modo indexar` y luego `--modo buscar --pregunta "¿Cómo cambio una cita?"` (consumen llamadas de Gemini; corpus ficticio).
+4. Documentar recuperación y citar la sección encontrada; avanzar a Bloque 24, Lección 2 (comparación de chunking).
+5. Mantener tiempos efectivos y evaluación institucional pendientes hasta contar con evidencias.
