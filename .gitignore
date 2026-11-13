@@ -26,3 +26,6 @@ trazas_agente*.jsonl
 # Base vectorial local y artefactos RAG de demostracion (no publicar)
 .local/
 chroma_db/
+
+# B24/L3: vector store de corpus propio (generado, nunca versionar)
+vectorstore/
