@@ -81,7 +81,7 @@ class TestChunkingBloque24(unittest.TestCase):
         )
         partes = dividir_documentos([doc], "fijo", chunk_size=6, chunk_overlap=0)
         self.assertEqual(partes[0].page_content, "Los er")
-        self.assertEqual(partes[1].page_content, "rores ")
+        self.assertEqual(partes[1].page_content, "rores")
 
     def test_recursivo_prioriza_parrafos_cortos(self):
         doc = Document(
