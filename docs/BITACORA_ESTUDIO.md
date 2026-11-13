@@ -533,3 +533,14 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Avance verificable de U2.5:** **1 de 15 actividades/lecciones del temario identificadas**, primera lección del Bloque 24 completada; 2 restantes del Bloque 24 aún sin verificar.
 - **Tiempo efectivo:** no informado. No confundir segundos de ejecución de tests con estudio efectivo.
 - **Punto exacto de continuación:** Bloque 24, **segunda lección «Dos estrategias de chunking, comparadas en vivo»**, enlace del curso https://learning-pro.skillnest.com/mod/page/view.php?id=20452. Comparar estrategias sin alterar ni reindexar todavía el corpus actual hasta revisar material oficial y diseño de experimento.
+
+## Inicio U2.5 / Bloque 24 / Lección 2 · 13/11/2026 — Comparativa chunking
+
+- **Material oficial recibido:** «Dos estrategias de chunking, comparadas en vivo» de Skillnest, con texto de tres párrafos y ejemplos para `CharacterTextSplitter(separator="", chunk_size=110, chunk_overlap=0)` y `RecursiveCharacterTextSplitter(chunk_size=110, chunk_overlap=20)`.
+- **Explicación del curso:** fijo produce 3 fragmentos (110/110/93) con división de `Los er/rores`; recursivo produce 3 (102/108/99) preservando cada párrafo. El overlap configurado no genera solapamiento en ese caso; no existe tamaño óptimo universal.
+- **Implementación preparada:** `test_chunking.py` contiene script continuo oficial; `src/comparar_chunking_b24_booking_core.py` compara ambas estrategias en el corpus académico de cinco secciones manteniendo metadatos por fuente, sección y origen; `tests/test_chunking_b24_booking_core.py` contiene pruebas offline. Se actualizó CI para ejecutar tests B24/L1+L2 y se añadió `docs/u2_5_b24_chunking_comparativo.md`.
+- **Seguridad y límites:** ejercicio en memoria, sin API, sin embeddings, sin reindexar el Chroma de L1 y sin tocar la agenda de Booking Core, AES Barber o Supabase.
+- **Pruebas en Windows:** **pendientes de ejecución/verificación**; no marcar completada la lección con solo publicar código.
+- **Avance formal:** U2.5 **1/15 completada técnicamente**, L2 **en estudio / práctica preparada**; sin nota ni entrega nueva.
+- **Tiempo efectivo / horas de inicio y término:** no informados; no inventar.
+- **Punto exacto de continuidad:** en Windows sincronizar rama `feature/u2-5-b24-rag-booking-core`, verificar import de `langchain_text_splitters`, ejecutar `python test_chunking.py`, `python -m src.comparar_chunking_b24_booking_core` y `python -m unittest discover -s tests -p "test_chunking_b24_booking_core.py" -v`; contrastar longitudes y registrar resultados.
