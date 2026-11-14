@@ -72,6 +72,9 @@ jobs:
           python -m unittest discover -s tests -p "test_receta_b25.py" -v
           python -m unittest discover -s tests -p "test_troubleshooting_b25.py" -v
           python -m unittest discover -s tests -p "test_replica_ejemplo_b25.py" -v
+          python -m unittest discover -s tests -p "test_recuperacion_semantica_b26.py" -v
+      - name: B26 - recuperar con embeddings ficticios sin API
+        run: python -m src.recuperacion_semantica_b26 --modo fake
       - name: B25 - preparar chunks de ejemplo sin Gemini
         run: |
           python -m src.receta_indexacion_b25 --modo preparar
