@@ -607,3 +607,17 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Estado:** B24 3/3 completado técnicamente; B25/L1 en estudio/replicación preparada, **U2.5 se mantiene 3/15** hasta la evidencia local. No consta calificación ni entrega para esta lección.
 - **Inicio/término y tiempo efectivo:** no proporcionados, no estimar.
 - **Punto exacto:** sincronizar GitHub si está limpio, ejecutar `python -m src.receta_indexacion_b25 --modo preparar`, suite B25 offline, `--modo indexar` solo para el nuevo índice, `--modo verificar` en otro proceso, y segunda indexación para constatar reutilización; luego registrar resultados antes del cierre.
+
+## Cierre técnico U2.5/B25/L1 · 13/11/2026 — Receta Gemini/Chroma reutilizable en Windows
+
+- **Evidencia:** consola PowerShell compartida desde `(.venv)` en Windows. `git status --short` limpio; `git pull --ff-only` ejecutó fast-forward **`367d1e3..a44a963`** sobre la rama `feature/u2-5-b24-rag-booking-core`, sin conflictos. `git status --short` final sin cambios.
+- **Preparación puramente local:** `python -m src.receta_indexacion_b25 --modo preparar` → **3 textos y 3 chunks de [78, 64, 77] caracteres**, sin llamar a Gemini ni escribir en disco.
+- **Pruebas específicas Windows:** `python -m unittest discover -s tests -p "test_receta_b25.py" -v` → **7/7 casos `OK`, `Ran 7 tests in 28.677s`**. Incluyó Chroma persistente entre procesos con vectores ficticios, firma/IDs, corpus y validación de rutas aisladas. El tiempo de 28.677 s corresponde a tests, no al tiempo efectivo de estudio.
+- **Indexación real Gemini:** `python -m src.receta_indexacion_b25 --modo indexar` → **«Estado: indexado con embeddings», 3 chunks** creados en el directorio **`.local/chroma_b25_receta/`**. Modelo del script: `models/gemini-embedding-001`.
+- **Persistencia independiente:** `python -m src.receta_indexacion_b25 --modo verificar` → **«Índice recargado sin re-embedding: 3 chunks»** en otro proceso.
+- **Idempotencia:** segunda llamada a `--modo indexar` → **«Estado: reutilizado sin re-embedding», 3 chunks**. No se requirió volver a calcular embeddings de los documentos del ejemplo.
+- **Aislamiento:** la CLI indicó que `vectorstore/` (10 chunks Gemini de B24/L3) y `.local/chroma_b24/` **no fueron modificados** por estos comandos. El índice nuevo bajo `.local/` está ignorado por Git.
+- **CI previa:** [GitHub Actions #43532526769](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43532526769), **27/27 B24 y 7/7 B25** con embeddings ficticios para tests offline; evidencia distinta de Gemini real en Windows.
+- **Lección completada técnicamente:** **B25/L1 1/3**, avance **U2.5 4/15**. No se confirma calificación ni entrega institucional para B25/L1. El PR #26 se mantiene como borrador y sin merge a `main`.
+- **Tiempo efectivo / inicio y término:** no informados; no inferirlos de la terminal ni del workflow.
+- **Punto exacto de continuación:** **Bloque 25, Lección 2 «Guía de troubleshooting»**, contenido oficial aún no compartido. Revisar el material antes de crear nuevas pruebas o interpretar errores. Conservar ambos índices de B24 y el índice B25 actual; no reindexarlos innecesariamente.
