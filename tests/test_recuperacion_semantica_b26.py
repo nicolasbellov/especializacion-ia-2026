@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import importlib.util
 import os
 from pathlib import Path
 import subprocess
@@ -15,6 +16,10 @@ from src import recuperacion_semantica_b26 as r
 RAIZ = Path(__file__).resolve().parents[1]
 
 
+@unittest.skipUnless(
+    importlib.util.find_spec("langchain_chroma") is not None,
+    "Pruebas B26 de Chroma corren en job RAG con requirements-rag.txt",
+)
 class TestRecuperacionSemanticaB26(unittest.TestCase):
     def test_corpus_y_metadatos_oficiales(self):
         self.assertEqual(len(r.CORPUS_FAKE), 5)
