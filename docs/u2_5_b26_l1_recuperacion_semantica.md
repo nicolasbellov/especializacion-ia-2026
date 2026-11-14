@@ -67,6 +67,10 @@ La suite offline confirma: el corpus oficial, k=3 con 3 Document y metadatos, di
 
 **Aplicación conceptual a Booking Core:** recuperar documentación estática con metadata.fuente es útil para fundamentar respuestas RAG, pero todavía no genera respuestas ni citas verificables. Horarios y reservas son datos transaccionales y requerirán APIs autorizadas, fuera de este laboratorio ficticio.
 
+**Evidencia CI validada:** [GitHub Actions #43553593077](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43553593077), ambos jobs exitosos: **9/9 B26/L1 OK** (`Ran 9 tests in 2.403s`) y regresiones **27/27 B24, 7/7 B25/L1, 11/11 B25/L2, 8/8 B25/L3**. Las 9 pruebas se ejecutaron con el paquete Chroma instalado en el job RAG, todas offline. La demo `--modo fake` también corrió sin Gemini. **No acredita ranking real con Gemini**, pendiente de Windows.
+
+**Incidente B26-CI-001 resuelto:** el job genérico de Gate 1 instala únicamente `requirements.txt`; al descubrir la suite nueva B26 falló por `ModuleNotFoundError: langchain_chroma`. Se ajustó la suite para omitir las pruebas que exigen Chroma en ese job (donde no está instalado) y ejecutarlas **todas** en el job RAG especializado con `requirements-rag.txt`. Ambos jobs quedaron verdes sin alterar los paquetes del job base.
+
 ## 5. Continuidad académica
 
 **B26/L1 en estudio:** material oficial recibido, práctica y pruebas preparadas para verificar en CI/Windows. Se mantiene por ahora U2.5 **6/15 lecciones** (B24 3/3 y B25 3/3); no confundir código publicado con validación local de Gemini ni calificación formal.
