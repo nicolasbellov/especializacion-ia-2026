@@ -54,6 +54,25 @@ La **primera** indexación legítima sí consume una solicitud al proveedor de e
 
 **CI validada:** [GitHub Actions #43536897395](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43536897395) registró **8/8 tests B25/L3 OK** (`Ran 8 tests in 6.614s / OK`), y aprobó las regresiones **27/27 B24 + 7/7 B25/L1 + 11/11 B25/L2**. El preflight reprodujo **5 chunks y 490 caracteres**. Los tests de persistencia usan exclusivamente vectores simulados en carpetas temporales, sin API; no prueban aún Gemini real para este nuevo corpus. La evidencia definitiva deberá provenir del PowerShell del estudiante.
 
-**Estado técnico por confirmar:** la preparación en GitHub y los tests no bastan para marcar B25/L3 cerrada. U2.5 se conserva **5/15** y el Bloque 25 **2/3** hasta recibir y analizar los resultados locales.
+**Estado técnico definitivo:** además del CI, el estudiante ejecutó el ejercicio con **Gemini real en Windows** y verificó los 5 chunks persistidos desde un proceso independiente, con reejecución sin re-embedding. **B25/L3 completada técnicamente; Bloque 25 3/3; U2.5 6/15**. La calificación institucional no está confirmada.
 
 **Siguiente bloque anunciado oficialmente:** Bloque 26, «Buscar por significado, no por palabra»: recuperación semántica y construcción del prompt RAG con contexto. No añadir requisitos no compartidos de ese bloque.
+
+## 4. Evidencia Windows y cierre técnico · 14/11/2026 (Chile)
+
+Con `(.venv)` activo, la consola confirma `git status --short` limpio, seguido de `git pull --ff-only` fast-forward `4e7647d..96ec7e1`. Tras ejecutar la réplica:
+
+| Acción | Evidencia exacta observada | Evaluación |
+| --- | --- | --- |
+| `--modo preparar` | `5 chunks generados`; longitudes `[106,103,99,85,97]`; `chunks vacios: []`; `hay duplicados: False`; 490 caracteres en corpus y chunks | Preflight oficial **PASS** sin Gemini |
+| Tests offline Windows | `Ran 8 tests in 24.535s / OK` | **8/8 PASS**; embeddings falsos exclusivamente dentro de la prueba |
+| `--modo indexar` (primera vez) | `Estado: indexado con Gemini real. Chunks: 5` | Embeddings reales del corpus ficticio y persistencia Chroma confirmada |
+| `--modo verificar` (otro proceso) | `Índice recargado sin Gemini, chunks: 5` | **Persistencia PASS** sin volver a calcular embeddings |
+| `--modo indexar` (segunda vez) | `Estado: reutilizado sin re-embedding. Chunks: 5` | Reutilización **PASS**, sin duplicados |
+| Git | `git status --short` sin archivos | Código sincronizado y vectorstore local no versionado |
+
+**Ubicación exclusiva del índice:** `.local/chroma_b25_tienda_ejemplo/`, ignorada por Git. Ninguno de los índices previos `.local/chroma_b24/`, `vectorstore/` o `.local/chroma_b25_receta/` necesitó reconstruirse. La validación `verificar` comprueba IDs y conteo del vectorstore en un nuevo proceso, no relevancia de resultados de retrieval (tema del Bloque 26).
+
+**Lección completada técnicamente. Bloque 25: 3/3. U2.5: 6/15.** No se exige entrega ni commit según Skillnest; el código fue versionado en GitHub a solicitud del estudiante. No afirmar nota formal. Duración efectiva de estudio no proporcionada; **24.535 segundos** corresponden a las pruebas automatizadas.
+
+**Siguiente:** Bloque 26, «Buscar por significado, no por palabra». Solicitar su material oficial y preservar los índices existentes para la siguiente etapa.
