@@ -155,6 +155,29 @@ class TestRecuperacionPropiaB26(unittest.TestCase):
         self.assertIn("Cita [99] -> Cita invalida", salida.getvalue())
         self.assertIn("Sin citas numeradas", salida.getvalue())
 
+    def test_respuesta_gemini_real_con_cita_compuesta_1_3(self):
+        """La abstención real del 14/11 citó [1, 3] y luego [1]."""
+        citas = {1: "01_servicios.md", 2: "04_cancelacion.md",
+                 3: "01_servicios.md"}
+        respuesta = (
+            "El contexto no alcanza para responder, ya que las notas indican "
+            "que nunca se deben inventar precios reales [1, 3] y que el "
+            "catálogo es un ejemplo ficticio [1]."
+        )
+        with redirect_stdout(StringIO()) as salida:
+            valido = rag.mostrar_citas_respuesta(respuesta, citas)
+        self.assertTrue(valido)
+        resultado = salida.getvalue()
+        self.assertEqual(resultado.count("Cita [1] -> 01_servicios.md"), 2)
+        self.assertIn("Cita [3] -> 01_servicios.md", resultado)
+
+    def test_rechaza_cita_agrupada_con_numero_inexistente(self):
+        citas = {1: "01_servicios.md", 3: "03_reprogramacion.md"}
+        with redirect_stdout(StringIO()) as salida:
+            self.assertFalse(rag.mostrar_citas_respuesta("Ver [1, 99].", citas))
+        self.assertIn("Cita [1] -> 01_servicios.md", salida.getvalue())
+        self.assertIn("Cita [99] -> Cita invalida", salida.getvalue())
+
     def test_indice_ausente_es_bloqueado_antes_de_crear_chroma(self):
         with tempfile.TemporaryDirectory() as tmp:
             ruta = Path(tmp) / "no_existe"
