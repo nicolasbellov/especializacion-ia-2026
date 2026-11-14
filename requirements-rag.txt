@@ -1,0 +1,5 @@
+# Dependencias incrementales de U2.5 (RAG). Usar en .venv.
+# Respeta las versiones históricas del programa fijadas en requirements.txt.
+-r requirements.txt
+langchain-chroma>=1.0,<2.0
+chromadb>=1.0,<2.0

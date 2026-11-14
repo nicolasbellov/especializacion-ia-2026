@@ -44,3 +44,48 @@ jobs:
         run: python pruebas_ensayo_rate_limit_b13.py
       - name: Integracion de cierre B13 simulada
         run: python pruebas_cierre_b13.py
+
+
+  rag_b24:
+    name: Python 3.12 - Chroma local sin red
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GEMINI_API_KEY: ci-clave-ficticia-no-valida
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependencias RAG
+        run: python -m pip install -r requirements-rag.txt
+      - name: Verificar dependencias
+        run: python -m pip check
+      - name: Verificar importaciones sin API
+        run: python -c "from langchain_chroma import Chroma; from langchain_google_genai import GoogleGenerativeAIEmbeddings; print('IMPORTS OK')"
+      - name: Probar RAG B24 y receta B25 (offline)
+        run: |
+          python -m unittest discover -s tests -p "test_*b24_booking_core.py" -v
+          python -m unittest discover -s tests -p "test_receta_b25.py" -v
+          python -m unittest discover -s tests -p "test_troubleshooting_b25.py" -v
+          python -m unittest discover -s tests -p "test_replica_ejemplo_b25.py" -v
+          python -m unittest discover -s tests -p "test_recuperacion_semantica_b26.py" -v
+          python -m unittest discover -s tests -p "test_citas_demo_b26.py" -v
+          python -m unittest discover -s tests -p "test_recuperacion_b26_l3.py" -v
+      - name: B26 - fuentes y citas sin Gemini ni Chroma
+        run: python citas_demo.py
+      - name: B26 - recuperar con embeddings ficticios sin API
+        run: python -m src.recuperacion_semantica_b26 --modo fake
+      - name: B25 - preparar chunks de ejemplo sin Gemini
+        run: |
+          python -m src.receta_indexacion_b25 --modo preparar
+          python replica_ejemplo.py --modo preparar
+      - name: B25 - diagnostico SQLite sin red ni indices
+        run: python -m src.diagnosticar_chroma_b25 --indice todos
+      - name: Ejecutar comparacion del curso y corpus ficticio
+        run: |
+          python test_chunking.py
+          python -m src.comparar_chunking_b24_booking_core
