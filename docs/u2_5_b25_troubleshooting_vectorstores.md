@@ -104,6 +104,32 @@ Skillnest presenta B25/L2 como **guía de consulta («Ver»), no como actividad 
 
 **Validación complementaria verificada:** [GitHub Actions #43533641828](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43533641828) aprobó ambos jobs. **11/11 pruebas nuevas del troubleshooting** (`Ran 11 tests in 0.036s / OK`), además de **27/27 B24** y **7/7 B25/L1**. `python -m src.diagnosticar_chroma_b25 --indice todos` se ejecutó en CI y finalizó con «Diagnóstico local completado. Sin API, sin cambios en los índices.» En CI no existen las bases locales del estudiante, por lo que esta salida prueba el funcionamiento del diagnóstico, **no el estado de los índices Windows**.
 
-**Cierre de la lección:** contenido de troubleshooting **estudiado y documentado**, con ejemplos y tests opcionales aprobados. **B25 2/3; U2.5 5/15 lecciones**. La guía es de tipo «Ver», sin ejercicio obligatorio de indexación; no confundir con calificación formal de Skillnest.\n\n**Siguiente paso anunciado por el curso:** B25/L3 «Indexación y persistencia de tu corpus» (réplica con un corpus de ejemplo dado según el último apartado del material). No asumir aún datos, tamaños de chunks ni actividades adicionales que no se hayan compartido.
+**Cierre de la lección:** contenido de troubleshooting **estudiado y documentado**, con ejemplos y tests opcionales aprobados. **B25 2/3; U2.5 5/15 lecciones**. La guía es de tipo «Ver», sin ejercicio obligatorio de indexación; no confundir con calificación formal de Skillnest.
+
+**Siguiente paso anunciado por el curso:** B25/L3 «Indexación y persistencia de tu corpus» (réplica con un corpus de ejemplo dado según el último apartado del material). No asumir aún datos, tamaños de chunks ni actividades adicionales que no se hayan compartido.
 
 No tocar `vectorstore/` ni `.local/chroma_b24/` ni `.local/chroma_b25_receta/` salvo validaciones read-only. No confundir el cierre conceptual del contenido con entrega o evaluación institucional.
+
+
+## 7. Validación opcional Windows · 13/11/2026
+
+La consola PowerShell aportada acredita `git pull --ff-only` (fast-forward `a44a963..4e7647d`) y las siguientes dos ejecuciones, sin indexación ni llamadas a Gemini:
+
+```powershell
+python -m unittest discover -s tests -p "test_troubleshooting_b25.py" -v
+python -m src.diagnosticar_chroma_b25 --indice todos
+```
+
+**Suite local:** **11/11 OK**, `Ran 11 tests in 0.932s`. El tiempo mostrado es de la automatización, no duración de estudio.
+
+**Entorno:** Python **3.12.8**, `.venv` activo, SQLite **3.45.3** y los cinco paquetes requeridos presentes. La herramienta mostró `GEMINI_API_KEY presente en el proceso: False`: **esperable**, porque no carga `.env`; no invalida la indexación real Gemini confirmada anteriormente.
+
+| Índice | SQLite existe | Integridad `quick_check` | Manifiesto | Fragmentos según manifiesto |
+| --- | --- | --- | --- | --- |
+| B24/L1 `.local/chroma_b24` | Sí | `ok` | No requerido | No aplicable |
+| B24/L3 `vectorstore` | Sí | `ok` | Coincide | **10** |
+| B25/L1 `.local/chroma_b25_receta` | Sí | `ok` | Coincide | **3** |
+
+**Interpretación:** los tres archivos SQLite pasan el chequeo interno; los manifiestos presentes corresponden a las colecciones previstas. Esta comprobación es intencionalmente de solo lectura: **no prueba la calidad de búsqueda**, ni recupera nuevos embeddings, ni reemplaza el conteo real de Chroma. Los 10 y 3 chunks ya contaban con una verificación independiente en Windows durante B24/L3 y B25/L1, respectivamente.
+
+**Estado académico sin cambio:** B25/L2, lección de referencia, **completada con evidencia complementaria Windows 11/11**. B25 2/3 y U2.5 5/15. Próximo material: B25/L3 según su consigna oficial.
