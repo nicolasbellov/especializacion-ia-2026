@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from contextlib import closing
 import json
 import os
 import sqlite3
@@ -105,9 +106,10 @@ class TestTroubleshootingB25(unittest.TestCase):
             ruta = Path(temporal) / "indice"
             ruta.mkdir()
             dbfile = ruta / "chroma.sqlite3"
-            with sqlite3.connect(dbfile) as conexion:
+            with closing(sqlite3.connect(dbfile)) as conexion:
                 conexion.execute("CREATE TABLE prueba (id INTEGER)")
                 conexion.execute("INSERT INTO prueba VALUES (5)")
+                conexion.commit()
             meta = ruta / "manifiesto_b24_l3.json"
             meta.write_text(
                 json.dumps({"coleccion": "coleccion_academica", "total_chunks": 3}),
@@ -128,8 +130,9 @@ class TestTroubleshootingB25(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporal:
             ruta = Path(temporal)
             dbfile = ruta / "chroma.sqlite3"
-            with sqlite3.connect(dbfile) as conexion:
+            with closing(sqlite3.connect(dbfile)) as conexion:
                 conexion.execute("CREATE TABLE t (id INTEGER)")
+                conexion.commit()
             (ruta / "manifiesto_b25_receta.json").write_text(
                 json.dumps({"coleccion": "otra", "ids": ["a", "b"]}),
                 encoding="utf-8",
