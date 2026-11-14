@@ -119,7 +119,7 @@ def indexar_corpus(
                 "no mezcles embeddings ni sobrescribas el índice anterior."
             )
         store = cargar_vectorstore(ruta, embeddings=embeddings)
-        if set(store.get(include=[])["ids"]) != set(ids):
+        if set(store.get(include=["metadatas"])["ids"]) != set(ids):
             raise ValueError("El índice persistido no coincide con el manifiesto.")
         return store, "reutilizado sin re-embedding", len(chunks)
 
@@ -166,7 +166,7 @@ def verificar_indice(
     info = json.loads(meta.read_text(encoding="utf-8"))
     store = cargar_vectorstore(ruta)
     if (info.get("firma") != firma or info.get("ids") != ids
-            or set(store.get(include=[])["ids"]) != set(ids)
+            or set(store.get(include=["metadatas"])["ids"]) != set(ids)
             or store._collection.count() != len(chunks)):
         raise ValueError("Diferencias entre corpus, manifiesto e índice persistido.")
     return len(chunks)
