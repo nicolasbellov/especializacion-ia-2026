@@ -95,7 +95,10 @@ def mapear_citas(respuesta: str, citas: dict[int, str]) -> list[tuple[int, str]]
     Una cita existente demuestra trazabilidad del número, NO que la afirmación
     esté realmente respaldada por el texto; el chequeo semántico es posterior.
     """
-    indices = [int(num) for num in re.findall(r"\[(\d+)\]", respuesta)]
+    # Un LLM puede agrupar varias referencias en un mismo corchete: [1, 3].
+    # Extraer cada número conservando su orden y también las repeticiones.
+    grupos = re.findall(r"\[\s*(\d+(?:\s*,\s*\d+)*)\s*\]", respuesta)
+    indices = [int(numero.strip()) for grupo in grupos for numero in grupo.split(",")]
     return [(indice, citas.get(indice, CITA_INVALIDA)) for indice in indices]
 
 
