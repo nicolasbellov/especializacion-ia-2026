@@ -66,8 +66,12 @@ jobs:
         run: python -m pip check
       - name: Verificar importaciones sin API
         run: python -c "from langchain_chroma import Chroma; from langchain_google_genai import GoogleGenerativeAIEmbeddings; print('IMPORTS OK')"
-      - name: Probar RAG y chunking B24 (offline)
-        run: python -m unittest discover -s tests -p "test_*b24_booking_core.py" -v
+      - name: Probar RAG B24 y receta B25 (offline)
+        run: |
+          python -m unittest discover -s tests -p "test_*b24_booking_core.py" -v
+          python -m unittest discover -s tests -p "test_receta_b25.py" -v
+      - name: B25 - preparar chunks de ejemplo sin Gemini
+        run: python -m src.receta_indexacion_b25 --modo preparar
       - name: Ejecutar comparacion del curso y corpus ficticio
         run: |
           python test_chunking.py
