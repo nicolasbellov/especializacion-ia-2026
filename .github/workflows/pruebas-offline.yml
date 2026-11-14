@@ -71,8 +71,11 @@ jobs:
           python -m unittest discover -s tests -p "test_*b24_booking_core.py" -v
           python -m unittest discover -s tests -p "test_receta_b25.py" -v
           python -m unittest discover -s tests -p "test_troubleshooting_b25.py" -v
+          python -m unittest discover -s tests -p "test_replica_ejemplo_b25.py" -v
       - name: B25 - preparar chunks de ejemplo sin Gemini
-        run: python -m src.receta_indexacion_b25 --modo preparar
+        run: |
+          python -m src.receta_indexacion_b25 --modo preparar
+          python replica_ejemplo.py --modo preparar
       - name: B25 - diagnostico SQLite sin red ni indices
         run: python -m src.diagnosticar_chroma_b25 --indice todos
       - name: Ejecutar comparacion del curso y corpus ficticio
