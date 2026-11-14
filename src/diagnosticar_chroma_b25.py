@@ -12,6 +12,7 @@ lee .env ni imprime claves, no genera embeddings y no modifica índices.
 from __future__ import annotations
 
 import argparse
+from contextlib import closing
 import importlib.util
 import json
 import os
@@ -106,7 +107,7 @@ def inspeccionar_indice(
     # as_uri produce file:///C:/... en Windows y file:///... en Linux.
     # ?mode=ro evita crear la base y mantiene esta comprobación en solo lectura.
     try:
-        with sqlite3.connect(archivo_db.as_uri() + "?mode=ro", uri=True, timeout=2) as db:
+        with closing(sqlite3.connect(archivo_db.as_uri() + "?mode=ro", uri=True, timeout=2)) as db:
             fila = db.execute("PRAGMA quick_check").fetchone()
             resultado["sqlite_integridad"] = str(fila[0]) if fila else "sin respuesta"
     except sqlite3.Error:
