@@ -24,6 +24,30 @@ from indexar_corpus import (
 RAIZ = Path(__file__).resolve().parents[1]
 
 
+def ejecutar_subproceso_utf8(argumentos: list[str], *, env: dict[str, str] | None = None,
+                            timeout: int = 90) -> subprocess.CompletedProcess[str]:
+    """Forzar UTF-8 en el hijo y tolerar bytes locales en pipes Windows.
+
+    En PowerShell (CP1252) un script puede imprimir "ó" como byte 0xF3;
+    si el proceso padre decodifica ese pipe como UTF-8, el hilo lector falla
+    y subprocess.run deja stdout=None, aun si el hijo terminó correctamente.
+    """
+    entorno = os.environ.copy() if env is None else env.copy()
+    entorno["PYTHONIOENCODING"] = "utf-8"
+    entorno["PYTHONUTF8"] = "1"
+    return subprocess.run(
+        argumentos,
+        cwd=str(RAIZ),
+        env=entorno,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        timeout=timeout,
+        check=False,
+    )
+
+
 class TestIndexacionB24L3(unittest.TestCase):
     def test_corpus_cinco_archivos_ficticios(self):
         documentos = cargar_documentos()
@@ -105,6 +129,13 @@ class TestIndexacionB24L3(unittest.TestCase):
         self.assertTrue(DIRECTORIO_CORPUS.is_dir())
         self.assertEqual(DIRECTORIO_CORPUS.parent.name, "data")
 
+    def test_subproceso_utf8_con_acentos(self):
+        """Regresión: leer caracteres españoles en Windows sin DecodeError."""
+        codigo = "print('Persistencia confirmada: información y conexión')"
+        resultado = ejecutar_subproceso_utf8([sys.executable, "-c", codigo])
+        self.assertEqual(resultado.returncode, 0, resultado.stderr[-1000:])
+        self.assertIn("información y conexión", resultado.stdout)
+
     def test_chroma_persistente_otro_proceso_no_reindexa(self):
         """Indexar Chroma real con vectores falsos; reabrir sin ninguna API."""
         if importlib.util.find_spec("langchain_chroma") is None:
@@ -151,15 +182,8 @@ class TestIndexacionB24L3(unittest.TestCase):
                 (generador, "INDEXACION_FAKE_OK"),
                 (reutilizador, "SIN_REEMBEDDING_OK"),
             ):
-                proceso = subprocess.run(
-                    [sys.executable, "-c", script, str(ruta)],
-                    cwd=str(RAIZ),
-                    env=env,
-                    capture_output=True,
-                    text=True,
-                    encoding="utf-8",
-                    timeout=90,
-                    check=False,
+                proceso = ejecutar_subproceso_utf8(
+                    [sys.executable, "-c", script, str(ruta)], env=env,
                 )
                 self.assertEqual(proceso.returncode, 0, proceso.stderr[-3000:])
                 self.assertIn(marca, proceso.stdout)
@@ -168,15 +192,9 @@ class TestIndexacionB24L3(unittest.TestCase):
             self.assertTrue((ruta / "manifiesto_b24_l3.json").is_file())
 
             # Proceso completamente nuevo de lectura: NO inicializa Gemini.
-            p = subprocess.run(
+            p = ejecutar_subproceso_utf8(
                 [sys.executable, "verificar_vectorstore_b24.py", "--ruta", str(ruta)],
-                cwd=str(RAIZ),
                 env=env,
-                capture_output=True,
-                text=True,
-                encoding="utf-8",
-                timeout=90,
-                check=False,
             )
             self.assertEqual(p.returncode, 0, p.stderr[-3000:])
             self.assertIn("Persistencia confirmada", p.stdout)
