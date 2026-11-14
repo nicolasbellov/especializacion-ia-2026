@@ -112,6 +112,8 @@ El vectorstore anterior .local/chroma_b24 no se modifica.
 
 **Corrección aplicada a las pruebas en rama:** `ejecutar_subproceso_utf8()` fuerza `PYTHONIOENCODING=utf-8` y `PYTHONUTF8=1`, usa `encoding="utf-8", errors="replace"` en pipes y centraliza los procesos de indexación, reutilización y verificación. Se agregó una **novena prueba B24/L3 de regresión** con caracteres acentuados. **No cambia `indexar_corpus.py` ni el vectorstore del estudiante.**
 
+**CI posterior al fix:** [GitHub Actions #43531505453](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43531505453), ambos jobs aprobados; **27/27 pruebas B24** con la nueva prueba de acentos y persistencia entre procesos (`Ran 27 tests in 7.958s / OK`), sin Gemini. En el PC Windows sigue pendiente repetir las **9 pruebas específicas de L3**. La ejecución CI no reemplaza esa verificación local.
+
 **Estado técnico:** objetivo funcional de la actividad **verificado** (cinco fuentes, chunking, embeddings reales, persistencia en disco y apertura independiente). **QA Windows 9/9 posterior a la corrección pendiente**; no declarar aprobación formal de Skillnest ni tiempo de estudio desconocido.
 
 **Próxima acción exacta:** sincronizar rama limpia y ejecutar solo `python -m unittest discover -s tests -p "test_indexacion_b24_booking_core.py" -v`, que ya no necesita Gemini ni modifica el índice local. Luego registrar 9/9 o el error observado antes del cierre definitivo del Bloque 24.
