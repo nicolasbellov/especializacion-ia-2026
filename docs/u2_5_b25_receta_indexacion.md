@@ -52,7 +52,7 @@ python -m src.receta_indexacion_b25 --modo verificar
 python -m unittest discover -s tests -p "test_receta_b25.py" -v
 ```
 
-Las pruebas comprueban tres fragmentos del ejemplo, variación de tamaños, parámetros inválidos, IDs/huella deterministas, ruta aislada de B24, CLI sin Gemini y Chroma persistente con **embeddings falsos únicamente dentro de tests**, para comprobar recarga y protección contra reindexado entre procesos. **La evidencia de esas pruebas no autoriza afirmar que Gemini haya indexado este nuevo corpus**.
+Las pruebas comprueban tres fragmentos del ejemplo, variación de tamaños, parámetros inválidos, IDs/huella deterministas, ruta aislada de B24, CLI sin Gemini y Chroma persistente con **embeddings falsos únicamente dentro de tests**, para comprobar recarga y protección contra reindexado entre procesos. **Evidencia CI:** [GitHub Actions #43532526769](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43532526769) aprobó ambos jobs. La suite B25 registró **7/7 pruebas OK** (`Ran 7 tests in 2.102s / OK`); B24 mantuvo **27/27** y `--modo preparar` imprimió **3 chunks**. **La evidencia de esas pruebas no autoriza afirmar que Gemini haya indexado este nuevo corpus**.
 
 ## 4. Fallos frecuentes, según el curso
 
