@@ -74,4 +74,25 @@ Las pruebas comprueban tres fragmentos del ejemplo, variación de tamaños, par�
 
 **Lección actual:** B25/L1, resumen-referencia de indexación reutilizable. **Siguiente lección anunciada oficialmente:** «Guía de troubleshooting» (B25/L2), seguida de una réplica práctica sobre un corpus de ejemplo dado (B25/L3). No inventar el contenido preciso de B25/L2 o L3 hasta recibirlo.
 
-**Estado institucional:** ni la ejecución local de esta lección ni una evaluación de Skillnest están confirmadas; no aumentar el progreso de U2.5 más allá de **3/15** todavía. Registrar inicio, término y tiempo real solo si el estudiante lo informa.
+**Estado técnico:** lección **B25/L1 completada en Windows**; U2.5 **4/15** lecciones (Bloque 25: 1/3). **La aprobación/nota y eventual entrega institucional no están confirmadas**. Inicio, término y tiempo de estudio efectivo no fueron informados.
+
+
+## 7. Cierre técnico Windows · 13/11/2026
+
+El estudiante sincronizó su rama mediante `git pull --ff-only` (fast-forward **`367d1e3..a44a963`**) con `git status --short` limpio. Ejecutó las cinco comprobaciones previstas:
+
+| Paso | Evidencia real en Windows | Conclusión |
+| --- | --- | --- |
+| Preparar | `Corpus de ejemplo: 3 textos`; `Chunking local: 3 chunks`; longitudes `[78, 64, 77]` | Splitter recursivo `(200,30)` ejecutado sin Gemini |
+| Tests | `Ran 7 tests in 28.677s / OK` | **7/7 aprobados** (incluida persistencia sin API entre procesos) |
+| Indexar | `Estado: indexado con embeddings`; `Indexados 3 chunks en .local/chroma_b25_receta` | **Gemini real** utilizado para la indexación inicial |
+| Verificar | `Índice recargado sin re-embedding: 3 chunks` | Chroma persistido, reabierto en un proceso posterior |
+| Repetir indexación | `Estado: reutilizado sin re-embedding` y 3 chunks | No vuelven a calcularse embeddings al repetir el mismo corpus |
+
+La CLI indica que los índices del Bloque 24 (`vectorstore/` con 10 chunks y `.local/chroma_b24/`) no fueron modificados. `git status --short` final no muestra cambios. La carpeta nueva `.local/chroma_b25_receta/` está ignorada por Git.
+
+**Alcance académico:** se cumplieron los cinco pasos de la receta oficial. El código añade validación con hash del corpus e IDs deterministas para evitar duplicados, sin confundir estas extensiones con los requisitos textuales del curso. La lección queda **cerrada técnicamente**, sin afirmar nota oficial. **U2.5: 4/15; B25: 1/3.**
+
+**Tiempo de estudio:** no comunicado. `28.677s` es el tiempo de la suite de tests, no duración de la sesión.
+
+**Próximo material:** **Bloque 25/Lección 2 «Guía de troubleshooting»**. Conservar el índice persistido para no incurrir en llamadas adicionales de Gemini.
