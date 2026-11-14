@@ -240,6 +240,9 @@ def main() -> int:
                 print("Fuentes recuperadas:", list(item.citas.values()))
                 print("Primer fragmento:", item.documentos[0].page_content)
                 print("Contexto numerado:", len(item.citas), "chunks")
+                print("--- Prompt dinámico ---")
+                print(item.prompt)
+                print("--- Fin del prompt ---")
             firmas_a = [(d.page_content, d.metadata.get("fuente")) for d in a.documentos]
             firmas_b = [(d.page_content, d.metadata.get("fuente")) for d in b.documentos]
             cambiado = firmas_a != firmas_b
