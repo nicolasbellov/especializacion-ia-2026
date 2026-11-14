@@ -90,6 +90,32 @@ class TestCitasDemoB26(unittest.TestCase):
              (3, "manual_costos.md"), (99, demo.CITA_INVALIDA)],
         )
 
+    def test_citas_agrupadas_reales_1_3_y_falsas(self):
+        """Regresión B26/L3: Gemini escribió [1, 3], antes omitíamos ambos."""
+        _, citas = demo.formatear_contexto(demo.crear_chunks())
+        respuesta = (
+            "El modelo reconoce falta de precios [1, 3] y no inventa [1]. "
+            "Prueba una referencia inexistente [2, 99]."
+        )
+        self.assertEqual(
+            demo.mapear_citas(respuesta, citas),
+            [
+                (1, "manual_cliente.md"),
+                (3, "manual_costos.md"),
+                (1, "manual_cliente.md"),
+                (2, "manual_cliente.md"),
+                (99, demo.CITA_INVALIDA),
+            ],
+        )
+
+    def test_citas_combinadas_espacios_orden_y_sin_inventar_numeros(self):
+        citas = {1: "uno.md", 3: "tres.md"}
+        respuesta = "Texto [ 3 , 1 ] / [3] / [x, 2] / [1; 3] / [abc]."
+        self.assertEqual(
+            demo.mapear_citas(respuesta, citas),
+            [(3, "tres.md"), (1, "uno.md"), (3, "tres.md")],
+        )
+
     def test_rechaza_metadatas_incompletas_antes_splitter(self):
         with self.assertRaisesRegex(ValueError, "metadata"):
             demo.crear_chunks(demo.CORPUS, [{"fuente": "solo_uno.md"}])
