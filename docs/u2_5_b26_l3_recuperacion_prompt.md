@@ -79,9 +79,11 @@ Los cinco documentos son **políticas simuladas**: servicios, disponibilidad, re
 
 El prompt pide al LLM que use las fuentes recuperadas y se abstenga si los documentos no lo respaldan; esa instrucción **reduce** el riesgo de alucinación, pero no garantiza ausencia de respuestas falsas. El corpus recuperado debe tratarse como datos no confiables, no instrucciones privilegiadas.
 
+**CI actual:** [GitHub Actions #43557252216](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43557252216) completó ambos jobs, incluyendo **12/12 B26/L3 tests offline** con corpus propio, metadata y IDs existentes; regresiones **27/27 B24, 7/7 B25/L1, 11/11 B25/L2, 8/8 B25/L3, 9/9 B26/L1, 11/11 B26/L2**. Es una validación de código y mocks; **no** implica consultas Gemini reales ni que el modelo haya justificado o rechazado respuestas adecuadamente.
+
 ## 6. Estado académico y entrega
 
 - **Previo comprobado:** B24 3/3, B25 3/3 y B26/L1-L2 2/3; U2.5 **8/15**.
-- **Actividad B26/L3:** script y pruebas versionados; la validación con Gemini real y la confirmación de **entrega en Skillnest** siguen separadas. No marcar 9/15 hasta comprobar el laboratorio según rúbrica.
+- **Actividad B26/L3:** script y pruebas versionados; **[CI #43557252216](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43557252216) PASS**, con **12/12 pruebas B26/L3** (`Ran 12 tests in 0.977s / OK`) y ambos jobs sin incidencias. Las regresiones B24/B25/B26 también pasaron. **Falta** validar los tres escenarios con Gemini real en Windows y confirmar la **entrega en Skillnest**. No marcar 9/15 hasta comprobar el laboratorio según rúbrica.
 - **Evidencia pública:** rama feature/u2-5-b24-rag-booking-core y PR #26, que permanece **draft, sin merge** a main.
 - **Próximo bloque anunciado:** Bloque 27 — evaluación de recuperación RAG (precisión y exhaustividad), detalles pendientes de su lección oficial.
