@@ -73,6 +73,28 @@ La suite offline confirma: el corpus oficial, k=3 con 3 Document y metadatos, di
 
 ## 5. Continuidad académica
 
-**B26/L1 en estudio:** material oficial recibido, práctica y pruebas preparadas para verificar en CI/Windows. Se mantiene por ahora U2.5 **6/15 lecciones** (B24 3/3 y B25 3/3); no confundir código publicado con validación local de Gemini ni calificación formal.
+**B26/L1 completada técnicamente:** el estudiante ejecutó en Windows la demostración con embeddings ficticios, **9/9 tests offline**, y una consulta **Gemini real** contra el índice B25/L1. El documento de `TimeoutError` quedó **primero** a una distancia de **0.5494**. **U2.5: 7/15 lecciones**; B24 3/3, B25 3/3, B26/L1 completada. No consta entrega ni calificación institucional.
 
 **Siguiente lección anunciada:** Bloque 26/L2 «Por qué la respuesta debe citar su fuente», sobre reutilizar metadata para citas. No anticipar requisitos antes de que se comparta la consigna.
+
+## 6. Evidencia definitiva Windows · 14/11/2026
+
+**Actualización local:** `git status --short` limpio antes y después; `git pull --ff-only` fast-forward `96ec7e1..c914d0e` en la rama de trabajo.
+
+**Reproducción oficial con vectores ficticios:** modo `fake` recuperó 5 chunks indexados y `k=3` en este orden: `doc2.md` (costo), `doc4.md` (pruebas con mocks) y `doc0.md` (TimeoutError). Distancias **19.9059, 20.8040, 24.8037**, que reproducen las de la lección. La consulta con `as_retriever.invoke(k=2)` obtuvo `doc2.md` y `doc4.md`. **Este ranking se explica por los hashes; no demuestra semántica.**
+
+**Suite Windows:** `Ran 9 tests in 5.082s / OK` (**9/9**). Sin llamadas Gemini durante la suite.
+
+**Búsqueda semántica real:** modo `real`, colección Chroma existente `receta_b25_ejemplo`, ruta `.local/chroma_b25_receta/`, **3 chunks**. Pregunta: «que pasa si la conexion tarda demasiado». Resultado con `similarity_search_with_score`:
+
+| Ranking | `metadata.fuente` | Resumen del fragmento | Distancia |
+| --- | --- | --- | ---: |
+| **1.º** | `ejemplo_skillnest_1` | Reintentar hasta 3 veces tras `TimeoutError` con espera creciente | **0.5494** |
+| 2.º | `ejemplo_skillnest_3` | Pruebas unitarias con mocks | 0.7277 |
+| 3.º | `ejemplo_skillnest_2` | Costo por `totalTokenCount` | 0.7557 |
+
+**Interpretación técnica:** el texto correcto apareció primero pese a diferencias léxicas con la pregunta. La distancia menor representa mayor cercanía **en esta colección**; los números no son porcentajes y **no son comparables con los scores fake de 16 dimensiones**. Es evidencia de recuperación relevante para **una consulta individual**, no una prueba estadística de precisión. El índice original no se reconstruyó: Gemini solo embebió la pregunta, y Chroma devolvió los documentos persistidos junto con sus fuentes.
+
+**Resultado académico:** B26/L1 **cerrada técnicamente**, U2.5 **7/15 lecciones**. La lección de Skillnest es de tipo «Ver». No hay nota ni envío institucional informado. **Tiempo efectivo de estudio desconocido**; los 5.082 segundos son solo las pruebas.
+
+**Próximo material:** B26/L2 «Por qué la respuesta debe citar su fuente», que anuncia el uso de `metadata` en las citas. Esperar contenido oficial antes de implementar pasos nuevos.
