@@ -69,6 +69,8 @@ Esta prueba es **100 % local**, sin Gemini, Chroma, red ni variables secretas. N
 
 ## 5. Continuidad académica
 
-**Lección oficial estudiada; ejecución local aún por corroborar**. Se conservan **7/15 lecciones** cerradas en U2.5 (B24 3/3, B25 3/3, B26/L1 1/3). El ejercicio y sus pruebas se versionan en la rama académica por preferencia expresa del estudiante; esto **no es entrega institucional**.
+**Lección de consulta completada por estudio del material y validación offline:** **[GitHub Actions #43555914394](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43555914394)** pasó ambos jobs. El test B26/L2 obtuvo **11/11 OK** (`Ran 11 tests in 0.488s`), incluyendo 4 chunks, fuentes heredadas, numeración local, prompt de abstención, reconstrucción de `[1]` y detección de `[99]`. `python citas_demo.py` se ejecutó sin Gemini/Chroma en CI y produjo las salidas esperadas; regresiones previas **27/27, 7/7, 11/11, 8/8 y 9/9** aprobadas. La ejecución opcional Windows aún no está aportada, y no se afirma prueba alguna con un LLM.
+
+**U2.5: 8/15 lecciones cerradas; Bloque 26: 2/3** (B24 y B25 completos). Este material es de requisito «Ver», sin entrega institucional exigida. El código y las pruebas se versionan a petición del estudiante, pero no hay nota oficial.
 
 **Siguiente actividad anunciada:** Bloque 26/L3 «Desarrolla tu recuperación y tu prompt dinámico», que integrará recuperación y contexto citables sobre el corpus del estudiante. Los requisitos específicos se estudiarán cuando el usuario comparta su consigna.
