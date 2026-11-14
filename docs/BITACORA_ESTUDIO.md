@@ -647,3 +647,14 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Estado:** **B25/L2 ya estaba cerrada como lección de consulta**; esta ejecución añade evidencia local opcional satisfactoria. **B25 2/3; U2.5 5/15**, sin afirmar evaluación institucional.
 - **Tiempo efectivo e inicio/término:** no informados. `0.932s` es duración automática de pruebas, no tiempo real de estudio.
 - **Continuación exacta:** recibir material oficial **B25/L3: «Indexación y persistencia de tu corpus»** antes de crear la siguiente réplica, manteniendo intactos los tres índices existentes.
+
+## Inicio U2.5/B25/L3 · 13/11/2026 — Réplica de tienda ficticia en GitHub
+
+- **Fuente:** lección oficial «Indexación y persistencia de tu corpus de ejemplo» (Bloque 25). La instrucción original señala explícitamente que **no se entrega ni se commitea**. **Excepción voluntaria del estudiante:** ante su solicitud «pero usa el github», se versionó solo **código/documentación/tests** para mantener el flujo académico centralizado en GitHub; nunca el índice real ni credenciales.
+- **Corpus oficial:** cinco documentos de una tienda ficticia (cancelación, devoluciones, reembolso, liquidación y envío de devoluciones), longitudes esperadas **[106,103,99,85,97]**, **490 caracteres totales**, sin vacíos ni duplicados. Splitter recursivo **(150,20)**; un chunk por documento.
+- **Código:** \`replica_ejemplo.py\` en la raíz del repositorio. CLI \`--modo preparar|indexar|verificar\`; usa Gemini \`models/gemini-embedding-001\` para la primera indexación, colección única \`tienda_ficticia_b25_replica\`, índice en \`.local/chroma_b25_tienda_ejemplo/\`. Protección adicional mediante hash/IDs/manifest, reindexación no duplicada y bloqueo de índices parciales.
+- **Pruebas:** \`tests/test_replica_ejemplo_b25.py\`, 8 verificaciones offline, incluida persistencia Chroma entre procesos con embeddings simulados exclusivamente para CI; workflow de RAG extendido. La prueba local con Gemini real se encuentra **pendiente** hasta recibir la consola del estudiante.
+- **Aislamiento:** índice nuevo dentro de \`.local/\` (ignorado en Git); **no modificar** \`vectorstore/\` del Bloque 24, \`.local/chroma_b24/\` ni \`.local/chroma_b25_receta/\`.
+- **Progreso académico:** B25/L3 **en preparación/ejecución**, B25 **2/3 cerradas**, U2.5 **5/15** hasta confirmar la indexación real con Gemini y la recarga de 5 chunks. No es una entrega a Skillnest ni se atribuye nota.
+- **Horas de inicio, término y tiempo efectivo:** no comunicados.
+- **Siguiente paso:** en Windows, con venv activo y rama limpia, \`git pull --ff-only\`, ejecutar \`python replica_ejemplo.py --modo preparar\`, suite \`test_replica_ejemplo_b25.py\`, indexar con \`--modo indexar\`, verificar y reindexar nuevamente comprobando reutilización. El siguiente contenido del curso corresponde al Bloque 26, todavía sin material detallado recibido.
