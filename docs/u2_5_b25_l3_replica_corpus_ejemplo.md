@@ -52,7 +52,7 @@ La **primera** indexación legítima sí consume una solicitud al proveedor de e
 
 ## 3. Evidencia de pruebas y límites
 
-La prueba CI usa exclusivamente vectores simulados; demuestra persistencia real de Chroma **en carpetas temporales**, entre procesos y sin API. No es prueba de uso real de Gemini sobre este nuevo corpus. La evidencia definitiva deberá provenir del PowerShell del estudiante.
+**CI validada:** [GitHub Actions #43536897395](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43536897395) registró **8/8 tests B25/L3 OK** (`Ran 8 tests in 6.614s / OK`), y aprobó las regresiones **27/27 B24 + 7/7 B25/L1 + 11/11 B25/L2**. El preflight reprodujo **5 chunks y 490 caracteres**. Los tests de persistencia usan exclusivamente vectores simulados en carpetas temporales, sin API; no prueban aún Gemini real para este nuevo corpus. La evidencia definitiva deberá provenir del PowerShell del estudiante.
 
 **Estado técnico por confirmar:** la preparación en GitHub y los tests no bastan para marcar B25/L3 cerrada. U2.5 se conserva **5/15** y el Bloque 25 **2/3** hasta recibir y analizar los resultados locales.
 
