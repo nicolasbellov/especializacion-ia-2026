@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib.util
 import os
+from pathlib import Path
 import subprocess
 import sys
 import unittest
@@ -104,7 +105,7 @@ class TestCitasDemoB26(unittest.TestCase):
         env["PYTHONUTF8"] = "1"
         resultado = subprocess.run(
             [sys.executable, "citas_demo.py"],
-            cwd=str(demo.__file__ and __import__("pathlib").Path(demo.__file__).resolve().parent),
+            cwd=str(Path(demo.__file__).resolve().parent),
             env=env, text=True, capture_output=True, encoding="utf-8",
             errors="replace", check=False, timeout=30,
         )
