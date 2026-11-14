@@ -114,6 +114,21 @@ El vectorstore anterior .local/chroma_b24 no se modifica.
 
 **CI posterior al fix:** [GitHub Actions #43531505453](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43531505453), ambos jobs aprobados; **27/27 pruebas B24** con la nueva prueba de acentos y persistencia entre procesos (`Ran 27 tests in 7.958s / OK`), sin Gemini. En el PC Windows sigue pendiente repetir las **9 pruebas específicas de L3**. La ejecución CI no reemplaza esa verificación local.
 
-**Estado técnico:** objetivo funcional de la actividad **verificado** (cinco fuentes, chunking, embeddings reales, persistencia en disco y apertura independiente). **QA Windows 9/9 posterior a la corrección pendiente**; no declarar aprobación formal de Skillnest ni tiempo de estudio desconocido.
+**Estado técnico final:** objetivo funcional de la actividad **verificado** (cinco fuentes, chunking, embeddings reales, persistencia en disco y apertura independiente). **QA Windows 9/9 aprobado** tras la corrección de codificación. **B24/L3 cerrada técnicamente; Bloque 24 3/3 completado**. No declarar aprobación formal de Skillnest ni tiempo de estudio desconocido.
 
-**Próxima acción exacta:** sincronizar rama limpia y ejecutar solo `python -m unittest discover -s tests -p "test_indexacion_b24_booking_core.py" -v`, que ya no necesita Gemini ni modifica el índice local. Luego registrar 9/9 o el error observado antes del cierre definitivo del Bloque 24.
+**Próxima acción exacta (actualizada tras validación):** el estudiante sincronizó la corrección y obtuvo **9/9 pruebas Windows aprobadas**. No es necesario reindexar el corpus ni repetir las diez llamadas a embeddings: el índice local ya fue validado. El próximo material académico es **B25/L1**, todavía no compartido; mantener la documentación y el PR #26 en borrador.
+
+
+## 9. Cierre definitivo del laboratorio B24/L3 · Windows 13/11/2026
+
+Tras un `git pull --ff-only` limpio, fast-forward `6b467b7..367d1e3`, el estudiante ejecutó de nuevo:
+
+```powershell
+python -m unittest discover -s tests -p "test_indexacion_b24_booking_core.py" -v
+```
+
+**Resultado reproducido:** `Ran 9 tests in 13.680s / OK`. Las nueve pruebas pasaron, incluidos `test_chroma_persistente_otro_proceso_no_reindexa` y `test_subproceso_utf8_con_acentos`; `B24-WIN-002` quedó **resuelto en la ejecución observada**. No se requirieron nuevas llamadas a Gemini ni tocar el índice real de `vectorstore/`.
+
+**Criterios oficiales verificados:** corpus de **cinco documentos**, chunking recursivo `(550,80)` previo al embedding, **10 chunks con Gemini real**, persistencia física Chroma, reapertura independiente, reutilización sin recalcular embeddings y exclusión de archivos generados por Git. La entrega institucional/calificación no se ha confirmado. **Lección 3 cerrada técnicamente. Bloque 24 3/3; Unidad U2.5 3/15.**
+
+**Continuación:** Bloque 25, primera lección. La consigna aportada anticipa indexación de un corpus de ejemplo distinto y resolución de problemas, pero todavía no tenemos la fuente detallada de esa lección; estudiarla antes de implementar nuevos ejercicios.
