@@ -83,10 +83,35 @@ Las pruebas offline usan embeddings falsos **solo en tests**, para demostrar Chr
 
 **Pruebas CI verificadas:** [GitHub Actions #43530916089](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/43530916089) aprobó ambos jobs. En el job RAG se ejecutaron **26/26 pruebas B24** (11 L1 + 7 L2 + 8 L3), incluida una indexación Chroma real con **embeddings simulados**, recarga desde otro proceso y reutilización sin recalcular vectores. Estas pruebas CI NO equivalen a utilizar Gemini real para esta nueva actividad.
 
-**Pendiente de la consola del estudiante:** salida de indexación con **Gemini real** y número de chunks, salida del verificador en otro proceso, y segunda ejecución sin re-embedding. Completar ese gate antes de cerrar B24/L3.
+**Evidencia Windows recibida:** la indexación real con Gemini creó **10 chunks a partir de 5 documentos**, la apertura independiente confirmó **10 chunks sin llamar a Gemini** y la segunda ejecución detectó **«existente; sin re-embedding»**. El gate funcional de la consigna está satisfecho. **Queda pendiente únicamente repetir la suite Windows después de corregir el problema de decodificación de la salida de un subproceso** (7/8 inicialmente).
 
 ## 7. Entrega y continuación
 
 Código a versionar: `indexar_corpus.py`, `verificar_vectorstore_b24.py`, `data/corpus_b24_l3/*.md`, `tests/test_indexacion_b24_booking_core.py`, `requirements.txt` + `requirements-rag.txt` y `.gitignore`. El código ya se publica en la rama; no versionar `vectorstore/` ni claves.
 
 **Siguiente bloque oficial:** Bloque 25, indexación de un corpus de ejemplo distinto y troubleshooting. El Bloque 27 evaluará precisión y recall; no afirmar que una configuración es óptima por la cantidad de chunks generada.
+
+
+## 8. Ejecución real Windows y diagnóstico B24-WIN-002 · 13/11/2026
+
+**Entorno y Git:** desde `(.venv)`, Python **3.12.8**, verificación `Entorno virtual activo`. `git status --short` vacío antes y después; `git pull --ff-only` fast-forward **`0c700ca..6b467b7`** sin conflictos.
+
+**Indexación con Gemini real** (`python indexar_corpus.py`):
+
+```text
+Estado: creado con embeddings
+Documentos fuente: 5
+Chunks indexados: 10
+Índice persistido: C:\Users\nbello\dev\especializacion-ia-2026\vectorstore
+El vectorstore anterior .local/chroma_b24 no se modifica.
+```
+
+**Persistencia sin API** (`python verificar_vectorstore_b24.py`): resultado **«Persistencia confirmada: Chroma reabierto sin reindexación ni Gemini»**, **5 documentos de origen, 10 chunks persistidos**; nombres de archivo `01_servicios.md` a `05_privacidad.md`. La segunda invocación de `python indexar_corpus.py` produjo **«Estado: existente; sin re-embedding»** y mantuvo los 10 chunks. `git check-ignore -v vectorstore/chroma.sqlite3` verificó la exclusión por `.gitignore:31:vectorstore/`.
+
+**Incidente B24-WIN-002, limitado a tests automatizados:** primera ejecución de `python -m unittest discover -s tests -p "test_indexacion_b24_booking_core.py" -v` terminó **7/8 aprobados**, `Ran 8 tests in 14.317s / FAILED (errors=1)`. La prueba de Chroma usaba `subprocess.run(..., text=True, encoding="utf-8")` pero el subproceso de PowerShell devolvió un byte **0xf3**, inválido en esa posición para UTF-8. El hilo lector interno levantó `UnicodeDecodeError` y devolvió `stdout=None`; el `TypeError` posterior en `assertIn` es consecuencia de esa falla de decodificación, **no** evidencia de que el índice Chroma o los embeddings hayan fallado.
+
+**Corrección aplicada a las pruebas en rama:** `ejecutar_subproceso_utf8()` fuerza `PYTHONIOENCODING=utf-8` y `PYTHONUTF8=1`, usa `encoding="utf-8", errors="replace"` en pipes y centraliza los procesos de indexación, reutilización y verificación. Se agregó una **novena prueba B24/L3 de regresión** con caracteres acentuados. **No cambia `indexar_corpus.py` ni el vectorstore del estudiante.**
+
+**Estado técnico:** objetivo funcional de la actividad **verificado** (cinco fuentes, chunking, embeddings reales, persistencia en disco y apertura independiente). **QA Windows 9/9 posterior a la corrección pendiente**; no declarar aprobación formal de Skillnest ni tiempo de estudio desconocido.
+
+**Próxima acción exacta:** sincronizar rama limpia y ejecutar solo `python -m unittest discover -s tests -p "test_indexacion_b24_booking_core.py" -v`, que ya no necesita Gemini ni modifica el índice local. Luego registrar 9/9 o el error observado antes del cierre definitivo del Bloque 24.
