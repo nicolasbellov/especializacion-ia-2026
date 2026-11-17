@@ -49,7 +49,10 @@ def _validar_ids(
     vistos = set(ids_recuperados)
     if len(vistos) != len(ids_recuperados):
         raise ValueError("Hay IDs recuperados duplicados: revisar el ranking.")
-    return vistos, set(ids_relevantes)
+    relevantes = set(ids_relevantes)
+    if len(relevantes) != len(ids_relevantes):
+        raise ValueError("Hay IDs relevantes duplicados: revisar las etiquetas.")
+    return vistos, relevantes
 
 
 def precision_at_k(
