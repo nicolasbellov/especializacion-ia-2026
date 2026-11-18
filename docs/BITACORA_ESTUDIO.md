@@ -788,3 +788,13 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Estado académico:** B27/L2 **«Ver» completada por estudio y CI**; **B27 2/3 y U2.5 11/15**. Ejecución adicional Windows opcional; no consta entrega ni nota institucional B26/L3 y PR #26 se mantiene borrador sin merge.
 - **Inicio, término y tiempo efectivo de estudio:** no informados; la duración del job no representa estudio.
 - **Punto exacto para continuar:** B27/L3 «La recuperación de tu flujo RAG», consigna oficial aún no compartida. En esa actividad, etiquetar primero relevancia humana de chunks reales y luego comparar IDs del retriever, sin reconstruir el índice.
+
+## B27/L2 · Evidencia adicional Windows recibida 18/11/2026
+
+- **Sincronización Git:** el primer intento de `git status --short` generó `error: unknown option 'shortgit'`, atribuible a la entrada concatenada de comandos, no a un fallo del repositorio. Posteriormente `git pull --ff-only` hizo fast-forward **`67c163f..cde75c5`** en la rama `feature/u2-5-b24-rag-booking-core`, sin conflictos; el `git status --short` final no mostró cambios.
+- **Demostración Windows sin API:** `python evaluacion_rag.py` reprodujo los **4 casos simulados de Skillnest**. Por caso: precisiones `0.333, 0.0, 0.333, 0.333`; recalls `1.0, 0.0, 1.0, 1.0`; agregados **`precision promedio: 0.25`** y **`recall promedio: 0.75`**; casos borde **`0.0`** y **`None`**.
+- **Pruebas locales:** `python -m unittest discover -s tests -p "test_evaluacion_rag_b27.py" -v` ejecutó **18/18 tests OK**, `Ran 18 tests in 0.168s`, sin pruebas omitidas ni errores. La duración automatizada **no es tiempo de estudio**.
+- **Interpretación:** los resultados confirman fidelidad al dataset **simulado** del curso; no son mediciones del retriever real de Booking Core y no implican llamadas a Gemini ni reindexación.
+- **Avance:** B27/L2 ya contaba como lección «Ver» completada tras 18/18 CI. Evidencia Windows confirmada, **sin volver a contarla**: **B27 2/3; U2.5 11/15**. PR #26 continúa en borrador, sin merge; entrega de B26/L3 en Skillnest no confirmada.
+- **Tiempo efectivo, hora de inicio y término:** no informados.
+- **Continuidad:** B27/L3 «La recuperación de tu flujo RAG»; recibir primero la consigna oficial, luego etiquetar los IDs reales de los diez chunks antes de probar el retriever.
