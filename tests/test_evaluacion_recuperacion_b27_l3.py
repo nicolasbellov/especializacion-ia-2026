@@ -222,7 +222,9 @@ class TestEvaluacionRecuperacionB27L3(unittest.TestCase):
         self.assertIn("sin API: 12", p.stdout)
         self.assertIn("Positivos: 10", p.stdout)
         self.assertIn("Sin respuesta factual: 2", p.stdout)
-        self.assertFalse((a.RAIZ / "resultados_evaluacion.txt").exists())
+        # La CI debe seguir verde incluso DESPUÉS de publicar la primera corrida
+        # real en resultados_evaluacion.txt; solo se verifica el modo sin API.
+        self.assertIn("SERV-01", p.stdout)
 
     def test_sin_llamadas_reales_ni_escrituras_al_vectorstore_en_tests(self):
         # Pasar modo etiquetas no abre Chroma, no instancia embeddings.
