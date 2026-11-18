@@ -764,3 +764,14 @@ Registro incremental de sesiones, aprendizaje, evidencias, errores y punto de re
 - **Estado:** B27/L1 **lección «Ver» estudiada y validada en CI**. U2.5 **10/15 lecciones**; B24 3/3, B25 3/3, B26 3/3, B27 **1/3**. La reproducción en Windows queda opcional. B26/L3 aún no tiene entrega/nota institucional confirmada. PR #26 continúa borrador y sin merge.
 - **Horas de inicio, término y tiempo efectivo:** no informados. El tiempo de CI no corresponde al tiempo efectivo de estudio.
 - **Punto exacto de continuación:** B27/L2 «Cómo evaluar si el flujo RAG recupera lo pertinente»; esperar su material antes de definir y etiquetar el conjunto de evaluación del índice propio. Si se desea, reproducir offline en Windows metricas_recuperacion.py y la suite de 15 tests.
+
+## B27/L1 · Evidencia complementaria Windows — recibida 18/11/2026
+
+- **Consola PowerShell:** al inicio y al final, `git status --short` no mostró modificaciones locales. `git pull --ff-only` sincronizó `feature/u2-5-b24-rag-booking-core` desde `787dbcb` a `67c163f` mediante fast-forward, sin conflictos.
+- **Script real ejecutado en Windows:** `python metricas_recuperacion.py` reprodujo sobre el **ranking FIJO del curso**, NO sobre Chroma/Booking Core, `precision@3: 0.3333333333333333` y `recall@3: 1.0`. Para k=1..5, las precisiones fueron **0, 0, 0.333, 0.250, 0.200**; recall **0, 0, 1, 1, 1** y F1 **0, 0, 0.500, 0.400, 0.333**. El script identificó **k=3 como F1 máximo=0.500** únicamente en este caso didáctico.
+- **Tests Windows:** `python -m unittest discover -s tests -p "test_metricas_recuperacion_b27.py" -v` → **15/15 OK**, `Ran 15 tests in 0.121s`, sin fallos ni omisiones. Ese tiempo corresponde al proceso de pruebas, **no** al estudio.
+- **Incidencias:** ninguna. El aviso inicial de PowerShell acerca de PSReadLine no afectó las operaciones ni se reportó un error de Python.
+- **Seguridad y alcance:** no se ejecutaron Gemini ni indexaciones, y ningún vectorstore fue modificado. No se han calculado métricas reales del retriever de Booking Core AI.
+- **Estado:** ya estaba completada la lección «Ver» gracias al estudio y a la CI 15/15. Windows añade evidencia local independiente; **se mantiene U2.5 10/15 y B27 1/3**, sin duplicar la lección ni atribuir calificación institucional.
+- **Hora de inicio/término y tiempo efectivo:** no informados. La fecha indicada es la de registro de la evidencia; la consola no aporta una marca horaria verificable de ejecución.
+- **Próximo paso:** B27/L2 «Cómo evaluar si el flujo RAG recupera lo pertinente»; recibir contenido oficial antes de diseñar un dataset etiquetado y medir precisión/recall real. La entrega B26/L3 en Skillnest sigue pendiente de confirmación.
