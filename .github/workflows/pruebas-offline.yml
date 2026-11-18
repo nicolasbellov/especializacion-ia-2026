@@ -36,6 +36,8 @@ jobs:
         run: python -m unittest discover -s tests -p "test_*.py" -v
       - name: B27/L1 - metricas de recuperacion sin API
         run: python metricas_recuperacion.py
+      - name: B27/L2 - evaluacion promedio con casos simulados sin API
+        run: python evaluacion_rag.py
       - name: Pruebas unitarias pytest Bloque 14
         run: python -m pytest test_cliente.py -v
       - name: Pruebas cliente Bloque 12
