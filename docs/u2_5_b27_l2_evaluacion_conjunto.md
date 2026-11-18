@@ -80,6 +80,6 @@ B27/L3 anuncia evaluación contra el recuperador real: (1) inspeccionar los IDs 
 
 ## 5. Seguimiento
 
-La lección «Ver» puede darse por estudiada tras comprobar la ejecución offline, sin entrega institucional exigida. Tras CI satisfactoria: **B27 2/3, U2.5 11/15**. La reproducción Windows sería evidencia adicional; se conserva el PR #26 como **borrador sin merge**, y la entrega B26/L3 en Skillnest sigue sin confirmarse. Tiempo efectivo de estudio: no informado.
+La lección «Ver» quedó estudiada y validada offline: [GitHub Actions #44407807479](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/44407807479) completó **ambos jobs PASS**. Las **18/18 pruebas B27/L2** se ejecutaron en el job base (141 tests descubiertos en total, sin fallos). El script independiente imprimió **Casos: 4**, **precisión promedio: 0.25**, **recall promedio: 0.75**, **0.0** y **None**, tal como Skillnest. No se utilizó API ni se alteró Chroma. **B27 2/3, U2.5 11/15**. La reproducción Windows sería evidencia adicional; se conserva el PR #26 como **borrador sin merge**, y la entrega B26/L3 en Skillnest sigue sin confirmarse. Tiempo efectivo de estudio: no informado.
 
 **Siguiente punto exacto:** B27/L3 «La recuperación de tu flujo RAG»; aguardar consigna oficial antes de fabricar etiquetas o generar resultados con Gemini.
