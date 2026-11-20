@@ -40,6 +40,8 @@ jobs:
         run: python dataset_tuning.py
       - name: U2.6 B30 - costo humano de etiquetado sin API
         run: python costos_personalizacion.py
+      - name: U2.6 B30 - comparar estrategias y empates sin API
+        run: python comparar_estrategias.py
       - name: B27/L1 - metricas de recuperacion sin API
         run: python metricas_recuperacion.py
       - name: B27/L2 - evaluacion promedio con casos simulados sin API
