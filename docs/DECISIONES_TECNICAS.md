@@ -96,6 +96,16 @@ Cada decisión incluye contexto, elección, razón, evidencia, límites y condic
 - **Evidencia:** [GitHub Actions #40623902722](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/40623902722) success para pytest B14 y regresiones previas.
 - **Límites:** la tarifa de costo continúa siendo referencial. Un HTTP 429 simulado no acredita un rate limit auténtico, criterio pendiente del Bloque 13. Las pruebas no sustituyen la aprobación formal de Skillnest.
 
+### DT-011 · RAG documental sin tuning para el piloto académico Booking Core AI (U2.6/B30 Core)
+
+- **Fecha:** 20/11/2026. **Estado:** decisión académica propuesta, **no autorización productiva**.
+- **Problema:** responder preguntas documentales con citas y abstenerse donde falten fuentes; la agenda transaccional solo mediante APIs autorizadas.
+- **Regla de Skillnest aplicada con evidencias conservadoras:** cambios mensuales no acreditados (5 documentos creados 13/11, 0 revisiones); 20 salidas reales de formato no medidas (dataset B29 de 20 pares no es evidencia de salida real); dataset de entrenamiento grande no disponible (20, umbral 200); iteración menor a 24 h asumida para el piloto (pendiente ratificación); variantes personalizadas no requeridas. **RAG 2, PEFT 1, fine-tuning 0**.
+- **Sensibilidad:** al retirar solo la condición de iteración rápida el método arroja **empate triple 0/0/0**; no justificar artificialmente un ganador.
+- **Sustento:** 5 documentos académicos, 10 chunks, 12 consultas de evaluación (10 relevantes, 2 sin respuesta); reporte de k=3 repetible con precisión 0,306 y recall evaluable 1,000. Los resultados no validan datos de producción.
+- **Decisión:** usar RAG documental en la demostración, sin tuning real ni integración automática de reservas. Para el clasificador de B29, empezar por prompting con JSON Schema; PEFT sujeto a medición de fallos reales y dataset revisado.
+- **Artefactos:** [documento Core](../decision_personalizacion.md), [generador](../decision.py), [QA](../tests/test_decision_core_b30.py). Falta evidencia Windows y entrega formal en Skillnest.
+
 ## Pendientes para futuras decisiones
 
 - **Bloque 13:** primera lección validada con Gemini real; los temas `Retry-After`, tarifas reales por tipo de tokens y prueba acotada de rate limit provocado siguen pendientes en próximas lecciones.
