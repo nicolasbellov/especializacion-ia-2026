@@ -20,12 +20,12 @@ La lección compara **RAG** y **fine-tuning/PEFT** en tres dimensiones principal
 
 La función del material es:
 
-\`\`\`python
+```python
 def estimar_costo_de_etiquetar(num_ejemplos, minutos_por_ejemplo, costo_por_hora):
     horas = (num_ejemplos * minutos_por_ejemplo) / 60
     costo = horas * costo_por_hora
     return horas, costo
-\`\`\`
+```
 
 Con **5 minutos por ejemplo** y **USD 25 por hora**:
 
@@ -50,7 +50,7 @@ Supuestos de la consigna: 500 ejemplos; 4 minutos de etiquetado por ejemplo; tar
 
 ## 4. Extensión propia — Booking Core AI
 
-El dataset **sintético** de B29 ([\`dataset_tuning.py\`](../dataset_tuning.py)) tiene 20 ejemplos equilibrados, cuatro para cada una de cinco intenciones. Se aplica exactamente el mismo supuesto **didáctico** del mini-ejercicio para comparar magnitudes: 4 minutos por ejemplo, 20 USD/h y revisión de 20 % (4 ejemplos) con 2 minutos cada uno.
+El dataset **sintético** de B29 ([`dataset_tuning.py`](../dataset_tuning.py)) tiene 20 ejemplos equilibrados, cuatro para cada una de cinco intenciones. Se aplica exactamente el mismo supuesto **didáctico** del mini-ejercicio para comparar magnitudes: 4 minutos por ejemplo, 20 USD/h y revisión de 20 % (4 ejemplos) con 2 minutos cada uno.
 
 | Etapa | Minutos totales | Horas | Costo USD |
 | --- | ---: | ---: | ---: |
@@ -64,31 +64,31 @@ La distribución equilibrada no demuestra que un modelo entrenado con 20 ejemplo
 
 ## 5. Estadísticas reales del SDK de Gemini
 
-El curso muestra \`client.tunings.get(name=nombre_trabajo)\` y, tras existir datos del entrenamiento, \`trabajo.tuning_data_stats.supervised_tuning_data_stats\`. Los campos expuestos en el material incluyen:
+El curso muestra `client.tunings.get(name=nombre_trabajo)` y, tras existir datos del entrenamiento, `trabajo.tuning_data_stats.supervised_tuning_data_stats`. Los campos expuestos en el material incluyen:
 
-- \`tuning_dataset_example_count\`: ejemplos utilizados.
-- \`total_truncated_example_count\`: ejemplos truncados.
-- \`total_billable_token_count\` y \`total_billable_character_count\`: contadores facturables.
-- \`tuning_step_count\`: pasos de entrenamiento.
-- \`dropped_example_reasons\` y \`total_tuning_character_count\`: diagnóstico complementario.
+- `tuning_dataset_example_count`: ejemplos utilizados.
+- `total_truncated_example_count`: ejemplos truncados.
+- `total_billable_token_count` y `total_billable_character_count`: contadores facturables.
+- `tuning_step_count`: pasos de entrenamiento.
+- `dropped_example_reasons` y `total_tuning_character_count`: diagnóstico complementario.
 
-Los valores **7 ejemplos / 1540 tokens / 35 pasos** de la lección son **ilustrativos**, no mediciones de Booking Core AI. **No tenemos un trabajo de tuning real ni un ID de job**, por lo que no llamamos a \`client.tunings.get\`; tampoco hicimos \`tune\` ni \`cancel\`.
+Los valores **7 ejemplos / 1540 tokens / 35 pasos** de la lección son **ilustrativos**, no mediciones de Booking Core AI. **No tenemos un trabajo de tuning real ni un ID de job**, por lo que no llamamos a `client.tunings.get`; tampoco hicimos `tune` ni `cancel`.
 
 ## 6. Implementación y QA
 
-- [\`costos_personalizacion.py\`](../costos_personalizacion.py): ejemplos oficiales 8/200, mini-ejercicio 500 y extensión ficticia con la cantidad del dataset B29.
-- [\`tests/test_costos_personalizacion_b30.py\`](../tests/test_costos_personalizacion_b30.py): pruebas offline de la fórmula, revisión, totales, jornadas y valores fuera de rango.
-- GitHub Actions incorpora \`python costos_personalizacion.py\` al job de ejercicios offline.
+- [`costos_personalizacion.py`](../costos_personalizacion.py): ejemplos oficiales 8/200, mini-ejercicio 500 y extensión ficticia con la cantidad del dataset B29.
+- [`tests/test_costos_personalizacion_b30.py`](../tests/test_costos_personalizacion_b30.py): pruebas offline de la fórmula, revisión, totales, jornadas y valores fuera de rango.
+- GitHub Actions incorpora `python costos_personalizacion.py` al job de ejercicios offline.
 
 ### Comandos para validar en Windows
 
-\`\`\`powershell
+```powershell
 git pull --ff-only origin main
 .\.venv\Scripts\python.exe .\costos_personalizacion.py
 .\.venv\Scripts\python.exe -m unittest discover -s tests -p "test_costos_personalizacion_b30.py" -v
 git status -sb
-\`\`\`
+```
 
-**Estado:** código y tests publicados, resultados locales Windows aún por confirmar. No se realizan llamadas a la API ni se generan gastos de entrenamiento.
+**Estado de validación, 20/11/2026:** el estudiante hizo `git pull --ff-only origin main` con fast-forward; la ejecución de `costos_personalizacion.py` reprodujo todos los resultados oficiales y de Booking Core AI. La suite `tests/test_costos_personalizacion_b30.py` completó **12/12 pruebas Windows OK en 0,005 s**, sin errores; CI offline aprobada. Los tiempos y montos son estimaciones didácticas, **no gastos ni horas efectivas medidas**. No hay llamadas API ni trabajo de entrenamiento.
 
 **Próxima lección:** U2.6 B30/L2 «Cómo comparar estrategias de personalización». Esperar su material oficial y elegir métricas antes de decidir entre prompting, RAG, PEFT y fine-tuning.
