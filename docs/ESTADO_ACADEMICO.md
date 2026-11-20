@@ -1,9 +1,12 @@
 # Estado académico — Especialización en Desarrollo con IA Generativa 2026
 
-> **Actualizado:** 18/11/2026 (Chile). **Fuente:** material curricular compartido, conversación de estudio y evidencia versionada en este repositorio.  
+> **Actualizado:** 20/11/2026 (Chile). **Fuente:** material curricular compartido, conversación de estudio y evidencia versionada en este repositorio.  
 > **Convención:** distinguir *evidencia técnica verificada*, *actividad completada en el entorno local*, *entrega publicada* y *aprobación formal informada por Skillnest*. No son equivalentes.
 
 ## Vista general
+
+**Actualización U2.6 / Bloque 29 (20/11/2026):** L1 (comparativa RAG, fine-tuning, PEFT y soft-prompting) revisada con verificación local del SDK; L2 (dataset preparado para PEFT) ejecutada en Windows: **8 ejemplos, 0 defectos estructurales, 4 defectos de prueba detectados, objetos PEFT construidos en memoria y sin llamada API**. Evidencia y límites en [BITACORA_ESTUDIO.md](BITACORA_ESTUDIO.md). **No equivale a tuning real, envío ni calificación institucional.** Sigue B29/L3 (actividad práctica). El estado histórico de U2.5 que aparece más abajo no se recalcula en esta actualización.
+
 
 | Etapa | Alcance | Estado comprobable |
 | --- | --- | --- |
