@@ -42,6 +42,8 @@ jobs:
         run: python costos_personalizacion.py
       - name: U2.6 B30 - comparar estrategias y empates sin API
         run: python comparar_estrategias.py
+      - name: U2.6 B30 Core - generar decision fundamentada offline
+        run: python decision.py
       - name: B27/L1 - metricas de recuperacion sin API
         run: python metricas_recuperacion.py
       - name: B27/L2 - evaluacion promedio con casos simulados sin API
