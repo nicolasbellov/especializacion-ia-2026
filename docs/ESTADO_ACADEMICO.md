@@ -5,6 +5,9 @@
 
 ## Vista general
 
+**U2.6/B29/L3 — actividad práctica preparada y versionada (20/11/2026):** dataset propio de Booking Core AI en [`dataset_tuning.py`](../dataset_tuning.py), **20 ejemplos** en cinco intenciones (4 por categoría), validador estructural/semántico, prueba negativa y **16 pruebas offline** [`test_dataset_tuning_b29.py`](../tests/test_dataset_tuning_b29.py). Workflow CI actualizado; la evidencia de CI debe verificarse y **falta ejecutar el ejercicio en Windows**. No hubo tuning real ni se confirmó envío/calificación Skillnest. Guía: [U2.6 B29/L3](u2_6_b29_l3_dataset_booking_core.md).
+
+
 **Actualización U2.6 / Bloque 29 (20/11/2026):** L1 (comparativa RAG, fine-tuning, PEFT y soft-prompting) revisada con verificación local del SDK; L2 (dataset preparado para PEFT) ejecutada en Windows: **8 ejemplos, 0 defectos estructurales, 4 defectos de prueba detectados, objetos PEFT construidos en memoria y sin llamada API**. Evidencia y límites en [BITACORA_ESTUDIO.md](BITACORA_ESTUDIO.md). **No equivale a tuning real, envío ni calificación institucional.** Sigue B29/L3 (actividad práctica). El estado histórico de U2.5 que aparece más abajo no se recalcula en esta actualización.
 
 
