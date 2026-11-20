@@ -1,4 +1,4 @@
-"""U2.6/B30-L1: costo humano estimado de etiquetado y segunda revision.
+r"""U2.6/B30-L1: costo humano estimado de etiquetado y segunda revision.
 
 Reproduce los ejemplos de Skillnest y aplica el MISMO supuesto didactico
 al dataset propio de Booking Core AI. Todos los valores monetarios son
