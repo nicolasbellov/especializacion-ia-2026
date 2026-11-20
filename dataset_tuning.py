@@ -1,4 +1,4 @@
-"""U2.6 / Bloque 29, actividad practica: dataset propio de personalizacion.
+r"""U2.6 / Bloque 29, actividad practica: dataset propio de personalizacion.
 
 Caso: clasificar mensajes ficticios de Booking Core AI con salida JSON consistente.
 No consulta agendas, no reserva citas y no llama a Gemini ni a la API de tuning.
