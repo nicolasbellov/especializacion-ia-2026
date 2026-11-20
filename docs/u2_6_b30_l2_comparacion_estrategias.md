@@ -60,6 +60,6 @@ git pull --ff-only origin main
 git status -sb
 ```
 
-**Estado:** código publicado; **Windows pendiente hasta ver la salida del usuario**, sin asumir aprobación institucional.
+**Estado validado en Windows, 20/11/2026:** tras fast-forward `8bc6e92..cc998f1`, se ejecutó `comparar_estrategias.py` con Python 3.12.8: caso 2 `0/3/3` con empate visible, **5/5 cambios** en sensibilidad, caso 1 `5/1/3` y Booking Core completo `5/1/3` → RAG, clasificador aislado `2/1/3` → PEFT según el método didáctico. Mensaje final: `B30/L2: COMPARACION Y EMPATES VALIDADOS (SIN API)`. Las **19/19 pruebas Windows terminaron `OK` en 0,038 s**. `git status -sb` indicó `main...origin/main` sin divergencia y el archivo local preexistente `verificar_tuning.py` sin seguimiento. **Cierre técnico B30/L2, Bloque 30 2/3**; no supone calificación Skillnest ni operación real de entrenamiento.
 
 **Próximo paso:** B30/L3 Core «Redacta tu decisión de personalización fundamentada»; analizar la consigna antes de redactar la entrega.
