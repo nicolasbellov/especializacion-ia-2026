@@ -36,6 +36,8 @@ jobs:
         run: python -m unittest discover -s tests -p "test_*.py" -v
       - name: U2.6 B29 - dataset PEFT y validacion sin API
         run: python laboratorio_dataset.py
+      - name: U2.6 B29 - actividad practica dataset propio sin API
+        run: python dataset_tuning.py
       - name: B27/L1 - metricas de recuperacion sin API
         run: python metricas_recuperacion.py
       - name: B27/L2 - evaluacion promedio con casos simulados sin API
