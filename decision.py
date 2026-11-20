@@ -117,7 +117,7 @@ def generar_esqueleto_decision(
         "",
     ]
     for tecnica, puntaje in sorted(puntos.items(), key=lambda x: -x[1]):
-        lineas.append(f"- **{tecnica}: {puntaje} puntos**")
+        lineas.append(f"- **{tecnica}: {puntaje} {'punto' if puntaje == 1 else 'puntos'}**")
     lineas += ["", "**Candidatas mejor puntuadas:** " + ", ".join(ganadoras) + "."]
     if len(ganadoras) > 1:
         lineas.append("**Empate explícito:** " + ", ".join(ganadoras) + ".")
