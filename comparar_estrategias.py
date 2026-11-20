@@ -1,4 +1,4 @@
-"""U2.6/B30-L2: puntuacion reproducible de estrategias de personalizacion.
+r"""U2.6/B30-L2: puntuacion reproducible de estrategias de personalizacion.
 
 Reproduce los dos casos de Skillnest, el empate corregido y la sensibilidad.
 Agrega dos escenarios DIDACTICOS de Booking Core AI: sistema completo y
