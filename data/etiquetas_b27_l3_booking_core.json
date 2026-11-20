@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "estado": "ETIQUETAS_FIJADAS_PREVIAS_A_RETRIEVAL",
+  "fuente_etiquetado": "Lectura independiente de data/corpus_b24_l3 y segmentación oficial 550/80",
+  "coleccion": "booking_core_b24_l3",
+  "chunk_size": 550,
+  "chunk_overlap": 80,
+  "criterio": "Cada ID relevante corresponde a un chunk que por sí solo responde la pregunta o una parte central. Los casos SIN carecen de respuesta factual en el corpus; no se marca como relevante un texto que solo diga no inventar.",
+  "casos": [
+    {
+      "id": "SERV-01",
+      "pregunta": "¿Qué tipos de servicios menciona el catálogo académico de barbería?",
+      "ids_relevantes": [
+        "11961cd9d91b41dc59dfab4888d5ddd1d1f66b0dbcff37e8d8dbfb9fbd6c6688"
+      ],
+      "evidencia": "01_servicios.md#chunk0: menciona corte, barba y combinación; no especifica servicios comerciales reales."
+    },
+    {
+      "id": "SERV-02",
+      "pregunta": "¿Se pueden inventar precios, duración o profesionales reales a partir de estas notas?",
+      "ids_relevantes": [
+        "11961cd9d91b41dc59dfab4888d5ddd1d1f66b0dbcff37e8d8dbfb9fbd6c6688",
+        "0770d284c4e4b0d5c63d202cc38c0a167ba04d1ae04df6a1b34007f81f46288a"
+      ],
+      "evidencia": "01_servicios.md#chunk0 y #chunk1: ambos advierten explícitamente que no se deben inventar detalles comerciales reales."
+    },
+    {
+      "id": "DISP-01",
+      "pregunta": "¿Qué datos debe solicitar el agente antes de consultar la disponibilidad?",
+      "ids_relevantes": [
+        "f05cf6b231cdf3d0cebedc948bb94cc06c6312cd796d574117e7c23dcc5db2f4"
+      ],
+      "evidencia": "02_disponibilidad.md#chunk0: identifica servicio y solicita fecha o rango de fechas."
+    },
+    {
+      "id": "DISP-02",
+      "pregunta": "¿Quién verifica finalmente si una franja sigue disponible para dos usuarios?",
+      "ids_relevantes": [
+        "340e9202d549d87de1c5f0c73e0096c5116b7bdeefe082a8fcac9d095c60fbcb"
+      ],
+      "evidencia": "02_disponibilidad.md#chunk1: la verificación final corresponde al servidor transaccional."
+    },
+    {
+      "id": "REPRO-01",
+      "pregunta": "¿Qué verificaciones y confirmación se requieren para modificar una cita?",
+      "ids_relevantes": [
+        "a7400496d6b163ad4dede7a7ff4a5c54e7b196b0fc2db1c74d0e1632031c74a2"
+      ],
+      "evidencia": "03_reprogramacion.md#chunk0: identidad, titularidad, disponibilidad, confirmación y API exitosa."
+    },
+    {
+      "id": "REPRO-02",
+      "pregunta": "¿Puede el asistente académico mover una reserva real si aún no hay integración?",
+      "ids_relevantes": [
+        "243da3ba5e5af07192d07c90360530442847093e60f4dda4f25c0b5be7e14098"
+      ],
+      "evidencia": "03_reprogramacion.md#chunk1: sin integración solo puede explicar el flujo simulado."
+    },
+    {
+      "id": "CANC-01",
+      "pregunta": "¿Qué supervisión hubo antes de la cancelación simulada de la Unidad 2.4?",
+      "ids_relevantes": [
+        "711153d8f82391ea6027283142b13669f6914b85db64b813eddf3ad139e19125"
+      ],
+      "evidencia": "04_cancelacion.md#chunk0: cancelación simulada con supervisión humana antes de herramienta riesgosa."
+    },
+    {
+      "id": "CANC-02",
+      "pregunta": "¿Por qué el agente no puede afirmar que canceló una cita solo por generar texto?",
+      "ids_relevantes": [
+        "4cdbc13e7968d3b06ab5fe37496eeed94c70d4c1a7bf6b1dd15adb498c5179f3"
+      ],
+      "evidencia": "04_cancelacion.md#chunk1: la respuesta del backend y auditoría son necesarias; no bastan mensajes ni texto."
+    },
+    {
+      "id": "PRIV-01",
+      "pregunta": "¿Dónde se comprueban las autorizaciones multiempresa: en el prompt o en Booking Core?",
+      "ids_relevantes": [
+        "4644164fd40c78aab87c88a7ab508b49acc6da4bf1d682e849416a361fc0244a"
+      ],
+      "evidencia": "05_privacidad.md#chunk0: la autorización corresponde al backend, no al prompt."
+    },
+    {
+      "id": "PRIV-02",
+      "pregunta": "¿La memoria de sesión y las trazas constituyen un control de acceso suficiente?",
+      "ids_relevantes": [
+        "211a65372bec79df5eebac3391ee84d5b1e50d43186209760a4c34e1f25f9dd7"
+      ],
+      "evidencia": "05_privacidad.md#chunk1: memoria/trazas no equivalen a controles de acceso."
+    },
+    {
+      "id": "SIN-01",
+      "pregunta": "¿Cuál es el precio vigente hoy de un corte en AES Barber?",
+      "ids_relevantes": [],
+      "evidencia": "No hay precio vigente: el corpus es deliberadamente ficticio y niega conocer precios reales."
+    },
+    {
+      "id": "SIN-02",
+      "pregunta": "¿Cuál es el número de teléfono comercial actual de AES Barber?",
+      "ids_relevantes": [],
+      "evidencia": "Ninguno de los diez chunks contiene un teléfono comercial real."
+    }
+  ]
+}

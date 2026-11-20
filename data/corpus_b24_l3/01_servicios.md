@@ -1,0 +1,2 @@
+# Servicios del asistente académico de barbería
+EJEMPLO FICTICIO. El catálogo de demostración contempla preguntas sobre corte de cabello, arreglo de barba y una combinación de ambos. Esta documentación permite practicar la recuperación semántica del nombre de un servicio, pero no establece cuáles servicios están disponibles en AES Barber. Un agente integrado deberá consultar el catálogo vigente de Booking Core mediante una API autorizada, respetando el tenant de la barbería. Nunca inventar precios, duración, profesionales ni prestaciones reales a partir de estas notas.

@@ -1,0 +1,64 @@
+Fecha: 2026-11-18
+Configuracion: k=3, chunk_size=550, chunk_overlap=80
+Coleccion: booking_core_b24_l3
+Huella de corpus: b7eb48ddd1d3b81a3a56870958f9fd19977ec00b1fb0958b94bb14bbdb10fa79
+Etiquetas congeladas: data\etiquetas_b27_l3_booking_core.json
+Casos: 12
+
+Corrida 1:
+0.33  1.00  ¿Qué tipos de servicios menciona el catálogo académico de barbería?
+  caso=SERV-01  ids=11961cd9d91b41dc59dfab4888d5ddd1d1f66b0dbcff37e8d8dbfb9fbd6c6688,711153d8f82391ea6027283142b13669f6914b85db64b813eddf3ad139e19125,0770d284c4e4b0d5c63d202cc38c0a167ba04d1ae04df6a1b34007f81f46288a
+0.67  1.00  ¿Se pueden inventar precios, duración o profesionales reales a partir de estas notas?
+  caso=SERV-02  ids=0770d284c4e4b0d5c63d202cc38c0a167ba04d1ae04df6a1b34007f81f46288a,4644164fd40c78aab87c88a7ab508b49acc6da4bf1d682e849416a361fc0244a,11961cd9d91b41dc59dfab4888d5ddd1d1f66b0dbcff37e8d8dbfb9fbd6c6688
+0.33  1.00  ¿Qué datos debe solicitar el agente antes de consultar la disponibilidad?
+  caso=DISP-01  ids=f05cf6b231cdf3d0cebedc948bb94cc06c6312cd796d574117e7c23dcc5db2f4,340e9202d549d87de1c5f0c73e0096c5116b7bdeefe082a8fcac9d095c60fbcb,a7400496d6b163ad4dede7a7ff4a5c54e7b196b0fc2db1c74d0e1632031c74a2
+0.33  1.00  ¿Quién verifica finalmente si una franja sigue disponible para dos usuarios?
+  caso=DISP-02  ids=340e9202d549d87de1c5f0c73e0096c5116b7bdeefe082a8fcac9d095c60fbcb,f05cf6b231cdf3d0cebedc948bb94cc06c6312cd796d574117e7c23dcc5db2f4,243da3ba5e5af07192d07c90360530442847093e60f4dda4f25c0b5be7e14098
+0.33  1.00  ¿Qué verificaciones y confirmación se requieren para modificar una cita?
+  caso=REPRO-01  ids=a7400496d6b163ad4dede7a7ff4a5c54e7b196b0fc2db1c74d0e1632031c74a2,4cdbc13e7968d3b06ab5fe37496eeed94c70d4c1a7bf6b1dd15adb498c5179f3,243da3ba5e5af07192d07c90360530442847093e60f4dda4f25c0b5be7e14098
+0.33  1.00  ¿Puede el asistente académico mover una reserva real si aún no hay integración?
+  caso=REPRO-02  ids=243da3ba5e5af07192d07c90360530442847093e60f4dda4f25c0b5be7e14098,f05cf6b231cdf3d0cebedc948bb94cc06c6312cd796d574117e7c23dcc5db2f4,4644164fd40c78aab87c88a7ab508b49acc6da4bf1d682e849416a361fc0244a
+0.33  1.00  ¿Qué supervisión hubo antes de la cancelación simulada de la Unidad 2.4?
+  caso=CANC-01  ids=711153d8f82391ea6027283142b13669f6914b85db64b813eddf3ad139e19125,211a65372bec79df5eebac3391ee84d5b1e50d43186209760a4c34e1f25f9dd7,4644164fd40c78aab87c88a7ab508b49acc6da4bf1d682e849416a361fc0244a
+0.33  1.00  ¿Por qué el agente no puede afirmar que canceló una cita solo por generar texto?
+  caso=CANC-02  ids=4cdbc13e7968d3b06ab5fe37496eeed94c70d4c1a7bf6b1dd15adb498c5179f3,243da3ba5e5af07192d07c90360530442847093e60f4dda4f25c0b5be7e14098,711153d8f82391ea6027283142b13669f6914b85db64b813eddf3ad139e19125
+0.33  1.00  ¿Dónde se comprueban las autorizaciones multiempresa: en el prompt o en Booking Core?
+  caso=PRIV-01  ids=340e9202d549d87de1c5f0c73e0096c5116b7bdeefe082a8fcac9d095c60fbcb,4644164fd40c78aab87c88a7ab508b49acc6da4bf1d682e849416a361fc0244a,f05cf6b231cdf3d0cebedc948bb94cc06c6312cd796d574117e7c23dcc5db2f4
+0.33  1.00  ¿La memoria de sesión y las trazas constituyen un control de acceso suficiente?
+  caso=PRIV-02  ids=211a65372bec79df5eebac3391ee84d5b1e50d43186209760a4c34e1f25f9dd7,4644164fd40c78aab87c88a7ab508b49acc6da4bf1d682e849416a361fc0244a,340e9202d549d87de1c5f0c73e0096c5116b7bdeefe082a8fcac9d095c60fbcb
+0.00  n/a  ¿Cuál es el precio vigente hoy de un corte en AES Barber?
+  caso=SIN-01  ids=11961cd9d91b41dc59dfab4888d5ddd1d1f66b0dbcff37e8d8dbfb9fbd6c6688,711153d8f82391ea6027283142b13669f6914b85db64b813eddf3ad139e19125,0770d284c4e4b0d5c63d202cc38c0a167ba04d1ae04df6a1b34007f81f46288a
+0.00  n/a  ¿Cuál es el número de teléfono comercial actual de AES Barber?
+  caso=SIN-02  ids=11961cd9d91b41dc59dfab4888d5ddd1d1f66b0dbcff37e8d8dbfb9fbd6c6688,711153d8f82391ea6027283142b13669f6914b85db64b813eddf3ad139e19125,0770d284c4e4b0d5c63d202cc38c0a167ba04d1ae04df6a1b34007f81f46288a
+promedio -> precision: 0.306  recall: 1.000
+
+Corrida 2:
+0.33  1.00  ¿Qué tipos de servicios menciona el catálogo académico de barbería?
+  caso=SERV-01  ids=11961cd9d91b41dc59dfab4888d5ddd1d1f66b0dbcff37e8d8dbfb9fbd6c6688,711153d8f82391ea6027283142b13669f6914b85db64b813eddf3ad139e19125,0770d284c4e4b0d5c63d202cc38c0a167ba04d1ae04df6a1b34007f81f46288a
+0.67  1.00  ¿Se pueden inventar precios, duración o profesionales reales a partir de estas notas?
+  caso=SERV-02  ids=0770d284c4e4b0d5c63d202cc38c0a167ba04d1ae04df6a1b34007f81f46288a,4644164fd40c78aab87c88a7ab508b49acc6da4bf1d682e849416a361fc0244a,11961cd9d91b41dc59dfab4888d5ddd1d1f66b0dbcff37e8d8dbfb9fbd6c6688
+0.33  1.00  ¿Qué datos debe solicitar el agente antes de consultar la disponibilidad?
+  caso=DISP-01  ids=f05cf6b231cdf3d0cebedc948bb94cc06c6312cd796d574117e7c23dcc5db2f4,340e9202d549d87de1c5f0c73e0096c5116b7bdeefe082a8fcac9d095c60fbcb,a7400496d6b163ad4dede7a7ff4a5c54e7b196b0fc2db1c74d0e1632031c74a2
+0.33  1.00  ¿Quién verifica finalmente si una franja sigue disponible para dos usuarios?
+  caso=DISP-02  ids=340e9202d549d87de1c5f0c73e0096c5116b7bdeefe082a8fcac9d095c60fbcb,f05cf6b231cdf3d0cebedc948bb94cc06c6312cd796d574117e7c23dcc5db2f4,243da3ba5e5af07192d07c90360530442847093e60f4dda4f25c0b5be7e14098
+0.33  1.00  ¿Qué verificaciones y confirmación se requieren para modificar una cita?
+  caso=REPRO-01  ids=a7400496d6b163ad4dede7a7ff4a5c54e7b196b0fc2db1c74d0e1632031c74a2,4cdbc13e7968d3b06ab5fe37496eeed94c70d4c1a7bf6b1dd15adb498c5179f3,243da3ba5e5af07192d07c90360530442847093e60f4dda4f25c0b5be7e14098
+0.33  1.00  ¿Puede el asistente académico mover una reserva real si aún no hay integración?
+  caso=REPRO-02  ids=243da3ba5e5af07192d07c90360530442847093e60f4dda4f25c0b5be7e14098,f05cf6b231cdf3d0cebedc948bb94cc06c6312cd796d574117e7c23dcc5db2f4,4644164fd40c78aab87c88a7ab508b49acc6da4bf1d682e849416a361fc0244a
+0.33  1.00  ¿Qué supervisión hubo antes de la cancelación simulada de la Unidad 2.4?
+  caso=CANC-01  ids=711153d8f82391ea6027283142b13669f6914b85db64b813eddf3ad139e19125,211a65372bec79df5eebac3391ee84d5b1e50d43186209760a4c34e1f25f9dd7,4644164fd40c78aab87c88a7ab508b49acc6da4bf1d682e849416a361fc0244a
+0.33  1.00  ¿Por qué el agente no puede afirmar que canceló una cita solo por generar texto?
+  caso=CANC-02  ids=4cdbc13e7968d3b06ab5fe37496eeed94c70d4c1a7bf6b1dd15adb498c5179f3,243da3ba5e5af07192d07c90360530442847093e60f4dda4f25c0b5be7e14098,711153d8f82391ea6027283142b13669f6914b85db64b813eddf3ad139e19125
+0.33  1.00  ¿Dónde se comprueban las autorizaciones multiempresa: en el prompt o en Booking Core?
+  caso=PRIV-01  ids=340e9202d549d87de1c5f0c73e0096c5116b7bdeefe082a8fcac9d095c60fbcb,4644164fd40c78aab87c88a7ab508b49acc6da4bf1d682e849416a361fc0244a,f05cf6b231cdf3d0cebedc948bb94cc06c6312cd796d574117e7c23dcc5db2f4
+0.33  1.00  ¿La memoria de sesión y las trazas constituyen un control de acceso suficiente?
+  caso=PRIV-02  ids=211a65372bec79df5eebac3391ee84d5b1e50d43186209760a4c34e1f25f9dd7,4644164fd40c78aab87c88a7ab508b49acc6da4bf1d682e849416a361fc0244a,340e9202d549d87de1c5f0c73e0096c5116b7bdeefe082a8fcac9d095c60fbcb
+0.00  n/a  ¿Cuál es el precio vigente hoy de un corte en AES Barber?
+  caso=SIN-01  ids=11961cd9d91b41dc59dfab4888d5ddd1d1f66b0dbcff37e8d8dbfb9fbd6c6688,711153d8f82391ea6027283142b13669f6914b85db64b813eddf3ad139e19125,0770d284c4e4b0d5c63d202cc38c0a167ba04d1ae04df6a1b34007f81f46288a
+0.00  n/a  ¿Cuál es el número de teléfono comercial actual de AES Barber?
+  caso=SIN-02  ids=11961cd9d91b41dc59dfab4888d5ddd1d1f66b0dbcff37e8d8dbfb9fbd6c6688,711153d8f82391ea6027283142b13669f6914b85db64b813eddf3ad139e19125,0770d284c4e4b0d5c63d202cc38c0a167ba04d1ae04df6a1b34007f81f46288a
+promedio -> precision: 0.306  recall: 1.000
+
+Repetibilidad de secuencias de IDs y métricas: PASS
+Datos: preguntas y documentos 100% ficticios, no transacciones ni clientes reales.
+El caso sin relevantes reporta recall n/a y no se incluye en la media de recall.
