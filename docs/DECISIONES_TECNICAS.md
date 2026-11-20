@@ -104,7 +104,7 @@ Cada decisión incluye contexto, elección, razón, evidencia, límites y condic
 - **Sensibilidad:** al retirar solo la condición de iteración rápida el método arroja **empate triple 0/0/0**; no justificar artificialmente un ganador.
 - **Sustento:** 5 documentos académicos, 10 chunks, 12 consultas de evaluación (10 relevantes, 2 sin respuesta); reporte de k=3 repetible con precisión 0,306 y recall evaluable 1,000. Los resultados no validan datos de producción.
 - **Decisión:** usar RAG documental en la demostración, sin tuning real ni integración automática de reservas. Para el clasificador de B29, empezar por prompting con JSON Schema; PEFT sujeto a medición de fallos reales y dataset revisado.
-- **Artefactos:** [documento Core](../decision_personalizacion.md), [generador](../decision.py), [QA](../tests/test_decision_core_b30.py). **Validación Windows confirmada el 20/11/2026:** `decision.py` regeneró el documento, 18/18 pruebas locales OK en 0,036 s, cotejo exacto con el Markdown versionado y rama `main` sincronizada. **Entrega y calificación Skillnest siguen sin confirmar**.
+- **Artefactos:** [documento Core](../decision_personalizacion.md), [generador](../decision.py), [QA](../tests/test_decision_core_b30.py). **Validación Windows confirmada el 20/11/2026:** `decision.py` regeneró el documento, 18/18 pruebas locales OK en 0,036 s, cotejo exacto con el Markdown versionado y rama `main` sincronizada. **Entrega formal confirmada:** captura de Skillnest LifeCycle con mensaje «Entrega registrada» y fecha **20/11/2026**, bajo revisión del instructor. **Calificación no recibida**.
 
 ## Pendientes para futuras decisiones
 
