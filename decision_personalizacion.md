@@ -7,7 +7,7 @@ Booking Core AI debe responder consultas sobre procedimientos de servicios, repr
 Se aplicó la rúbrica de B30 Core al componente documental.
 
 - **RAG: 2 puntos**
-- **PEFT: 1 puntos**
+- **PEFT: 1 punto**
 - **Fine-tuning completo: 0 puntos**
 
 **Candidatas mejor puntuadas:** RAG.
