@@ -5,6 +5,9 @@
 
 ## Vista general
 
+**U2.6/B30/L1 — costes de personalización (20/11/2026):** material de Skillnest revisado (datos, infraestructura y tiempo); ejercicio oficial de 500 casos calculado (**36,67 horas, USD 733,33, 4,6 jornadas**); aplicación **hipotética** al dataset sintético B29 de 20 casos (**1,47 horas, USD 29,33** con los mismos supuestos). Código [`costos_personalizacion.py`](../costos_personalizacion.py), [pruebas](../tests/test_costos_personalizacion_b30.py) y [guía](u2_6_b30_l1_costos_personalizacion.md) publicados en `main`. **CI y validación Windows aún por verificar**; sin gasto real ni trabajo de tuning. Próximo B30/L2.
+
+
 **U2.6/B29/L3 — cierre técnico validado en Windows (20/11/2026):** dataset propio de Booking Core AI en [`dataset_tuning.py`](../dataset_tuning.py), **20 ejemplos** en cinco intenciones (4 por categoría), balance **1.0x**, validación estructural/semántica **0 defectos**, prueba negativa con **5 hallazgos intencionales** y **16/16 pruebas Windows correctas** (0.029 s). CI offline verificada. **Bloque 29: 3/3 lecciones completadas técnicamente**; sin tuning real y **sin envío/calificación Skillnest confirmados**. Aviso de docstring corregido en GitHub, pendiente reconfirmación sin warning en Windows. Guía: [U2.6 B29/L3](u2_6_b29_l3_dataset_booking_core.md).
 
 
