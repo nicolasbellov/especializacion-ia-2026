@@ -22,7 +22,7 @@
 5. .github/workflows/pruebas-offline.yml: prueba E2E Chroma incorporada al CI.
 6. docs/U2_8_GATE2_INTEGRACION_BOOKING_CORE.md: arquitectura, comandos y límites.
 
-Al momento de crear la documentación, el job general Python del CI del commit 4811dad terminó exitosamente y el job Chroma seguía en curso. No afirmar PASS de este último sin su resultado final.
+La validación CI del commit 4811dad terminó exitosamente en ambos jobs, incluyendo el E2E Chroma temporal. Ver sección de evidencia CI al final.
 
 ## Comandos previstos para ejecutar en Windows
 
@@ -55,3 +55,10 @@ Si una suite Chroma termina SKIPPED por dependencias, no equivale a prueba E2E; 
 - Mantener v2 de prompt B32 como propuesta, sin instalarla en un backend real.
 - **Aún no se ha entregado Gate2 ni recibido su nota**.
 - Tiempo efectivo de estudio: no informado, no inferir.
+
+## Resultado CI confirmado (GitHub Actions, 26/11/2026)
+
+- [Workflow Gate 2 / commit 4811dad](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/45906945875): ambos jobs finalizaron **SUCCESS**.
+- Job general: `python -m unittest discover -s tests -p "test_*.py" -v` → **313 tests ejecutados / OK (30 skips por dependencias opcionales)**; incluye los 18 tests del servicio Gate2. La suite Chroma aparece omitida en ese job SIN dependencias RAG, como corresponde.
+- Job RAG con requirements-rag.txt: `python -m unittest discover -s tests -p "test_gate2_e2e_chroma.py" -v` → **Ran 1 test in 1.071s / OK**, sin omisiones. El test crea Chroma real temporal, lo reabre y comprueba respuesta citada con embeddings y LLM sintéticos.
+- **No equiparar el CI con Gemini real ni con Windows.** La ejecución de recuperación y generación real sigue pendiente. La rúbrica oficial S1 sigue sin estar disponible.
