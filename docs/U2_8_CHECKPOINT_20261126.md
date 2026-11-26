@@ -1,3 +1,5 @@
+> **Actualización más reciente:** instalación limpia, cuatro criterios PASS, incremental PASS, CI corregido SUCCESS y Gemini real con rechazo interactivo PASS. Ver evidencia al final. Pendiente prueba adicional de abstención real y envío institucional.
+
 > **Actualización posterior:** rúbrica oficial S1, ensayo y Core recibidos el 26/11/2026. Se supersede la preparación provisional con el cierre de requisitos descrito al final y en [U2_8_GATE2_CORE_ENTREGA.md](U2_8_GATE2_CORE_ENTREGA.md).
 
 # CHECKPOINT / HANDOFF — U2.8 Gate 2 — Booking Core AI
@@ -74,3 +76,20 @@ Si una suite Chroma termina SKIPPED por dependencias, no equivale a prueba E2E; 
 - Autoevaluación provisional 81.0%; cuatro no compensables None hasta corrida final. CI del código nuevo pendiente de verificar; no declarar listo para entregar.
 - Próximo paso Windows: git fetch/switch rama Gate2, pull, crear .venv-gate2 desde el Python del venv previo; instalar requirements.txt, pip check, ejecutar preflight, pytest test_gate2.py -v, suite incremental, ensayo y servicio simulado dos veces. Real: verificar entorno, servicio_rag.py --modo real --supervision interactiva; responder n o s para DEMO-001, contrastar cita y enviar evidencia. Mantener verificar_tuning.py sin rastrear; no borrar ni publicar .env/vectorstore.
 - Estado institucional: se recibió captura del formulario Gate 2, todavía sin envío ni calificación. U2.7 registrada, evaluación pendiente.
+
+## Evidencia Windows y Gemini real — 26/11/2026
+
+Evidencia aportada por el estudiante desde PowerShell, commit de código validado `42dcf9d`.
+
+- Entorno anterior: 18/18 pruebas del núcleo (0,073 s), pero E2E Chroma omitido y modos reales fallidos por dependencia ausente. Se resolvió con instalación limpia de `.venv-gate2`, Python 3.12.8, requirements.txt completo, langchain-chroma 1.2.0, chromadb 1.5.9, langchain-core 1.8.5, langgraph 1.2.24, langchain-google-genai 4.4.3 y pytest 9.2.0. `pip check`: No broken requirements found. Clave definida, .env ignorado, sin exponer valor.
+- Cuatro pruebas no compensables: `4 passed in 9.12s` (pipeline, fuentes, logs sin contenido crudo/PII ficticia y pausa/reanudación con aprobación y rechazo).
+- Incremental: `Ran 1 test in 21.723s / OK`; Chroma temporal con corpus copiado, embeddings sintéticos, conserva vectores y no duplica. No se alteró el índice real.
+- Ensayo: índice simulado creado con 5 documentos y 10 chunks. Dos ejecuciones posteriores reutilizaron índice sin re-embedding, ambas con respuesta citada, trazas distintas y supervisión demo que conservó DEMO-001 confirmada. El ataque ficticio activó BC-02, tres patrones, REQUIERE_REVISION antes del LLM. Limitación: la consulta simulada de privacidad citó 02_disponibilidad.md; el ensayo comprueba contratos del flujo, no relevancia semántica ni calidad de Gemini.
+- Preflight real: 5 fuentes/10 chunks, entorno listo. Corrida real `servicio_rag.py --modo real --supervision interactiva`, modelo gemini-3.5-flash-lite, prompt v3-gate2 SHA-256/12 `8a9459e020b8`, trace_id `gate2-a5f73d7e84764ce1`, estado RESPONDIDA. Chroma reutilizado, 3 chunks, 0 descartados, citas [1] y [3] de 03_reprogramacion.md.
+- Contraste documental efectuado: 03_reprogramacion.md confirma distinción entre información y transacción, identidad/titularidad/disponibilidad mediante backend autorizado, confirmación válida del usuario y resultado exitoso de API; asimismo confirma que RAG no autoriza mover una cita y que el asistente académico no gestiona reservas reales. La respuesta real se ajusta a esa fuente.
+- Latencias reales (una muestra): apertura y validación de índice 5366,464 ms; recuperación 11680,548 ms; generación 1927,341 ms; consulta total 13612,390 ms (sin apertura inicial). La recuperación domina esta muestra; no inferir un rendimiento promedio. Tokens reales 419 entrada, 137 salida, 556 total; estimación ficticia USD 0,0000967 de chat, no facturación ni costo de embeddings.
+- Advertencia del proveedor: el modelo usa valores de muestreo fijos e ignora temperature; no fue un error de ejecución y no se debe prometer generación determinista.
+- Supervisión interactiva: interrupt antes de cancelar DEMO-001, resultado de consola rechazado, estado confirmada, aprobado=False, ejecutada=False, PASS de pausa y reanudación. La aprobación positiva se verificó en test_4, no como aprobación humana manual en esta corrida. No hay autenticación de operador ni reservas reales.
+- Código de salida final 0; git status solo archivo preexistente no rastreado verificar_tuning.py, preservar.
+- [CI de la corrección](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/45907697658): ambos jobs SUCCESS, incluidas las cuatro pruebas, E2E Chroma, incremental, ensayo y servicio simulado. No sustituye la evidencia Windows ni la corrida real.
+- Autoevaluación conservada: 81,0% (estimación propia, no nota oficial), cuatro criterios de aceptación PASS según evidencia anterior. Como comprobación adicional antes de presentar, ejecutar pregunta sobre precio/disponibilidad real fuera del corpus con `--supervision ninguna` y comprobar abstención o retención sin inventar datos. Esta prueba adicional de generación real todavía no consta. Gate 2 no enviado; nota institucional pendiente.
