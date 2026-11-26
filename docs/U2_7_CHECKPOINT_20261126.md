@@ -14,7 +14,7 @@
 | B31/L2 Inyección indirecta | Recibida y estudiada | src/mitigacion_inyeccion_b31_booking_core.py | **9/9 unittest PASS**, demo PASS, exit code 0 | Cierre técnico offline |
 | B31/L3 Instrumentación, consumo y filtro | Recibida y estudiada | logging_rag.py | **15/15 unittest PASS** (0.548s), demo dos consultas PASS, exit code 0 | Cierre técnico offline |
 | B32/L1 Versionado de prompts y HITL | Recibida y estudiada | src/versionado_supervision_b32.py, 2 prompts, registro.json | **16/16 Windows PASS** (0.517s), demo PASS, exit 0; modo interactivo aguardando respuesta | Cierre técnico offline |
-| B32/L2 Matriz de riesgos | Aún no recibida en este chat | No se inició | Ninguna | Siguiente lección después de cerrar B32/L1 |
+| B32/L2 Matriz de riesgos | Recibida y estudiada el 26/11/2026 | matriz_riesgos.py + JSON de 6 riesgos + 16 tests | Pendiente de ejecutar Windows | Código y documento preparados; sin cierre técnico aún |
 
 ## Hallazgos específicos
 
@@ -52,7 +52,7 @@ git status --short
 
 **Cierre técnico B32/L1 confirmado con evidencia Windows:** 16/16 PASS, demo con aprobación y rechazo simulados PASS, `$LASTEXITCODE`=0. El modo interactivo también se completó: el estudiante escribió `n`; el sistema devolvió `rechazado_en_simulacion`, conservó `v1-b31-l2` y mostró PASS. Después revisar la lección oficial B32/L2 y diseñar la matriz de riesgos del agente de reservas.
 
-**Tiempo efectivo y horarios de estudio:** no informados, no inferir. **Siguiente lección:** U2.7/B32/L2 (matriz de riesgos), aún sin fuente oficial aportada en este punto de la conversación.
+**Tiempo efectivo y horarios de estudio:** no informados, no inferir. **Siguiente acción:** validar U2.7/B32/L2 en Windows. La fuente oficial B32/L2 se recibió el 26/11/2026.
 
 ## Evidencia recibida posterior al checkpoint
 
@@ -63,3 +63,17 @@ git status --short
 - Archivo local no rastreado `verificar_tuning.py` preservado.
 - Documentación detallada en `docs/u2_7_b32_l1_versionado_supervision_booking_core.md`.
 - La v2 **no está activa en el pipeline B31/L3**, no hay despliegue productivo ni reservas cambiadas. Sin entrega Skillnest confirmada.
+
+## Nuevo checkpoint B32/L2 — Matriz de riesgos (26/11/2026)
+
+- Fuente oficial Skillnest «Cómo completar una matriz de riesgos de IA generativa»: recibida y revisada.
+- Ejemplo de Skillnest reproducido SIN alterar cinco escenarios: puntajes 16,15,9,8,6; categorías CRITICO,CRITICO,ALTO,MEDIO,MEDIO; los cinco [AL LIMITE], contraste 1×1 BAJO no al límite.
+- Código publicado: `matriz_riesgos.py` (biblioteca estándar) y `tests/test_matriz_riesgos_b32.py` (16 pruebas preparadas, **no se ha verificado PASS Windows**).
+- Datos propios: `data/matriz_riesgos_booking_core_b32.json` con seis riesgos y estimaciones **preliminares/no medidas**: BC-01 20, BC-02 16, BC-03 15, BC-04 12, BC-06 8, BC-05 6.
+- Los cuatro riesgos ALTO/CRITICO tienen puntos de supervisión marcados `PROPUESTO_NO_IMPLEMENTADO`.
+- **Gap explícito BC-02:** B31/L3 elimina documentos con inyección y continúa usando los limpios; la lección B32/L2 propone frenar respuesta para revisión humana si aparece una inyección. Eso aún **NO está implementado**.
+- No se modificó `nicolasbellov/booking-core`, no se invocó Gemini, no se tocó `vectorstore/` ni reservas reales.
+- Documentación: `docs/u2_7_b32_l2_matriz_riesgos_booking_core.md`.
+- **Próximo paso operativo:** en la rama U2.7, `git pull --ff-only`, ejecutar `python -m unittest discover -s tests -p "test_matriz_riesgos_b32.py" -v`, después `python matriz_riesgos.py`, `$LASTEXITCODE` y `git status --short`. Conservar `verificar_tuning.py` no rastreado.
+- **Después:** recibir consigna B32/L3 «Completa tu matriz de riesgos y el versionado de prompts»; no marcar U2.7 completada antes de esa práctica y su evidencia.
+- Tiempo efectivo y entrega institucional: no informados.
