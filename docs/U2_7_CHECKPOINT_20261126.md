@@ -77,3 +77,15 @@ git status --short
 - **Evidencia operativa recibida:** `git pull --ff-only` fast-forward `79cd2d0..97c169a`; 16 tests PASS (0.929s); ejemplo oficial y sensibilidad PASS; seis riesgos propios clasificados; cuatro supervisiones `PROPUESTO_NO_IMPLEMENTADO`; `$LASTEXITCODE=0`; `git status --short` solo `?? verificar_tuning.py` (conservar).
 - **Siguiente actividad:** recibir la consigna oficial B32/L3 «Completa tu matriz de riesgos y el versionado de prompts»; no marcar U2.7 completada antes de esa práctica y su evidencia.
 - Tiempo efectivo y entrega institucional: no informados.
+
+## Preparación de entrega Core B32/L3 — 26/11/2026
+
+- **Fuente oficial recibida:** «Completa tu matriz de riesgos y el versionado de prompts [Actividad core]». Requiere tres archivos específicos: `registro_prompts.py`, `grafo_supervision.py`, `matriz_riesgos.py`, y entrega mediante Git.
+- **Formulario Skillnest:** el usuario mostró la pestaña Enlace (Drive, etc.) y un campo «Enlace a tu trabajo»; no se ha enviado aún ningún formulario.
+- **Código publicado en rama U2.7:** `registro_prompts.py` lee las dos versiones propias v1/v2, `grafo_supervision.py` expone interrupt real con aprobación/rechazo, `matriz_riesgos.py` reutiliza 6 riesgos propios del proyecto y 5 ejemplos oficiales a modo de contraste.
+- **Datos ajustados para Core:** seis filas incluyen campo explicito `mitigacion` con referencias a Bloques 24/26/31/32. Los cuatro riesgos altos/críticos tienen gate `PROPUESTO_NO_IMPLEMENTADO`; no declarar controles productivos habilitados.
+- **Suite adicional:** `tests/test_entrega_core_b32.py` con 14 tests preparados (registro, diff, break de graph, True/False, hilos, hash inválido, doble aprobación, seis riesgos, fuentes y gates). **Aún NO hay evidencia Windows para esta nueva suite.**
+- **Documento para presentar:** `docs/U2_7_B32_CORE_ENTREGA.md` contiene enlaces a los tres archivos, matriz, instrucciones de validación y límites del laboratorio.
+- **Próximo paso:** `git pull --ff-only`, ejecutar los tres scripts y suite Core en Windows; revisar las salidas reales y actualizar este checkpoint. Después copiar enlace de documentación a Skillnest y presionar Enviar entrega manualmente. No confundir código publicado con entrega institucional.
+- **Preservación:** archivo local sin seguimiento `verificar_tuning.py` intacto, no subir ni borrar.
+- **Siguiente etapa académica:** U2.8 / Gate 2; todavía falta recibir y estudiar la rúbrica oficial.
