@@ -2,7 +2,7 @@
 
 **Fuente:** lección oficial Skillnest «Cómo completar una matriz de riesgos de IA generativa», aportada el 26/11/2026.
 **Caso de estudio:** Booking Core AI, agente académico de agenda de barbería. **No se conecta ni modifica Booking Core productivo**.
-**Estado:** código, matriz y pruebas publicados en GitHub. Validación Windows y entrega Skillnest aún pendientes.
+**Estado:** **cierre técnico offline validado en Windows el 26/11/2026**: 16/16 tests PASS, ejecución del script completa y código de salida 0. Entrega en Skillnest NO confirmada.
 
 ## 1. Contenido del curso
 
@@ -76,7 +76,7 @@ git status --short
 
 No instalar dependencias nuevas ni usar una API. **Conservar verificar_tuning.py**, archivo local no rastreado de un ejercicio anterior. No hacer limpieza ni subirlo automáticamente.
 
-## 5. Criterios de cierre técnico (aún no verificados en Windows)
+## 5. Criterios de cierre técnico (verificados en Windows el 26/11/2026)
 
 - Cinco riesgos oficiales con puntajes 16,15,9,8,6; sus cinco alertas [AL LIMITE]; contraste 1×1 no al límite.
 - Seis riesgos de Booking Core AI con puntajes 20,16,15,12,8,6, claramente rotulados como estimaciones preliminares.
@@ -87,6 +87,18 @@ No instalar dependencias nuevas ni usar una API. **Conservar verificar_tuning.py
 
 - Fecha: 26/11/2026.
 - Fuente oficial B32/L2: recibida y analizada.
-- Script, datos y pruebas: publicados en GitHub; validación local pendiente.
+- Script, datos y pruebas: publicados en GitHub y validados localmente en Windows: **16/16 PASS (0.929 s)**, script completo, `$LASTEXITCODE=0`.
 - Tiempo efectivo y entrega institucional: no informados.
-- Próximo punto: pruebas Windows, recepción de evidencia y después **B32/L3: Completa tu matriz de riesgos y el versionado de prompts**, última actividad de U2.7 según la lección.
+- Próximo punto: **B32/L3: Completa tu matriz de riesgos y el versionado de prompts**, última actividad de U2.7. Leer primero la consigna oficial, todavía no recibida.
+
+## 7. Evidencia local Windows recibida (26/11/2026)
+
+- `git pull --ff-only`: fast-forward exitoso `79cd2d0..97c169a`, 5 archivos actualizados/creados.
+- `python -m unittest discover -s tests -p "test_matriz_riesgos_b32.py" -v`: **Ran 16 tests in 0.929s / OK**, sin errores ni fallos.
+- `python matriz_riesgos.py`: imprimió puntajes y categorías del ejemplo Skillnest (16/15/9/8/6), las cinco advertencias `[AL LIMITE]` y el contraste `1x1 no al limite | puntaje 1 BAJO`.
+- La matriz propuesta Booking Core AI imprimió **BC-01=20 (CRITICO), BC-02=16 (CRITICO), BC-03=15 (CRITICO), BC-04=12 (ALTO), BC-06=8 (MEDIO), BC-05=6 (MEDIO)**. Las cinco últimas filas estuvieron `[AL LIMITE]`; BC-01 no. Son **estimaciones académicas**, no cifras de incidentes.
+- Los cuatro riesgos críticos/altos registraron `supervision PROPUESTO_NO_IMPLEMENTADO` junto a un punto humano definido, sin declarar protección operativa.
+- `$LASTEXITCODE` posterior al script: **0**. `git status --short`: únicamente `?? verificar_tuning.py` (archivo local preexistente; conservarlo).
+- La salida del script indicó: `ningun punto de supervision productivo se ha implementado` y `No se consulto Gemini ni se altero la agenda real de Booking Core.`
+
+**Veredicto:** B32/L2 completada técnicamente en el laboratorio offline; no demuestra controles productivos ni constituye entrega en Skillnest. **Siguiente:** consigna de la actividad B32/L3.
