@@ -13,7 +13,8 @@
       "mitigacion_pendiente": "Validar identidad, tenant, permisos, disponibilidad y confirmación explícita antes de cualquier operación; verificar reglas en backend.",
       "punto_supervision": "Pausar antes de ejecutar una escritura de agenda y exigir revisión autorizada en casos sensibles o ambiguos.",
       "estado_supervision": "PROPUESTO_NO_IMPLEMENTADO",
-      "justificacion": "El agente final pretende gestionar reservas, pero el laboratorio actual no implementa ni valida operaciones reales."
+      "justificacion": "El agente final pretende gestionar reservas, pero el laboratorio actual no implementa ni valida operaciones reales.",
+      "mitigacion": "Aislamiento del laboratorio académico, sin conexión de escritura (Bloque 32); autorizaciones de citas REALES pendientes."
     },
     {
       "id": "BC-02",
@@ -24,7 +25,8 @@
       "mitigacion_pendiente": "Si aparece un documento sospechoso, detener la generación automática y someter el incidente a revisión, en vez de solo descartarlo y continuar.",
       "punto_supervision": "Pausar la respuesta al detectar contenido sospechoso y permitir revisión humana del incidente.",
       "estado_supervision": "PROPUESTO_NO_IMPLEMENTADO",
-      "justificacion": "El filtro académico identifica ejemplos conocidos, pero puede producir falsos negativos y actualmente permite continuar con documentos limpios."
+      "justificacion": "El filtro académico identifica ejemplos conocidos, pero puede producir falsos negativos y actualmente permite continuar con documentos limpios.",
+      "mitigacion": "Roles System/Human, delimitadores y filtro de inyección RAG (Bloque 31, lecciones 2 y 3); gate de incidente pendiente."
     },
     {
       "id": "BC-03",
@@ -35,7 +37,8 @@
       "mitigacion_pendiente": "Política de retención, acceso con roles, cifrado y auditoría de consultas a logs antes de usar información real.",
       "punto_supervision": "Autorizar el acceso excepcional a registros que puedan contener datos sensibles y auditar al revisor.",
       "estado_supervision": "PROPUESTO_NO_IMPLEMENTADO",
-      "justificacion": "La reducción de datos en el log está probada solo con corpus ficticio, no con operaciones de clientes reales."
+      "justificacion": "La reducción de datos en el log está probada solo con corpus ficticio, no con operaciones de clientes reales.",
+      "mitigacion": "Logging JSON con trace_id y registro mínimo sin preguntas ni respuestas completas (Bloque 31, lección 3)."
     },
     {
       "id": "BC-04",
@@ -46,7 +49,8 @@
       "mitigacion_pendiente": "Exigir aislamiento por tenant y autorización por objeto en cada endpoint; pruebas negativas multi-tenant antes de integrar.",
       "punto_supervision": "Revisión técnica humana antes de habilitar herramientas transaccionales para cualquier tenant.",
       "estado_supervision": "PROPUESTO_NO_IMPLEMENTADO",
-      "justificacion": "El aislamiento real pertenece a Booking Core y no se ha ensayado mediante este laboratorio."
+      "justificacion": "El aislamiento real pertenece a Booking Core y no se ha ensayado mediante este laboratorio.",
+      "mitigacion": "Corpus ficticio sin conexión a tenants del backend (Bloque 24); aislamiento real requiere pruebas futuras."
     },
     {
       "id": "BC-05",
@@ -57,7 +61,8 @@
       "mitigacion_pendiente": "Definir propietario, fecha de vigencia y actualización controlada del corpus, con alertas de documentos obsoletos.",
       "punto_supervision": null,
       "estado_supervision": "NO_REQUERIDO_POR_UMBRAL",
-      "justificacion": "En el laboratorio las políticas son estáticas y ficticias; no se ha probado sincronización con políticas reales."
+      "justificacion": "En el laboratorio las políticas son estáticas y ficticias; no se ha probado sincronización con políticas reales.",
+      "mitigacion": "Documentos con fuentes citables y checks del índice académico (Bloques 24 y 26); actualización de políticas pendiente."
     },
     {
       "id": "BC-06",
@@ -68,7 +73,8 @@
       "mitigacion_pendiente": "Controlar identificador de modelo, dimensiones, revisiones de proveedor y planificar migración/reindexación con pruebas.",
       "punto_supervision": null,
       "estado_supervision": "NO_REQUERIDO_POR_UMBRAL",
-      "justificacion": "Se trata de un riesgo de mantenimiento derivado de la arquitectura RAG, no de una incidencia productiva verificada."
+      "justificacion": "Se trata de un riesgo de mantenimiento derivado de la arquitectura RAG, no de una incidencia productiva verificada.",
+      "mitigacion": "Índice académico aislado y control de metadata y modelo de embeddings (Bloques 24 y 26); migración pendiente."
     }
   ]
 }
