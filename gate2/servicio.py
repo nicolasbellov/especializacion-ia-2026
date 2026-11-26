@@ -32,7 +32,9 @@ from logging_rag import (
     registrar_consumo,
     trace_id_var,
 )
-from src.mitigacion_inyeccion_b31_booking_core import PLANTILLA_USUARIO, PROMPT_SISTEMA
+from src.mitigacion_inyeccion_b31_booking_core import PLANTILLA_USUARIO
+from gate2.prompt import prompt_activo
+from gate2.medicion import estimar_costo_generacion
 
 
 # Los códigos son un contrato para CLI y futuras interfaces HTTP.
@@ -159,6 +161,7 @@ class ServicioRAG:
                 k=self.k,
                 simulado=self.simulado,
             )
+            t_recuperacion = time.perf_counter()
             documentos = list(self.recuperador(pregunta))
             if len(documentos) > self.k:
                 raise ValueError("El recuperador excedió el máximo k.")
@@ -166,6 +169,7 @@ class ServicioRAG:
                 log, logging.INFO, "recuperación RAG finalizada",
                 evento="gate2_recuperacion",
                 n_recuperados=len(documentos),
+                latencia_ms=round((time.perf_counter() - t_recuperacion) * 1000, 3),
             )
             if not documentos:
                 return finalizar(
@@ -200,16 +204,9 @@ class ServicioRAG:
                 )
 
             contexto, fuentes = formatear_contexto(limpios)
+            prompt = prompt_activo()
             mensajes = [
-                SystemMessage(
-                    content=(
-                        PROMPT_SISTEMA
-                        + " Cita cada afirmación sustantiva usando el número "
-                        "de fuente [n]. Si no hay respaldo, abstente. "
-                        "Las citas corresponden a documentación ficticia, "
-                        "no a disponibilidad actual ni transacciones."
-                    )
-                ),
+                SystemMessage(content=prompt["texto"]),
                 HumanMessage(content=PLANTILLA_USUARIO.format(
                     contexto=contexto, pregunta=pregunta
                 )),
@@ -218,6 +215,7 @@ class ServicioRAG:
                 log, logging.INFO, "prompt con fuentes construido",
                 evento="gate2_prompt",
                 n_fuentes=len(fuentes),
+                version_prompt=prompt["version"], huella_prompt=prompt["huella"],
             )
             if self.generador is None:
                 return finalizar(
@@ -227,10 +225,17 @@ class ServicioRAG:
                     recuperados=len(documentos),
                 )
 
+            t_generacion = time.perf_counter()
             respuesta_llm = self.generador(mensajes)
+            evento(log, logging.INFO, "generación finalizada", evento="gate2_generacion",
+                   latencia_ms=round((time.perf_counter() - t_generacion) * 1000, 3))
             if not isinstance(respuesta_llm, AIMessage):
                 raise TypeError("El generador debe devolver AIMessage.")
             consumo = registrar_consumo(respuesta_llm, log, simulado=self.simulado)
+            costo = estimar_costo_generacion(consumo)
+            evento(log, logging.INFO, "estimación de costo", evento="gate2_costo",
+                   costo_estimado=costo)
+            consumo = {**consumo, "costo_estimado": costo}
             texto = respuesta_llm.content
             if not isinstance(texto, str) or not texto.strip():
                 return finalizar(
@@ -252,7 +257,9 @@ class ServicioRAG:
                     fuentes=fuentes, recuperados=len(documentos), consumo=consumo,
                 )
             return finalizar(
-                RESPONDIDA, texto,
+                RESPONDIDA, texto + "\nFuentes citadas: " + "; ".join(
+                    f"[{i}] {fuentes[i]}" for i in dict.fromkeys(indice for indice, _ in verificadas)
+                ),
                 fuentes=fuentes,
                 citas=tuple(indice for indice, _ in verificadas),
                 recuperados=len(documentos),

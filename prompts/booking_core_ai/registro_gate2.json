@@ -1,0 +1,14 @@
+{
+  "nombre": "booking_core_ai_gate2",
+  "versiones": [
+    {
+      "version": "v3-gate2",
+      "archivo": "sistema_gate2_v3.txt",
+      "autor": "asistente-ia-academico",
+      "fecha": "2026-11-26",
+      "nota": "Prompt efectivo del servicio Gate2, derivado de v1 B31 y con citas y minimización de datos. No activa la propuesta v2 B32 ni afecta producción.",
+      "modelo_probado": null,
+      "parametros_probados": null
+    }
+  ]
+}

@@ -33,3 +33,9 @@ langchain-google-genai==4.4.3
 pytest>=8,<10
 # U2.4 - Agente con herramientas (Bloque 21)
 langchain-classic==1.0.8
+# U2.8 Gate 2 - dependencias de instalación completa
+langchain-chroma>=1.0,<2.0
+chromadb>=1.0,<2.0
+langchain-core>=1.6,<2.0
+langchain-text-splitters>=1.0,<2.0
+langgraph>=1.2,<2.0
