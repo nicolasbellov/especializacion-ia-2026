@@ -1,0 +1,23 @@
+{
+  "nombre": "booking_core_ai_sistema",
+  "versiones": [
+    {
+      "version": "v1-b31-l2",
+      "archivo": "sistema_v1.txt",
+      "autor": "asistente-ia-academico",
+      "fecha": "2026-11-26",
+      "nota": "Registro reproducible del prompt de sistema usado en el laboratorio B31/L2.",
+      "modelo_probado": null,
+      "parametros_probados": null
+    },
+    {
+      "version": "v2-b32-l1",
+      "archivo": "sistema_v2.txt",
+      "autor": "asistente-ia-academico",
+      "fecha": "2026-11-26",
+      "nota": "Propuesta academica: reforzar la frontera RAG y exigir autorizacion de backend en acciones sensibles; NO desplegada.",
+      "modelo_probado": null,
+      "parametros_probados": null
+    }
+  ]
+}
