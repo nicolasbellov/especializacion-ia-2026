@@ -1,3 +1,5 @@
+> **Actualización 26/11/2026:** se recibieron las tres lecciones oficiales. Esta guía conserva el historial de la primera integración; para el servicio definitivo, rúbrica y comandos actualizados, consultar [Gate 2 Core](U2_8_GATE2_CORE_ENTREGA.md). La validación final de Windows/Gemini y envío siguen pendientes.
+
 # U2.8 — Gate 2: integración y orquestación RAG | Booking Core AI
 
 **Inicio:** 26/11/2026.

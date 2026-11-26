@@ -1,5 +1,53 @@
+# Especialización IA 2026 — Booking Core AI | Gate 2
 
-# Especialización en Desarrollo con IA Generativa — 2026
+**Entrega académica U2.8, Módulo 2.** Véase [portada de Gate 2 y rúbrica](docs/U2_8_GATE2_CORE_ENTREGA.md). El sistema integra un servicio RAG de políticas de barbería ficticias; no accede a Booking Core real. Estado: implementación de la rúbrica publicada, validación final y envío pendientes.
+
+## Reproducir el servicio de Gate 2 (Windows PowerShell)
+
+~~~powershell
+git clone --branch feature/u2-8-gate2-rag-booking-core-ai https://github.com/nicolasbellov/especializacion-ia-2026.git
+cd especializacion-ia-2026
+py -3.12 -m venv .venv-gate2
+$py = '.\.venv-gate2\Scripts\python.exe'
+& $py -m pip install -r requirements.txt
+& $py -m pip check
+& $py verificar_entorno.py --modo simulado --permitir-indice-nuevo
+& $py -m pytest test_gate2.py -v
+& $py -m unittest discover -s tests -p 'test_gate2_incremental.py' -v
+& $py ensayo_gate2.py
+& $py servicio_rag.py --modo simulado
+& $py servicio_rag.py --modo simulado
+~~~
+
+Python 3.12 es la versión de referencia; en Linux/macOS crear venv con python3 y usar .venv-gate2/bin/python. La primera corrida simulada crea un índice Chroma separado en .local/gate2_simulado; siguientes corridas lo reutilizan. Los embeddings y el LLM de ese modo son sintéticos. No requiere Gemini ni llamadas de red para las pruebas (instalar paquetes sí requiere acceso a paquetes).
+
+### Real Gemini (opt-in)
+
+Crear .env a partir de .env.example y definir GEMINI_API_KEY y GEMINI_MODEL localmente, sin publicar la clave. El script utiliza la misma colección académica B24 y modelo de embeddings. La primera corrida en un clon limpio indexa cinco documentos, consume cuota; siguientes corridas reutilizan el índice. No copia ni sube vectorstore/.
+
+~~~powershell
+git check-ignore .env
+& $py verificar_entorno.py --modo real --permitir-indice-nuevo
+& $py servicio_rag.py --modo real --supervision interactiva --pregunta '¿Qué requisitos ficticios se deben cumplir para reprogramar una cita?'
+$LASTEXITCODE
+~~~
+
+El flujo imprime auditoría JSON de aplicación y después respuesta, fuentes, consumo y latencia. La consola solicita s/n para una cancelación **solo ficticia**. Las decisiones automatizadas de demo no son una aprobación humana. No introduzca información real de clientes. Un resultado retenido por falta de citas o contexto devuelve 2; un error controlado devuelve 1. Una ejecución normal con respuesta citada devuelve 0.
+
+### Cambios del corpus
+
+El servicio no reindexa en cada consulta. Ante cambios, usar --actualizar de forma explícita. El test incremental crea y modifica su propio índice temporal sin tocar el índice original. Si se actualiza vectorstore/ real, primero respaldarlo con procesos cerrados. Una actualización parcial deja bloqueo y requiere restauración de respaldo.
+
+### Evidencia y gobernanza
+
+- [Autochequeo 4 criterios](test_gate2.py), [ensayo funcional](ensayo_gate2.py), [actualización incremental](tests/test_gate2_incremental.py).
+- [Métricas reales B27](resultados_evaluacion.txt), [mediciones reales B28](registros_latencia_costo.jsonl), [decisión de personalización](decision_personalizacion.md).
+- [Matriz de riesgos Gate 2](data/matriz_riesgos_gate2.json), [registro prompt activo](prompts/booking_core_ai/registro_gate2.json), [supervisión](gate2/supervision.py), [autoevaluación](rubrica_gate2.py).
+- No registrar PII ni textos crudos en logs de aplicación; no publicar .env ni bases vectoriales. Los costos se estiman con tarifas ficticias B28 y se etiquetan, no son facturación.
+
+---
+
+## Historial del Módulo 1 — Gate 1
 
 ## Miniaplicación Gate 1 — Módulo 1
 
