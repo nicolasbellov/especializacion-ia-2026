@@ -109,4 +109,4 @@ Resultados proporcionados por el estudiante tras `git pull --ff-only` hasta el c
 
 **Resultado de la validación de esta entrega:** **30 de 30 pruebas PASS (14 Core + 16 regresión B32/L2)**. La suite de versionado B32/L1 (16/16) fue validada en una sesión anterior, **no** se volvió a ejecutar en esta transcripción. Los scripts académicos no invocaron Gemini ni modificaron la agenda real.
 
-**Estado de presentación:** listo para que el estudiante pegue el enlace a esta página en la pestaña **Enlace** y pulse **Enviar entrega** de Skillnest. **No se ha confirmado aún que haya presionado el botón ni recibido acuse.** La rúbrica del Gate 2 / U2.8 sigue pendiente de revisión.
+**Estado de presentación:** **envío registrado en Skillnest LifeCycle el 26/11/2026**, según captura de confirmación aportada por el estudiante (`Entrega registrada`, `está siendo revisada por el instructor`). **Nota y aprobación pendientes.** La rúbrica del Gate 2 / U2.8 sigue pendiente de revisión. La captura confirma el envío, pero no verifica por sí sola el contenido exacto del enlace presentado.
