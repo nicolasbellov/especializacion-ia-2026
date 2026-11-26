@@ -1,7 +1,7 @@
 # U2.7 · Bloque 31 / Lección 3 — Instrumenta tu RAG (Booking Core AI)
 
 **Fuente oficial:** Skillnest, «Instrumenta tu solución y registro de consumo [Actividad práctica]», texto entregado el **26/11/2026**.
-**Estado académico:** implementación versionada en GitHub; **no** asumir aprobación, entrega institucional ni pruebas Windows hasta recibir evidencias.
+**Estado académico:** **cierre técnico offline validado en Windows el 26/11/2026**: 15/15 pruebas unitarias PASS, demostración PASS y código de salida 0. **No** equivale a entrega o aprobación institucional en Skillnest ni valida una llamada Gemini real.
 **Repositorio académico:** nicolasbellov/especializacion-ia-2026, rama feature/u2-7-b31-l2-mitigacion-booking-core.
 
 ## 1. Qué exige Skillnest
@@ -53,7 +53,7 @@ git status --short
 
 **Preservar el archivo local** verificar_tuning.py (no rastreado). No hacer git add -A, git clean ni borrar archivos locales.
 
-## 4. Checklist de aceptación (pendiente de evidencias Windows)
+## 4. Checklist de aceptación (validado offline en Windows, 26/11/2026)
 
 - Un documento ficticio legítimo y otro malicioso → evento documento_descartado_por_inyeccion únicamente para el malicioso, con fuente ticket_ficticio_881 y tres patrones.
 - AIMessage sintético → evento consumo_llm con input=210, output=18, total=228, simulado=true.
@@ -78,6 +78,21 @@ Ese modo abre el índice existente con la función abrir_vectorstore de recupera
 - Fecha: 26/11/2026.
 - Fuente oficial B31/L3: recibida.
 - Adaptación técnica: código, pruebas y documentación preparados en el repositorio académico.
-- Validación local Windows y demo: pendiente.
+- Validación local Windows: `Ran 15 tests in 0.548s / OK`; demo dos consultas PASS; `$LASTEXITCODE = 0`.
 - Tiempo efectivo / entrega institucional Skillnest: no informados.
-- Punto siguiente: pull de la rama U2.7, 15 tests, ejecución demo, revisión de stdout JSON y exit code; después B32/L1.
+- Punto siguiente: Bloque 32 / Lección 1 (versionado de prompts y supervisión humana). La regresión B31/L2 ya pasó 9/9 previamente, pero no se repitió en la ejecución B31/L3 registrada.
+
+## 7. Evidencia de ejecución local aportada el 26/11/2026
+
+**Origen de la evidencia:** salida de PowerShell compartida por el estudiante; no es una ejecución realizada por el conector GitHub ni por CI.
+
+- Sincronización: `git pull --ff-only` completó fast-forward de `dba9fe1` a `8ec26f0`; incorporó `logging_rag.py`, las 15 pruebas y esta guía.
+- Suite específica: `python -m unittest discover -s tests -p "test_logging_rag_b31.py" -v` → **Ran 15 tests in 0.548s / OK** (15/15 PASS).
+- Demo offline: `python logging_rag.py --modo demo` → **PASS: dos trazas aisladas, filtro y consumo SIMULADO. Sin Gemini.**; `$LASTEXITCODE` → **0**.
+- Primera consulta (2026-11-26 18:57:41): `trace-eca46fef6836`; `pregunta_len=26`; `n_recuperados=2`, `n_limpios=1`, `n_descartados=1`; fuente descartada `ticket_ficticio_881`, `n_patrones=3`; `latencia_ms=3.367`.
+- Segunda consulta (misma fecha/hora): `trace-7cbb92e94969`; `pregunta_len=44`; `n_recuperados=2`, `n_limpios=1`, `n_descartados=1`; fuente descartada `ticket_ficticio_881`, `n_patrones=3`; `latencia_ms=2.118`.
+- Cada consulta incluyó evento `consumo_llm` con `input_tokens=210`, `output_tokens=18`, `total_tokens=228`, `consumo_disponible=true`, **`simulado=true`**. No representa consumo real de Gemini ni costo monetario.
+- Los seis eventos de cada consulta (`consulta_recibida`, `documentos_recuperados`, `documento_descartado_por_inyeccion`, `contexto_filtrado`, `consumo_llm`, `consulta_finalizada`) conservan el trace_id de su consulta sin mezclarse.
+- `git status --short` mostró únicamente `?? verificar_tuning.py`: archivo local preexistente y no rastreado; conservar sin borrarlo ni subirlo automáticamente.
+
+**Alcance del cierre:** la instrumentación de tres controles de Skillnest funciona con documentos y respuestas simulados. El código permite, de forma opcional, conectarse a la recuperación de U2.5 y Gemini, pero esa ejecución **no se ha verificado** aquí. Tampoco se han realizado acciones sobre reservas reales. No declarar Gate 2 aprobado ni entrega a Skillnest.
