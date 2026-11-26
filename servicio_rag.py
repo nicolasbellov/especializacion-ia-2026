@@ -52,7 +52,9 @@ class EmbeddingsEnsayo:
 def generador_ensayo(mensajes):
     """Devuelve un extracto del contexto recuperado, no una respuesta Gemini."""
     cuerpo = mensajes[1].content
-    contexto = cuerpo.split("<contexto_recuperado>", 1)[1].split("</contexto_recuperado>", 1)[0]
+    # Las instrucciones también mencionan las etiquetas. Buscar los marcadores
+    # que ocupan su propia línea, no la primera mención en la instrucción.
+    contexto = cuerpo.split("\n<contexto_recuperado>\n", 1)[1].split("\n</contexto_recuperado>\n", 1)[0]
     hallazgo = re.search(r"\[(\d+)\]\s*(.*?)(?=\n\n\[\d+\]|\Z)", contexto, re.S)
     if not hallazgo:
         raise ValueError("No hay fuente en el contexto de ensayo.")
