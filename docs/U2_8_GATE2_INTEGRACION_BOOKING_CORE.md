@@ -3,7 +3,7 @@
 **Inicio:** 26/11/2026.
 **Repo:** nicolasbellov/especializacion-ia-2026.
 **Rama:** feature/u2-8-gate2-rag-booking-core-ai.
-**Estado:** implementación preliminar versionada; **sin evidencia Windows ni Gemini real todavía**.
+**Estado:** implementación preliminar versionada y CI offline **SUCCESS** (incluido E2E Chroma real temporal); **sin evidencia Windows ni Gemini real todavía**.
 
 ## 1. Lo que dice Skillnest y lo que falta
 
@@ -130,3 +130,10 @@ Los tres modos NO consultan ni modifican reservas reales de Booking Core. Requie
 - **Pendiente:** rúbrica oficial S1, evidencia de Windows, API Gemini real, revisión de citas y entrega Gate 2 Core.
 - Tiempo efectivo de estudio: no informado.
 - Continuación: cambiar a rama Gate2, ejecutar tests/demo/preflight y compartir resultados; después leer rúbrica S1 y ejecutar la verificación real.
+
+## Resultado CI confirmado (GitHub Actions, 26/11/2026)
+
+- [Workflow Gate 2 / commit 4811dad](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/45906945875): ambos jobs finalizaron **SUCCESS**.
+- Job general: `python -m unittest discover -s tests -p "test_*.py" -v` → **313 tests ejecutados / OK (30 skips por dependencias opcionales)**; incluye los 18 tests del servicio Gate2. La suite Chroma aparece omitida en ese job SIN dependencias RAG, como corresponde.
+- Job RAG con requirements-rag.txt: `python -m unittest discover -s tests -p "test_gate2_e2e_chroma.py" -v` → **Ran 1 test in 1.071s / OK**, sin omisiones. El test crea Chroma real temporal, lo reabre y comprueba respuesta citada con embeddings y LLM sintéticos.
+- **No equiparar el CI con Gemini real ni con Windows.** La ejecución de recuperación y generación real sigue pendiente. La rúbrica oficial S1 sigue sin estar disponible.
