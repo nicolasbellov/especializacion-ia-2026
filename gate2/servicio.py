@@ -236,7 +236,8 @@ class ServicioRAG:
             evento(log, logging.INFO, "estimación de costo", evento="gate2_costo",
                    costo_estimado=costo)
             consumo = {**consumo, "costo_estimado": costo}
-            texto = respuesta_llm.content
+            # AIMessage puede contener bloques textuales en vez de una cadena.
+            texto = respuesta_llm.text
             if not isinstance(texto, str) or not texto.strip():
                 return finalizar(
                     REVISAR_CITAS, CITAS_INSUFICIENTES,

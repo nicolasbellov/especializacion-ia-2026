@@ -93,6 +93,18 @@ jobs:
           python -m unittest discover -s tests -p "test_recuperacion_b26_l3.py" -v
       - name: Gate 2 - integración Chroma end-to-end temporal sin Gemini
         run: python -m unittest discover -s tests -p "test_gate2_e2e_chroma.py" -v
+      - name: Gate 2 - cuatro criterios oficiales (sin API)
+        run: python -m pytest test_gate2.py -v
+      - name: Gate 2 - actualización incremental aislada
+        run: python -m unittest discover -s tests -p "test_gate2_incremental.py" -v
+      - name: Gate 2 - ensayo y servicio final simulado
+        run: |
+          python verificar_entorno.py --modo simulado --permitir-indice-nuevo
+          python ensayo_gate2.py
+          python servicio_rag.py --modo simulado
+          python servicio_rag.py --modo simulado
+          python rubrica_gate2.py
+
       - name: B26 - fuentes y citas sin Gemini ni Chroma
         run: python citas_demo.py
       - name: B26 - recuperar con embeddings ficticios sin API

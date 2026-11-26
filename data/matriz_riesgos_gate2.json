@@ -1,0 +1,81 @@
+{
+  "proyecto": "Booking Core AI (agenda de barbería)",
+  "fecha_revision": "2026-11-26",
+  "fuente": "Estimaciones técnicas preliminares del laboratorio académico, NO mediciones de incidentes ni evaluación del backend productivo",
+  "escala": "probabilidad e impacto enteros de 1 a 5, convenciones Skillnest B32/L2 (CRITICO>=15, ALTO>=9, MEDIO>=4)",
+  "riesgos": [
+    {
+      "id": "BC-01",
+      "riesgo": "Creación, cambio o cancelación de una cita sin autorización del usuario y del backend",
+      "probabilidad": 4,
+      "impacto": 5,
+      "mitigacion_existente": "El laboratorio académico no tiene herramientas transaccionales ni conexión de escritura con Booking Core. Gate 2: grafo de cancelación ficticia con interrupt, aprobación/rechazo y estado en memoria.",
+      "mitigacion_pendiente": "Validar identidad, tenant, permisos, disponibilidad y confirmación explícita antes de cualquier operación; verificar reglas en backend.",
+      "punto_supervision": "gate2/supervision.py: pausa obligatoria antes de cancelar DEMO-001 o DEMO-002; decisión externa True/False.",
+      "estado_supervision": "IMPLEMENTADO_EN_LAB_PENDIENTE_EVIDENCIA_FINAL",
+      "justificacion": "Es la acción representativa de mayor riesgo del agente; solo se permite cambiar estado ficticio en memoria después de la decisión.",
+      "mitigacion": "Aislamiento del laboratorio académico, sin conexión de escritura (Bloque 32); autorizaciones de citas REALES pendientes."
+    },
+    {
+      "id": "BC-02",
+      "riesgo": "Inyección de prompt a través de documentación recuperada por RAG",
+      "probabilidad": 4,
+      "impacto": 4,
+      "mitigacion_existente": "B31/L2 y L3: delimitadores y separación de roles; filtro de firmas con pruebas offline. Gate 2: bloqueo fail-closed de toda generación si detecta cualquier chunk sospechoso.",
+      "mitigacion_pendiente": "Revisar el incidente por un operador autorizado; no reanudar automáticamente ni usar el texto comprometido.",
+      "punto_supervision": "Pausar la respuesta al detectar contenido sospechoso y permitir revisión humana del incidente.",
+      "estado_supervision": "BLOQUEO_LAB_IMPLEMENTADO_REVISION_HUMANA_PENDIENTE",
+      "justificacion": "El filtro de firmas es parcial; a diferencia del laboratorio B31, Gate 2 bloquea la generación si detecta cualquier documento sospechoso.",
+      "mitigacion": "Roles System/Human, delimitadores y filtro de inyección RAG (Bloque 31, lecciones 2 y 3); gate de incidente pendiente."
+    },
+    {
+      "id": "BC-03",
+      "riesgo": "Exposición de datos personales de clientes en trazas y logs",
+      "probabilidad": 3,
+      "impacto": 5,
+      "mitigacion_existente": "B31/L3: logs JSON con longitud de consulta, metadatos mínimos y sin preguntas ni respuestas completas; verificado offline. Gate 2: auditoría JSON de aplicación comprobable sin pregunta o respuesta cruda.",
+      "mitigacion_pendiente": "Política de retención, acceso con roles, cifrado y auditoría de consultas a logs antes de usar información real.",
+      "punto_supervision": "Autorizar el acceso excepcional a registros que puedan contener datos sensibles y auditar al revisor.",
+      "estado_supervision": "PROPUESTO_NO_IMPLEMENTADO",
+      "justificacion": "La reducción de datos en el log está probada solo con corpus ficticio, no con operaciones de clientes reales.",
+      "mitigacion": "Logging JSON con trace_id y registro mínimo sin preguntas ni respuestas completas (Bloque 31, lección 3)."
+    },
+    {
+      "id": "BC-04",
+      "riesgo": "Consulta o alteración de reservas de otro tenant",
+      "probabilidad": 3,
+      "impacto": 4,
+      "mitigacion_existente": "El prototipo académico solo utiliza documentación ficticia y no se comunica con tenants productivos.",
+      "mitigacion_pendiente": "Exigir aislamiento por tenant y autorización por objeto en cada endpoint; pruebas negativas multi-tenant antes de integrar.",
+      "punto_supervision": "Revisión técnica humana antes de habilitar herramientas transaccionales para cualquier tenant.",
+      "estado_supervision": "PROPUESTO_NO_IMPLEMENTADO",
+      "justificacion": "El aislamiento real pertenece a Booking Core y no se ha ensayado mediante este laboratorio.",
+      "mitigacion": "Corpus ficticio sin conexión a tenants del backend (Bloque 24); aislamiento real requiere pruebas futuras."
+    },
+    {
+      "id": "BC-05",
+      "riesgo": "Respuesta de política desactualizada por documento RAG no reindexado",
+      "probabilidad": 3,
+      "impacto": 2,
+      "mitigacion_existente": "B24/B26: corpus académico versionado, fuentes citables y checks de integridad; no se usa RAG como fuente de disponibilidad. Gate 2: actualización incremental explícita con IDs estables y bloqueo de índice parcial.",
+      "mitigacion_pendiente": "Definir propietario, fecha de vigencia y actualización controlada del corpus, con alertas de documentos obsoletos.",
+      "punto_supervision": null,
+      "estado_supervision": "NO_REQUERIDO_POR_UMBRAL",
+      "justificacion": "En el laboratorio las políticas son estáticas y ficticias; no se ha probado sincronización con políticas reales.",
+      "mitigacion": "Documentos con fuentes citables y checks del índice académico (Bloques 24 y 26); actualización de políticas pendiente."
+    },
+    {
+      "id": "BC-06",
+      "riesgo": "Obsolescencia del modelo de embeddings o incompatibilidad del índice",
+      "probabilidad": 2,
+      "impacto": 4,
+      "mitigacion_existente": "U2.5 usa índices locales aislados y pruebas de metadatos, sin reindexaciones automáticas.",
+      "mitigacion_pendiente": "Controlar identificador de modelo, dimensiones, revisiones de proveedor y planificar migración/reindexación con pruebas.",
+      "punto_supervision": null,
+      "estado_supervision": "NO_REQUERIDO_POR_UMBRAL",
+      "justificacion": "Se trata de un riesgo de mantenimiento derivado de la arquitectura RAG, no de una incidencia productiva verificada.",
+      "mitigacion": "Índice académico aislado y control de metadata y modelo de embeddings (Bloques 24 y 26); migración pendiente."
+    }
+  ],
+  "alcance": "Gate 2 académico, actualización de estado respecto de B32; no reemplaza la matriz ya entregada."
+}

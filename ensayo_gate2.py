@@ -1,5 +1,6 @@
 """Ensayo de la lección S1: integración real Chroma con modelos simulados."""
-from io import StringIO
+import uuid
+from langchain_chroma import Chroma
 from langchain_core.documents import Document
 
 from gate2.servicio import ServicioRAG, REQUIERE_REVISION, RESPONDIDA
@@ -28,7 +29,11 @@ def main():
     )
     def no_generar(_):
         raise AssertionError("El LLM no debe ser invocado con contexto comprometido.")
-    r = ServicioRAG(lambda _: [malicioso], no_generar,
+    # Colección aislada y efímera: el ataque también pasa por el retriever real.
+    comprometido = Chroma.from_documents([malicioso], emb,
+                                          collection_name="gate2_ataque_" + uuid.uuid4().hex)
+    retriever = comprometido.as_retriever(search_kwargs={"k": 1})
+    r = ServicioRAG(retriever.invoke, no_generar,
                     logger=configurar_logger(), simulado=True, k=1).consultar("Consulta ficticia")
     assert r.estado == REQUIERE_REVISION and r.documentos_descartados == 1
     assert trace_id_var.get() is None
