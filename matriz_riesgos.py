@@ -123,7 +123,7 @@ def validar_matriz_booking_core(riesgos: list[dict[str, Any]]) -> list[dict[str,
         if not isinstance(identificador, str) or not identificador.strip() or identificador in ids:
             raise ValueError("Falta ID o existe un ID duplicado.")
         ids.add(identificador)
-        for campo in ("mitigacion_existente", "mitigacion_pendiente", "justificacion"):
+        for campo in ("mitigacion", "mitigacion_existente", "mitigacion_pendiente", "justificacion"):
             if not isinstance(fila.get(campo), str) or not fila[campo].strip():
                 raise ValueError(f"Falta {campo} para {identificador}.")
         categoria = categoria_riesgo(
@@ -179,6 +179,9 @@ def main() -> int:
     print("Fuente/estado:", matriz["fuente"])
     mostrar_riesgos(matriz["riesgos"])
     for r in matriz["riesgos"]:
+        print(f"  {r['id']}: mitigacion: {r['mitigacion']}")
+        if r["al_limite"]:
+            print(f"  revisar con otra persona: {r['id']} ({r['categoria']})")
         if r["categoria"] in ("ALTO", "CRITICO"):
             print(
                 f"  {r['id']}: supervision {r['estado_supervision']} "
