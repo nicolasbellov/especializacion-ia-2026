@@ -84,8 +84,22 @@ git status --short
 - **Formulario Skillnest:** el usuario mostró la pestaña Enlace (Drive, etc.) y un campo «Enlace a tu trabajo»; no se ha enviado aún ningún formulario.
 - **Código publicado en rama U2.7:** `registro_prompts.py` lee las dos versiones propias v1/v2, `grafo_supervision.py` expone interrupt real con aprobación/rechazo, `matriz_riesgos.py` reutiliza 6 riesgos propios del proyecto y 5 ejemplos oficiales a modo de contraste.
 - **Datos ajustados para Core:** seis filas incluyen campo explicito `mitigacion` con referencias a Bloques 24/26/31/32. Los cuatro riesgos altos/críticos tienen gate `PROPUESTO_NO_IMPLEMENTADO`; no declarar controles productivos habilitados.
-- **Suite adicional:** `tests/test_entrega_core_b32.py` con 14 tests preparados (registro, diff, break de graph, True/False, hilos, hash inválido, doble aprobación, seis riesgos, fuentes y gates). **Aún NO hay evidencia Windows para esta nueva suite.**
+- **Suite adicional:** `tests/test_entrega_core_b32.py` con 14 tests preparados (registro, diff, break de graph, True/False, hilos, hash inválido, doble aprobación, seis riesgos, fuentes y gates). **Validado Windows: 14/14 tests PASS en 0.328 s.**
 - **Documento para presentar:** `docs/U2_7_B32_CORE_ENTREGA.md` contiene enlaces a los tres archivos, matriz, instrucciones de validación y límites del laboratorio.
-- **Próximo paso:** `git pull --ff-only`, ejecutar los tres scripts y suite Core en Windows; revisar las salidas reales y actualizar este checkpoint. Después copiar enlace de documentación a Skillnest y presionar Enviar entrega manualmente. No confundir código publicado con entrega institucional.
+- **Validación completada:** `git pull --ff-only` alcanzó `971ee9a`; los tres scripts se ejecutaron PASS; Core 14/14 (0.328 s), matriz 16/16 (0.512 s), `$LASTEXITCODE=0`. Próximo paso: sincronizar este checkpoint, copiar la URL de entrega a Skillnest y pulsar `Enviar entrega` manualmente. No confundir código publicado con entrega institucional.
 - **Preservación:** archivo local sin seguimiento `verificar_tuning.py` intacto, no subir ni borrar.
 - **Siguiente etapa académica:** U2.8 / Gate 2; todavía falta recibir y estudiar la rúbrica oficial.
+
+## Cierre técnico de entrega Core B32/L3 — 26/11/2026
+
+- **Evidencia Windows recibida** desde la ruta local académica `C:\Users\nbello\dev\especializacion-ia-2026`.
+- Sincronización remota: fast-forward `75b0aed..971ee9a`, siete archivos incorporados/modificados.
+- Paso 1 `registro_prompts.py`: PASS con dos prompts propios, SHA-256 v1 `48cb9f82ec5e` y v2 `efd33cc0add2`, `ultima(...)` y diff.
+- Paso 2 `grafo_supervision.py`: PASS de `interrupt`, inspección de estado, `Command(resume=True)` y `Command(resume=False)` en hilos independientes, solo con activación simulada en memoria.
+- Paso 3 `matriz_riesgos.py`: PASS; seis riesgos académicos 20,16,15,12,8,6; cuatro puntos humanos propuestos/no implementados, mitigaciones referenciadas a bloques anteriores, sensibilidad explicitada.
+- Pruebas Core: `Ran 14 tests in 0.328s / OK`. Regresión de matriz: `Ran 16 tests in 0.512s / OK`. **30/30 PASS**, `$LASTEXITCODE = 0`. La regresión B32/L1 había superado 16/16 anteriormente, no se repitió en esta sesión.
+- `git status --short`: solo `?? verificar_tuning.py` sin seguimiento, preservar el archivo local.
+- **Veredicto:** U2.7/B32/L3 **completada técnicamente en laboratorio**. No hay Gemini, despliegue real, checkpoint durable ni cambios en reservas reales.
+- **PENDIENTE INSTITUCIONAL:** usuario debe presentar el enlace GitHub `docs/U2_7_B32_CORE_ENTREGA.md` en la plataforma Skillnest y comprobar que se registró el envío. No se dispone de comprobante de presentación ni aprobación.
+- **Siguiente etapa académica:** U2.8 / Gate 2, leer primero rúbrica oficial antes de diseñar la integración.
+- Tiempo de estudio efectivo y hora de término de sesión completa: no informados; no inferir.
