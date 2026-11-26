@@ -1,6 +1,6 @@
 # Especialización IA 2026 — Booking Core AI | Gate 2
 
-**Entrega académica U2.8, Módulo 2.** Véase [portada de Gate 2 y rúbrica](docs/U2_8_GATE2_CORE_ENTREGA.md). El sistema integra un servicio RAG de políticas de barbería ficticias; no accede a Booking Core real. Estado: instalación limpia y cuatro criterios validados en Windows, corrida Gemini real y supervisión PASS; abstención ante precios y disponibilidad reales PASS; evidencia completa en la portada. Gate 2 listo técnicamente para presentar; envío y calificación institucional pendientes.
+**Entrega académica U2.8, Módulo 2.** Véase [portada de Gate 2 y rúbrica](docs/U2_8_GATE2_CORE_ENTREGA.md). El sistema integra un servicio RAG de políticas de barbería ficticias; no accede a Booking Core real. Estado: instalación limpia y cuatro criterios validados en Windows, corrida Gemini real y supervisión PASS; abstención ante precios y disponibilidad reales PASS; evidencia completa en la portada. Gate 2 entregado en Skillnest el 26/11/2026; calificación institucional pendiente.
 
 ## Reproducir el servicio de Gate 2 (Windows PowerShell)
 
