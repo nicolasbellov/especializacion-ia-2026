@@ -2,7 +2,7 @@
 
 **Fuente principal:** Skillnest, «Inyección de prompt en vivo: el ataque y su mitigación», contenido entregado por el estudiante el 26/11/2026.  
 **Alcance:** laboratorio educativo, sin acceso a API de Booking Core, sin Gemini y sin escritura de reservas.  
-**Estado:** código y pruebas versionados; ejecución Windows y entrega institucional todavía por confirmar.
+**Estado:** código y pruebas versionados; **9/9 pruebas Windows PASS el 26/11/2026**; ejecución final del script y entrega institucional todavía por confirmar.
 
 ## 1. Qué indica la lección
 
@@ -28,7 +28,7 @@ Archivos:
 
 La rama de U2.5 quedó por detrás de main, así que esta unidad utiliza **una rama independiente creada desde main**, para evitar cambios accidentales en el trabajo de U2.5.
 
-Desde la carpeta académica local, con el árbol de trabajo limpio:
+Desde la carpeta académica local. **Antes de cambiar de rama, revisar el estado de Git:** el estudiante tenía `verificar_tuning.py` sin seguimiento; conservarlo y no borrarlo por error:
 
 ~~~powershell
 cd C:\Users\nbello\dev\especializacion-ia-2026
@@ -64,5 +64,19 @@ LangChain Core está incluido como dependencia de LangChain en el proyecto; no h
 - Fecha de material: 26/11/2026.
 - Fuente oficial recibida y analizada: sí.
 - Artefactos GitHub: preparados en rama de U2.7.
-- Validación local Windows: pendiente de que el estudiante sincronice y comparta resultados.
+- Validación local Windows: **9/9 unittest PASS (0,015 s) el 26/11/2026** en Python 3.12. La transcripción compartida termina en el comando de arranque del script, sin su salida, por lo que su ejecución completa sigue pendiente de verificar.
 - Tiempo efectivo / entrega Skillnest: no informados.
+
+## 6. Evidencia Windows recibida el 26/11/2026
+
+Transcripción aportada por el estudiante, sin secretos publicados:
+
+- **Git:** `git fetch origin` descargó la rama `feature/u2-7-b31-l2-mitigacion-booking-core`, `git switch --track` la activó correctamente y `git pull --ff-only` informó `Already up to date.`.
+- **Archivo ajeno al commit:** `git status --short` mostró `?? verificar_tuning.py`; es material local sin seguimiento que debe conservarse.
+- **Primer fallo:** `ModuleNotFoundError: No module named 'langchain_core'` tanto en unittest como en el script.
+- **Resolución:** ejecutar `venv\\Scripts\\python.exe -m pip install -r requirements.txt`. Se instaló `langchain-core 1.8.5` como dependencia; `python -m pip check` informó `No broken requirements found.`.
+- **Validación real:** `python -m unittest discover -s tests -p "test_mitigacion_inyeccion_b31.py" -v` → **Ran 9 tests in 0.015s / OK**.
+- **Limitación de evidencia:** la transcripción se detiene justo tras `python -m src.mitigacion_inyeccion_b31_booking_core`; no incluye stdout ni código de salida. No declarar que la demostración completa pasó hasta recibirlo.
+- **Regresión general:** no ejecutada ni documentada tras actualizar dependencias; solo queda confirmada la suite focalizada B31/L2.
+
+**Siguiente checkpoint:** compartir la salida del script y `$LASTEXITCODE`, ejecutar `git status --short` y conservar intacto `verificar_tuning.py`. Después de eso se podrá cerrar técnicamente B31/L2 y pasar a la actividad de instrumentación B31/L3. No equivale a una entrega en Skillnest.
