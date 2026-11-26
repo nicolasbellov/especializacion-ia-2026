@@ -100,6 +100,14 @@ git status --short
 - Pruebas Core: `Ran 14 tests in 0.328s / OK`. Regresión de matriz: `Ran 16 tests in 0.512s / OK`. **30/30 PASS**, `$LASTEXITCODE = 0`. La regresión B32/L1 había superado 16/16 anteriormente, no se repitió en esta sesión.
 - `git status --short`: solo `?? verificar_tuning.py` sin seguimiento, preservar el archivo local.
 - **Veredicto:** U2.7/B32/L3 **completada técnicamente en laboratorio**. No hay Gemini, despliegue real, checkpoint durable ni cambios en reservas reales.
-- **PENDIENTE INSTITUCIONAL:** usuario debe presentar el enlace GitHub `docs/U2_7_B32_CORE_ENTREGA.md` en la plataforma Skillnest y comprobar que se registró el envío. No se dispone de comprobante de presentación ni aprobación.
+- **ENVÍO INSTITUCIONAL CONFIRMADO EL 26/11/2026:** captura de Skillnest LifeCycle con estado `Entrega registrada`, actividad `Bloque 32 - Completa tu matriz de riesgos y el versionado de prompts [Core]`, y texto `ha sido registrada exitosamente y está siendo revisada por el instructor`. **Calificación todavía pendiente**. Se conserva enlace GitHub de entrega en el commit `3d8af03`.
 - **Siguiente etapa académica:** U2.8 / Gate 2, leer primero rúbrica oficial antes de diseñar la integración.
 - Tiempo de estudio efectivo y hora de término de sesión completa: no informados; no inferir.
+
+## Confirmación institucional y sincronización final — 26/11/2026
+
+- Captura enviada por el estudiante: **«Entrega registrada»** en Skillnest LifeCycle, fecha de envío **26/11/2026**, actividad Core Bloque 32; plataforma indica **en revisión por el instructor** y que la calificación se recibirá tras evaluación. No se ha acreditado nota o aprobación.
+- En el menú lateral, las actividades U2.7 aparecen marcadas como realizadas; próximo apartado visible **U2.8 Gate 2 – Integración y orquestación**, iniciando con **Repaso de la rúbrica del Gate 2 y su exigencia funcional**.
+- Último `git pull --ff-only` aportado por estudiante: fast-forward **`971ee9a..3d8af03`**, solo documentación de entrega y checkpoint, sin conflictos.
+- **Estado U2.7:** desarrollo y pruebas completados, entrega institucional registrada, **evaluación pendiente**.
+- **Punto exacto siguiente:** compartir y estudiar la rúbrica oficial del Gate 2/U2.8 antes de diseñar integración o despliegue. Mantener `verificar_tuning.py` local intacto.
