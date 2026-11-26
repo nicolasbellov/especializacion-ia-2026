@@ -1,4 +1,4 @@
-> **Actualización más reciente:** instalación limpia, cuatro criterios PASS, incremental PASS, CI corregido SUCCESS y Gemini real con rechazo interactivo PASS. Ver evidencia al final. Pendiente prueba adicional de abstención real y envío institucional.
+> **Actualización más reciente:** Gate 2 técnicamente cerrado: instalación limpia, 4/4 criterios PASS, incremental PASS, CI SUCCESS, Gemini real con cita contrastada, rechazo interactivo y abstención real PASS. Autoevaluación 81,0%. Pendiente únicamente presentación institucional y evaluación. Los apartados históricos siguientes conservan el estado de etapas anteriores.
 
 > **Actualización posterior:** rúbrica oficial S1, ensayo y Core recibidos el 26/11/2026. Se supersede la preparación provisional con el cierre de requisitos descrito al final y en [U2_8_GATE2_CORE_ENTREGA.md](U2_8_GATE2_CORE_ENTREGA.md).
 
@@ -92,4 +92,17 @@ Evidencia aportada por el estudiante desde PowerShell, commit de código validad
 - Supervisión interactiva: interrupt antes de cancelar DEMO-001, resultado de consola rechazado, estado confirmada, aprobado=False, ejecutada=False, PASS de pausa y reanudación. La aprobación positiva se verificó en test_4, no como aprobación humana manual en esta corrida. No hay autenticación de operador ni reservas reales.
 - Código de salida final 0; git status solo archivo preexistente no rastreado verificar_tuning.py, preservar.
 - [CI de la corrección](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/45907697658): ambos jobs SUCCESS, incluidas las cuatro pruebas, E2E Chroma, incremental, ensayo y servicio simulado. No sustituye la evidencia Windows ni la corrida real.
-- Autoevaluación conservada: 81,0% (estimación propia, no nota oficial), cuatro criterios de aceptación PASS según evidencia anterior. Como comprobación adicional antes de presentar, ejecutar pregunta sobre precio/disponibilidad real fuera del corpus con `--supervision ninguna` y comprobar abstención o retención sin inventar datos. Esta prueba adicional de generación real todavía no consta. Gate 2 no enviado; nota institucional pendiente.
+- Autoevaluación propia 81,0%, cuatro criterios PASS. La comprobación adicional de abstención real también fue validada; ver evidencia de cierre a continuación. Gate 2 no enviado.
+
+## Cierre técnico final — abstención Gemini real (26/11/2026)
+
+- Evidencia de PowerShell aportada por el estudiante: fast-forward `42dcf9d..07bcd69`; cinco archivos de documentación y autoevaluación sincronizados.
+- Ejecución `servicio_rag.py --modo real --supervision ninguna` con pregunta sobre el precio real vigente de un corte en AES Barber y las horas libres de mañana.
+- Trace ID `gate2-f15a7843839f4f6f`, prompt `v3-gate2` SHA-256/12 `8a9459e020b8`, `simulado=false`, 5 fuentes/10 chunks, índice existente sin re-embedding; 3 chunks recuperados, 0 descartados.
+- **PASS funcional de abstención:** estado RESPONDIDA, pero el contenido explícitamente indica que RAG no confirma precios reales ni disponibilidad; no entrega precios ni franjas inventadas. Citas [1] `01_servicios.md` y [3] `02_disponibilidad.md`, contrastadas con ambos documentos originales del repositorio. El primero prohíbe inventar precios y exige catálogo autorizado; el segundo establece que la disponibilidad proviene del backend transaccional en tiempo de consulta.
+- Latencias observadas: apertura/validación del índice 15180,217 ms; recuperación 1118,188 ms; generación 1915,507 ms; consulta total 3043,731 ms, excluida apertura inicial. Una muestra, no benchmark promedio.
+- Tokens reales: 545 entrada, 89 salida, 634 total. Costo didáctico estimado de chat USD 0,0000901 según tarifas ficticias B28; no es facturación real ni incluye embeddings. Advertencia de temperature ignorada por Gemini, sin fallo.
+- Código de salida inmediato 0. `rubrica_gate2.py`: 81,0% de autoevaluación, cuatro no compensables PASS, `LISTO PARA ENTREGAR SEGÚN AUTOCHEQUEO: True`. `git status --short`: únicamente `?? verificar_tuning.py` en la salida completa observada; preservar.
+- **Veredicto:** Gate 2 técnicamente listo para presentar. No se ha enviado aún a Skillnest; nota y aprobación institucional pendientes. La prueba negativa es una muestra de comportamiento, no garantía universal de abstención. Persisten los límites académicos: no hay backend real, autenticación de revisores, persistencia durable de supervisión ni revisión humana BC-02 completa.
+- Siguiente acción: presentar el enlace inmutable de esta portada en el formulario Core S1 y conservar captura de `Entrega registrada`; después iniciar Módulo 3 / U3.1 con la fuente oficial.
+- Tiempo efectivo de estudio: no informado; no inferir de marcas de tiempo de las consultas.
