@@ -2,7 +2,7 @@
 
 **Fuente principal:** Skillnest, «Inyección de prompt en vivo: el ataque y su mitigación», contenido entregado por el estudiante el 26/11/2026.  
 **Alcance:** laboratorio educativo, sin acceso a API de Booking Core, sin Gemini y sin escritura de reservas.  
-**Estado:** código y pruebas versionados; **9/9 pruebas Windows PASS el 26/11/2026**; ejecución final del script y entrega institucional todavía por confirmar.
+**Estado:** **cierre técnico validado en Windows el 26/11/2026**: 9/9 unittest PASS, demostración completa PASS y código de salida 0. La entrega institucional en Skillnest no está confirmada.
 
 ## 1. Qué indica la lección
 
@@ -64,7 +64,7 @@ LangChain Core está incluido como dependencia de LangChain en el proyecto; no h
 - Fecha de material: 26/11/2026.
 - Fuente oficial recibida y analizada: sí.
 - Artefactos GitHub: preparados en rama de U2.7.
-- Validación local Windows: **9/9 unittest PASS (0,015 s) el 26/11/2026** en Python 3.12. La transcripción compartida termina en el comando de arranque del script, sin su salida, por lo que su ejecución completa sigue pendiente de verificar.
+- Validación local Windows: **9/9 unittest PASS (0,015 s) el 26/11/2026** en Python 3.12. Demostración posterior PASS, `$LASTEXITCODE = 0`.
 - Tiempo efectivo / entrega Skillnest: no informados.
 
 ## 6. Evidencia Windows recibida el 26/11/2026
@@ -76,7 +76,7 @@ Transcripción aportada por el estudiante, sin secretos publicados:
 - **Primer fallo:** `ModuleNotFoundError: No module named 'langchain_core'` tanto en unittest como en el script.
 - **Resolución:** ejecutar `venv\\Scripts\\python.exe -m pip install -r requirements.txt`. Se instaló `langchain-core 1.8.5` como dependencia; `python -m pip check` informó `No broken requirements found.`.
 - **Validación real:** `python -m unittest discover -s tests -p "test_mitigacion_inyeccion_b31.py" -v` → **Ran 9 tests in 0.015s / OK**.
-- **Limitación de evidencia:** la transcripción se detiene justo tras `python -m src.mitigacion_inyeccion_b31_booking_core`; no incluye stdout ni código de salida. No declarar que la demostración completa pasó hasta recibirlo.
+- **Validación posterior confirmada por salida de PowerShell:** `python -m src.mitigacion_inyeccion_b31_booking_core` imprimió JSON con `documentos_recibidos=2`, `documentos_descartados=1`, `patrones_detectados=3`; `Roles: system, human`; `PASS: tres mitigaciones aplicadas al ejemplo ficticio.`; `$LASTEXITCODE` devolvió `0`. Un intento anterior falló por comandos accidentalmente concatenados (`...booking_coregit`) y no representa un defecto de implementación.
 - **Regresión general:** no ejecutada ni documentada tras actualizar dependencias; solo queda confirmada la suite focalizada B31/L2.
 
-**Siguiente checkpoint:** compartir la salida del script y `$LASTEXITCODE`, ejecutar `git status --short` y conservar intacto `verificar_tuning.py`. Después de eso se podrá cerrar técnicamente B31/L2 y pasar a la actividad de instrumentación B31/L3. No equivale a una entrega en Skillnest.
+**Cierre técnico B31/L2:** confirmado en Windows. `git status --short` mostró solo `?? verificar_tuning.py` (archivo local preexistente, conservar); la rama publicada contiene los artefactos de la lección. No se ejecutó una regresión general ni se acreditó entrega institucional. **Siguiente:** recibir la consigna B31/L3 e instrumentar logging y consumo de Booking Core AI respetando la separación del backend productivo.
