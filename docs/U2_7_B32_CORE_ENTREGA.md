@@ -89,6 +89,24 @@ El archivo local no rastreado **verificar_tuning.py** es anterior a esta entrega
 - B32/L1: **16/16 PASS**, versionado, interrupt, aprobación/rechazo y rechazo manual interactivo.
 - B32/L2: **16/16 PASS**, ranking y sensibilidad de riesgos y ejecución completa.
 
-**Las nuevas pruebas de integración Core necesitan validación local en Windows**. Este documento no declara que la entrega haya sido enviada ni aprobada por Skillnest.
+**Validación local Core confirmada en Windows el 26/11/2026:** 14/14 pruebas de integración y 16/16 pruebas de matriz PASS; tres scripts ejecutados correctamente. **No consta envío ni aprobación institucional en Skillnest.**
 
 **Siguiente unidad:** U2.8 — Gate 2, según el curso; su rúbrica debe revisarse antes de iniciarla.
+
+## Evidencia final de ejecución Windows — 26/11/2026
+
+Resultados proporcionados por el estudiante tras `git pull --ff-only` hasta el commit `971ee9a` (fast-forward `75b0aed..971ee9a`):
+
+| Verificación | Resultado observado |
+| --- | --- |
+| `registro_prompts.py` | **PASS**: v1 `48cb9f82ec5e`, v2 `efd33cc0add2`, `ultima(...)` y `diff` correctos |
+| `grafo_supervision.py` | **PASS**: `__interrupt__` y `get_state` antes del apply; aprobación `APROBADA_SOLO_EN_SIMULACION`; otro `thread_id` rechaza `RECHAZADA_VERSION_ORIGINAL_CONSERVADA` |
+| `matriz_riesgos.py` | **PASS**: seis riesgos propios 20,16,15,12,8,6; sensibilidad; cuatro gates `PROPUESTO_NO_IMPLEMENTADO`; mitigaciones vinculadas a bloques anteriores |
+| `tests/test_entrega_core_b32.py` | **Ran 14 tests in 0.328s / OK** |
+| `tests/test_matriz_riesgos_b32.py` | **Ran 16 tests in 0.512s / OK** |
+| `$LASTEXITCODE` | **0** |
+| `git status --short` | `?? verificar_tuning.py` (archivo local preexistente, no rastreado; no borrarlo ni incluirlo) |
+
+**Resultado de la validación de esta entrega:** **30 de 30 pruebas PASS (14 Core + 16 regresión B32/L2)**. La suite de versionado B32/L1 (16/16) fue validada en una sesión anterior, **no** se volvió a ejecutar en esta transcripción. Los scripts académicos no invocaron Gemini ni modificaron la agenda real.
+
+**Estado de presentación:** listo para que el estudiante pegue el enlace a esta página en la pestaña **Enlace** y pulse **Enviar entrega** de Skillnest. **No se ha confirmado aún que haya presionado el botón ni recibido acuse.** La rúbrica del Gate 2 / U2.8 sigue pendiente de revisión.
