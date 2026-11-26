@@ -50,16 +50,16 @@ $LASTEXITCODE
 git status --short
 ~~~
 
-**Cierre técnico B32/L1 confirmado con evidencia Windows:** 16/16 PASS, demo con aprobación y rechazo simulados PASS, `$LASTEXITCODE`=0. El modo interactivo se inició pero el registro finaliza en la pregunta `¿Aprobar propuesta ficticia? [s/n]:`; todavía no consta la decisión humana. Después revisar la lección oficial B32/L2 y diseñar la matriz de riesgos del agente de reservas.
+**Cierre técnico B32/L1 confirmado con evidencia Windows:** 16/16 PASS, demo con aprobación y rechazo simulados PASS, `$LASTEXITCODE`=0. El modo interactivo también se completó: el estudiante escribió `n`; el sistema devolvió `rechazado_en_simulacion`, conservó `v1-b31-l2` y mostró PASS. Después revisar la lección oficial B32/L2 y diseñar la matriz de riesgos del agente de reservas.
 
-**Tiempo efectivo y horarios de estudio:** no informados, no inferir.
+**Tiempo efectivo y horarios de estudio:** no informados, no inferir. **Siguiente lección:** U2.7/B32/L2 (matriz de riesgos), aún sin fuente oficial aportada en este punto de la conversación.
 
 ## Evidencia recibida posterior al checkpoint
 
 - Fecha: 26/11/2026. Git fast-forward `6ef8ad2..3a3cdaf` incorporó B32/L1.
 - 16 pruebas de `tests/test_versionado_supervision_b32.py` pasaron en 0.517s (`OK`).
 - Demo: prompt v1 SHA-256 12 chars `48cb9f82ec5e`; prompt v2 propuesto `efd33cc0add2`. `interrupt()` pausó, `get_state` mostró el hilo, y `Command(resume=...)` aprobó/rechazó en simulación; PASS y exit code 0.
-- Modo interactivo se inició y espera entrada `[s/n]`; resultado pendiente, no adjudicar decisión todavía.
+- Modo interactivo: se recibió entrada manual **`n`** en el hilo `revision-booking-core-c5997a5adc5c44b991b7dcfccfadc029`; salida `resultado: rechazado_en_simulacion | version simulada: v1-b31-l2`, PASS y `Sin despliegues, sin reservas reales, sin API Gemini.`
 - Archivo local no rastreado `verificar_tuning.py` preservado.
 - Documentación detallada en `docs/u2_7_b32_l1_versionado_supervision_booking_core.md`.
 - La v2 **no está activa en el pipeline B31/L3**, no hay despliegue productivo ni reservas cambiadas. Sin entrega Skillnest confirmada.
