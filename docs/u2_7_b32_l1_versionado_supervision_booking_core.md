@@ -2,7 +2,7 @@
 
 **Fuente primaria:** lección oficial Skillnest «Versionado de prompts y puntos de supervisión humana», proporcionada el **26/11/2026**.
 **Proyecto integrador:** Booking Core AI (agente de agenda para AES Barber).
-**Estado:** código y 16 pruebas publicados; **pruebas Windows pendientes** y entrega institucional Skillnest NO confirmada.
+**Estado:** cierre técnico offline en Windows el **26/11/2026**: **16/16 pruebas PASS**, demo automática PASS y exit code 0. Prueba interactiva iniciada, decisión s/n aún no compartida. Entrega institucional Skillnest NO confirmada.
 
 ## 1. Qué enseña el curso
 
@@ -66,7 +66,7 @@ El programa presenta el diff, versión y huella, deja el grafo interrumpido y so
 
 **Conservar** el archivo local no rastreado verificar_tuning.py. No usar git clean ni git add -A.
 
-## 4. Criterios de aceptación (NO declarar resultados antes de Windows)
+## 4. Criterios de aceptación (validados offline en Windows)
 
 - Dos versiones con SHA-256 distintos; v1 coincide exactamente con el prompt del Bloque 31.
 - registro.json documenta autor, fecha y motivo; los modelos no probados permanecen como null.
@@ -88,6 +88,21 @@ Para una agenda real, supervisión humana no debe confundirse con **autenticaci�
 
 - Fecha del material: 26/11/2026.
 - Etapa: U2.7/B32/L1, revisión del material oficial y preparación de código versionado.
-- Código publicado: pendiente de evidencia local Windows.
-- Pruebas, horas de estudio y entrega en plataforma: sin confirmar.
-- Punto exacto siguiente: git pull --ff-only, unittest B32/L1, demo y reporte de resultados.
+- Código publicado en GitHub y sincronizado por fast-forward hasta el commit 3a3cdaf. Suite 16/16 PASS en Windows y demostración automática PASS.
+- Pruebas B32/L1: 16/16 PASS en 0.517 s; demo automática PASS; `$LASTEXITCODE` = 0. Horas de estudio y entrega en plataforma: no informadas.
+- Punto exacto siguiente: responder `s` o `n` en el modo interactivo y compartir su resultado; después seguir a B32/L2, matriz de riesgos.
+
+## 7. Evidencia real de Windows · 26/11/2026
+
+Transcripción de PowerShell aportada por el estudiante:
+
+- Git: fast-forward exitoso `6ef8ad2..3a3cdaf` con los siete archivos B32/L1.
+- Pruebas: `python -m unittest discover -s tests -p "test_versionado_supervision_b32.py" -v` → **Ran 16 tests in 0.517s / OK**. No fallos ni errores.
+- Versiones exactas: `v1-b31-l2` → SHA-256 abreviado `48cb9f82ec5e`; `v2-b32-l1` → `efd33cc0add2`; modelo probado `None` (no probado con Gemini).
+- La demo mostró el diff, la interrupción pendiente con `thread_id` propio, una aprobación **simulada** que activó v2 solo en memoria y un rechazo **simulado** que conservó v1.
+- Resultado del script: `PASS: registro, diff, interrupt, estado pendiente y decision.` seguido de `Sin despliegues, sin reservas reales, sin API Gemini.`; `$LASTEXITCODE` → **0**.
+- Estado de Git después de las pruebas: solo `?? verificar_tuning.py`, archivo local sin seguimiento que se preserva sin subir ni borrar.
+- **Modo interactivo:** se ejecutó `python -m src.versionado_supervision_b32 --modo interactivo`, se mostró la propuesta y el interrupt `revision-booking-core-c5997a5adc5c44b991b7dcfccfadc029`, pero la transcripción termina en `¿Aprobar propuesta ficticia? [s/n]:`. No se dispone todavía de una decisión ni resultado final interactivo.
+- **Alcance:** el resultado verifica las APIs de supervisión en memoria, no autenticación humana real, persistencia durable, publicación efectiva de prompts ni modificación de reservas.
+
+**Cierre técnico de B32/L1 por pruebas obligatorias:** confirmado; ejecución interactiva opcional pendiente de respuesta. No inferir entrega institucional.
