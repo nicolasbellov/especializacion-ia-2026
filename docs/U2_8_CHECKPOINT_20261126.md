@@ -1,4 +1,4 @@
-> **Actualización más reciente:** Gate 2 técnicamente cerrado: instalación limpia, 4/4 criterios PASS, incremental PASS, CI SUCCESS, Gemini real con cita contrastada, rechazo interactivo y abstención real PASS. Autoevaluación 81,0%. Pendiente únicamente presentación institucional y evaluación. Los apartados históricos siguientes conservan el estado de etapas anteriores.
+> **Actualización más reciente:** Gate 2 técnicamente cerrado: instalación limpia, 4/4 criterios PASS, incremental PASS, CI SUCCESS, Gemini real con cita contrastada, rechazo interactivo y abstención real PASS. Autoevaluación 81,0%. Entrega institucional registrada el 26/11/2026; evaluación pendiente. Los apartados históricos siguientes conservan el estado de etapas anteriores.
 
 > **Actualización posterior:** rúbrica oficial S1, ensayo y Core recibidos el 26/11/2026. Se supersede la preparación provisional con el cierre de requisitos descrito al final y en [U2_8_GATE2_CORE_ENTREGA.md](U2_8_GATE2_CORE_ENTREGA.md).
 
@@ -103,6 +103,14 @@ Evidencia aportada por el estudiante desde PowerShell, commit de código validad
 - Latencias observadas: apertura/validación del índice 15180,217 ms; recuperación 1118,188 ms; generación 1915,507 ms; consulta total 3043,731 ms, excluida apertura inicial. Una muestra, no benchmark promedio.
 - Tokens reales: 545 entrada, 89 salida, 634 total. Costo didáctico estimado de chat USD 0,0000901 según tarifas ficticias B28; no es facturación real ni incluye embeddings. Advertencia de temperature ignorada por Gemini, sin fallo.
 - Código de salida inmediato 0. `rubrica_gate2.py`: 81,0% de autoevaluación, cuatro no compensables PASS, `LISTO PARA ENTREGAR SEGÚN AUTOCHEQUEO: True`. `git status --short`: únicamente `?? verificar_tuning.py` en la salida completa observada; preservar.
-- **Veredicto:** Gate 2 técnicamente listo para presentar. No se ha enviado aún a Skillnest; nota y aprobación institucional pendientes. La prueba negativa es una muestra de comportamiento, no garantía universal de abstención. Persisten los límites académicos: no hay backend real, autenticación de revisores, persistencia durable de supervisión ni revisión humana BC-02 completa.
-- Siguiente acción: presentar el enlace inmutable de esta portada en el formulario Core S1 y conservar captura de `Entrega registrada`; después iniciar Módulo 3 / U3.1 con la fuente oficial.
+- **Veredicto:** Gate 2 técnicamente completado y entregado en Skillnest el 26/11/2026; nota y aprobación institucional pendientes. La prueba negativa es una muestra de comportamiento, no garantía universal de abstención. Persisten los límites académicos: no hay backend real, autenticación de revisores, persistencia durable de supervisión ni revisión humana BC-02 completa.
+- Siguiente acción: iniciar Módulo 3 / U3.1 con la fuente oficial. El acuse de entrega ya fue aportado.
 - Tiempo efectivo de estudio: no informado; no inferir de marcas de tiempo de las consultas.
+
+## Confirmación institucional — 26/11/2026
+
+- Evidencia: captura de Skillnest LifeCycle aportada por el estudiante, actividad «Bloque S1 - Gate 2 - Integración y orquestación [Core]», estado «Entrega registrada», enviada el 26/11/2026 y en revisión por el instructor.
+- **Gate 2 entregado institucionalmente; calificación y aprobación oficial pendientes.** Autoevaluación propia 81,0%, cuatro no compensables PASS; no equivalen a una nota oficial.
+- Versión de entrega recomendada: `ccd05d4bae11bf0e288c1309a5ee966096a5b924`. El acuse confirma el envío, no verifica el URL exacto presentado. Se mantiene inmutable la versión preparada; esta actualización solo documenta el acuse, sin modificar código ni reenviar la tarea.
+- Próximo punto académico: Módulo 3 — Integración profesional, U3.1 Diseño funcional del proyecto según perfil de salida, Bloque 33 / De la idea al alcance: problema, requerimientos, MVP. Revisar el material oficial antes de implementar.
+- Tiempo efectivo de estudio no informado. Sin confirmación de sincronización local posterior al commit de entrega.
