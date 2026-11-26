@@ -1,21 +1,21 @@
-"""Autoevaluación preliminar basada en la rúbrica S1; no es nota oficial."""
+"""Autoevaluación basada en la rúbrica S1 y evidencia Windows del 26/11/2026; no es nota oficial."""
 PESOS = {
     "pipeline_funcional": .25, "recuperacion_citacion": .15,
     "costo_latencia": .10, "personalizacion": .15,
     "observabilidad": .15, "seguridad_gobernanza": .20,
 }
-# Estimaciones conservadoras del diseño y evidencia histórica; revisar al cerrar Windows.
+# Estimaciones conservadoras mantenidas tras validar Windows y Gemini; no son notas oficiales.
 PUNTAJES = {
     "pipeline_funcional": 75, "recuperacion_citacion": 75,
     "costo_latencia": 80, "personalizacion": 95,
     "observabilidad": 85, "seguridad_gobernanza": 80,
 }
-# None = evidencia final Windows/manual todavía pendiente; nunca convertirlo en PASS.
+# Cuatro pruebas PASS en Windows, corrida real exit 0, cita contrastada y rechazo interactivo.
 NO_COMPENSABLES = {
-    "pipeline_corre_de_punta_a_punta": None,
-    "respuestas_citan_fuente": None,
-    "logs_sin_contenido_crudo": None,
-    "supervision_humana_funciona": None,
+    "pipeline_corre_de_punta_a_punta": True,
+    "respuestas_citan_fuente": True,
+    "logs_sin_contenido_crudo": True,
+    "supervision_humana_funciona": True,
 }
 
 
@@ -34,7 +34,7 @@ def evaluar_gate(puntajes, no_compensables, umbral=80):
 
 if __name__ == "__main__":
     promedio, listo = evaluar_gate(PUNTAJES, NO_COMPENSABLES)
-    print("Autoevaluación PROVISIONAL (no calificación):", f"{promedio:.1f}%")
+    print("Autoevaluación propia (no calificación):", f"{promedio:.1f}%")
     for criterio, estado in NO_COMPENSABLES.items():
         print(criterio, "PASS" if estado is True else "FAIL" if estado is False else "PENDIENTE")
     print("LISTO PARA ENTREGAR SEGÚN AUTOCHEQUEO:", listo)
