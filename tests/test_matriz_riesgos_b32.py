@@ -81,7 +81,7 @@ class TestMatrizRiesgosB32(unittest.TestCase):
     def test_book_core_estimaciones_se_identifican_como_no_auditadas(self):
         matriz = cargar_matriz_booking_core()
         self.assertIn("NO mediciones", matriz["fuente"])
-        self.assertIn("academico", matriz["fuente"].lower())
+        self.assertIn("académico", matriz["fuente"].lower())
         self.assertEqual(matriz["fecha_revision"], "2026-11-26")
 
     def test_alto_critico_tienen_supervision_propuesta_no_productiva(self):
