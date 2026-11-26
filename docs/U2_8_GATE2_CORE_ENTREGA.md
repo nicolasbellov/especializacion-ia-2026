@@ -96,3 +96,9 @@ Ejecutar una consulta fuera del corpus, por ejemplo precio real de AES Barber, s
 **Estado institucional:** U2.7 entregada el 26/11 y en revisión. Gate 2 todavía no enviado. La pantalla de actividad contiene el formulario de entrega, no un comprobante. Tras la evidencia final, presentar enlace GitHub de esta portada fijado a un commit, no el repositorio productivo.
 
 **Tiempo efectivo de estudio:** no informado.
+
+## 8. Hallazgo del CI y corrección (26/11/2026)
+
+- [CI 811976c](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/45907565060): job general **314 tests OK**, sin omisiones reportadas, incluye 18 del núcleo Gate2, E2E Chroma e incremental. El job de los cuatro criterios oficiales detectó **3 fallos y 1 PASS** (supervisión). No se considera aprobado el Gate.
+- Causa: el generador simulado dividía el mensaje por la primera mención textual de las etiquetas de contexto, que está en la instrucción, no por las líneas que delimitan el contexto real. Así no encontraba referencias [n].
+- Corrección en commit `91e5d7e`: buscar las etiquetas de contexto en sus propias líneas. Conserva el formato de prompt del proyecto y la prueba oficial sin relajar afirmaciones. [CI de la corrección](https://github.com/nicolasbellov/especializacion-ia-2026/actions/runs/45907697658): se registra su resultado solo al verificarlo.
