@@ -74,10 +74,13 @@ class TestFichaB33(unittest.TestCase):
         self.assertIn("RNF-01 no tiene ningun numero", r.stdout)
         self.assertIn("RF-01 debe estar en exactamente un cajon", r.stdout)
 
-    def test_secciones_pendientes_b34(self):
-        texto = FICHA.read_text(encoding="utf-8")
+    def test_esqueleto_conserva_secciones_pendientes_b34(self):
+        # La ficha real evoluciona en Core; probar el esqueleto histórico generado.
+        creado = self.ejecutar("crear_ficha.py")
+        self.assertEqual(creado.returncode, 0, creado.stderr)
+        texto = self.ficha.read_text(encoding="utf-8")
         self.assertEqual(texto.count("[PENDIENTE: se completa en el Bloque 34]"), 2)
-        self.assertNotIn("[COMPLETAR", texto)
+        self.assertIn("[COMPLETAR", texto)
 
 
 if __name__ == "__main__":

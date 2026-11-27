@@ -43,7 +43,32 @@ Diagrama: docs/diagrama_arquitectura.png
 **Estado y límites:** arquitectura objetivo M3, no implementación ya validada. Se reutilizarán [ServicioRAG](../gate2/servicio.py), [índice](../gate2/indice.py), prompt v3-gate2 y controles existentes. Agenda simulada se implementará con datos sintéticos de solo lectura. Las consultas reales desconocidas se abstienen incluso cuando haya datos simulados. La supervisión mediante [LangGraph](../gate2/supervision.py) se conserva como extensión deseable RF-05, no como componente requerido del diagrama MVP. La verificación sintáctica de citas y el detector de patrones de inyección no garantizan seguridad ni respaldo semántico universal. No existe integración productiva, autenticación productiva ni aislamiento multi-tenant acreditado; no se conectará ni modificará Booking Core real.
 
 ## 4. Criterios de aceptación
-[PENDIENTE: se completa en el Bloque 34]
+
+- CA-01 (RF-01): Al enviar la pregunta "¿Qué verificaciones y confirmación se requieren para modificar una cita?" al endpoint de consulta, se recibe un objeto JSON con los campos "estado", "respuesta", "fuentes" y "trace_id".
+- CA-02 (RF-01): Al enviar una pregunta vacía al endpoint de consulta (campo "pregunta" con cadena vacía), se recibe un error HTTP 422 en JSON.
+- CA-03 (RF-02): Para la pregunta de CA-01, la respuesta cita "03_reprogramacion.md" y expresa las verificaciones de identidad, titularidad, disponibilidad, confirmación y resultado exitoso de la API, sustentadas en el documento original; una fuente solo recuperada no cuenta como citada.
+- CA-04 (RF-03): Ante la pregunta "¿Cuál es el precio vigente hoy de un corte en AES Barber?", la respuesta declara que no puede confirmar el precio real y no afirma ningún importe como precio vigente; puede citar fuentes que explican la falta de información.
+- CA-05 (RF-04): Con una agenda sintética DEMO-CORTE para 2030-01-15 que contiene 10:00 y 11:00 disponibles y 12:00 ocupado, consultar "¿Qué horas ficticias hay para DEMO-CORTE el 2030-01-15?" devuelve en el campo "horarios" exactamente 10:00 y 11:00, sin 12:00.
+- CA-06 (RF-04): En la consulta de CA-05, el campo "simulado" del JSON es true (booleano), identificando las franjas como ficticias.
+- CA-07 (RNF-01): Ejecutar por HTTP los 10 casos con evidencia positiva de data/etiquetas_b27_l3_booking_core.json, una vez cada uno, con Gemini real e índice previamente cargado; al menos 9 entregan una respuesta válida en menos de 20 segundos medidos desde el envío hasta recibir el cuerpo completo. Los errores rápidos no cuentan como éxitos.
+- CA-08 (RNF-02): Ejecutar 10 consultas de prueba con preguntas distinguibles y credenciales sintéticas controladas (nunca secretos reales en los artefactos), y revisar todos los logs de aplicación capturados durante la corrida; 0 líneas contienen alguna pregunta completa, el texto completo de un documento del corpus o una credencial de prueba. Registrar el conteo de coincidencias sin exponer valores sensibles.
+- CA-09 (RNF-03): Para los 10 casos positivos de data/etiquetas_b27_l3_booking_core.json, comparar cada respuesta con la evidencia etiquetada y el corpus original; al menos 9 casos deben responder la pregunta, contener una cita pertinente efectivamente utilizada y tener respaldo para cada afirmación factual material. Una contradicción, afirmación sin sustento, omisión de la respuesta esperada o abstención en un caso positivo cuenta como FAIL. Registrar veredicto y justificación por caso sin confundir recuperación con respaldo semántico.
+- CA-10 (RNF-04): Ejecutar las 10 consultas válidas del conjunto positivo etiquetado; los 10 valores de "trace_id" de las respuestas son no vacíos, distintos y cada uno aparece en los eventos de aplicación correspondientes a esa consulta.
+- CA-11 (RNF-05): En 1 instalación limpia de referencia con Docker operativo y acceso a dependencias, seguir exclusivamente el README desde la preparación del servicio hasta obtener respuesta de salud HTTP 200 en menos de 15 minutos; registrar entorno, tiempo y resultado. La funcionalidad integrada se prueba aparte con los demás CA.
+- CA-12 (RF-03): Ante "¿Tiene AES Barber horas reales disponibles el 15 de enero de 2030 para un corte?", el servicio informa explícitamente que no puede confirmar disponibilidad real y no presenta las franjas 10:00 o 11:00 del fixture como disponibilidad real.
+
+Los contratos JSON, ruta de consulta, fixture y procedimiento de pruebas se implementarán en las unidades siguientes; aquí son condiciones de diseño, no evidencia de ejecución. El conjunto positivo corresponde a SERV-01/02, DISP-01/02, REPRO-01/02, CANC-01/02 y PRIV-01/02. RF-05 no forma parte del MVP y requerirá sus propios criterios de aprobación/rechazo si se incorpora.
 
 ## 5. Plan de construcción por hitos
-[PENDIENTE: se completa en el Bloque 34]
+Horas disponibles: 24 h
+Margen de imprevistos: 4,8 h
+
+**Escenario provisional**, no disponibilidad efectiva confirmada. Antes de comprometer la ejecución, confirmar horas reales y recalcular con presupuesto/presupuesto_booking_core.py. Las cifras mantienen la reserva del 30% y el margen del 20%. No se incorpora RF-05 al plan de 24 h.
+
+- H1 (3 h): Servicio FastAPI ejecutable con contrato JSON y validación de entrada, inicialmente con dependencias inyectadas offline (U3.2). Cubre: RF-01. Se comprueba con: CA-01, CA-02.
+- H2 (3 h): Servicio HTTP integrado con RAG existente, índice persistido, citas y abstención (M2 y U3.2). Cubre: RF-02, RF-03. Se comprueba con: CA-03, CA-04.
+- H3 (3 h): Servicio empaquetado en Docker que responde a la comprobación de salud siguiendo el README de referencia (U3.3). Cubre: RNF-05. Se comprueba con: CA-11.
+- H4 (2 h): Servicio integrado con agenda sintética de solo lectura y separación de consultas ficticias y reales (U3.4). Cubre: RF-04, RF-03. Se comprueba con: CA-05, CA-06, CA-12.
+- H5 (7,2 h): Servicio final ejecutable con pruebas de aceptación, informe de resultados, README reproducible y ensayo de defensa (U3.5 a U3.7); repetir la regresión funcional y Docker sobre la versión final. Cubre: RNF-01, RNF-02, RNF-03, RNF-04, RNF-05, RF-01, RF-02, RF-03, RF-04. Se comprueba con: CA-01, CA-02, CA-03, CA-04, CA-05, CA-06, CA-07, CA-08, CA-09, CA-10, CA-11, CA-12.
+
+Construcción H1–H4: 11 h de 12 h netas; H5: 7,2 h de reserva de pruebas, documentación y defensa. Total planificado: 18,2 h de 19,2 h posibles. Holgura adicional de construcción: 1 h. Margen de imprevistos de 4,8 h sin asignar. Docker se comprueba temprano por riesgo y se repite en la versión final. La revisión humana y la prueba ciega todavía deben realizarse; el diseño no se considera aceptado por el solo resultado del verificador.
