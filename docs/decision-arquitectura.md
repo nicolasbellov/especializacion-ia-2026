@@ -40,9 +40,9 @@ La evidencia de reproducción está disponible en
 
 El siguiente diagrama corresponde al **módulo Python efectivamente implementado** durante el Bloque 8. Muestra las funciones `armar_peticion`, `enviar_peticion` y `extraer_texto`; el origen de `GEMINI_API_KEY` en `.env`; excepciones; la respuesta `usageMetadata`; y `calcular_costo()` como función independiente que aún no se invoca desde el flujo principal.
 
-![Arquitectura real de la miniaplicación — U1.4 Bloque 8](diagrama_arquitectura.png)
+![Arquitectura real de la miniaplicación — U1.4 Bloque 8](diagrama_arquitectura_u14.png)
 
-**Archivos relacionados:** [diagrama PNG](diagrama_arquitectura.png) · [fuente editable draw.io](diagrama_arquitectura_u14.drawio) · [módulo en GitHub](https://github.com/nicolasbellov/especializacion-ia-2026/blob/main/src/consumir_gemini.py).  
+**Archivos relacionados:** [diagrama PNG](diagrama_arquitectura_u14.png) · [fuente editable draw.io](diagrama_arquitectura_u14.drawio) · [módulo en GitHub](https://github.com/nicolasbellov/especializacion-ia-2026/blob/main/src/consumir_gemini.py).  
 **Evidencia del diagrama versionado:** [commit 61541fe](https://github.com/nicolasbellov/especializacion-ia-2026/commit/61541fe).
 
 ### Flujo resumido
@@ -119,3 +119,6 @@ Se registraron respuestas HTTP **503** al intentar completar algunas mediciones 
 - **Seguridad:** no incluir la clave real de `.env` en Git; el documento solo identifica `GEMINI_API_KEY` por su nombre de variable de entorno.
 
 **Trazabilidad académica:** U1.4, Bloque 8 (diagrama), Bloque 9 (comparación y registro de decisión). El documento constituye una decisión de diseño fundamentada y verificable; su commit/push y entrega a Skillnest deben confirmarse por separado.
+
+
+> Nota de preservación (M3/B33): en esta rama, el PNG histórico U1.4 se conserva byte a byte en `docs/diagrama_arquitectura_u14.png`. La ruta original de entrega permanece intacta en las ramas y commits anteriores. El nuevo `docs/diagrama_arquitectura.png` corresponde a Booking Core AI M3.
