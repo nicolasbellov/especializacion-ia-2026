@@ -1,6 +1,6 @@
 # Revisión complementaria de Gemini — U3.1 Core
 
-Fecha de recepción: 26/11/2026 (Chile). Fuente: respuesta de Gemini compartida por el estudiante, revisión de la ficha del commit 1f748ecf74ca5ae628e3956fb32c3242e92cc5b8. Veredicto de Gemini: viable con ajustes. Este análisis es una segunda opinión mediante IA, no revisión humana, prueba ciega humana ni decisión formal del autor. No se certifica que Gemini haya accedido al repositorio; sus observaciones se contrastaron con la ficha real.
+Fecha de recepción: 26/11/2026 (Chile). Fuente: respuesta de Gemini compartida por el estudiante, revisión de la ficha del commit 1f748ecf74ca5ae628e3956fb32c3242e92cc5b8. Veredicto de Gemini: viable con ajustes. Este análisis es una segunda opinión mediante IA, no revisión humana, prueba ciega humana ni revisión formal del programa. Las decisiones del autor sobre esta segunda opinión se registran al final. No se certifica que Gemini haya accedido al repositorio; sus observaciones se contrastaron con la ficha real.
 
 ## Contraste de hallazgos y decisiones recomendadas (no decisiones del autor)
 
@@ -28,6 +28,19 @@ Gemini identifica correctamente el valor de persistir Chroma en un volumen y reu
 - Uvicorn, código de access log y pruebas de query string: https://github.com/Kludex/uvicorn/blob/main/uvicorn/protocols/http/httptools_impl.py ; https://github.com/Kludex/uvicorn/blob/main/tests/protocols/test_http.py
 - FastAPI, request body y manejo de RequestValidationError: https://fastapi.tiangolo.com/tutorial/body/ ; https://fastapi.tiangolo.com/tutorial/handling-errors/
 
+## Decisiones ratificadas por el autor — 26/11/2026
+
+El estudiante ratificó expresamente las tres recomendaciones: H-01 rechazado, H-02 aceptado, H-03 aceptado con ajustes. Se incorporan las precisiones a la ficha en este mismo commit.
+
+- Hallazgo H-01 — Supuesto error presupuestario.
+  Decisión: rechazado. Motivo: el presupuesto original concilia las 24 h, incluida la holgura de 1 h; la igualdad propuesta por Gemini omite esa hora. Se añade la conciliación explícita en la sección 5, sin cambiar horas ni hitos.
+- Hallazgo H-02 — Seguridad de los logs.
+  Decisión: aceptado. Cambio: RF-01 y arquitectura precisan POST /consulta con cuerpo JSON, RNF-02 amplía explícitamente las superficies de logs a comprobar, CA-01/02 precisan el contrato y CA-08 define la captura y búsqueda de valores sintéticos y sus representaciones; H1 incorpora configuración inicial y H5 conserva la aceptación integral. No hay ampliación de funcionalidades del MVP.
+- Hallazgo H-03 — Evaluación semántica.
+  Decisión: aceptado con ajustes. Cambio: CA-09 exige filtro programático de referencias permitidas y pertinentes más revisión humana asistida por matriz de evidencia por caso; se conserva el umbral de 9/10 y no se añade un LLM juez.
+
+También se concretan las condiciones de entorno limpio en CA-11 y se explicita que CA-12 solo se ejecuta en el servicio académico, como precisiones de la revisión complementaria. CA-07 conserva su método de medición cliente HTTP. No se modifica el diagrama porque los componentes y relaciones de arquitectura son los mismos; no se incorpora un componente nuevo de logging separado.
+
 ## Estado
 
-Ficha oficial sin cambios por este análisis. Las propuestas anteriores requieren ratificación antes de incorporarse como decisiones de diseño; no se atribuyen decisiones al estudiante. Revisión humana externa y prueba ciega pendientes, no crear docs/revision_alcance.md con hallazgos IA como si fueran humanos. Presupuesto 24 h confirmado, alcance intacto. No se ejecutaron nuevas pruebas.
+Decisiones IA ratificadas e incorporadas a la ficha. Presupuesto 24 h, 12 CA, cinco hitos y alcance intactos. Revisión humana externa y prueba ciega pendientes; no crear docs/revision_alcance.md con hallazgos IA como si fueran humanos. Los controles son especificaciones, no evidencia de implementación. Validación Windows de la ficha revisada pendiente; no se ejecutaron nuevas pruebas en este corte.

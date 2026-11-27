@@ -29,7 +29,7 @@ Acierto: [evidencia concreta]
 Prueba ciega: [resultado real]
 ```
 
-No copiar marcadores a un registro final. La sangría de cada Decisión: son dos espacios; minúsculas y tilde exacta. Las observaciones IA de la lección anterior ya se reflejan como propuestas técnicas (CA-12 y CA-09 reforzado), no como decisiones atribuidas al autor ni hallazgos de una persona.
+No copiar marcadores a un registro final. La sangría de cada Decisión: son dos espacios; minúsculas y tilde exacta. Las observaciones IA de la lección anterior se reflejan como propuestas técnicas (CA-12 y CA-09 reforzado). El autor ratificó además las decisiones sobre la segunda opinión de Gemini el 26/11/2026; consultar U3_1_CORE_REVISION_GEMINI.md. Son decisiones complementarias de diseño, no hallazgos de una persona externa. Compartir la versión actualizada de la ficha para la revisión humana.
 
 ## Verificación
 
