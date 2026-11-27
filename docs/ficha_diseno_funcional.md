@@ -27,7 +27,7 @@ Deseable: RF-05 (solo con presupuesto adicional; si se incluye, la aprobación e
 
 Fuera de alcance: RF-06 (requiere sistemas y datos reales), RF-07 (frontend propio no necesario para demostrar el servicio).
 
-**Presupuesto provisional:** 24 horas totales de laboratorio y evidencia, no disponibilidad confirmada; 12 h construcción, 7,2 h pruebas/documentación/defensa y 4,8 h imprevistos. Los imprescindibles y T-DOCKER (trabajo asociado a RNF-05) suman 11 h ajustadas; queda 1 h de holgura de construcción. RF-05 añade 3 h y solo cabe a partir de un escenario de 28 h totales. Se reutiliza [el presupuesto validado en Windows](../presupuesto/presupuesto_booking_core.py), con factor 1,5 para novedad. Los RNF son objetivos pendientes de medición, no resultados alcanzados. Confirmar horas reales antes de cerrar la planificación.
+**Presupuesto confirmado por el autor (26/11/2026):** 24 horas totales estimadas disponibles para laboratorio y evidencia; 12 h construcción, 7,2 h pruebas/documentación/defensa y 4,8 h imprevistos. Los imprescindibles y T-DOCKER (trabajo asociado a RNF-05) suman 11 h ajustadas; queda 1 h de holgura de construcción. RF-05 añade 3 h y solo cabe a partir de un escenario de 28 h totales. Se reutiliza [el presupuesto validado en Windows](../presupuesto/presupuesto_booking_core.py), con factor 1,5 para novedad. Los RNF son objetivos pendientes de medición, no resultados alcanzados. Si cambia la disponibilidad, recalcular el presupuesto y revisar el alcance sin consumir el margen de imprevistos.
 
 ## 3. Arquitectura de la solución
 Diagrama: docs/diagrama_arquitectura.png
@@ -63,7 +63,7 @@ Los contratos JSON, ruta de consulta, fixture y procedimiento de pruebas se impl
 Horas disponibles: 24 h
 Margen de imprevistos: 4,8 h
 
-**Escenario provisional**, no disponibilidad efectiva confirmada. Antes de comprometer la ejecución, confirmar horas reales y recalcular con presupuesto/presupuesto_booking_core.py. Las cifras mantienen la reserva del 30% y el margen del 20%. No se incorpora RF-05 al plan de 24 h.
+**Disponibilidad estimada confirmada por el autor el 26/11/2026:** 24 h. El presupuesto ya fue comprobado con presupuesto/presupuesto_booking_core.py para este escenario; recalcular si cambia la disponibilidad. Las cifras mantienen la reserva del 30% y el margen del 20%. No se incorpora RF-05 al plan de 24 h.
 
 - H1 (3 h): Servicio FastAPI ejecutable con contrato JSON y validación de entrada, inicialmente con dependencias inyectadas offline (U3.2). Cubre: RF-01. Se comprueba con: CA-01, CA-02.
 - H2 (3 h): Servicio HTTP integrado con RAG existente, índice persistido, citas y abstención (M2 y U3.2). Cubre: RF-02, RF-03. Se comprueba con: CA-03, CA-04.

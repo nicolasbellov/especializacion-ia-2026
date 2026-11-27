@@ -1,6 +1,6 @@
 # Guía de revisión pendiente — U3.1 Core
 
-Documento de trabajo, NO registro de revisión ni evidencia de entrega. Fuente Skillnest 23509. La ficha con cinco secciones queda preparada el 26/11/2026. Horas reales disponibles aún sin confirmar; 24 h es escenario provisional. No se crea docs/revision_alcance.md hasta que exista revisión auténtica.
+Documento de trabajo, NO registro de revisión ni evidencia de entrega. Fuente Skillnest 23509. La ficha con cinco secciones queda preparada el 26/11/2026. El autor confirmó 24 h de disponibilidad estimada el 26/11/2026 y eligió la modalidad de persona externa. La identidad, fecha y resultado de revisión aún no se han comunicado. No se crea docs/revision_alcance.md hasta que exista revisión auténtica.
 
 ## Modalidades permitidas
 
@@ -33,4 +33,4 @@ No copiar marcadores a un registro final. La sangría de cada Decisión: son dos
 
 ## Verificación
 
-Ejecutar presupuesto propio, resumen y verificador completo. Sin registro de revisión, el único fallo esperado de la ficha actual es "falta docs/revision_alcance.md". La suite Core usa registro sintético en un directorio temporal para probar la rama exitosa: ese PASS no es una revisión auténtica. El verificador oficial cuenta hallazgos y decisiones, no certifica identidad, fecha, orden, decisión aplicada ni prueba ciega; verificarlos manualmente. Se corrigió el patrón de hallazgo del texto recibido para reconocer paréntesis opcionales según el ejemplo. No enviar a Skillnest hasta completar revisión y confirmar horas reales.
+Ejecutar presupuesto propio, resumen y verificador completo. Sin registro de revisión, el único fallo esperado de la ficha actual es "falta docs/revision_alcance.md". La suite Core usa registro sintético en un directorio temporal para probar la rama exitosa: ese PASS no es una revisión auténtica. El verificador oficial cuenta hallazgos y decisiones, no certifica identidad, fecha, orden, decisión aplicada ni prueba ciega; verificarlos manualmente. Se corrigió el patrón de hallazgo del texto recibido para reconocer paréntesis opcionales según el ejemplo. No enviar a Skillnest hasta completar la revisión auténtica, aplicar las decisiones del autor y verificar la ficha final.
